@@ -1,4 +1,4 @@
-const APP_VERSION = "0.2.2";
+const APP_VERSION = "0.2.3";
 
 const QUESTIONS = [
   {
@@ -1161,6 +1161,103 @@ function explainChoice(q, choice, index) {
   return `この選択肢は「${correctChoice}」を問う今回の条件には当てはまりません。`;
 }
 
+function ensureOptionReviewStyles() {
+  if (document.getElementById("cptmate-option-review-styles")) return;
+  const style = document.createElement("style");
+  style.id = "cptmate-option-review-styles";
+  style.textContent = `
+    .option-review {
+      margin-top: 18px;
+      padding-top: 16px;
+      border-top: 1px solid rgba(38, 94, 99, 0.14);
+    }
+    .option-review-title {
+      font-size: 15px;
+      font-weight: 800;
+      margin-bottom: 12px;
+      color: var(--text, #24383a);
+    }
+    .option-explanation {
+      display: block !important;
+      width: 100% !important;
+      box-sizing: border-box !important;
+      margin: 0 0 10px !important;
+      padding: 13px 14px !important;
+      border: 1px solid rgba(30, 60, 65, 0.12) !important;
+      border-radius: 14px !important;
+      background: #fff !important;
+      overflow: hidden !important;
+    }
+    .option-explanation.is-correct {
+      border-left: 5px solid #2f8f78 !important;
+    }
+    .option-explanation.is-wrong {
+      border-left: 5px solid #c8ced0 !important;
+    }
+    .option-explanation-head {
+      display: grid !important;
+      grid-template-columns: 34px minmax(0, 1fr) auto !important;
+      align-items: center !important;
+      column-gap: 10px !important;
+      width: 100% !important;
+      min-width: 0 !important;
+    }
+    .option-explanation-letter {
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      width: 32px !important;
+      height: 32px !important;
+      border-radius: 9px !important;
+      background: #edf3f3 !important;
+      color: #285f63 !important;
+      font-size: 15px !important;
+      font-weight: 900 !important;
+      line-height: 1 !important;
+      flex: 0 0 32px !important;
+    }
+    .option-explanation-choice {
+      display: block !important;
+      min-width: 0 !important;
+      margin: 0 !important;
+      font-size: 16px !important;
+      font-weight: 800 !important;
+      line-height: 1.55 !important;
+      color: var(--text, #24383a) !important;
+      overflow-wrap: anywhere !important;
+      word-break: break-word !important;
+    }
+    .option-explanation-mark {
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      min-width: 28px !important;
+      font-size: 20px !important;
+      line-height: 1 !important;
+      white-space: nowrap !important;
+    }
+    .option-explanation-body {
+      display: block !important;
+      margin: 9px 0 0 44px !important;
+      padding-top: 9px !important;
+      border-top: 1px solid rgba(30, 60, 65, 0.08) !important;
+      font-size: 14px !important;
+      line-height: 1.75 !important;
+      color: var(--muted, #607174) !important;
+      overflow-wrap: anywhere !important;
+      word-break: break-word !important;
+    }
+    @media (max-width: 430px) {
+      .option-explanation { padding: 12px !important; }
+      .option-explanation-head { grid-template-columns: 32px minmax(0, 1fr) auto !important; column-gap: 8px !important; }
+      .option-explanation-letter { width: 30px !important; height: 30px !important; flex-basis: 30px !important; }
+      .option-explanation-choice { font-size: 15px !important; }
+      .option-explanation-body { margin-left: 40px !important; font-size: 13.5px !important; }
+    }
+  `;
+  document.head.appendChild(style);
+}
+
 function renderOptionReview(q) {
   const letters = ["A", "B", "C", "D"];
 
@@ -1184,6 +1281,7 @@ function renderOptionReview(q) {
 }
 
 function renderQuestion() {
+  ensureOptionReviewStyles();
   setActiveNav("practice");
   const q = QUESTIONS[state.currentIndex % QUESTIONS.length];
   const saved = state.answers[q.id];
