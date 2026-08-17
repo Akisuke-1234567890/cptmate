@@ -1,4 +1,4 @@
-const APP_VERSION = "0.2.6";
+const APP_VERSION = "0.2.7";
 
 const QUESTIONS = [
   {
@@ -1400,20 +1400,46 @@ function ensureFigureStyles() {
   style.id = "cptmateFigureStyles";
   style.textContent = `
     .question-figure {
-      margin: 14px 0 18px;
+      margin: 16px 0 20px;
       padding: 10px;
       background: #f7fbfb;
       border: 1px solid var(--line);
       border-radius: 18px;
       overflow: hidden;
     }
+    .figure-in-explanation {
+      margin: 18px 0 4px;
+      background: #fff;
+    }
+    .figure-zoom-trigger {
+      position: relative;
+      display: block;
+      width: 100%;
+      padding: 0;
+      border: 0;
+      background: transparent;
+      cursor: zoom-in;
+      text-align: left;
+    }
     .question-figure img {
       display: block;
       width: 100%;
-      max-height: 430px;
+      max-height: 500px;
       object-fit: contain;
       border-radius: 12px;
       background: #fff;
+    }
+    .figure-zoom-hint {
+      position: absolute;
+      right: 10px;
+      bottom: 10px;
+      padding: 6px 9px;
+      border-radius: 999px;
+      background: rgba(23,79,82,.9);
+      color: #fff;
+      font-size: 11px;
+      font-weight: 700;
+      pointer-events: none;
     }
     .question-figure-caption {
       margin: 8px 4px 0;
@@ -1422,35 +1448,146 @@ function ensureFigureStyles() {
       line-height: 1.5;
       text-align: center;
     }
-    .figure-source-note {
-      margin-top: 6px;
-      font-size: 11px;
-      color: var(--muted);
+    .figure-modal {
+      position: fixed;
+      inset: 0;
+      z-index: 9999;
+      display: none;
+    }
+    .figure-modal.open {
+      display: block;
+    }
+    .figure-modal-backdrop {
+      position: absolute;
+      inset: 0;
+      background: rgba(8, 25, 27, .82);
+    }
+    .figure-modal-panel {
+      position: absolute;
+      inset: 24px 12px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      pointer-events: none;
+    }
+    .figure-modal-panel img {
+      max-width: 100%;
+      max-height: calc(100vh - 105px);
+      width: auto;
+      height: auto;
+      object-fit: contain;
+      border-radius: 14px;
+      background: #fff;
+      box-shadow: 0 12px 40px rgba(0,0,0,.35);
+      pointer-events: auto;
+    }
+    .figure-modal-close {
+      position: absolute;
+      top: 0;
+      right: 4px;
+      width: 44px;
+      height: 44px;
+      border: 0;
+      border-radius: 50%;
+      background: rgba(255,255,255,.95);
+      color: #174f52;
+      font-size: 30px;
+      line-height: 1;
+      cursor: pointer;
+      z-index: 2;
+      pointer-events: auto;
+    }
+    .figure-modal-caption {
+      max-width: 94%;
+      margin-top: 10px;
+      padding: 7px 11px;
+      border-radius: 999px;
+      background: rgba(255,255,255,.94);
+      color: #174f52;
+      font-size: 12px;
+      font-weight: 700;
       text-align: center;
+      pointer-events: none;
+    }
+    body.figure-modal-open {
+      overflow: hidden;
+    }
+    .post-answer-actions {
+      display: grid;
+      gap: 10px;
+      margin-top: 12px;
+    }
+    .secondary-btn.full {
+      width: 100%;
+      min-height: 48px;
     }
   `;
   document.head.appendChild(style);
 }
 
-function renderQuestionFigure(q) {
+
+function renderQuestionFigure(q, mode = "default") {
   if (!q.image) return "";
   ensureFigureStyles();
   const caption = q.figureCaption || ({
     "assets/figures/sarcomere_structure.webp": "サルコメア・アクチン・ミオシンと各帯の関係",
     "assets/figures/filament_sliding.webp": "フィラメント滑走説：収縮前と収縮後の比較",
-    "assets/figures/contraction.svg": "神経から筋収縮までの流れ（CPTmate模式図）",
-    "assets/figures/neuron.svg": "神経細胞の基本構造（CPTmate模式図）",
-    "assets/figures/spindle_gto.svg": "筋紡錘とゴルジ腱器官の役割（CPTmate模式図）",
-    "assets/figures/long_bone.svg": "長骨の主な構造（CPTmate模式図）",
-    "assets/figures/skeleton.svg": "軸性骨格と付属性骨格（CPTmate模式図）"
+    "assets/figures/contraction.svg": "神経から筋収縮までの流れ",
+    "assets/figures/neuron.svg": "神経細胞の基本構造",
+    "assets/figures/spindle_gto.svg": "筋紡錘とゴルジ腱器官の役割",
+    "assets/figures/long_bone.svg": "長骨の主な構造",
+    "assets/figures/skeleton.svg": "軸性骨格と付属性骨格"
   })[q.image] || "図を確認しながら考えてみましょう。";
+  const safeCaption = caption.replace(/\\/g, "\\\\").replace(/'/g, "\\'").replace(/\n/g, " ");
   return `
-    <figure class="question-figure">
-      <img src="${q.image}" alt="${caption}" loading="lazy">
+    <figure class="question-figure ${mode === "explanation" ? "figure-in-explanation" : "figure-in-question"}">
+      <button class="figure-zoom-trigger" type="button" onclick="openFigureModal('${q.image}','${safeCaption}')" aria-label="図を拡大">
+        <img src="${q.image}" alt="${caption}" loading="lazy">
+        <span class="figure-zoom-hint">図をタップして拡大</span>
+      </button>
       <figcaption class="question-figure-caption">${caption}</figcaption>
     </figure>
   `;
 }
+
+function openFigureModal(src, caption) {
+  ensureFigureStyles();
+  let modal = document.getElementById("cptmateFigureModal");
+  if (!modal) {
+    modal = document.createElement("div");
+    modal.id = "cptmateFigureModal";
+    modal.className = "figure-modal";
+    modal.innerHTML = `
+      <div class="figure-modal-backdrop" onclick="closeFigureModal()"></div>
+      <div class="figure-modal-panel" role="dialog" aria-modal="true" aria-label="図の拡大表示">
+        <button class="figure-modal-close" type="button" onclick="closeFigureModal()" aria-label="閉じる">×</button>
+        <img id="figureModalImage" src="" alt="">
+        <div id="figureModalCaption" class="figure-modal-caption"></div>
+      </div>
+    `;
+    document.body.appendChild(modal);
+  }
+  const image = document.getElementById("figureModalImage");
+  const captionEl = document.getElementById("figureModalCaption");
+  image.src = src;
+  image.alt = caption;
+  captionEl.textContent = caption;
+  modal.classList.add("open");
+  document.body.classList.add("figure-modal-open");
+}
+
+function closeFigureModal() {
+  const modal = document.getElementById("cptmateFigureModal");
+  if (!modal) return;
+  modal.classList.remove("open");
+  document.body.classList.remove("figure-modal-open");
+}
+
+document.addEventListener("keydown", (event) => {
+  if (event.key === "Escape") closeFigureModal();
+});
+
 
 function renderQuestion() {
   ensureOptionReviewStyles();
@@ -1471,6 +1608,12 @@ function renderQuestion() {
     </button>`;
   }).join("");
 
+  // 「question」図は回答前から表示。
+  // 「after」図は回答後の解説欄だけに表示。
+  const questionFigure = (!saved && q.figureMode === "question")
+    ? renderQuestionFigure(q, "question")
+    : "";
+
   const result = saved ? `
     <div class="result ${saved.correct ? "correct" : "wrong"}">
       <div class="result-status">
@@ -1488,12 +1631,16 @@ function renderQuestion() {
         <strong>解説</strong>
         <br>
         ${q.explanation}
+        ${q.figureMode === "after" ? renderQuestionFigure(q, "explanation") : ""}
       </div>
 
       ${renderOptionReview(q)}
     </div>
 
-    <button class="primary-btn full" onclick="nextQuestion()">次の問題</button>
+    <div class="post-answer-actions">
+      <button class="secondary-btn full" onclick="retryQuestion()">もう一度この問題を解く</button>
+      <button class="primary-btn full" onclick="nextQuestion()">次の問題</button>
+    </div>
   ` : "";
 
   screenEl().innerHTML = `
@@ -1516,13 +1663,22 @@ function renderQuestion() {
       <div class="bookmark-row">
         <button class="bookmark" onclick="toggleBookmark('${q.id}')">${bookmarked ? "★" : "☆"}</button>
       </div>
-      ${saved ? renderQuestionFigure(q) : (q.figureMode === "question" ? renderQuestionFigure(q) : "")}
+
+      ${questionFigure}
       <p class="question-text">${q.question}</p>
       <div>${choices}</div>
       ${result}
     </section>
   `;
 }
+
+function retryQuestion() {
+  const q = QUESTIONS[state.currentIndex % QUESTIONS.length];
+  delete state.answers[q.id];
+  saveState();
+  renderQuestion();
+}
+
 
 function answerQuestion(selected) {
   const q = QUESTIONS[state.currentIndex % QUESTIONS.length];
