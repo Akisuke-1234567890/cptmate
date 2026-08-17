@@ -1,37 +1,32 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 820" role="img">
-<defs>
- <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%"><feDropShadow dx="0" dy="5" stdDeviation="7" flood-opacity=".12"/></filter>
- <marker id="arrow" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto"><path d="M0,0 L12,6 L0,12 z" fill="#0f6b70"/></marker>
- <marker id="arrowGold" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto"><path d="M0,0 L12,6 L0,12 z" fill="#b4883b"/></marker>
-</defs>
-<rect width="1200" height="820" rx="34" fill="#f7fbfb"/>
-<text x="70" y="70" font-family="Noto Sans CJK JP, sans-serif" font-size="32" font-weight="700" fill="#173e41">筋紡錘とゴルジ腱器官（GTO）</text>
-<text x="70" y="105" font-family="Noto Sans CJK JP, sans-serif" font-size="17" fill="#70888a">位置・構造・主に感知するものを比較</text>
-<rect x="45" y="140" width="700" height="430" rx="28" fill="#fff" stroke="#c5dcdc" stroke-width="2" filter="url(#shadow)"/>
-<text x="80" y="180" font-family="Noto Sans CJK JP, sans-serif" font-size="25" font-weight="700" fill="#0f6b70">筋紡錘：筋の長さ・伸張を感知</text>
-<rect x="95" y="220" width="560" height="240" rx="35" fill="#f0a6a2" stroke="#b55b57" stroke-width="4"/>
-<path d="M125 270 Q250 240 380 270 T625 270 M125 330 Q250 300 380 330 T625 330 M125 390 Q250 360 380 390 T625 390" fill="none" stroke="#d77b76" stroke-width="12" stroke-linecap="round"/>
-<path d="M240 340 C255 270 330 245 400 250 C470 255 545 285 555 340 C545 395 470 425 400 430 C330 425 255 400 240 340 Z" fill="#eef8f8" stroke="#0f6b70" stroke-width="5"/>
-<path d="M285 335 C305 300 350 285 400 288 C450 291 490 305 510 335 C490 365 450 380 400 383 C350 380 305 365 285 335 Z" fill="none" stroke="#2d8a8d" stroke-width="5"/>
-<path d="M260 335 C220 300 195 270 170 235 M540 335 C580 300 605 270 630 235" fill="none" stroke="#c7d5d6" stroke-width="5"/>
-<path d="M400 315 C430 285 470 270 510 250" fill="none" stroke="#d2a52d" stroke-width="7"/>
-<circle cx="512" cy="249" r="10" fill="#d2a52d"/>
-<text x="130" y="500" font-family="Noto Sans CJK JP, sans-serif" font-size="16" fill="#60797b">錘外筋線維と平行に存在</text>
-<text x="275" y="325" font-family="Noto Sans CJK JP, sans-serif" font-size="17" font-weight="700" fill="#0f6b70">被膜</text>
-<text x="400" y="350" text-anchor="middle" font-family="Noto Sans CJK JP, sans-serif" font-size="16" fill="#173e41">錘内筋線維</text>
-<text x="515" y="225" font-family="Noto Sans CJK JP, sans-serif" font-size="15" fill="#8b6b1d">感覚神経</text>
-<rect x="780" y="140" width="375" height="430" rx="28" fill="#fff" stroke="#e0cc96" stroke-width="2" filter="url(#shadow)"/>
-<text x="810" y="180" font-family="Noto Sans CJK JP, sans-serif" font-size="25" font-weight="700" fill="#9b742b">GTO：筋張力を感知</text>
-<rect x="825" y="230" width="135" height="250" rx="28" fill="#e58f8a" stroke="#b55b57" stroke-width="4"/>
-<text x="892" y="270" text-anchor="middle" font-family="Noto Sans CJK JP, sans-serif" font-size="18" font-weight="700" fill="#fff">筋</text>
-<path d="M960 330 L1110 300 L1110 410 L960 380 Z" fill="#e8d59d" stroke="#b18a3d" stroke-width="4"/>
-<text x="1035" y="285" text-anchor="middle" font-family="Noto Sans CJK JP, sans-serif" font-size="18" font-weight="700" fill="#8b6b1d">腱</text>
-<path d="M965 350 C1000 330 1035 370 1080 345 M970 365 C1005 345 1040 385 1085 360 M975 380 C1010 360 1045 400 1090 375" fill="none" stroke="#b88b36" stroke-width="5"/>
-<path d="M900 345 C925 330 945 330 965 345" fill="none" stroke="#d2a52d" stroke-width="7"/>
-<text x="825" y="505" font-family="Noto Sans CJK JP, sans-serif" font-size="16" fill="#60797b">筋と腱の接合部に存在</text>
-<rect x="85" y="610" width="1030" height="105" rx="22" fill="#eaf5f4" stroke="#c5dcdc" stroke-width="2"/>
-<text x="125" y="650" font-family="Noto Sans CJK JP, sans-serif" font-size="20" font-weight="700" fill="#173e41">筋紡錘</text>
-<text x="250" y="650" font-family="Noto Sans CJK JP, sans-serif" font-size="18" fill="#173e41">筋長・伸張の変化 → 伸張反射</text>
-<line x1="590" y1="625" x2="590" y2="690" stroke="#b9cfd0" stroke-width="2"/>
-<text x="635" y="650" font-family="Noto Sans CJK JP, sans-serif" font-size="20" font-weight="700" fill="#9b742b">GTO</text>
-<text x="715" y="650" font-family="Noto Sans CJK JP, sans-serif" font-size="18" fill="#173e41">筋張力 → 抑制反応</text><text x="600" y="785" text-anchor="middle" font-family="Noto Sans CJK JP, sans-serif" font-size="14" fill="#809294">※ 模式図。実際の形状・比率とは異なる場合があります。</text></svg>
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="760" viewBox="0 0 1200 760">
+<rect width="1200" height="760" fill="#fff"/>
+<style>
+.t{font-family:-apple-system,BlinkMacSystemFont,'Noto Sans JP','Yu Gothic',sans-serif;fill:#173f42}
+.h{font-size:34px;font-weight:800} .sh{font-size:24px;font-weight:800} .tx{font-size:21px} .sm{font-size:18px} .bold{font-weight:800}
+.panel{fill:#f8fbfb;stroke:#cbdedf;stroke-width:2} .teal{fill:#176f73} .blue{fill:#2868a8} .orange{fill:#d97918} .green{fill:#3e8b69} .red{fill:#b44d4d}
+.line{stroke:#176f73;stroke-width:5;fill:none} .thin{stroke:#6c8789;stroke-width:2;fill:none}
+</style>
+<text x="60" y="62" class="t h">筋紡錘とゴルジ腱器官（GTO）</text>
+
+<rect x="50" y="90" width="530" height="570" rx="24" class="panel"/><rect x="620" y="90" width="530" height="570" rx="24" class="panel"/>
+<text x="80" y="132" class="t sh">筋紡錘：筋長・伸張の検出</text><text x="650" y="132" class="t sh">ゴルジ腱器官（GTO）：張力の検出</text>
+<!-- muscle spindle -->
+<path d="M100 290 C150 190 370 190 520 290 C370 390 150 390 100 290Z" fill="#f4a19a" stroke="#9b4b45" stroke-width="4"/>
+<ellipse cx="305" cy="290" rx="130" ry="58" fill="#fff7f6" stroke="#b44d4d" stroke-width="4"/>
+<path d="M175 290 C230 245 380 245 435 290 C380 335 230 335 175 290" fill="none" stroke="#d97918" stroke-width="8"/>
+<path d="M180 275 C245 245 365 245 430 275 M180 305 C245 335 365 335 430 305" fill="none" stroke="#3e8b69" stroke-width="6"/>
+<path d="M305 232 C270 180 230 160 180 145" class="line"/><path d="M305 348 C340 400 385 420 445 438" stroke="#d97918" stroke-width="5" fill="none"/>
+<text x="105" y="475" class="t tx">被膜</text><line x1="145" y1="465" x2="250" y2="340" class="thin"/>
+<text x="105" y="515" class="t sm">錘内筋線維（感覚受容器）</text><text x="105" y="548" class="t sm">Ia・II感覚神経 → 筋長の変化</text>
+<text x="105" y="600" class="t bold" fill="#176f73">ポイント：筋の「長さ」を検出</text>
+<!-- GTO -->
+<path d="M700 215 L1045 215 L1045 375 L700 375 Z" fill="#f4a19a" stroke="#9b4b45" stroke-width="4"/>
+<path d="M870 375 L870 525" stroke="#d5a15a" stroke-width="40" stroke-linecap="round"/>
+<ellipse cx="870" cy="375" rx="60" ry="38" fill="#fff7e8" stroke="#d97918" stroke-width="5"/>
+<path d="M810 375 Q870 330 930 375 Q870 420 810 375" fill="none" stroke="#d97918" stroke-width="8"/>
+<path d="M870 410 C950 470 1010 490 1090 500" stroke="#176f73" stroke-width="6" fill="none"/>
+<text x="675" y="560" class="t sm">Ib感覚神経 → 腱にかかる張力</text><text x="675" y="600" class="t bold" fill="#176f73">ポイント：筋‐腱系の「張力」を検出</text>
+<rect x="80" y="620" width="970" height="28" rx="14" fill="#eaf4f4"/><text x="600" y="642" text-anchor="middle" class="t sm">筋紡錘＝長さ・伸張　／　GTO＝張力・力</text>
+
+<text x="60" y="728" class="t sm" fill="#708487">※ CPTmate学習用模式図。教材の構造・関係を学習しやすい形に再構成。</text>
+</svg>
