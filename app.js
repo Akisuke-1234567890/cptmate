@@ -1,4 +1,4 @@
-const APP_VERSION = "0.2.10";
+const APP_VERSION = "0.2.11";
 
 const QUESTIONS = [
   {
@@ -992,6 +992,8 @@ const defaultState = {
 let state = loadState();
 let practiceQueue = [];
 let practiceLabel = "第1章すべて";
+let practiceSessionAnswers = {};
+let practiceCompleted = false;
 
 function loadState() {
   try {
@@ -1245,7 +1247,7 @@ function renderHome() {
 
     <div class="section-title"><h2>学習メニュー</h2></div>
     <div class="menu-grid">
-      <button class="menu-item" onclick="renderPracticeSelector()"><strong>通常問題</strong><small>章・分野・問題番号から選ぶ</small></button>
+      <button class="menu-item" onclick="renderPracticeSelector()"><strong>通常問題</strong><small>章・分類・問題番号から選ぶ</small></button>
     </div>
 
     <div class="section-title"><h2>現在のコンテンツ</h2></div>
@@ -1264,6 +1266,8 @@ function startPractice(index = 0) {
 function startPracticeQueue(ids, label, index = 0) {
   practiceQueue = ids.filter(id => QUESTIONS.some(q => q.id === id));
   practiceLabel = label || "問題演習";
+  practiceSessionAnswers = {};
+  practiceCompleted = false;
   if (!practiceQueue.length) {
     alert("この条件に該当する問題がありません。");
     return;
@@ -1284,11 +1288,6 @@ function renderPracticeSelector(selectedChapter = null) {
   const chapters = [...new Set(QUESTIONS.map(q => q.chapter))].sort((a,b) => a-b);
   const chapter = selectedChapter || chapters[0] || 1;
   const chapterQuestions = QUESTIONS.filter(q => q.chapter === chapter);
-  const groups = {};
-  chapterQuestions.forEach(q => {
-    const key = q.category || "その他";
-    (groups[key] ||= []).push(q);
-  });
 
   const major = {
     "筋系・筋収縮": q => /^(筋系|筋収縮|筋活動様式|筋線維タイプ)/.test(q.category) || /ケーススタディ・(筋収縮|筋活動様式|筋線維)/.test(q.category) || q.category.startsWith("図・筋収縮"),
@@ -1303,10 +1302,6 @@ function renderPracticeSelector(selectedChapter = null) {
     return `<button class="practice-select-item" onclick='startPracticeQueue(${JSON.stringify(ids)}, ${JSON.stringify(name)})'><strong>${name}</strong><span>${ids.length}問</span></button>`;
   }).join("");
 
-  const categoryButtons = Object.entries(groups).sort((a,b) => a[0].localeCompare(b[0], 'ja')).map(([name, qs]) => `
-    <button class="practice-select-item" onclick='startPracticeQueue(${JSON.stringify(qs.map(q=>q.id))}, ${JSON.stringify(name)})'><strong>${name}</strong><span>${qs.length}問</span></button>`
-  ).join("");
-
   screenEl().innerHTML = `
     <div class="back-row"><button class="back-btn" onclick="renderHome()">‹</button><h2>問題演習</h2></div>
     <section class="card practice-selector-card">
@@ -1316,7 +1311,7 @@ function renderPracticeSelector(selectedChapter = null) {
       `).join("")}</div>
       <div class="selector-kicker" style="margin-top:16px;">選択中：第${chapter}章</div>
       <h3>どこから解きますか？</h3>
-      <p class="selector-note">通し演習だけでなく、分野や問題番号を絞って確認できます。</p>
+      <p class="selector-note">章を通して解くほか、分類や問題番号を絞って確認できます。</p>
       <button class="practice-select-item primary-choice" onclick='startPracticeQueue(${JSON.stringify(chapterQuestions.map(q=>q.id))}, ${JSON.stringify(`第${chapter}章すべて`)})'><strong>第${chapter}章すべて</strong><span>${chapterQuestions.length}問</span></button>
     </section>
 
@@ -1325,10 +1320,6 @@ function renderPracticeSelector(selectedChapter = null) {
       <div class="practice-select-list">${majorButtons}</div>
     </section>
 
-    <section class="card">
-      <div class="selector-section-title">細分野</div>
-      <div class="practice-select-list">${categoryButtons}</div>
-    </section>
 
     <section class="card">
       <div class="selector-section-title">問題番号で指定</div>
@@ -1696,13 +1687,51 @@ document.addEventListener("keydown", (event) => {
 });
 
 
+function renderPracticeComplete() {
+  setActiveNav("practice");
+  const queue = getPracticeQuestions();
+  const results = queue.map(q => practiceSessionAnswers[q.id]).filter(Boolean);
+  const correct = results.filter(a => a.correct).length;
+  const total = results.length;
+  const rate = total ? Math.round(correct / total * 100) : 0;
+
+  screenEl().innerHTML = `
+    <div class="back-row">
+      <button class="back-btn" onclick="renderPracticeSelector()">‹</button>
+      <h2>演習完了</h2>
+    </div>
+    <section class="card" style="text-align:center;padding:28px 20px;">
+      <div style="font-size:18px;font-weight:700;margin-bottom:18px;">${practiceLabel}</div>
+      <div class="stat-grid">
+        <div class="stat"><div class="num">${total}</div><div class="label">解答数</div></div>
+        <div class="stat"><div class="num">${rate}%</div><div class="label">正答率</div></div>
+      </div>
+      <p style="color:var(--muted);line-height:1.7;margin:20px 0;">この演習はここで終了です。<br>同じ問題をもう一度解くこともできます。</p>
+      <button class="primary-btn full" onclick="restartCurrentPractice()">もう一度この演習を解く</button>
+      <button class="secondary-btn full" onclick="renderPracticeSelector()">演習選択へ戻る</button>
+    </section>
+  `;
+}
+
+function restartCurrentPractice() {
+  practiceSessionAnswers = {};
+  practiceCompleted = false;
+  state.currentIndex = 0;
+  saveState();
+  renderQuestion();
+}
+
 function renderQuestion() {
   ensureOptionReviewStyles();
   setActiveNav("practice");
   const queue = getPracticeQuestions();
   if (!queue.length) { renderPracticeSelector(); return; }
-  const q = queue[state.currentIndex % queue.length];
-  const saved = state.answers[q.id];
+  if (practiceCompleted) {
+    renderPracticeComplete();
+    return;
+  }
+  const q = queue[state.currentIndex];
+  const saved = practiceSessionAnswers[q.id];
   const bookmarked = !!state.bookmarks[q.id];
   const letters = ["A", "B", "C", "D"];
 
@@ -1784,29 +1813,36 @@ function renderQuestion() {
 
 function retryQuestion() {
   const queue = getPracticeQuestions();
-  const q = queue[state.currentIndex % queue.length];
-  delete state.answers[q.id];
-  saveState();
+  const q = queue[state.currentIndex];
+  delete practiceSessionAnswers[q.id];
   renderQuestion();
 }
 
 
 function answerQuestion(selected) {
   const queue = getPracticeQuestions();
-  const q = queue[state.currentIndex % queue.length];
+  const q = queue[state.currentIndex];
   const correct = selected === q.answer;
-  state.answers[q.id] = {
+  const record = {
     selected,
     correct,
     answeredAt: new Date().toISOString()
   };
+  state.answers[q.id] = record;
+  practiceSessionAnswers[q.id] = record;
   saveState();
   renderQuestion();
 }
 
 function nextQuestion() {
   const queue = getPracticeQuestions();
-  state.currentIndex = (state.currentIndex + 1) % queue.length;
+  if (state.currentIndex >= queue.length - 1) {
+    practiceCompleted = true;
+    saveState();
+    renderPracticeComplete();
+    return;
+  }
+  state.currentIndex += 1;
   saveState();
   renderQuestion();
 }
@@ -1860,8 +1896,8 @@ function renderFavorites() {
 }
 
 function startSpecific(id) {
-  const index = QUESTIONS.findIndex(q => q.id === id);
-  if (index >= 0) startPractice(index);
+  const q = QUESTIONS.find(q => q.id === id);
+  if (q) startPracticeQueue([q.id], `${q.category}・1問`);
 }
 
 function renderStats() {
