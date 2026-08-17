@@ -1,4 +1,4 @@
-const APP_VERSION = "0.2.9";
+const APP_VERSION = "0.2.10";
 
 const QUESTIONS = [
   {
@@ -1246,8 +1246,6 @@ function renderHome() {
     <div class="section-title"><h2>学習メニュー</h2></div>
     <div class="menu-grid">
       <button class="menu-item" onclick="renderPracticeSelector()"><strong>通常問題</strong><small>章・分野・問題番号から選ぶ</small></button>
-      <button class="menu-item" onclick="renderFavorites()"><strong>お気に入り</strong><small>${Object.values(state.bookmarks).filter(Boolean).length}問</small></button>
-      <button class="menu-item" onclick="renderReview()"><strong>復習</strong><small>間違えた問題 ${wrongCount()}問</small></button>
     </div>
 
     <div class="section-title"><h2>現在のコンテンツ</h2></div>
