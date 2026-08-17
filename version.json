@@ -1,5 +1,6 @@
 {
-  "version": "0.2.4",
-  "updated": "2026-08-17",
-  "app": "CPTmate"
+  "version": "0.2.5",
+  "name": "CPTmate",
+  "releasedAt": "2026-08-17",
+  "updateNote": "図を必要な問題だけに限定。通常問題では解答後に図を表示し、図問題では問題中から表示。サルコメア・筋収縮図を高情報量のCPTmate独自模式図へ更新。"
 }

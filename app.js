@@ -1,4 +1,4 @@
-const APP_VERSION = "0.2.4";
+const APP_VERSION = "0.2.5";
 
 const QUESTIONS = [
   {
@@ -7,6 +7,7 @@ const QUESTIONS = [
     "category": "筋系・構造",
     "type": "standard",
     "image": "assets/figures/sarcomere.svg",
+    "figureMode": "after",
     "question": "骨格筋の基本的な機能的収縮単位として最も適切なのはどれか。",
     "choices": [
       "筋線維",
@@ -22,7 +23,6 @@ const QUESTIONS = [
     "chapter": 1,
     "category": "筋系・構造",
     "type": "standard",
-    "image": "assets/figures/sarcomere.svg",
     "question": "構造の大きい順として正しいものはどれか。",
     "choices": [
       "サルコメア→筋フィラメント→筋原線維→筋線維→骨格筋",
@@ -38,7 +38,6 @@ const QUESTIONS = [
     "chapter": 1,
     "category": "筋系・構造",
     "type": "standard",
-    "image": "assets/figures/sarcomere.svg",
     "question": "筋線維の中に多数並んでいる円柱状の構造はどれか。",
     "choices": [
       "筋原線維",
@@ -55,6 +54,7 @@ const QUESTIONS = [
     "category": "筋系・サルコメア",
     "type": "standard",
     "image": "assets/figures/sarcomere.svg",
+    "figureMode": "after",
     "question": "1つのサルコメアの範囲として正しいものはどれか。",
     "choices": [
       "A帯からH帯まで",
@@ -71,6 +71,7 @@ const QUESTIONS = [
     "category": "筋系・サルコメア",
     "type": "standard",
     "image": "assets/figures/sarcomere.svg",
+    "figureMode": "after",
     "question": "A帯について、最も適切なものはどれか。",
     "choices": [
       "ミオシンフィラメントが存在する範囲",
@@ -87,6 +88,7 @@ const QUESTIONS = [
     "category": "筋系・サルコメア",
     "type": "standard",
     "image": "assets/figures/sarcomere.svg",
+    "figureMode": "after",
     "question": "A帯の中で、ミオシンのみが存在しアクチンが存在しない部分はどれか。",
     "choices": [
       "I帯",
@@ -103,6 +105,7 @@ const QUESTIONS = [
     "category": "筋系・サルコメア",
     "type": "standard",
     "image": "assets/figures/sarcomere.svg",
+    "figureMode": "after",
     "question": "H帯の中央を通る暗い線はどれか。",
     "choices": [
       "Z線",
@@ -119,6 +122,7 @@ const QUESTIONS = [
     "category": "筋系・フィラメント",
     "type": "standard",
     "image": "assets/figures/sarcomere.svg",
+    "figureMode": "after",
     "question": "ミオシンフィラメントとアクチンフィラメントの組み合わせとして正しいものはどれか。",
     "choices": [
       "ミオシン＝細い、アクチン＝太い",
@@ -135,6 +139,7 @@ const QUESTIONS = [
     "category": "筋系・調節タンパク質",
     "type": "standard",
     "image": "assets/figures/sarcomere.svg",
+    "figureMode": "after",
     "question": "安静時にアクチン上のミオシン結合部位を覆っているタンパク質はどれか。",
     "choices": [
       "トロポニン",
@@ -151,6 +156,7 @@ const QUESTIONS = [
     "category": "筋系・調節タンパク質",
     "type": "standard",
     "image": "assets/figures/sarcomere.svg",
+    "figureMode": "after",
     "question": "カルシウムイオンが直接結合する調節タンパク質はどれか。",
     "choices": [
       "トロポニン",
@@ -166,7 +172,6 @@ const QUESTIONS = [
     "chapter": 1,
     "category": "神経筋接合部",
     "type": "standard",
-    "image": "assets/figures/contraction.svg",
     "question": "神経筋接合部で神経から筋へ信号を伝える神経伝達物質はどれか。",
     "choices": [
       "ドーパミン",
@@ -183,6 +188,7 @@ const QUESTIONS = [
     "category": "筋収縮・流れ",
     "type": "standard",
     "image": "assets/figures/contraction.svg",
+    "figureMode": "after",
     "question": "筋収縮の過程で最初に起こるものはどれか。",
     "choices": [
       "カルシウムがトロポニンに結合する",
@@ -199,6 +205,7 @@ const QUESTIONS = [
     "category": "筋収縮・流れ",
     "type": "standard",
     "image": "assets/figures/contraction.svg",
+    "figureMode": "after",
     "question": "AChが筋線維側で結合する場所はどれか。",
     "choices": [
       "ACh受容体",
@@ -215,6 +222,7 @@ const QUESTIONS = [
     "category": "筋収縮・流れ",
     "type": "standard",
     "image": "assets/figures/contraction.svg",
+    "figureMode": "after",
     "question": "筋線維の活動電位を細胞内部へ伝える構造はどれか。",
     "choices": [
       "T管",
@@ -231,6 +239,7 @@ const QUESTIONS = [
     "category": "筋収縮・流れ",
     "type": "standard",
     "image": "assets/figures/contraction.svg",
+    "figureMode": "after",
     "question": "活動電位を受けてカルシウムイオンを放出する構造はどれか。",
     "choices": [
       "筋小胞体",
@@ -247,6 +256,7 @@ const QUESTIONS = [
     "category": "筋収縮・流れ",
     "type": "standard",
     "image": "assets/figures/contraction.svg",
+    "figureMode": "after",
     "question": "フィラメント滑走説について正しい説明はどれか。",
     "choices": [
       "アクチンとミオシンそのものが短くなる",
@@ -397,7 +407,6 @@ const QUESTIONS = [
     "chapter": 1,
     "category": "神経系・ニューロン",
     "type": "standard",
-    "image": "assets/figures/neuron.svg",
     "question": "他のニューロンからの信号を受け取る「アンテナ部分」に相当する構造はどれか。",
     "choices": [
       "樹状突起",
@@ -413,7 +422,6 @@ const QUESTIONS = [
     "chapter": 1,
     "category": "神経系・ニューロン",
     "type": "standard",
-    "image": "assets/figures/neuron.svg",
     "question": "細胞体から伸びる長い「ケーブル」に相当する構造はどれか。",
     "choices": [
       "樹状突起",
@@ -430,6 +438,7 @@ const QUESTIONS = [
     "category": "神経系・筋紡錘",
     "type": "standard",
     "image": "assets/figures/spindle_gto.svg",
+    "figureMode": "after",
     "question": "筋紡錘が主に検知するものはどれか。",
     "choices": [
       "筋の長さ（伸張）の変化",
@@ -446,6 +455,7 @@ const QUESTIONS = [
     "category": "神経系・GTO",
     "type": "standard",
     "image": "assets/figures/spindle_gto.svg",
+    "figureMode": "after",
     "question": "ゴルジ腱器官（GTO）が主に検知するものはどれか。",
     "choices": [
       "筋の長さ",
@@ -507,6 +517,7 @@ const QUESTIONS = [
     "category": "骨格系",
     "type": "standard",
     "image": "assets/figures/long_bone.svg",
+    "figureMode": "after",
     "question": "長骨の中央の長い部分を何というか。",
     "choices": [
       "骨端",
@@ -523,6 +534,7 @@ const QUESTIONS = [
     "category": "骨格系",
     "type": "standard",
     "image": "assets/figures/skeleton.svg",
+    "figureMode": "after",
     "question": "頭蓋・脊柱・胸骨・肋骨などを含む骨格はどれか。",
     "choices": [
       "付属性骨格",
@@ -539,6 +551,7 @@ const QUESTIONS = [
     "category": "骨格系・リモデリング",
     "type": "standard",
     "image": "assets/figures/long_bone.svg",
+    "figureMode": "after",
     "question": "古い骨を破壊する細胞はどれか。",
     "choices": [
       "骨芽細胞",
@@ -555,6 +568,7 @@ const QUESTIONS = [
     "category": "骨格系・リモデリング",
     "type": "standard",
     "image": "assets/figures/long_bone.svg",
+    "figureMode": "after",
     "question": "新しい骨の合成を促す細胞はどれか。",
     "choices": [
       "破骨細胞",
@@ -571,6 +585,7 @@ const QUESTIONS = [
     "category": "骨格系・ウォルフの法則",
     "type": "standard",
     "image": "assets/figures/long_bone.svg",
+    "figureMode": "after",
     "question": "ウォルフの法則の説明として最も適切なのはどれか。",
     "choices": [
       "骨は負荷に関係なく一定の構造を保つ",
@@ -835,7 +850,6 @@ const QUESTIONS = [
     "chapter": 1,
     "category": "総合・識別",
     "type": "standard",
-    "image": "assets/figures/spindle_gto.svg",
     "question": "「長さセンサー」と「力センサー」の組み合わせとして最も適切なのはどれか。",
     "choices": [
       "筋紡錘＝長さ、GTO＝力",
@@ -890,7 +904,77 @@ const QUESTIONS = [
     ],
     "answer": 1,
     "explanation": "章のまとめでは、この一連の流れを丸暗記ではなくストーリーとして説明できることが次章以降の理解を助けるとしている。"
+  },
+[
+  {
+    "id": "ch1-fig001",
+    "chapter": 1,
+    "category": "図・サルコメア",
+    "type": "figure",
+    "image": "assets/figures/sarcomere.svg",
+    "figureMode": "question",
+    "question": "図に示されたZ線から隣接するZ線までの範囲を何というか。",
+    "choices": [
+      "I帯",
+      "A帯",
+      "サルコメア",
+      "H帯"
+    ],
+    "answer": 2,
+    "explanation": "Z線から隣接するZ線までが1つのサルコメアである。サルコメアは骨格筋の基本的な機能的収縮単位である。"
+  },
+  {
+    "id": "ch1-fig002",
+    "chapter": 1,
+    "category": "図・サルコメア",
+    "type": "figure",
+    "image": "assets/figures/sarcomere.svg",
+    "figureMode": "question",
+    "question": "図の中央に示された、ミオシンのみが存在する領域はどれか。",
+    "choices": [
+      "I帯",
+      "H帯",
+      "Z線",
+      "M線"
+    ],
+    "answer": 1,
+    "explanation": "H帯はA帯の中央付近にあり、ミオシンのみが存在する領域である。中央のM線はH帯の中央を通る。"
+  },
+  {
+    "id": "ch1-fig003",
+    "chapter": 1,
+    "category": "図・筋収縮",
+    "type": "figure",
+    "image": "assets/figures/contraction.svg",
+    "figureMode": "question",
+    "question": "図の⑤に相当する現象として正しいのはどれか。",
+    "choices": [
+      "AChが放出される",
+      "Ca²⁺が放出される",
+      "AChが受容体に結合する",
+      "活動電位がT管へ伝わる"
+    ],
+    "answer": 1,
+    "explanation": "筋線維内へ活動電位が伝わると、筋小胞体からCa²⁺が放出される。Ca²⁺はトロポニンに結合し、筋収縮の開始につながる。"
+  },
+  {
+    "id": "ch1-fig004",
+    "chapter": 1,
+    "category": "図・筋紡錘とGTO",
+    "type": "figure",
+    "image": "assets/figures/spindle_gto.svg",
+    "figureMode": "question",
+    "question": "筋の長さの変化を主に検知する受容器は図のどちらか。",
+    "choices": [
+      "筋紡錘",
+      "ゴルジ腱器官（GTO）",
+      "両方とも張力のみを検知する",
+      "どちらも検知しない"
+    ],
+    "answer": 0,
+    "explanation": "筋紡錘は筋の長さや伸張の変化を検知する。GTOは主に筋が発揮する張力を検知する。"
   }
+]
 ];
 
 const STORAGE_KEY = "cptmate_v01_state";
@@ -1323,7 +1407,7 @@ function ensureFigureStyles() {
     .question-figure img {
       display: block;
       width: 100%;
-      max-height: 360px;
+      max-height: 430px;
       object-fit: contain;
       border-radius: 12px;
       background: #fff;
@@ -1359,7 +1443,7 @@ function renderQuestionFigure(q) {
   return `
     <figure class="question-figure">
       <img src="${q.image}" alt="${caption}" loading="lazy">
-      <figcaption class="question-figure-caption">${caption}</figcaption><div class="figure-source-note">教材の図をそのまま転載せず、内容をもとにしたCPTmate独自の模式図です。</div>
+      <figcaption class="question-figure-caption">${caption}</figcaption>
     </figure>
   `;
 }
@@ -1428,7 +1512,7 @@ function renderQuestion() {
       <div class="bookmark-row">
         <button class="bookmark" onclick="toggleBookmark('${q.id}')">${bookmarked ? "★" : "☆"}</button>
       </div>
-      ${renderQuestionFigure(q)}
+      ${saved ? renderQuestionFigure(q) : (q.figureMode === "question" ? renderQuestionFigure(q) : "")}
       <p class="question-text">${q.question}</p>
       <div>${choices}</div>
       ${result}
