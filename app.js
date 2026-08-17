@@ -1,4 +1,4 @@
-const APP_VERSION = "0.2.14";
+const APP_VERSION = "0.2.15";
 
 const QUESTIONS = [
   {
@@ -2033,6 +2033,69 @@ function renderStats() {
   `;
 }
 
+function getFigureCatalog() {
+  const seen = new Set();
+  const catalog = [];
+  QUESTIONS.forEach(q => {
+    if (!q.image || seen.has(q.image)) return;
+    seen.add(q.image);
+    catalog.push({
+      image: q.image,
+      caption: q.figureCaption || "図・イラスト",
+      chapter: q.chapter,
+      ids: QUESTIONS.filter(x => x.image === q.image).map(x => x.id)
+    });
+  });
+  return catalog;
+}
+
+function renderFigureGallery() {
+  setActiveNav("settings");
+  const figures = getFigureCatalog();
+  screenEl().innerHTML = `
+    <div class="back-row">
+      <button class="back-btn" onclick="renderSettings()">‹</button>
+      <h2>図・イラスト一覧</h2>
+    </div>
+    <section class="card figure-gallery-card">
+      <p style="color:var(--muted);line-height:1.7;margin-top:0;">
+        CPTmateで現在使用している図を確認できます。図をタップすると全画面で確認できます。
+      </p>
+      <div class="figure-gallery-list">
+        ${figures.map((fig, i) => {
+          const safeCaption = fig.caption.replace(/\\/g, "\\\\").replace(/'/g, "\\'").replace(/\n/g, " ");
+          return `
+            <button class="figure-gallery-item" type="button" onclick="openFigureModal('${fig.image}?v=${APP_VERSION}','${safeCaption}')">
+              <div class="figure-gallery-thumb"><img src="${fig.image}?v=${APP_VERSION}" alt="${fig.caption}" loading="lazy"></div>
+              <div class="figure-gallery-meta">
+                <strong>${fig.caption}</strong>
+                <span>第${fig.chapter}章　使用問題 ${fig.ids.length}問</span>
+              </div>
+            </button>
+          `;
+        }).join("")}
+      </div>
+    </section>
+  `;
+  ensureFigureGalleryStyles();
+}
+
+function ensureFigureGalleryStyles() {
+  if (document.getElementById("cptmateFigureGalleryStyles")) return;
+  const style = document.createElement("style");
+  style.id = "cptmateFigureGalleryStyles";
+  style.textContent = `
+    .figure-gallery-list{display:grid;gap:12px}
+    .figure-gallery-item{display:flex;gap:14px;align-items:center;width:100%;padding:12px;border:1px solid var(--line);border-radius:16px;background:#fff;text-align:left;cursor:pointer}
+    .figure-gallery-thumb{width:112px;height:82px;flex:0 0 112px;border-radius:12px;background:#f7f9f9;display:flex;align-items:center;justify-content:center;overflow:hidden}
+    .figure-gallery-thumb img{width:100%;height:100%;object-fit:contain}
+    .figure-gallery-meta{min-width:0;display:flex;flex-direction:column;gap:5px}
+    .figure-gallery-meta strong{font-size:14px;line-height:1.45}
+    .figure-gallery-meta span{font-size:12px;color:var(--muted)}
+  `;
+  document.head.appendChild(style);
+}
+
 function renderSettings() {
   setActiveNav("settings");
   screenEl().innerHTML = `
@@ -2041,6 +2104,7 @@ function renderSettings() {
       <h3>データ</h3>
       <p style="color:var(--muted);line-height:1.7;">v0.1では学習データをこのiPhoneのブラウザ内に保存しています。正式版ではバックアップ書き出し・復元を追加します。</p>
       <button class="secondary-btn full" onclick="exportBackup()">現在の学習データをバックアップ</button>
+      <button class="secondary-btn full" onclick="renderFigureGallery()">図・イラスト一覧</button>
       <button class="secondary-btn full" onclick="resetProgress()">学習データをリセット</button>
     </section>
     <section class="card">
