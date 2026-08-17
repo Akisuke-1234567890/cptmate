@@ -1,4 +1,4 @@
-const APP_VERSION = "0.2.3";
+const APP_VERSION = "0.2.4";
 
 const QUESTIONS = [
   {
@@ -6,6 +6,7 @@ const QUESTIONS = [
     "chapter": 1,
     "category": "筋系・構造",
     "type": "standard",
+    "image": "assets/figures/sarcomere.svg",
     "question": "骨格筋の基本的な機能的収縮単位として最も適切なのはどれか。",
     "choices": [
       "筋線維",
@@ -21,6 +22,7 @@ const QUESTIONS = [
     "chapter": 1,
     "category": "筋系・構造",
     "type": "standard",
+    "image": "assets/figures/sarcomere.svg",
     "question": "構造の大きい順として正しいものはどれか。",
     "choices": [
       "サルコメア→筋フィラメント→筋原線維→筋線維→骨格筋",
@@ -36,6 +38,7 @@ const QUESTIONS = [
     "chapter": 1,
     "category": "筋系・構造",
     "type": "standard",
+    "image": "assets/figures/sarcomere.svg",
     "question": "筋線維の中に多数並んでいる円柱状の構造はどれか。",
     "choices": [
       "筋原線維",
@@ -51,6 +54,7 @@ const QUESTIONS = [
     "chapter": 1,
     "category": "筋系・サルコメア",
     "type": "standard",
+    "image": "assets/figures/sarcomere.svg",
     "question": "1つのサルコメアの範囲として正しいものはどれか。",
     "choices": [
       "A帯からH帯まで",
@@ -66,6 +70,7 @@ const QUESTIONS = [
     "chapter": 1,
     "category": "筋系・サルコメア",
     "type": "standard",
+    "image": "assets/figures/sarcomere.svg",
     "question": "A帯について、最も適切なものはどれか。",
     "choices": [
       "ミオシンフィラメントが存在する範囲",
@@ -81,6 +86,7 @@ const QUESTIONS = [
     "chapter": 1,
     "category": "筋系・サルコメア",
     "type": "standard",
+    "image": "assets/figures/sarcomere.svg",
     "question": "A帯の中で、ミオシンのみが存在しアクチンが存在しない部分はどれか。",
     "choices": [
       "I帯",
@@ -96,6 +102,7 @@ const QUESTIONS = [
     "chapter": 1,
     "category": "筋系・サルコメア",
     "type": "standard",
+    "image": "assets/figures/sarcomere.svg",
     "question": "H帯の中央を通る暗い線はどれか。",
     "choices": [
       "Z線",
@@ -111,6 +118,7 @@ const QUESTIONS = [
     "chapter": 1,
     "category": "筋系・フィラメント",
     "type": "standard",
+    "image": "assets/figures/sarcomere.svg",
     "question": "ミオシンフィラメントとアクチンフィラメントの組み合わせとして正しいものはどれか。",
     "choices": [
       "ミオシン＝細い、アクチン＝太い",
@@ -126,6 +134,7 @@ const QUESTIONS = [
     "chapter": 1,
     "category": "筋系・調節タンパク質",
     "type": "standard",
+    "image": "assets/figures/sarcomere.svg",
     "question": "安静時にアクチン上のミオシン結合部位を覆っているタンパク質はどれか。",
     "choices": [
       "トロポニン",
@@ -141,6 +150,7 @@ const QUESTIONS = [
     "chapter": 1,
     "category": "筋系・調節タンパク質",
     "type": "standard",
+    "image": "assets/figures/sarcomere.svg",
     "question": "カルシウムイオンが直接結合する調節タンパク質はどれか。",
     "choices": [
       "トロポニン",
@@ -156,6 +166,7 @@ const QUESTIONS = [
     "chapter": 1,
     "category": "神経筋接合部",
     "type": "standard",
+    "image": "assets/figures/contraction.svg",
     "question": "神経筋接合部で神経から筋へ信号を伝える神経伝達物質はどれか。",
     "choices": [
       "ドーパミン",
@@ -171,6 +182,7 @@ const QUESTIONS = [
     "chapter": 1,
     "category": "筋収縮・流れ",
     "type": "standard",
+    "image": "assets/figures/contraction.svg",
     "question": "筋収縮の過程で最初に起こるものはどれか。",
     "choices": [
       "カルシウムがトロポニンに結合する",
@@ -186,6 +198,7 @@ const QUESTIONS = [
     "chapter": 1,
     "category": "筋収縮・流れ",
     "type": "standard",
+    "image": "assets/figures/contraction.svg",
     "question": "AChが筋線維側で結合する場所はどれか。",
     "choices": [
       "ACh受容体",
@@ -201,6 +214,7 @@ const QUESTIONS = [
     "chapter": 1,
     "category": "筋収縮・流れ",
     "type": "standard",
+    "image": "assets/figures/contraction.svg",
     "question": "筋線維の活動電位を細胞内部へ伝える構造はどれか。",
     "choices": [
       "T管",
@@ -216,6 +230,7 @@ const QUESTIONS = [
     "chapter": 1,
     "category": "筋収縮・流れ",
     "type": "standard",
+    "image": "assets/figures/contraction.svg",
     "question": "活動電位を受けてカルシウムイオンを放出する構造はどれか。",
     "choices": [
       "筋小胞体",
@@ -231,6 +246,7 @@ const QUESTIONS = [
     "chapter": 1,
     "category": "筋収縮・流れ",
     "type": "standard",
+    "image": "assets/figures/contraction.svg",
     "question": "フィラメント滑走説について正しい説明はどれか。",
     "choices": [
       "アクチンとミオシンそのものが短くなる",
@@ -381,6 +397,7 @@ const QUESTIONS = [
     "chapter": 1,
     "category": "神経系・ニューロン",
     "type": "standard",
+    "image": "assets/figures/neuron.svg",
     "question": "他のニューロンからの信号を受け取る「アンテナ部分」に相当する構造はどれか。",
     "choices": [
       "樹状突起",
@@ -396,6 +413,7 @@ const QUESTIONS = [
     "chapter": 1,
     "category": "神経系・ニューロン",
     "type": "standard",
+    "image": "assets/figures/neuron.svg",
     "question": "細胞体から伸びる長い「ケーブル」に相当する構造はどれか。",
     "choices": [
       "樹状突起",
@@ -411,6 +429,7 @@ const QUESTIONS = [
     "chapter": 1,
     "category": "神経系・筋紡錘",
     "type": "standard",
+    "image": "assets/figures/spindle_gto.svg",
     "question": "筋紡錘が主に検知するものはどれか。",
     "choices": [
       "筋の長さ（伸張）の変化",
@@ -426,6 +445,7 @@ const QUESTIONS = [
     "chapter": 1,
     "category": "神経系・GTO",
     "type": "standard",
+    "image": "assets/figures/spindle_gto.svg",
     "question": "ゴルジ腱器官（GTO）が主に検知するものはどれか。",
     "choices": [
       "筋の長さ",
@@ -486,6 +506,7 @@ const QUESTIONS = [
     "chapter": 1,
     "category": "骨格系",
     "type": "standard",
+    "image": "assets/figures/long_bone.svg",
     "question": "長骨の中央の長い部分を何というか。",
     "choices": [
       "骨端",
@@ -501,6 +522,7 @@ const QUESTIONS = [
     "chapter": 1,
     "category": "骨格系",
     "type": "standard",
+    "image": "assets/figures/skeleton.svg",
     "question": "頭蓋・脊柱・胸骨・肋骨などを含む骨格はどれか。",
     "choices": [
       "付属性骨格",
@@ -516,6 +538,7 @@ const QUESTIONS = [
     "chapter": 1,
     "category": "骨格系・リモデリング",
     "type": "standard",
+    "image": "assets/figures/long_bone.svg",
     "question": "古い骨を破壊する細胞はどれか。",
     "choices": [
       "骨芽細胞",
@@ -531,6 +554,7 @@ const QUESTIONS = [
     "chapter": 1,
     "category": "骨格系・リモデリング",
     "type": "standard",
+    "image": "assets/figures/long_bone.svg",
     "question": "新しい骨の合成を促す細胞はどれか。",
     "choices": [
       "破骨細胞",
@@ -546,6 +570,7 @@ const QUESTIONS = [
     "chapter": 1,
     "category": "骨格系・ウォルフの法則",
     "type": "standard",
+    "image": "assets/figures/long_bone.svg",
     "question": "ウォルフの法則の説明として最も適切なのはどれか。",
     "choices": [
       "骨は負荷に関係なく一定の構造を保つ",
@@ -810,6 +835,7 @@ const QUESTIONS = [
     "chapter": 1,
     "category": "総合・識別",
     "type": "standard",
+    "image": "assets/figures/spindle_gto.svg",
     "question": "「長さセンサー」と「力センサー」の組み合わせとして最も適切なのはどれか。",
     "choices": [
       "筋紡錘＝長さ、GTO＝力",
@@ -1280,6 +1306,64 @@ function renderOptionReview(q) {
   `;
 }
 
+
+function ensureFigureStyles() {
+  if (document.getElementById("cptmateFigureStyles")) return;
+  const style = document.createElement("style");
+  style.id = "cptmateFigureStyles";
+  style.textContent = `
+    .question-figure {
+      margin: 14px 0 18px;
+      padding: 10px;
+      background: #f7fbfb;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      overflow: hidden;
+    }
+    .question-figure img {
+      display: block;
+      width: 100%;
+      max-height: 360px;
+      object-fit: contain;
+      border-radius: 12px;
+      background: #fff;
+    }
+    .question-figure-caption {
+      margin: 8px 4px 0;
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.5;
+      text-align: center;
+    }
+    .figure-source-note {
+      margin-top: 6px;
+      font-size: 11px;
+      color: var(--muted);
+      text-align: center;
+    }
+  `;
+  document.head.appendChild(style);
+}
+
+function renderQuestionFigure(q) {
+  if (!q.image) return "";
+  ensureFigureStyles();
+  const caption = q.figureCaption || ({
+    "assets/figures/sarcomere.svg": "サルコメア・アクチン・ミオシンの関係（CPTmate模式図）",
+    "assets/figures/contraction.svg": "神経から筋収縮までの流れ（CPTmate模式図）",
+    "assets/figures/neuron.svg": "神経細胞の基本構造（CPTmate模式図）",
+    "assets/figures/spindle_gto.svg": "筋紡錘とゴルジ腱器官の役割（CPTmate模式図）",
+    "assets/figures/long_bone.svg": "長骨の主な構造（CPTmate模式図）",
+    "assets/figures/skeleton.svg": "軸性骨格と付属性骨格（CPTmate模式図）"
+  })[q.image] || "図を確認しながら考えてみましょう。";
+  return `
+    <figure class="question-figure">
+      <img src="${q.image}" alt="${caption}" loading="lazy">
+      <figcaption class="question-figure-caption">${caption}</figcaption><div class="figure-source-note">教材の図をそのまま転載せず、内容をもとにしたCPTmate独自の模式図です。</div>
+    </figure>
+  `;
+}
+
 function renderQuestion() {
   ensureOptionReviewStyles();
   setActiveNav("practice");
@@ -1344,6 +1428,7 @@ function renderQuestion() {
       <div class="bookmark-row">
         <button class="bookmark" onclick="toggleBookmark('${q.id}')">${bookmarked ? "★" : "☆"}</button>
       </div>
+      ${renderQuestionFigure(q)}
       <p class="question-text">${q.question}</p>
       <div>${choices}</div>
       ${result}
