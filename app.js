@@ -1,4 +1,4 @@
-const APP_VERSION = "0.2.11";
+const APP_VERSION = "0.2.12";
 
 const QUESTIONS = [
   {
@@ -1284,6 +1284,15 @@ function getPracticeQuestions() {
 }
 
 function renderPracticeSelector(selectedChapter = null) {
+  // 問題選択画面を開いた時は、前回の演習状態を持ち込まない。
+  // ホームから初回に開いた場合と、問題を解いて戻った場合で表示が変わらないようにする。
+  practiceQueue = [];
+  practiceLabel = "第1章すべて";
+  practiceSessionAnswers = {};
+  practiceCompleted = false;
+  state.currentIndex = 0;
+  state.lastViewed = "practice-selector";
+  saveState();
   setActiveNav("practice");
   const chapters = [...new Set(QUESTIONS.map(q => q.chapter))].sort((a,b) => a-b);
   const chapter = selectedChapter || chapters[0] || 1;

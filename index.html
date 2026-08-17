@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <meta name="theme-color" content="#0f5f63">
   <title>CPTmate</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css?v=0.2.12">
 </head>
 <body>
   <div id="app">
@@ -29,9 +29,9 @@
   </div>
 
   <script>
-    const isUpdateReload = new URLSearchParams(location.search).has("update");
+    // 毎回バージョン付きURLで読み込み、GitHub Pages/Safariの旧app.jsを使わない。
     const appScript = document.createElement("script");
-    appScript.src = isUpdateReload ? `app.js?update=${Date.now()}` : "app.js";
+    appScript.src = `app.js?v=0.2.12&t=${Date.now()}`;
     document.body.appendChild(appScript);
   </script>
 </body>
