@@ -1,30 +1,37 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 760" width="1200" height="760"><defs>
- <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#f7fbfb"/><stop offset="1" stop-color="#eef7f6"/></linearGradient>
- <linearGradient id="teal" x1="0" y1="0" x2="1" y2="0"><stop stop-color="#145e62"/><stop offset="1" stop-color="#2d8585"/></linearGradient>
- <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%"><feDropShadow dx="0" dy="5" stdDeviation="7" flood-color="#163f43" flood-opacity=".13"/></filter>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 820" role="img">
+<defs>
+ <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%"><feDropShadow dx="0" dy="5" stdDeviation="7" flood-opacity=".12"/></filter>
+ <marker id="arrow" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto"><path d="M0,0 L12,6 L0,12 z" fill="#0f6b70"/></marker>
+ <marker id="arrowGold" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto"><path d="M0,0 L12,6 L0,12 z" fill="#b4883b"/></marker>
 </defs>
-<rect width="1200" height="760" rx="28" fill="url(#bg)"/>
-<text x="60" y="65" font-family="sans-serif" font-size="34" font-weight="800" fill="#173f43">軸性骨格と付属性骨格</text>
-<text x="60" y="98" font-family="sans-serif" font-size="18" fill="#6b8587">身体の中心軸を構成する骨格と、四肢・帯を構成する骨格</text>
-<!-- silhouette skeleton -->
-<g transform="translate(470,125)" stroke-linecap="round" stroke-linejoin="round">
- <circle cx="130" cy="55" r="38" fill="#dcefee" stroke="#145e62" stroke-width="7"/>
- <path d="M130 95 V285" stroke="#145e62" stroke-width="18"/>
- <path d="M85 135 Q130 110 175 135 M88 160 Q130 135 172 160 M88 185 Q130 160 172 185 M90 210 Q130 185 170 210" fill="none" stroke="#2d8585" stroke-width="8"/>
- <path d="M130 285 L90 430 M130 285 L170 430" stroke="#145e62" stroke-width="15"/>
- <path d="M90 430 L62 585 M170 430 L198 585" stroke="#145e62" stroke-width="13"/>
- <path d="M130 145 L48 235 M130 145 L212 235" stroke="#8fbdb9" stroke-width="15"/>
- <path d="M48 235 L20 350 M212 235 L240 350" stroke="#8fbdb9" stroke-width="13"/>
- <path d="M20 350 L-5 420 M240 350 L265 420" stroke="#8fbdb9" stroke-width="11"/>
- <circle cx="20" cy="420" r="10" fill="#8fbdb9" stroke="none"/><circle cx="265" cy="420" r="10" fill="#8fbdb9" stroke="none"/>
- <circle cx="62" cy="585" r="11" fill="#8fbdb9" stroke="none"/><circle cx="198" cy="585" r="11" fill="#8fbdb9" stroke="none"/>
-</g>
-<!-- labels -->
-<g font-family="sans-serif">
- <g><rect x="70" y="165" width="300" height="180" rx="24" fill="#fff" stroke="#b7d8d5" stroke-width="3"/><text x="220" y="210" text-anchor="middle" font-size="23" font-weight="800" fill="#145e62">軸性骨格</text><text x="105" y="250" font-size="17" fill="#526f71">・頭蓋</text><text x="105" y="280" font-size="17" fill="#526f71">・脊柱</text><text x="105" y="310" font-size="17" fill="#526f71">・胸骨</text><text x="235" y="250" font-size="17" fill="#526f71">・肋骨</text><text x="235" y="280" font-size="17" fill="#526f71">身体の中心軸</text></g>
- <g><rect x="830" y="165" width="300" height="180" rx="24" fill="#fff" stroke="#d7c98f" stroke-width="3"/><text x="980" y="210" text-anchor="middle" font-size="23" font-weight="800" fill="#806d35">付属性骨格</text><text x="865" y="250" font-size="17" fill="#526f71">・肩帯</text><text x="865" y="280" font-size="17" fill="#526f71">・上肢</text><text x="865" y="310" font-size="17" fill="#526f71">・骨盤帯</text><text x="1010" y="250" font-size="17" fill="#526f71">・下肢</text><text x="1010" y="280" font-size="17" fill="#526f71">四肢と帯</text></g>
- <path d="M370 255 H470" stroke="#145e62" stroke-width="5"/><path d="M830 255 H730" stroke="#806d35" stroke-width="5"/>
- <g><rect x="175" y="565" width="850" height="110" rx="24" fill="#fff" stroke="#c8dfdd" stroke-width="3"/><text x="600" y="605" text-anchor="middle" font-size="20" font-weight="800" fill="#173f43">軸性骨格のポイント</text><text x="600" y="638" text-anchor="middle" font-size="16" fill="#526f71">頭蓋・脊柱・胸骨・肋骨などを含み、重要臓器の保護や筋の付着部として機能</text></g>
-</g>
-<text x="600" y="720" font-family="sans-serif" text-anchor="middle" font-size="15" fill="#718889">※ 模式図。実際の骨の形状・比率とは異なります。</text>
-</svg>
+<rect width="1200" height="820" rx="34" fill="#f7fbfb"/>
+<text x="70" y="70" font-family="Noto Sans CJK JP, sans-serif" font-size="32" font-weight="700" fill="#173e41">軸性骨格と付属性骨格</text>
+<text x="70" y="105" font-family="Noto Sans CJK JP, sans-serif" font-size="17" fill="#70888a">人体の骨格系を大きく2つに分けて理解する</text>
+<rect x="55" y="135" width="1090" height="575" rx="28" fill="#fff" stroke="#d7dfe0" stroke-width="2" filter="url(#shadow)"/>
+<!-- axial skeleton -->
+<circle cx="600" cy="230" r="48" fill="#d8eeee" stroke="#0f6b70" stroke-width="6"/>
+<path d="M600 280 L600 455 M535 315 Q600 290 665 315 M535 350 Q600 325 665 350 M540 390 Q600 365 660 390 M600 455 L555 575 M600 455 L645 575" fill="none" stroke="#0f6b70" stroke-width="16" stroke-linecap="round"/>
+<path d="M545 315 L470 370 L450 455 M655 315 L730 370 L750 455" fill="none" stroke="#4c9899" stroke-width="14" stroke-linecap="round"/>
+<!-- appendicular limbs -->
+<path d="M470 370 L405 470 L365 575 L330 675 M730 370 L795 470 L835 575 L870 675" fill="none" stroke="#6fb1ae" stroke-width="18" stroke-linecap="round"/>
+<path d="M555 575 L500 675 M645 575 L700 675" fill="none" stroke="#6fb1ae" stroke-width="18" stroke-linecap="round"/>
+<!-- labels left -->
+<rect x="90" y="190" width="350" height="200" rx="20" fill="#eaf6f5" stroke="#b9d8d6" stroke-width="2"/>
+<text x="115" y="230" font-family="Noto Sans CJK JP, sans-serif" font-size="24" font-weight="700" fill="#0f6b70">軸性骨格</text>
+<text x="115" y="268" font-family="Noto Sans CJK JP, sans-serif" font-size="17" fill="#173e41">・頭蓋</text>
+<text x="115" y="298" font-family="Noto Sans CJK JP, sans-serif" font-size="17" fill="#173e41">・脊柱</text>
+<text x="115" y="328" font-family="Noto Sans CJK JP, sans-serif" font-size="17" fill="#173e41">・胸骨、肋骨</text>
+<text x="115" y="362" font-family="Noto Sans CJK JP, sans-serif" font-size="15" fill="#5c7476">体幹の中心を構成し、重要臓器を保護</text>
+<line x1="440" y1="300" x2="535" y2="300" stroke="#0f6b70" stroke-width="3"/>
+<!-- right -->
+<rect x="760" y="190" width="350" height="200" rx="20" fill="#fff7e8" stroke="#dfc78b" stroke-width="2"/>
+<text x="785" y="230" font-family="Noto Sans CJK JP, sans-serif" font-size="24" font-weight="700" fill="#9a752d">付属性骨格</text>
+<text x="785" y="268" font-family="Noto Sans CJK JP, sans-serif" font-size="17" fill="#173e41">・肩帯、上肢</text>
+<text x="785" y="298" font-family="Noto Sans CJK JP, sans-serif" font-size="17" fill="#173e41">・骨盤帯、下肢</text>
+<text x="785" y="340" font-family="Noto Sans CJK JP, sans-serif" font-size="15" fill="#5c7476">関節運動を通じて身体運動に関与</text>
+<line x1="760" y1="300" x2="665" y2="300" stroke="#b4883b" stroke-width="3"/>
+<!-- legend -->
+<rect x="270" y="625" width="660" height="60" rx="18" fill="#f1f7f6"/>
+<circle cx="315" cy="655" r="9" fill="#0f6b70"/><text x="335" y="662" font-family="Noto Sans CJK JP, sans-serif" font-size="16" fill="#173e41">軸性骨格</text>
+<circle cx="520" cy="655" r="9" fill="#6fb1ae"/><text x="540" y="662" font-family="Noto Sans CJK JP, sans-serif" font-size="16" fill="#173e41">付属性骨格</text>
+<text x="710" y="662" font-family="Noto Sans CJK JP, sans-serif" font-size="14" fill="#6a8082">模式図</text><text x="600" y="785" text-anchor="middle" font-family="Noto Sans CJK JP, sans-serif" font-size="14" fill="#809294">※ 模式図。実際の形状・比率とは異なる場合があります。</text></svg>
