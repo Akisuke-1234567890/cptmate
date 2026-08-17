@@ -28,6 +28,11 @@
     </nav>
   </div>
 
-  <script src="app.js"></script>
+  <script>
+    const isUpdateReload = new URLSearchParams(location.search).has("update");
+    const appScript = document.createElement("script");
+    appScript.src = isUpdateReload ? `app.js?update=${Date.now()}` : "app.js";
+    document.body.appendChild(appScript);
+  </script>
 </body>
 </html>

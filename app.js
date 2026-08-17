@@ -1,3 +1,5 @@
+const APP_VERSION = "0.2.0";
+
 const QUESTIONS = [
   {
     "id": "ch1-q001",
@@ -922,7 +924,7 @@ function renderHome() {
 
   screenEl().innerHTML = `
     <section class="hero">
-      <div class="label">CPTmate v0.1</div>
+      <div class="label">CPTmate v${APP_VERSION}</div>
       <h2>今日も1問ずつ、確実に。</h2>
       <p>問題を解く → 解説で理解する → 間違いを復習する。この学習サイクルをここから育てていきます。</p>
       <button class="primary-btn full" onclick="startPractice()">問題演習を始める</button>
@@ -1106,15 +1108,61 @@ function renderSettings() {
     </section>
     <section class="card">
       <h3>アプリ情報</h3>
-      <p style="margin:0;color:var(--muted);">CPTmate v0.1<br>GitHub Pages向け試作版</p>
+      <p style="margin:0 0 14px;color:var(--muted);">CPTmate v${APP_VERSION}<br>GitHub Pages向け試作版</p>
+      <button class="primary-btn full" onclick="checkForAppUpdate()">最新版を確認・更新</button>
+      <p id="updateStatus" style="margin:10px 0 0;color:var(--muted);font-size:13px;text-align:center;">現在のバージョン：v${APP_VERSION}</p>
     </section>
   `;
+}
+
+function compareVersions(a, b) {
+  const pa = String(a).split(".").map(n => parseInt(n, 10) || 0);
+  const pb = String(b).split(".").map(n => parseInt(n, 10) || 0);
+  for (let i = 0; i < Math.max(pa.length, pb.length); i++) {
+    const x = pa[i] || 0;
+    const y = pb[i] || 0;
+    if (x > y) return 1;
+    if (x < y) return -1;
+  }
+  return 0;
+}
+
+async function checkForAppUpdate() {
+  const status = document.getElementById("updateStatus");
+  if (status) status.textContent = "最新版を確認しています…";
+
+  try {
+    const res = await fetch(`version.json?ts=${Date.now()}`, { cache: "no-store" });
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    const latest = await res.json();
+    const latestVersion = String(latest.version || "").trim();
+
+    if (!latestVersion) throw new Error("version.jsonのバージョン情報がありません。");
+
+    if (compareVersions(latestVersion, APP_VERSION) > 0) {
+      if (!confirm(`最新版 v${latestVersion} が利用できます。\n\n最新版へ更新しますか？`)) {
+        if (status) status.textContent = `現在のバージョン：v${APP_VERSION}`;
+        return;
+      }
+
+      if (status) status.textContent = `v${latestVersion} へ更新しています…`;
+      location.replace(`${location.pathname}?update=${Date.now()}${location.hash}`);
+      return;
+    }
+
+    if (status) status.textContent = `最新版です（v${APP_VERSION}）`;
+    alert(`最新版です。現在のバージョンは v${APP_VERSION} です。`);
+  } catch (error) {
+    console.error(error);
+    if (status) status.textContent = "更新確認に失敗しました。通信状態を確認してください。";
+    alert("最新版を確認できませんでした。\n通信状態を確認して、もう一度お試しください。");
+  }
 }
 
 function exportBackup() {
   const payload = {
     app: "CPTmate",
-    version: "0.1",
+    version: APP_VERSION,
     exportedAt: new Date().toISOString(),
     state
   };
