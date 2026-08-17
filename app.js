@@ -1,4 +1,4 @@
-const APP_VERSION = "0.2.8";
+const APP_VERSION = "0.2.9";
 
 const QUESTIONS = [
   {
@@ -1246,9 +1246,8 @@ function renderHome() {
     <div class="section-title"><h2>学習メニュー</h2></div>
     <div class="menu-grid">
       <button class="menu-item" onclick="renderPracticeSelector()"><strong>通常問題</strong><small>章・分野・問題番号から選ぶ</small></button>
-      <button class="menu-item" onclick="renderReview()"><strong>間違えた問題</strong><small>${wrongCount()}問を復習</small></button>
-      <button class="menu-item" onclick="renderStats()"><strong>学習状況</strong><small>正答率と進捗を見る</small></button>
-      <button class="menu-item" onclick="renderSettings()"><strong>設定</strong><small>データ管理</small></button>
+      <button class="menu-item" onclick="renderFavorites()"><strong>お気に入り</strong><small>${Object.values(state.bookmarks).filter(Boolean).length}問</small></button>
+      <button class="menu-item" onclick="renderReview()"><strong>復習</strong><small>間違えた問題 ${wrongCount()}問</small></button>
     </div>
 
     <div class="section-title"><h2>現在のコンテンツ</h2></div>
@@ -1832,6 +1831,7 @@ function renderReview() {
     <div class="back-row"><h2>復習</h2></div>
     <section class="card">
       <h3>間違えた問題</h3>
+      <p style="color:var(--muted);line-height:1.7;margin-top:0;">一度間違えた問題をもう一度解き直します。</p>
       ${wrong.length ? wrong.map(q => `
         <div class="list-item">
           <div><strong>${q.category}</strong><br><small>${q.question}</small></div>
@@ -1839,14 +1839,24 @@ function renderReview() {
         </div>
       `).join("") : `<div class="empty">まだ間違えた問題はありません。<br>問題を解いてみましょう。</div>`}
     </section>
+  `;
+}
+
+function renderFavorites() {
+  setActiveNav("favorites");
+  const favorites = QUESTIONS.filter(q => state.bookmarks[q.id]);
+
+  screenEl().innerHTML = `
+    <div class="back-row"><h2>お気に入り</h2></div>
     <section class="card">
-      <h3>ブックマーク</h3>
-      ${QUESTIONS.filter(q => state.bookmarks[q.id]).map(q => `
+      <h3>⭐ お気に入りの問題</h3>
+      <p style="color:var(--muted);line-height:1.7;margin-top:0;">あとで見返したい問題をここにまとめています。</p>
+      ${favorites.length ? favorites.map(q => `
         <div class="list-item">
           <div><strong>${q.category}</strong><br><small>${q.question}</small></div>
           <button class="secondary-btn" onclick="startSpecific('${q.id}')">解く</button>
         </div>
-      `).join("") || `<div class="empty">ブックマークした問題はありません。</div>`}
+      `).join("") : `<div class="empty">お気に入りに登録した問題はありません。<br>問題画面の☆を押して登録できます。</div>`}
     </section>
   `;
 }
@@ -1973,13 +1983,13 @@ document.querySelectorAll(".nav-btn").forEach(btn => {
   btn.addEventListener("click", () => {
     const nav = btn.dataset.nav;
     if (nav === "home") renderHome();
-    if (nav === "practice") startPractice();
+    if (nav === "favorites") renderFavorites();
+    if (nav === "practice") renderPracticeSelector();
     if (nav === "review") renderReview();
     if (nav === "stats") renderStats();
     if (nav === "settings") renderSettings();
   });
 });
 
-document.getElementById("bookmarkFilterBtn").addEventListener("click", renderReview);
 
 renderHome();
