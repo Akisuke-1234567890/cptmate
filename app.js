@@ -1,4 +1,4 @@
-const APP_VERSION = "0.2.5";
+const APP_VERSION = "0.2.6";
 
 const QUESTIONS = [
   {
@@ -6,7 +6,7 @@ const QUESTIONS = [
     "chapter": 1,
     "category": "筋系・構造",
     "type": "standard",
-    "image": "assets/figures/sarcomere.svg",
+    "image": "assets/figures/sarcomere_structure.webp",
     "figureMode": "after",
     "question": "骨格筋の基本的な機能的収縮単位として最も適切なのはどれか。",
     "choices": [
@@ -16,7 +16,8 @@ const QUESTIONS = [
       "筋線維束"
     ],
     "answer": 2,
-    "explanation": "サルコメアはZ線から隣接するZ線までの範囲で、骨格筋の基本的な機能的収縮単位である。"
+    "explanation": "サルコメアはZ線から隣接するZ線までの範囲で、骨格筋の基本的な機能的収縮単位である。",
+    "figureCaption": "サルコメア・アクチン・ミオシンと各帯の関係"
   },
   {
     "id": "ch1-q002",
@@ -53,7 +54,7 @@ const QUESTIONS = [
     "chapter": 1,
     "category": "筋系・サルコメア",
     "type": "standard",
-    "image": "assets/figures/sarcomere.svg",
+    "image": "assets/figures/sarcomere_structure.webp",
     "figureMode": "after",
     "question": "1つのサルコメアの範囲として正しいものはどれか。",
     "choices": [
@@ -63,14 +64,15 @@ const QUESTIONS = [
       "I帯からA帯まで"
     ],
     "answer": 1,
-    "explanation": "サルコメアはZ線から隣接するZ線までの範囲を指す。"
+    "explanation": "サルコメアはZ線から隣接するZ線までの範囲を指す。",
+    "figureCaption": "サルコメア・アクチン・ミオシンと各帯の関係"
   },
   {
     "id": "ch1-q005",
     "chapter": 1,
     "category": "筋系・サルコメア",
     "type": "standard",
-    "image": "assets/figures/sarcomere.svg",
+    "image": "assets/figures/sarcomere_structure.webp",
     "figureMode": "after",
     "question": "A帯について、最も適切なものはどれか。",
     "choices": [
@@ -80,14 +82,15 @@ const QUESTIONS = [
       "神経筋接合部の領域"
     ],
     "answer": 0,
-    "explanation": "A帯はミオシンフィラメントが存在する範囲で、骨格筋では暗帯として見える。"
+    "explanation": "A帯はミオシンフィラメントが存在する範囲で、骨格筋では暗帯として見える。",
+    "figureCaption": "サルコメア・アクチン・ミオシンと各帯の関係"
   },
   {
     "id": "ch1-q006",
     "chapter": 1,
     "category": "筋系・サルコメア",
     "type": "standard",
-    "image": "assets/figures/sarcomere.svg",
+    "image": "assets/figures/sarcomere_structure.webp",
     "figureMode": "after",
     "question": "A帯の中で、ミオシンのみが存在しアクチンが存在しない部分はどれか。",
     "choices": [
@@ -97,14 +100,15 @@ const QUESTIONS = [
       "M線"
     ],
     "answer": 1,
-    "explanation": "H帯はA帯の中でミオシンのみが存在し、アクチンと重ならない部分である。"
+    "explanation": "H帯はA帯の中でミオシンのみが存在し、アクチンと重ならない部分である。",
+    "figureCaption": "サルコメア・アクチン・ミオシンと各帯の関係"
   },
   {
     "id": "ch1-q007",
     "chapter": 1,
     "category": "筋系・サルコメア",
     "type": "standard",
-    "image": "assets/figures/sarcomere.svg",
+    "image": "assets/figures/sarcomere_structure.webp",
     "figureMode": "after",
     "question": "H帯の中央を通る暗い線はどれか。",
     "choices": [
@@ -114,14 +118,15 @@ const QUESTIONS = [
       "筋鞘"
     ],
     "answer": 2,
-    "explanation": "M線はH帯の中央を通る線で、ミオシンフィラメントの正しい配列を維持する。"
+    "explanation": "M線はH帯の中央を通る線で、ミオシンフィラメントの正しい配列を維持する。",
+    "figureCaption": "サルコメア・アクチン・ミオシンと各帯の関係"
   },
   {
     "id": "ch1-q008",
     "chapter": 1,
     "category": "筋系・フィラメント",
     "type": "standard",
-    "image": "assets/figures/sarcomere.svg",
+    "image": "assets/figures/sarcomere_structure.webp",
     "figureMode": "after",
     "question": "ミオシンフィラメントとアクチンフィラメントの組み合わせとして正しいものはどれか。",
     "choices": [
@@ -131,15 +136,14 @@ const QUESTIONS = [
       "両方とも細い"
     ],
     "answer": 1,
-    "explanation": "ミオシンは太いフィラメント、アクチンは細いフィラメントである。"
+    "explanation": "ミオシンは太いフィラメント、アクチンは細いフィラメントである。",
+    "figureCaption": "サルコメア・アクチン・ミオシンと各帯の関係"
   },
   {
     "id": "ch1-q009",
     "chapter": 1,
     "category": "筋系・調節タンパク質",
     "type": "standard",
-    "image": "assets/figures/sarcomere.svg",
-    "figureMode": "after",
     "question": "安静時にアクチン上のミオシン結合部位を覆っているタンパク質はどれか。",
     "choices": [
       "トロポニン",
@@ -155,8 +159,6 @@ const QUESTIONS = [
     "chapter": 1,
     "category": "筋系・調節タンパク質",
     "type": "standard",
-    "image": "assets/figures/sarcomere.svg",
-    "figureMode": "after",
     "question": "カルシウムイオンが直接結合する調節タンパク質はどれか。",
     "choices": [
       "トロポニン",
@@ -255,7 +257,7 @@ const QUESTIONS = [
     "chapter": 1,
     "category": "筋収縮・流れ",
     "type": "standard",
-    "image": "assets/figures/contraction.svg",
+    "image": "assets/figures/filament_sliding.webp",
     "figureMode": "after",
     "question": "フィラメント滑走説について正しい説明はどれか。",
     "choices": [
@@ -265,7 +267,8 @@ const QUESTIONS = [
       "Z線が筋線維の中を移動する"
     ],
     "answer": 1,
-    "explanation": "フィラメント滑走説では、フィラメント自体の長さは変化せず、アクチンとミオシンが互いに滑り込むことで筋全体が短縮・伸張する。"
+    "explanation": "フィラメント滑走説では、フィラメント自体の長さは変化せず、アクチンとミオシンが互いに滑り込むことで筋全体が短縮・伸張する。",
+    "figureCaption": "フィラメント滑走説：収縮前と収縮後の比較"
   },
   {
     "id": "ch1-q017",
@@ -905,13 +908,12 @@ const QUESTIONS = [
     "answer": 1,
     "explanation": "章のまとめでは、この一連の流れを丸暗記ではなくストーリーとして説明できることが次章以降の理解を助けるとしている。"
   },
-[
   {
     "id": "ch1-fig001",
     "chapter": 1,
     "category": "図・サルコメア",
     "type": "figure",
-    "image": "assets/figures/sarcomere.svg",
+    "image": "assets/figures/sarcomere_structure.webp",
     "figureMode": "question",
     "question": "図に示されたZ線から隣接するZ線までの範囲を何というか。",
     "choices": [
@@ -921,14 +923,15 @@ const QUESTIONS = [
       "H帯"
     ],
     "answer": 2,
-    "explanation": "Z線から隣接するZ線までが1つのサルコメアである。サルコメアは骨格筋の基本的な機能的収縮単位である。"
+    "explanation": "Z線から隣接するZ線までが1つのサルコメアである。サルコメアは骨格筋の基本的な機能的収縮単位である。",
+    "figureCaption": "サルコメア・アクチン・ミオシンと各帯の関係"
   },
   {
     "id": "ch1-fig002",
     "chapter": 1,
     "category": "図・サルコメア",
     "type": "figure",
-    "image": "assets/figures/sarcomere.svg",
+    "image": "assets/figures/sarcomere_structure.webp",
     "figureMode": "question",
     "question": "図の中央に示された、ミオシンのみが存在する領域はどれか。",
     "choices": [
@@ -938,7 +941,8 @@ const QUESTIONS = [
       "M線"
     ],
     "answer": 1,
-    "explanation": "H帯はA帯の中央付近にあり、ミオシンのみが存在する領域である。中央のM線はH帯の中央を通る。"
+    "explanation": "H帯はA帯の中央付近にあり、ミオシンのみが存在する領域である。中央のM線はH帯の中央を通る。",
+    "figureCaption": "サルコメア・アクチン・ミオシンと各帯の関係"
   },
   {
     "id": "ch1-fig003",
@@ -975,7 +979,6 @@ const QUESTIONS = [
     "explanation": "筋紡錘は筋の長さや伸張の変化を検知する。GTOは主に筋が発揮する張力を検知する。"
   }
 ]
-];
 
 const STORAGE_KEY = "cptmate_v01_state";
 
@@ -1433,7 +1436,8 @@ function renderQuestionFigure(q) {
   if (!q.image) return "";
   ensureFigureStyles();
   const caption = q.figureCaption || ({
-    "assets/figures/sarcomere.svg": "サルコメア・アクチン・ミオシンの関係（CPTmate模式図）",
+    "assets/figures/sarcomere_structure.webp": "サルコメア・アクチン・ミオシンと各帯の関係",
+    "assets/figures/filament_sliding.webp": "フィラメント滑走説：収縮前と収縮後の比較",
     "assets/figures/contraction.svg": "神経から筋収縮までの流れ（CPTmate模式図）",
     "assets/figures/neuron.svg": "神経細胞の基本構造（CPTmate模式図）",
     "assets/figures/spindle_gto.svg": "筋紡錘とゴルジ腱器官の役割（CPTmate模式図）",
