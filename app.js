@@ -1,4 +1,4 @@
-const APP_VERSION = "0.2.12";
+const APP_VERSION = "0.2.13";
 
 const QUESTIONS = [
   {
@@ -6,7 +6,7 @@ const QUESTIONS = [
     "chapter": 1,
     "category": "筋系・構造",
     "type": "standard",
-    "image": "assets/figures/sarcomere_structure.webp",
+    "image": "assets/figures/sarcomere_structure.svg",
     "figureMode": "after",
     "question": "骨格筋の基本的な機能的収縮単位として最も適切なのはどれか。",
     "choices": [
@@ -54,7 +54,7 @@ const QUESTIONS = [
     "chapter": 1,
     "category": "筋系・サルコメア",
     "type": "standard",
-    "image": "assets/figures/sarcomere_structure.webp",
+    "image": "assets/figures/sarcomere_structure.svg",
     "figureMode": "after",
     "question": "1つのサルコメアの範囲として正しいものはどれか。",
     "choices": [
@@ -72,7 +72,7 @@ const QUESTIONS = [
     "chapter": 1,
     "category": "筋系・サルコメア",
     "type": "standard",
-    "image": "assets/figures/sarcomere_structure.webp",
+    "image": "assets/figures/sarcomere_structure.svg",
     "figureMode": "after",
     "question": "A帯について、最も適切なものはどれか。",
     "choices": [
@@ -90,7 +90,7 @@ const QUESTIONS = [
     "chapter": 1,
     "category": "筋系・サルコメア",
     "type": "standard",
-    "image": "assets/figures/sarcomere_structure.webp",
+    "image": "assets/figures/sarcomere_structure.svg",
     "figureMode": "after",
     "question": "A帯の中で、ミオシンのみが存在しアクチンが存在しない部分はどれか。",
     "choices": [
@@ -108,7 +108,7 @@ const QUESTIONS = [
     "chapter": 1,
     "category": "筋系・サルコメア",
     "type": "standard",
-    "image": "assets/figures/sarcomere_structure.webp",
+    "image": "assets/figures/sarcomere_structure.svg",
     "figureMode": "after",
     "question": "H帯の中央を通る暗い線はどれか。",
     "choices": [
@@ -126,7 +126,7 @@ const QUESTIONS = [
     "chapter": 1,
     "category": "筋系・フィラメント",
     "type": "standard",
-    "image": "assets/figures/sarcomere_structure.webp",
+    "image": "assets/figures/sarcomere_structure.svg",
     "figureMode": "after",
     "question": "ミオシンフィラメントとアクチンフィラメントの組み合わせとして正しいものはどれか。",
     "choices": [
@@ -257,7 +257,7 @@ const QUESTIONS = [
     "chapter": 1,
     "category": "筋収縮・流れ",
     "type": "standard",
-    "image": "assets/figures/filament_sliding.webp",
+    "image": "assets/figures/filament_sliding.svg",
     "figureMode": "after",
     "question": "フィラメント滑走説について正しい説明はどれか。",
     "choices": [
@@ -913,7 +913,7 @@ const QUESTIONS = [
     "chapter": 1,
     "category": "図・サルコメア",
     "type": "figure",
-    "image": "assets/figures/sarcomere_structure.webp",
+    "image": "assets/figures/sarcomere_structure.svg",
     "figureMode": "question",
     "question": "図に示されたZ線から隣接するZ線までの範囲を何というか。",
     "choices": [
@@ -931,7 +931,7 @@ const QUESTIONS = [
     "chapter": 1,
     "category": "図・サルコメア",
     "type": "figure",
-    "image": "assets/figures/sarcomere_structure.webp",
+    "image": "assets/figures/sarcomere_structure.svg",
     "figureMode": "question",
     "question": "図の中央に示された、ミオシンのみが存在する領域はどれか。",
     "choices": [
@@ -1638,8 +1638,8 @@ function renderQuestionFigure(q, mode = "default") {
   if (!q.image) return "";
   ensureFigureStyles();
   const caption = q.figureCaption || ({
-    "assets/figures/sarcomere_structure.webp": "サルコメア・アクチン・ミオシンと各帯の関係",
-    "assets/figures/filament_sliding.webp": "フィラメント滑走説：収縮前と収縮後の比較",
+    "assets/figures/sarcomere_structure.svg": "サルコメア・アクチン・ミオシンと各帯の関係",
+    "assets/figures/filament_sliding.svg": "フィラメント滑走説：収縮前と収縮後の比較",
     "assets/figures/contraction.svg": "神経から筋収縮までの流れ",
     "assets/figures/neuron.svg": "神経細胞の基本構造",
     "assets/figures/spindle_gto.svg": "筋紡錘とゴルジ腱器官の役割",
@@ -1649,8 +1649,8 @@ function renderQuestionFigure(q, mode = "default") {
   const safeCaption = caption.replace(/\\/g, "\\\\").replace(/'/g, "\\'").replace(/\n/g, " ");
   return `
     <figure class="question-figure ${mode === "explanation" ? "figure-in-explanation" : "figure-in-question"}">
-      <button class="figure-zoom-trigger" type="button" onclick="openFigureModal('${q.image}','${safeCaption}')" aria-label="図を拡大">
-        <img src="${q.image}" alt="${caption}" loading="lazy">
+      <button class="figure-zoom-trigger" type="button" onclick="openFigureModal('${q.image}?v=${APP_VERSION}','${safeCaption}')" aria-label="図を拡大">
+        <img src="${q.image}?v=${APP_VERSION}" alt="${caption}" loading="lazy">
         <span class="figure-zoom-hint">図をタップして拡大</span>
       </button>
       <figcaption class="question-figure-caption">${caption}</figcaption>

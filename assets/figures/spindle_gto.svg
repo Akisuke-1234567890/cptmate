@@ -1,1 +1,29 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 520"><rect width="900" height="520" rx="28" fill="#f7fbfb"/><text x="450" y="45" text-anchor="middle" font-size="28" font-weight="700" fill="#123f42">筋紡錘とゴルジ腱器官（模式図）</text><g><rect x="85" y="105" width="320" height="310" rx="24" fill="#eaf4f4" stroke="#5d8587" stroke-width="4"/><text x="245" y="145" text-anchor="middle" font-size="25" font-weight="700" fill="#123f42">筋紡錘</text><ellipse cx="245" cy="260" rx="105" ry="45" fill="#f3c6c6" stroke="#9b4b4b" stroke-width="5"/><line x1="140" y1="260" x2="55" y2="260" stroke="#557d80" stroke-width="7"/><line x1="350" y1="260" x2="435" y2="260" stroke="#557d80" stroke-width="7"/><text x="245" y="335" text-anchor="middle" font-size="21" fill="#123f42">筋の長さ・伸張を検知</text></g><g><rect x="495" y="105" width="320" height="310" rx="24" fill="#eaf4f4" stroke="#5d8587" stroke-width="4"/><text x="655" y="145" text-anchor="middle" font-size="25" font-weight="700" fill="#123f42">GTO</text><path d="M555 240 Q655 160 755 240 Q655 320 555 240Z" fill="#f3d9a4" stroke="#9a7330" stroke-width="5"/><line x1="655" y1="320" x2="655" y2="400" stroke="#557d80" stroke-width="7"/><text x="655" y="355" text-anchor="middle" font-size="21" fill="#123f42">筋の力・張力を検知</text></g><text x="450" y="475" text-anchor="middle" font-size="21" fill="#555">長さ ↔ 筋紡錘　　力・張力 ↔ GTO</text></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 760" width="1200" height="760"><defs>
+ <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#f7fbfb"/><stop offset="1" stop-color="#eef7f6"/></linearGradient>
+ <linearGradient id="teal" x1="0" y1="0" x2="1" y2="0"><stop stop-color="#145e62"/><stop offset="1" stop-color="#2d8585"/></linearGradient>
+ <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%"><feDropShadow dx="0" dy="5" stdDeviation="7" flood-color="#163f43" flood-opacity=".13"/></filter>
+</defs>
+<rect width="1200" height="760" rx="28" fill="url(#bg)"/>
+<text x="60" y="65" font-family="sans-serif" font-size="34" font-weight="800" fill="#173f43">筋紡錘とゴルジ腱器官（GTO）</text>
+<text x="60" y="98" font-family="sans-serif" font-size="18" fill="#6b8587">どちらも固有感覚に関わるが、主に検知する刺激が異なる</text>
+<!-- muscle -->
+<rect x="85" y="185" width="650" height="260" rx="90" fill="#f0b7b0" stroke="#b65f58" stroke-width="5"/>
+<path d="M120 235 C260 195 430 270 690 220 M120 300 C260 260 430 335 690 285 M120 365 C260 325 430 400 690 350 M120 430 C260 390 430 465 690 415" fill="none" stroke="#d9857b" stroke-width="18" stroke-linecap="round" opacity=".65"/>
+<text x="410" y="165" font-family="sans-serif" text-anchor="middle" font-size="22" font-weight="800" fill="#8d4c48">筋腹</text>
+<!-- spindle -->
+<g><ellipse cx="400" cy="315" rx="185" ry="62" fill="#fff" stroke="#2d8585" stroke-width="5" transform="rotate(-5 400 315)"/></g>
+<path d="M245 315 C320 280 480 280 555 315 C480 350 320 350 245 315z" fill="#dcefee" stroke="#237477" stroke-width="4"/>
+<path d="M275 315 C335 300 465 300 525 315" stroke="#145e62" stroke-width="5" fill="none"/>
+<path d="M245 315 C215 300 195 280 180 260 M555 315 C585 300 605 280 620 260" stroke="#237477" stroke-width="5" fill="none"/>
+<text x="400" y="385" font-family="sans-serif" text-anchor="middle" font-size="19" font-weight="800" fill="#145e62">筋紡錘（筋の長さ・伸張の変化）</text>
+<!-- tendon -->
+<path d="M735 230 C820 210 900 210 1120 260 L1120 405 C900 455 820 455 735 435 Z" fill="#ead9aa" stroke="#b49a58" stroke-width="5"/>
+<text x="930" y="205" font-family="sans-serif" text-anchor="middle" font-size="22" font-weight="800" fill="#806d35">腱</text>
+<!-- GTO -->
+<g><ellipse cx="850" cy="335" rx="95" ry="52" fill="#fff" stroke="#9b6c2c" stroke-width="5" transform="rotate(10 850 335)"/></g>
+<path d="M790 320 L915 350 M795 338 L920 368 M800 356 L920 386" stroke="#c18c39" stroke-width="7"/>
+<text x="850" y="435" font-family="sans-serif" text-anchor="middle" font-size="19" font-weight="800" fill="#806d35">GTO（筋が発揮する力・張力）</text>
+<!-- bottom cards -->
+<g><rect x="85" y="520" width="500" height="145" rx="24" fill="#fff" stroke="#b7d8d5" stroke-width="3"/><text x="335" y="558" font-family="sans-serif" text-anchor="middle" font-size="21" font-weight="800" fill="#145e62">筋紡錘</text><text x="335" y="598" font-family="sans-serif" text-anchor="middle" font-size="18" fill="#526f71">筋の長さ（伸張）の変化を主に検知</text><text x="335" y="630" font-family="sans-serif" text-anchor="middle" font-size="15" fill="#7b9192">筋腹の中に配置される</text></g>
+<g><rect x="615" y="520" width="500" height="145" rx="24" fill="#fff" stroke="#d9c58f" stroke-width="3"/><text x="865" y="558" font-family="sans-serif" text-anchor="middle" font-size="21" font-weight="800" fill="#806d35">ゴルジ腱器官（GTO）</text><text x="865" y="598" font-family="sans-serif" text-anchor="middle" font-size="18" fill="#526f71">筋が発揮する力（張力）を主に検知</text><text x="865" y="630" font-family="sans-serif" text-anchor="middle" font-size="15" fill="#7b9192">筋と腱の移行部付近に配置される</text></g>
+</svg>
