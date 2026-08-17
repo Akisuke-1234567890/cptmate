@@ -1,4 +1,4 @@
-const APP_VERSION = "0.2.13";
+const APP_VERSION = "0.2.14";
 
 const QUESTIONS = [
   {
@@ -1560,8 +1560,8 @@ function ensureFigureStyles() {
       pointer-events: none;
     }
     .figure-modal-panel img {
-      max-width: 100%;
-      max-height: calc(100vh - 105px);
+      max-width: 96vw;
+      max-height: 88vh;
       width: auto;
       height: auto;
       object-fit: contain;
@@ -1569,7 +1569,22 @@ function ensureFigureStyles() {
       background: #fff;
       box-shadow: 0 12px 40px rgba(0,0,0,.35);
       pointer-events: auto;
+      touch-action: none;
+      user-select: none;
+      -webkit-user-select: none;
+      -webkit-user-drag: none;
+      transform-origin: center center;
+      will-change: transform;
     }
+
+    body.figure-modal-open {
+      overflow: hidden !important;
+      touch-action: none;
+    }
+    .figure-modal-panel {
+      overflow: hidden;
+    }
+
     .figure-modal-close {
       position: absolute;
       top: 0;
@@ -1651,7 +1666,6 @@ function renderQuestionFigure(q, mode = "default") {
     <figure class="question-figure ${mode === "explanation" ? "figure-in-explanation" : "figure-in-question"}">
       <button class="figure-zoom-trigger" type="button" onclick="openFigureModal('${q.image}?v=${APP_VERSION}','${safeCaption}')" aria-label="図を拡大">
         <img src="${q.image}?v=${APP_VERSION}" alt="${caption}" loading="lazy">
-        <span class="figure-zoom-hint">図をタップして拡大</span>
       </button>
       <figcaption class="question-figure-caption">${caption}</figcaption>
     </figure>
@@ -1669,19 +1683,102 @@ function openFigureModal(src, caption) {
       <div class="figure-modal-backdrop" onclick="closeFigureModal()"></div>
       <div class="figure-modal-panel" role="dialog" aria-modal="true" aria-label="図の拡大表示">
         <button class="figure-modal-close" type="button" onclick="closeFigureModal()" aria-label="閉じる">×</button>
-        <img id="figureModalImage" src="" alt="">
+        <img id="figureModalImage" src="" alt="" draggable="false">
         <div id="figureModalCaption" class="figure-modal-caption"></div>
       </div>
     `;
     document.body.appendChild(modal);
+    setupFigureModalZoom();
   }
   const image = document.getElementById("figureModalImage");
   const captionEl = document.getElementById("figureModalCaption");
   image.src = src;
   image.alt = caption;
   captionEl.textContent = caption;
+  resetFigureModalZoom();
   modal.classList.add("open");
   document.body.classList.add("figure-modal-open");
+}
+
+function setupFigureModalZoom() {
+  const image = document.getElementById("figureModalImage");
+  if (!image || image.dataset.zoomReady === "1") return;
+  image.dataset.zoomReady = "1";
+
+  let scale = 1;
+  let startScale = 1;
+  let startDistance = 0;
+  let startX = 0;
+  let startY = 0;
+  let offsetX = 0;
+  let offsetY = 0;
+  let startOffsetX = 0;
+  let startOffsetY = 0;
+  let dragging = false;
+
+  const distance = (a, b) => Math.hypot(a.clientX - b.clientX, a.clientY - b.clientY);
+  const apply = () => {
+    image.style.transform = `translate3d(${offsetX}px, ${offsetY}px, 0) scale(${scale})`;
+  };
+  const clampOffset = () => {
+    const maxX = Math.max(0, (image.getBoundingClientRect().width - window.innerWidth) / 2 + 80);
+    const maxY = Math.max(0, (image.getBoundingClientRect().height - window.innerHeight) / 2 + 80);
+    offsetX = Math.max(-maxX, Math.min(maxX, offsetX));
+    offsetY = Math.max(-maxY, Math.min(maxY, offsetY));
+  };
+
+  image.addEventListener("touchstart", (e) => {
+    e.preventDefault();
+    if (e.touches.length === 2) {
+      startDistance = distance(e.touches[0], e.touches[1]);
+      startScale = scale;
+      dragging = false;
+    } else if (e.touches.length === 1 && scale > 1) {
+      startX = e.touches[0].clientX;
+      startY = e.touches[0].clientY;
+      startOffsetX = offsetX;
+      startOffsetY = offsetY;
+      dragging = true;
+    }
+  }, {passive:false});
+
+  image.addEventListener("touchmove", (e) => {
+    e.preventDefault();
+    if (e.touches.length === 2 && startDistance > 0) {
+      scale = Math.max(1, Math.min(5, startScale * distance(e.touches[0], e.touches[1]) / startDistance));
+      if (scale === 1) { offsetX = 0; offsetY = 0; }
+      clampOffset();
+      apply();
+    } else if (e.touches.length === 1 && dragging && scale > 1) {
+      offsetX = startOffsetX + (e.touches[0].clientX - startX);
+      offsetY = startOffsetY + (e.touches[0].clientY - startY);
+      clampOffset();
+      apply();
+    }
+  }, {passive:false});
+
+  image.addEventListener("touchend", (e) => {
+    if (e.touches.length < 2) startDistance = 0;
+    if (e.touches.length === 0) dragging = false;
+    if (scale <= 1.02) { scale = 1; offsetX = 0; offsetY = 0; apply(); }
+  }, {passive:false});
+
+  image.addEventListener("dblclick", (e) => {
+    e.preventDefault();
+    scale = scale > 1 ? 1 : 2.5;
+    if (scale === 1) { offsetX = 0; offsetY = 0; }
+    apply();
+  });
+
+  image._resetFigureZoom = () => {
+    scale = 1; offsetX = 0; offsetY = 0; startDistance = 0; dragging = false; apply();
+  };
+}
+
+function resetFigureModalZoom() {
+  const image = document.getElementById("figureModalImage");
+  if (image && image._resetFigureZoom) image._resetFigureZoom();
+  else if (image) image.style.transform = "translate3d(0,0,0) scale(1)";
 }
 
 function closeFigureModal() {
