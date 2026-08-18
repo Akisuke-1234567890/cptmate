@@ -1,4 +1,4 @@
-const APP_VERSION = "0.2.46";
+const APP_VERSION = "0.2.47";
 
 const QUESTIONS = [
   {
@@ -1068,9 +1068,6 @@ const QUESTIONS = [
   }
 ]
 
-const ALL_QUESTIONS = [...QUESTIONS, ...ADDITIONAL_QUESTIONS];
-let practiceQueue = [];
-
 const STORAGE_KEY = "cptmate_v01_state";
 
 const defaultState = {
@@ -1444,6 +1441,10 @@ const ADDITIONAL_QUESTIONS = [{
   "sourceNote": "NSCA-CPT模擬問題集 p.32 問49の論点を再構成"
 }
 ];
+
+const ALL_QUESTIONS = [...QUESTIONS, ...ADDITIONAL_QUESTIONS];
+let practiceQueue = [];
+
 let practiceLabel = "第1章すべて";
 let practiceSessionAnswers = {};
 let practiceCompleted = false;
@@ -1708,7 +1709,7 @@ function renderHome() {
     <div class="section-title"><h2>現在のコンテンツ</h2></div>
     <section class="card">
       <h3>第1章：筋系、神経系、骨格系</h3>
-      <p style="color:var(--muted);line-height:1.7;margin:0;">第1章の問題演習、ケーススタディ、図問題、復習機能を収録しています。</p>
+      <p style="color:var(--muted);line-height:1.7;margin:0;">第1章の問題演習を拡張中。今後、ケーススタディ・図問題・復習機能を順次強化します。</p>
     </section>
   `;
 }
