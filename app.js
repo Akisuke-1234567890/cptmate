@@ -1,4 +1,4 @@
-const APP_VERSION = "0.2.49";
+const APP_VERSION = "0.2.50";
 
 /* v0.2.49: bottom navigation robust viewport fixing */
 (function installCPTmateBottomNavFix() {
@@ -48,6 +48,33 @@ const APP_VERSION = "0.2.49";
   requestAnimationFrame(apply);
   setTimeout(apply, 100);
   setTimeout(apply, 500);
+})();
+
+/* v0.2.50: previous/next question navigation */
+(function installQuestionNavStyle() {
+  const style = document.createElement("style");
+  style.textContent = `
+    .question-nav-actions {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-top: 10px;
+    }
+    .question-nav-btn {
+      min-height: 52px;
+      margin: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      font-size: 17px;
+    }
+    .question-nav-btn:disabled {
+      opacity: 0.35;
+      pointer-events: none;
+    }
+  `;
+  document.head.appendChild(style);
 })();
 
 
@@ -2534,7 +2561,10 @@ function renderQuestion() {
 
     <div class="post-answer-actions">
       <button class="secondary-btn full" onclick="retryQuestion()">もう一度この問題を解く</button>
-      <button class="primary-btn full" onclick="nextQuestion()">次の問題</button>
+      <div class="question-nav-actions">
+        <button class="secondary-btn question-nav-btn" onclick="previousQuestion()" ${state.currentIndex <= 0 ? "disabled" : ""}>‹ 前の問題</button>
+        <button class="primary-btn question-nav-btn" onclick="nextQuestion()">次の問題 ›</button>
+      </div>
     </div>
   ` : "";
 
@@ -2543,7 +2573,7 @@ function renderQuestion() {
       <button class="back-btn" onclick="openPracticeSelectorClean()">‹</button>
       <h2>問題演習</h2>
     </div>
-    <div class="practice-mode-bar">${practiceLabel}<button onclick="renderPracticeSelector()">演習を変更</button></div>
+    <div class="practice-mode-bar">${practiceLabel}</div>
 
     <section class="card">
       ${q.type === "case" ? `
@@ -2588,6 +2618,14 @@ function answerQuestion(selected) {
   };
   state.answers[q.id] = record;
   practiceSessionAnswers[q.id] = record;
+  saveState();
+  renderQuestion();
+}
+
+function previousQuestion() {
+  const queue = getPracticeQuestions();
+  if (state.currentIndex <= 0) return;
+  state.currentIndex -= 1;
   saveState();
   renderQuestion();
 }
