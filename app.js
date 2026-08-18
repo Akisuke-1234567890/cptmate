@@ -1,4 +1,4 @@
-const APP_VERSION = "0.2.27";
+const APP_VERSION = "0.2.28";
 
 const QUESTIONS = [
   {
@@ -1265,18 +1265,13 @@ function renderHome() {
       <button class="primary-btn full" onclick="renderPracticeSelector()">問題演習を始める</button>
     </section>
 
-    <div class="section-title"><h2>学習状況</h2><span>ローカル保存</span></div>
+    <div class="section-title"><h2>学習状況</h2><button class="text-btn" onclick="renderStats()">詳細を見る →</button></div>
     <section class="card">
       <div class="stat-grid">
         <div class="stat"><div class="num">${answered}</div><div class="label">解答済み</div></div>
         <div class="stat"><div class="num">${accuracy()}%</div><div class="label">正答率</div></div>
       </div>
     </section>
-
-    <div class="section-title"><h2>学習メニュー</h2></div>
-    <div class="menu-grid">
-      <button class="menu-item" onclick="renderPracticeSelector()"><strong>通常問題</strong><small>章・分類・問題番号から選ぶ</small></button>
-    </div>
 
     <div class="section-title"><h2>現在のコンテンツ</h2></div>
     <section class="card">
