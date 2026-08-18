@@ -1,4 +1,4 @@
-const APP_VERSION = "0.2.23";
+const APP_VERSION = "0.2.24";
 
 const QUESTIONS = [
   {
@@ -7,7 +7,7 @@ const QUESTIONS = [
     "category": "筋系・構造",
     "type": "standard",
     "figureId": "fig-ch1-sarcomere",
-    "image": "assets/figures/sarcomere_fig1_4.png",
+    "image": "assets/figures/sarcomere_fig1_4.svg",
     "figureMode": "after",
     "question": "骨格筋の基本的な機能的収縮単位として最も適切なのはどれか。",
     "choices": [
@@ -56,7 +56,7 @@ const QUESTIONS = [
     "category": "筋系・サルコメア",
     "type": "standard",
     "figureId": "fig-ch1-sarcomere",
-    "image": "assets/figures/sarcomere_fig1_4.png",
+    "image": "assets/figures/sarcomere_fig1_4.svg",
     "figureMode": "after",
     "question": "1つのサルコメアの範囲として正しいものはどれか。",
     "choices": [
@@ -75,7 +75,7 @@ const QUESTIONS = [
     "category": "筋系・サルコメア",
     "type": "standard",
     "figureId": "fig-ch1-sarcomere",
-    "image": "assets/figures/sarcomere_fig1_4.png",
+    "image": "assets/figures/sarcomere_fig1_4.svg",
     "figureMode": "after",
     "question": "A帯について、最も適切なものはどれか。",
     "choices": [
@@ -94,7 +94,7 @@ const QUESTIONS = [
     "category": "筋系・サルコメア",
     "type": "standard",
     "figureId": "fig-ch1-sarcomere",
-    "image": "assets/figures/sarcomere_fig1_4.png",
+    "image": "assets/figures/sarcomere_fig1_4.svg",
     "figureMode": "after",
     "question": "A帯の中で、ミオシンのみが存在しアクチンが存在しない部分はどれか。",
     "choices": [
@@ -113,7 +113,7 @@ const QUESTIONS = [
     "category": "筋系・サルコメア",
     "type": "standard",
     "figureId": "fig-ch1-sarcomere",
-    "image": "assets/figures/sarcomere_fig1_4.png",
+    "image": "assets/figures/sarcomere_fig1_4.svg",
     "figureMode": "after",
     "question": "H帯の中央を通る暗い線はどれか。",
     "choices": [
@@ -132,7 +132,7 @@ const QUESTIONS = [
     "category": "筋系・フィラメント",
     "type": "standard",
     "figureId": "fig-ch1-sarcomere",
-    "image": "assets/figures/sarcomere_fig1_4.png",
+    "image": "assets/figures/sarcomere_fig1_4.svg",
     "figureMode": "after",
     "question": "ミオシンフィラメントとアクチンフィラメントの組み合わせとして正しいものはどれか。",
     "choices": [
@@ -196,7 +196,7 @@ const QUESTIONS = [
     "category": "筋収縮・流れ",
     "type": "standard",
     "figureId": "fig-ch1-contraction",
-    "image": "assets/figures/contraction_fig1_5.png",
+    "image": "assets/figures/contraction_fig1_5.svg",
     "figureMode": "after",
     "question": "筋収縮の過程で最初に起こるものはどれか。",
     "choices": [
@@ -214,7 +214,7 @@ const QUESTIONS = [
     "category": "筋収縮・流れ",
     "type": "standard",
     "figureId": "fig-ch1-contraction",
-    "image": "assets/figures/contraction_fig1_5.png",
+    "image": "assets/figures/contraction_fig1_5.svg",
     "figureMode": "after",
     "question": "AChが筋線維側で結合する場所はどれか。",
     "choices": [
@@ -232,7 +232,7 @@ const QUESTIONS = [
     "category": "筋収縮・流れ",
     "type": "standard",
     "figureId": "fig-ch1-contraction",
-    "image": "assets/figures/contraction_fig1_5.png",
+    "image": "assets/figures/contraction_fig1_5.svg",
     "figureMode": "after",
     "question": "筋線維の活動電位を細胞内部へ伝える構造はどれか。",
     "choices": [
@@ -250,7 +250,7 @@ const QUESTIONS = [
     "category": "筋収縮・流れ",
     "type": "standard",
     "figureId": "fig-ch1-contraction",
-    "image": "assets/figures/contraction_fig1_5.png",
+    "image": "assets/figures/contraction_fig1_5.svg",
     "figureMode": "after",
     "question": "活動電位を受けてカルシウムイオンを放出する構造はどれか。",
     "choices": [
@@ -268,7 +268,7 @@ const QUESTIONS = [
     "category": "筋収縮・流れ",
     "type": "standard",
     "figureId": "fig-ch1-filament-sliding",
-    "image": "assets/figures/sarcomere_fig1_4.png",
+    "image": "assets/figures/sarcomere_fig1_4.svg",
     "figureMode": "after",
     "question": "フィラメント滑走説について正しい説明はどれか。",
     "choices": [
@@ -422,7 +422,7 @@ const QUESTIONS = [
     "category": "神経系・ニューロン",
     "type": "standard",
     "figureId": "fig-ch1-neuron",
-    "image": "assets/figures/neuron_fig1_6.png",
+    "image": "assets/figures/neuron_fig1_6.svg",
     "figureMode": "after",
     "question": "他のニューロンからの信号を受け取る「アンテナ部分」に相当する構造はどれか。",
     "choices": [
@@ -440,7 +440,7 @@ const QUESTIONS = [
     "category": "神経系・ニューロン",
     "type": "standard",
     "figureId": "fig-ch1-neuron",
-    "image": "assets/figures/neuron_fig1_6.png",
+    "image": "assets/figures/neuron_fig1_6.svg",
     "figureMode": "after",
     "question": "細胞体から伸びる長い「ケーブル」に相当する構造はどれか。",
     "choices": [
@@ -458,7 +458,7 @@ const QUESTIONS = [
     "category": "神経系・筋紡錘",
     "type": "standard",
     "figureId": "fig-ch1-spindle-gto",
-    "image": "assets/figures/spindle_gto_fig1_7.png",
+    "image": "assets/figures/spindle_gto_fig1_7.svg",
     "figureMode": "after",
     "question": "筋紡錘が主に検知するものはどれか。",
     "choices": [
@@ -476,7 +476,7 @@ const QUESTIONS = [
     "category": "神経系・GTO",
     "type": "standard",
     "figureId": "fig-ch1-spindle-gto",
-    "image": "assets/figures/spindle_gto_fig1_7.png",
+    "image": "assets/figures/spindle_gto_fig1_7.svg",
     "figureMode": "after",
     "question": "ゴルジ腱器官（GTO）が主に検知するものはどれか。",
     "choices": [
@@ -539,7 +539,7 @@ const QUESTIONS = [
     "category": "骨格系",
     "type": "standard",
     "figureId": "fig-ch1-long-bone",
-    "image": "assets/figures/long_bone_fig1_8.png",
+    "image": "assets/figures/long_bone_fig1_8.svg",
     "figureMode": "after",
     "question": "長骨の中央の長い部分を何というか。",
     "choices": [
@@ -557,7 +557,7 @@ const QUESTIONS = [
     "category": "骨格系",
     "type": "standard",
     "figureId": "fig-ch1-skeleton",
-    "image": "assets/figures/skeleton_fig1_9.png",
+    "image": "assets/figures/skeleton_fig1_9.svg",
     "figureMode": "after",
     "question": "頭蓋・脊柱・胸骨・肋骨などを含む骨格はどれか。",
     "choices": [
@@ -575,7 +575,7 @@ const QUESTIONS = [
     "category": "骨格系・リモデリング",
     "type": "standard",
     "figureId": "fig-ch1-long-bone",
-    "image": "assets/figures/long_bone_fig1_8.png",
+    "image": "assets/figures/long_bone_fig1_8.svg",
     "figureMode": "after",
     "question": "古い骨を破壊する細胞はどれか。",
     "choices": [
@@ -593,7 +593,7 @@ const QUESTIONS = [
     "category": "骨格系・リモデリング",
     "type": "standard",
     "figureId": "fig-ch1-long-bone",
-    "image": "assets/figures/long_bone_fig1_8.png",
+    "image": "assets/figures/long_bone_fig1_8.svg",
     "figureMode": "after",
     "question": "新しい骨の合成を促す細胞はどれか。",
     "choices": [
@@ -611,7 +611,7 @@ const QUESTIONS = [
     "category": "骨格系・ウォルフの法則",
     "type": "standard",
     "figureId": "fig-ch1-long-bone",
-    "image": "assets/figures/long_bone_fig1_8.png",
+    "image": "assets/figures/long_bone_fig1_8.svg",
     "figureMode": "after",
     "question": "ウォルフの法則の説明として最も適切なのはどれか。",
     "choices": [
@@ -938,7 +938,7 @@ const QUESTIONS = [
     "category": "図・サルコメア",
     "type": "figure",
     "figureId": "fig-ch1-sarcomere",
-    "image": "assets/figures/sarcomere_fig1_4.png",
+    "image": "assets/figures/sarcomere_fig1_4.svg",
     "figureMode": "question",
     "question": "図に示されたZ線から隣接するZ線までの範囲を何というか。",
     "choices": [
@@ -957,7 +957,7 @@ const QUESTIONS = [
     "category": "図・サルコメア",
     "type": "figure",
     "figureId": "fig-ch1-sarcomere",
-    "image": "assets/figures/sarcomere_fig1_4.png",
+    "image": "assets/figures/sarcomere_fig1_4.svg",
     "figureMode": "question",
     "question": "図の中央に示された、ミオシンのみが存在する領域はどれか。",
     "choices": [
@@ -976,7 +976,7 @@ const QUESTIONS = [
     "category": "図・筋収縮",
     "type": "figure",
     "figureId": "fig-ch1-contraction",
-    "image": "assets/figures/contraction_fig1_5.png",
+    "image": "assets/figures/contraction_fig1_5.svg",
     "figureMode": "question",
     "question": "図の⑤に相当する現象として正しいのはどれか。",
     "choices": [
@@ -994,7 +994,7 @@ const QUESTIONS = [
     "category": "図・筋紡錘とGTO",
     "type": "figure",
     "figureId": "fig-ch1-spindle-gto",
-    "image": "assets/figures/spindle_gto_fig1_7.png",
+    "image": "assets/figures/spindle_gto_fig1_7.svg",
     "figureMode": "question",
     "question": "筋の長さの変化を主に検知する受容器は図のどちらか。",
     "choices": [
@@ -1681,13 +1681,13 @@ function renderQuestionFigure(q, mode = "default") {
   if (!q.image) return "";
   ensureFigureStyles();
   const caption = q.figureCaption || ({
-    "assets/figures/sarcomere_fig1_4.png": "サルコメア・アクチン・ミオシンと各帯の関係",
-    "assets/figures/sarcomere_fig1_4.png": "フィラメント滑走説：収縮前と収縮後の比較",
-    "assets/figures/contraction_fig1_5.png": "神経から筋収縮までの流れ",
+    "assets/figures/sarcomere_fig1_4.svg": "サルコメア・アクチン・ミオシンと各帯の関係",
+    "assets/figures/sarcomere_fig1_4.svg": "フィラメント滑走説：収縮前と収縮後の比較",
+    "assets/figures/contraction_fig1_5.svg": "神経から筋収縮までの流れ",
     "assets/figures/neuron.svg": "神経細胞の基本構造",
-    "assets/figures/spindle_gto_fig1_7.png": "筋紡錘とゴルジ腱器官の役割",
-    "assets/figures/long_bone_fig1_8.png": "長骨の主な構造",
-    "assets/figures/skeleton_fig1_9.png": "軸性骨格と付属性骨格"
+    "assets/figures/spindle_gto_fig1_7.svg": "筋紡錘とゴルジ腱器官の役割",
+    "assets/figures/long_bone_fig1_8.svg": "長骨の主な構造",
+    "assets/figures/skeleton_fig1_9.svg": "軸性骨格と付属性骨格"
   })[q.image] || "図を確認しながら考えてみましょう。";
   const safeCaption = caption.replace(/\\/g, "\\\\").replace(/'/g, "\\'").replace(/\n/g, " ");
   return `
@@ -2062,13 +2062,13 @@ function renderStats() {
 }
 
 const FIGURE_LIBRARY = {
-  "fig-ch1-sarcomere": { chapter: 1, title: "サルコメア・アクチン・ミオシン", image: "assets/figures/sarcomere_fig1_4.png", caption: "図1.4に対応するCPTmate学習図。Z線・A帯・H帯・M線・I帯、アクチン・ミオシンの関係を確認する。" },
-  "fig-ch1-contraction": { chapter: 1, title: "神経刺激から筋収縮まで", image: "assets/figures/contraction_fig1_5.png", caption: "図1.5に対応するCPTmate学習図。神経筋接合部からCa²⁺放出、トロポニン・トロポミオシンを経て収縮へ至る流れ。" },
-  "fig-ch1-neuron": { chapter: 1, title: "神経細胞の模式図", image: "assets/figures/neuron_fig1_6.png", caption: "図1.6に対応するCPTmate学習図。樹状突起・細胞体・軸索・髄鞘・ランビエ絞輪・軸索終末の位置関係を確認する。" },
-  "fig-ch1-filament-sliding": { chapter: 1, title: "フィラメント滑走", image: "assets/figures/sarcomere_fig1_4.png", caption: "図1.4のサルコメア構造を使って、フィラメントの重なりと各帯の関係を確認する。" },
-  "fig-ch1-spindle-gto": { chapter: 1, title: "筋紡錘とゴルジ腱器官（GTO）", image: "assets/figures/spindle_gto_fig1_7.png", caption: "図1.7に対応するCPTmate学習図。筋紡錘とGTOの構造・位置関係を確認する。" },
-  "fig-ch1-long-bone": { chapter: 1, title: "長骨の構造と骨リモデリング", image: "assets/figures/long_bone_fig1_8.png", caption: "図1.8に対応するCPTmate学習図。長骨の主要構造を確認する。" },
-  "fig-ch1-skeleton": { chapter: 1, title: "軸性骨格と付属性骨格", image: "assets/figures/skeleton_fig1_9.png", caption: "図1.9に対応するCPTmate学習図。成人男性骨格の前面・後面と軸性／付属性の位置関係を確認する。" }
+  "fig-ch1-sarcomere": { chapter: 1, title: "サルコメア・アクチン・ミオシン", image: "assets/figures/sarcomere_fig1_4.svg", caption: "図1.4に対応するCPTmate学習図。Z線・A帯・H帯・M線・I帯、アクチン・ミオシンの関係を確認する。" },
+  "fig-ch1-contraction": { chapter: 1, title: "神経刺激から筋収縮まで", image: "assets/figures/contraction_fig1_5.svg", caption: "図1.5に対応するCPTmate学習図。神経筋接合部からCa²⁺放出、トロポニン・トロポミオシンを経て収縮へ至る流れ。" },
+  "fig-ch1-neuron": { chapter: 1, title: "神経細胞の模式図", image: "assets/figures/neuron_fig1_6.svg", caption: "図1.6に対応するCPTmate学習図。樹状突起・細胞体・軸索・髄鞘・ランビエ絞輪・軸索終末の位置関係を確認する。" },
+  "fig-ch1-filament-sliding": { chapter: 1, title: "フィラメント滑走", image: "assets/figures/sarcomere_fig1_4.svg", caption: "図1.4のサルコメア構造を使って、フィラメントの重なりと各帯の関係を確認する。" },
+  "fig-ch1-spindle-gto": { chapter: 1, title: "筋紡錘とゴルジ腱器官（GTO）", image: "assets/figures/spindle_gto_fig1_7.svg", caption: "図1.7に対応するCPTmate学習図。筋紡錘とGTOの構造・位置関係を確認する。" },
+  "fig-ch1-long-bone": { chapter: 1, title: "長骨の構造と骨リモデリング", image: "assets/figures/long_bone_fig1_8.svg", caption: "図1.8に対応するCPTmate学習図。長骨の主要構造を確認する。" },
+  "fig-ch1-skeleton": { chapter: 1, title: "軸性骨格と付属性骨格", image: "assets/figures/skeleton_fig1_9.svg", caption: "図1.9に対応するCPTmate学習図。成人男性骨格の前面・後面と軸性／付属性の位置関係を確認する。" }
 };
 
 function getFigureCatalog() {
