@@ -1,4 +1,4 @@
-const APP_VERSION = "0.2.33";
+const APP_VERSION = "0.2.34";
 
 const QUESTIONS = [
   {
@@ -1326,6 +1326,66 @@ function openPracticeSelectorClean() {
   renderPracticeSelector();
 }
 
+
+function getRandomPoolItems(questions) {
+  const normal = [];
+  const cases = new Map();
+  questions.forEach(q => {
+    if (q.type === "case" && q.caseId) {
+      if (!cases.has(q.caseId)) cases.set(q.caseId, []);
+      cases.get(q.caseId).push(q);
+    } else {
+      normal.push(q);
+    }
+  });
+  cases.forEach(group => group.sort((a,b) => (a.caseOrder||0) - (b.caseOrder||0)));
+  return { normal, cases: [...cases.values()] };
+}
+
+function shuffleArray(items) {
+  const a = [...items];
+  for (let i = a.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [a[i], a[j]] = [a[j], a[i]];
+  }
+  return a;
+}
+
+function buildRandomPracticeIds(questions, targetCount) {
+  const { normal, cases } = getRandomPoolItems(questions);
+  const shuffledNormal = shuffleArray(normal);
+  const shuffledCases = shuffleArray(cases);
+  const units = [
+    ...shuffledNormal.map(q => [q]),
+    ...shuffledCases
+  ];
+  const picked = [];
+  for (const unit of shuffleArray(units)) {
+    if (picked.length >= targetCount) break;
+    // ケースは途中で切らず、ケース全体を連続出題する。
+    picked.push(...unit);
+  }
+  // ケースを含めてtargetCountを大きく超えないようにしたい場合でも、
+  // ケース途中で切ることはせず、そのままケース全体を採用する。
+  return picked.map(q => q.id);
+}
+
+function startRandomPractice(scope, targetCount) {
+  const questions = scope === "all"
+    ? QUESTIONS
+    : QUESTIONS.filter(q => q.chapter === Number(scope));
+  if (!questions.length) {
+    alert("この条件に該当する問題がありません。");
+    return;
+  }
+  const max = questions.length;
+  const count = Math.max(1, Math.min(Number(targetCount) || 10, max));
+  const ids = buildRandomPracticeIds(questions, count);
+  startPracticeQueue(ids, scope === "all"
+    ? `全体ランダム（${ids.length}問）`
+    : `第${scope}章ランダム（${ids.length}問）`);
+}
+
 function renderPracticeSelector(selectedChapter = null) {
   resetPageScroll();
   // 問題選択画面で使用するスタイルはensureFigureStyles内に定義されているため、
@@ -1376,6 +1436,19 @@ function renderPracticeSelector(selectedChapter = null) {
       <div class="practice-select-list">${majorButtons}</div>
     </section>
 
+
+    <section class="card">
+      <div class="selector-section-title">ランダム問題</div>
+      <p class="selector-note">通常問題は1問単位でランダム抽選します。ケーススタディはケース単位で選び、選択されたケースは連番のまま出題します。</p>
+      <div class="practice-select-list">
+        <button class="practice-select-item" onclick="startRandomPractice(${chapter}, 10)"><strong>第${chapter}章からランダム10問</strong></button>
+        <button class="practice-select-item" onclick="startRandomPractice(${chapter}, 20)"><strong>第${chapter}章からランダム20問</strong></button>
+        <button class="practice-select-item" onclick="startRandomPractice(${chapter}, 30)"><strong>第${chapter}章からランダム30問</strong></button>
+        <button class="practice-select-item" onclick="startRandomPractice('all', 10)"><strong>全体からランダム10問</strong></button>
+        <button class="practice-select-item" onclick="startRandomPractice('all', 20)"><strong>全体からランダム20問</strong></button>
+        <button class="practice-select-item" onclick="startRandomPractice('all', 30)"><strong>全体からランダム30問</strong></button>
+      </div>
+    </section>
 
     <section class="card">
       <div class="selector-section-title">問題番号で指定</div>
