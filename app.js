@@ -1,4 +1,4 @@
-const APP_VERSION = "0.2.29";
+const APP_VERSION = "0.2.30";
 
 const QUESTIONS = [
   {
@@ -1241,6 +1241,12 @@ const CHOICE_EXPLANATIONS = {
   "筋紡錘＝ACh、GTO＝Ca²⁺": "筋紡錘とGTOはAChやCa²⁺を検知する器官ではない。"
 };
 
+function resetPageScroll() {
+  window.scrollTo(0, 0);
+  document.documentElement.scrollTop = 0;
+  document.body.scrollTop = 0;
+}
+
 function screenEl() {
   return document.getElementById("screen");
 }
@@ -1252,6 +1258,7 @@ function setActiveNav(name) {
 }
 
 function renderHome() {
+  resetPageScroll();
   state.lastViewed = "home";
   saveState();
   setActiveNav("home");
@@ -1320,6 +1327,7 @@ function openPracticeSelectorClean() {
 }
 
 function renderPracticeSelector(selectedChapter = null) {
+  resetPageScroll();
   // 問題選択画面を開いた時は、前回の演習状態を持ち込まない。
   // ホームから初回に開いた場合と、問題を解いて戻った場合で表示が変わらないようにする。
   practiceQueue = [];
