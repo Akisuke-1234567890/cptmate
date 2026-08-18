@@ -1,4 +1,18 @@
-const APP_VERSION = "0.2.47";
+const APP_VERSION = "0.2.48";
+
+const __cptmate_v248_style = document.createElement("style");
+__cptmate_v248_style.textContent = `
+.bottom-nav, #bottomNav, .bottom-navigation {
+  position: fixed !important;
+  left: 0; right: 0; bottom: 0;
+  z-index: 1000;
+  padding-bottom: env(safe-area-inset-bottom);
+}
+body {
+  padding-bottom: calc(64px + env(safe-area-inset-bottom));
+}`;
+document.head.appendChild(__cptmate_v248_style);
+
 
 const QUESTIONS = [
   {
