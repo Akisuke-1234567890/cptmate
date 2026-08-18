@@ -1,25 +1,30 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="760" viewBox="0 0 1200 760">
-<rect width="1200" height="760" fill="#fff"/>
-<style>
-.t{font-family:-apple-system,BlinkMacSystemFont,'Noto Sans JP','Yu Gothic',sans-serif;fill:#173f42}
-.h{font-size:34px;font-weight:800} .sh{font-size:24px;font-weight:800} .tx{font-size:21px} .sm{font-size:18px} .bold{font-weight:800}
-.panel{fill:#f8fbfb;stroke:#cbdedf;stroke-width:2} .teal{fill:#176f73} .blue{fill:#2868a8} .orange{fill:#d97918} .green{fill:#3e8b69} .red{fill:#b44d4d}
-.line{stroke:#176f73;stroke-width:5;fill:none} .thin{stroke:#6c8789;stroke-width:2;fill:none}
-</style>
-<text x="60" y="62" class="t h">軸性骨格と付属性骨格</text>
-
-<rect x="50" y="90" width="1100" height="570" rx="24" class="panel"/>
-<text x="85" y="132" class="t sh">軸性骨格と付属性骨格</text>
-<rect x="90" y="175" width="300" height="390" rx="20" fill="#eef7f7" stroke="#8fc0c0" stroke-width="3"/><rect x="810" y="175" width="300" height="390" rx="20" fill="#fff5e8" stroke="#e8b67a" stroke-width="3"/>
-<text x="115" y="215" class="t sh" fill="#176f73">軸性骨格</text><text x="835" y="215" class="t sh" fill="#d97918">付属性骨格</text>
-<g class="t tx"><text x="120" y="260">・頭蓋骨</text><text x="120" y="300">・脊柱</text><text x="120" y="340">・肋骨</text><text x="120" y="380">・胸骨</text><text x="120" y="440" class="bold">体幹の支持・保護</text><text x="840" y="260">・上肢</text><text x="840" y="300">・下肢</text><text x="840" y="340">・肩甲帯・鎖骨</text><text x="840" y="380">・骨盤帯</text><text x="840" y="440" class="bold">運動の実行・力の発揮</text></g>
-<!-- skeleton -->
-<circle cx="600" cy="210" r="48" fill="#f6f6f6" stroke="#176f73" stroke-width="6"/>
-<path d="M600 258 L600 430 M555 300 L645 300 M565 340 L635 340 M575 380 L625 380" stroke="#176f73" stroke-width="14" stroke-linecap="round" fill="none"/>
-<path d="M565 300 L520 350 L500 430 M635 300 L680 350 L700 430" stroke="#d97918" stroke-width="12" stroke-linecap="round" fill="none"/>
-<path d="M575 430 L550 520 M625 430 L650 520" stroke="#d97918" stroke-width="14" stroke-linecap="round" fill="none"/>
-<path d="M540 280 Q600 330 660 280 M545 300 Q600 355 655 300 M550 320 Q600 375 650 320" stroke="#176f73" stroke-width="7" fill="none"/>
-<text x="600" y="585" text-anchor="middle" class="t sm">青緑＝体軸を構成する骨格　／　橙＝四肢とその連結部</text>
-
-<text x="60" y="728" class="t sm" fill="#708487">※ CPTmate学習用模式図。教材の構造・関係を学習しやすい形に再構成。</text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 900">
+<rect width="1400" height="900" fill="#fff"/>
+<style>.t{font-family:-apple-system,BlinkMacSystemFont,"Noto Sans JP","Yu Gothic",sans-serif;fill:#173f42}.h{font-size:38px;font-weight:800}.sh{font-size:28px;font-weight:800}.tx{font-size:22px}.sm{font-size:19px}.b{font-weight:800}.panel{fill:#fbfdfd;stroke:#d4e1e2;stroke-width:3}</style>
+<text x="55" y="60" class="t h">軸性骨格と付属性骨格</text>
+<rect x="45" y="90" width="1310" height="720" rx="24" class="panel"/>
+<text x="80" y="145" class="t sh">骨格系の2つの区分</text>
+<!-- simplified anatomical skeleton -->
+<g transform="translate(500,185)">
+<circle cx="180" cy="60" r="35" fill="#e7f2f1" stroke="#176f73" stroke-width="7"/>
+<path d="M180 95 L180 300 M180 125 L105 185 M180 125 L255 185 M180 300 L125 410 M180 300 L235 410" fill="none" stroke="#176f73" stroke-width="16" stroke-linecap="round"/>
+<path d="M125 145 Q180 190 235 145 M125 180 Q180 225 235 180 M125 215 Q180 260 235 215" fill="none" stroke="#176f73" stroke-width="8"/>
+<path d="M105 185 L65 300 M255 185 L295 300 M65 300 L35 395 M295 300 L325 395" fill="none" stroke="#f08a24" stroke-width="13" stroke-linecap="round"/>
+<path d="M125 410 L90 530 M235 410 L270 530 M90 530 L65 625 M270 530 L295 625" fill="none" stroke="#f08a24" stroke-width="15" stroke-linecap="round"/>
+</g>
+<rect x="85" y="220" width="350" height="340" rx="20" fill="#eef7f6" stroke="#a9cfd0" stroke-width="3"/>
+<text x="115" y="265" class="t sh" fill="#176f73">軸性骨格</text>
+<text x="115" y="310" class="t tx">・頭蓋</text><text x="115" y="345" class="t tx">・脊柱</text><text x="115" y="380" class="t tx">・胸骨</text><text x="115" y="415" class="t tx">・肋骨</text>
+<text x="115" y="475" class="t sm">体幹の支持・重要臓器の保護</text><text x="115" y="505" class="t sm">骨格筋の付着部</text>
+<rect x="965" y="220" width="350" height="340" rx="20" fill="#fff4e8" stroke="#efc69c" stroke-width="3"/>
+<text x="995" y="265" class="t sh" fill="#d97918">付属性骨格</text>
+<text x="995" y="310" class="t tx">・上肢</text><text x="995" y="345" class="t tx">・下肢</text><text x="995" y="380" class="t tx">・肩帯</text><text x="995" y="415" class="t tx">・骨盤帯</text>
+<text x="995" y="475" class="t sm">関節を中心に骨が回転し、</text><text x="995" y="505" class="t sm">持ち上げる・走る・投げる等の運動を生む</text>
+<line x1="435" y1="330" x2="555" y2="330" stroke="#176f73" stroke-width="5"/><text x="458" y="310" class="t sm">体幹</text>
+<line x1="805" y1="330" x2="965" y2="330" stroke="#f08a24" stroke-width="5"/><text x="840" y="310" class="t sm">四肢・帯</text>
+<rect x="85" y="600" width="1230" height="145" rx="18" fill="#eef7f6"/>
+<text x="120" y="640" class="t tx b">覚えるポイント</text>
+<text x="120" y="678" class="t sm">軸性骨格：頭蓋・脊柱・胸骨・肋骨 → 体幹の支持・臓器保護</text>
+<text x="120" y="710" class="t sm">付属性骨格：上下肢 → 関節運動を通じて、持ち上げる・走る・投げる・蹴るなどの運動に関与</text>
+<text x="55" y="850" class="t sm">※ CPTmate学習用模式図。教材の図1.9と本文の分類をもとに再構成。</text>
 </svg>
