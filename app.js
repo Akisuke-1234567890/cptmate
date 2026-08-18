@@ -1825,6 +1825,16 @@ function renderPracticeSelector(selectedChapter = null) {
   const chapter = selectedChapter || chapters[0] || 1;
   const chapterQuestions = QUESTIONS.filter(q => q.chapter === chapter);
 
+  // 第1章問題数の実データを基準に表示する。
+  // 開発中に「バージョンだけ更新されて問題データが古い」状態を検知できるようにする。
+  if (chapter === 1 && chapterQuestions.length !== 80) {
+    console.error("CPTmate 第1章問題データ不一致:", {
+      expected: 80,
+      actual: chapterQuestions.length,
+      appVersion: APP_VERSION
+    });
+  }
+
   // 大分類は「1問＝1分類」にして、合計数が章の総問題数と必ず一致するようにする。
   // 特にケーススタディは、内容上「筋系」「神経」などに属していても
   // 大分類では「総合・ケーススタディ」にのみ計上する。
@@ -2708,7 +2718,7 @@ function renderSettings() {
     </section>
     <section class="card">
       <h3>アプリ情報</h3>
-      <p style="margin:0 0 14px;color:var(--muted);">CPTmate v${APP_VERSION}<br>GitHub Pages向け試作版</p>
+      <p style="margin:0 0 14px;color:var(--muted);">CPTmate v${APP_VERSION}<br>GitHub Pages向け試作版<br>第1章収録問題：${QUESTIONS.filter(q => q.chapter === 1).length}問</p>
       <button class="primary-btn full" onclick="checkForAppUpdate()">最新版を確認・更新</button>
       <p id="updateStatus" style="margin:10px 0 0;color:var(--muted);font-size:13px;text-align:center;">現在のバージョン：v${APP_VERSION}</p>
     </section>
