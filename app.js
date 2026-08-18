@@ -1,4 +1,4 @@
-const APP_VERSION = "0.2.34";
+const APP_VERSION = "0.2.36";
 
 const QUESTIONS = [
   {
@@ -18,7 +18,8 @@ const QUESTIONS = [
     ],
     "answer": 2,
     "explanation": "サルコメアはZ線から隣接するZ線までの範囲で、骨格筋の基本的な機能的収縮単位である。",
-    "figureCaption": "サルコメア・アクチン・ミオシンと各帯の関係"
+    "figureCaption": "サルコメア・アクチン・ミオシンと各帯の関係",
+    "sourceType": "original"
   },
   {
     "id": "ch1-q002",
@@ -28,12 +29,13 @@ const QUESTIONS = [
     "question": "構造の大きい順として正しいものはどれか。",
     "choices": [
       "サルコメア→筋フィラメント→筋原線維→筋線維→骨格筋",
-      "骨格筋→筋線維→筋原線維→筋フィラメント→サルコメア",
+      "骨格筋→筋線維→筋原線維→サルコメア→筋フィラメント",
       "筋線維→骨格筋→筋原線維→サルコメア→筋フィラメント",
       "骨格筋→筋原線維→筋線維→筋フィラメント→サルコメア"
     ],
     "answer": 1,
-    "explanation": "骨格筋の内部では、筋線維の中に筋原線維が並び、筋原線維はサルコメアが連なって構成される。筋フィラメントはサルコメアを構成するアクチンとミオシンのフィラメントである。"
+    "explanation": "骨格筋の内部では、筋線維の中に筋原線維が並び、筋原線維はサルコメアが連なって構成される。サルコメアはアクチンとミオシンなどの筋フィラメントから構成される。",
+    "sourceType": "original"
   },
   {
     "id": "ch1-q003",
@@ -48,7 +50,8 @@ const QUESTIONS = [
       "骨膜"
     ],
     "answer": 0,
-    "explanation": "筋線維の中には、筋線維の長さ方向に多数の筋原線維（Myofibril）が並んでいる。"
+    "explanation": "筋線維の中には、筋線維の長さ方向に多数の筋原線維（Myofibril）が並んでいる。",
+    "sourceType": "original"
   },
   {
     "id": "ch1-q004",
@@ -67,7 +70,8 @@ const QUESTIONS = [
     ],
     "answer": 1,
     "explanation": "サルコメアはZ線から隣接するZ線までの範囲を指す。",
-    "figureCaption": "サルコメア・アクチン・ミオシンと各帯の関係"
+    "figureCaption": "サルコメア・アクチン・ミオシンと各帯の関係",
+    "sourceType": "original"
   },
   {
     "id": "ch1-q005",
@@ -86,7 +90,8 @@ const QUESTIONS = [
     ],
     "answer": 0,
     "explanation": "A帯はミオシンフィラメントが存在する範囲で、骨格筋では暗帯として見える。",
-    "figureCaption": "サルコメア・アクチン・ミオシンと各帯の関係"
+    "figureCaption": "サルコメア・アクチン・ミオシンと各帯の関係",
+    "sourceType": "original"
   },
   {
     "id": "ch1-q006",
@@ -105,7 +110,8 @@ const QUESTIONS = [
     ],
     "answer": 1,
     "explanation": "H帯はA帯の中でミオシンのみが存在し、アクチンと重ならない部分である。",
-    "figureCaption": "サルコメア・アクチン・ミオシンと各帯の関係"
+    "figureCaption": "サルコメア・アクチン・ミオシンと各帯の関係",
+    "sourceType": "original"
   },
   {
     "id": "ch1-q007",
@@ -124,7 +130,8 @@ const QUESTIONS = [
     ],
     "answer": 2,
     "explanation": "M線はH帯の中央を通る線で、ミオシンフィラメントの正しい配列を維持する。",
-    "figureCaption": "サルコメア・アクチン・ミオシンと各帯の関係"
+    "figureCaption": "サルコメア・アクチン・ミオシンと各帯の関係",
+    "sourceType": "original"
   },
   {
     "id": "ch1-q008",
@@ -143,7 +150,8 @@ const QUESTIONS = [
     ],
     "answer": 1,
     "explanation": "ミオシンは太いフィラメント、アクチンは細いフィラメントである。",
-    "figureCaption": "サルコメア・アクチン・ミオシンと各帯の関係"
+    "figureCaption": "サルコメア・アクチン・ミオシンと各帯の関係",
+    "sourceType": "original"
   },
   {
     "id": "ch1-q009",
@@ -158,7 +166,8 @@ const QUESTIONS = [
       "ミオグロビン"
     ],
     "answer": 1,
-    "explanation": "安静時はトロポミオシンがアクチン上のミオシン結合部位を覆っている。"
+    "explanation": "安静時はトロポミオシンがアクチン上のミオシン結合部位を覆っている。",
+    "sourceType": "original"
   },
   {
     "id": "ch1-q010",
@@ -173,7 +182,8 @@ const QUESTIONS = [
       "ネプリン"
     ],
     "answer": 0,
-    "explanation": "カルシウムイオンがトロポニンと結合するとトロポミオシンが移動し、アクチン上のミオシン結合部位が露出する。"
+    "explanation": "カルシウムイオンがトロポニンと結合するとトロポミオシンが移動し、アクチン上のミオシン結合部位が露出する。",
+    "sourceType": "original"
   },
   {
     "id": "ch1-q011",
@@ -188,7 +198,8 @@ const QUESTIONS = [
       "アドレナリン"
     ],
     "answer": 1,
-    "explanation": "神経筋接合部ではアセチルコリン（ACh）が放出され、筋線維側のACh受容体と結合する。"
+    "explanation": "神経筋接合部ではアセチルコリン（ACh）が放出され、筋線維側のACh受容体と結合する。",
+    "sourceType": "original"
   },
   {
     "id": "ch1-q012",
@@ -206,7 +217,8 @@ const QUESTIONS = [
       "筋小胞体がATPを放出する"
     ],
     "answer": 2,
-    "explanation": "神経の活動電位が神経筋接合部に到達するとAChが放出され、その後、筋線維側の受容体への結合へ進む。"
+    "explanation": "神経の活動電位が神経筋接合部に到達するとAChが放出され、その後、筋線維側の受容体への結合へ進む。",
+    "sourceType": "original"
   },
   {
     "id": "ch1-q013",
@@ -224,7 +236,8 @@ const QUESTIONS = [
       "GTO"
     ],
     "answer": 0,
-    "explanation": "AChはシナプス間隙を越えて筋線維側の運動終板にあるACh受容体と結合する。"
+    "explanation": "AChはシナプス間隙を越えて筋線維側の運動終板にあるACh受容体と結合する。",
+    "sourceType": "original"
   },
   {
     "id": "ch1-q014",
@@ -242,7 +255,8 @@ const QUESTIONS = [
       "腱"
     ],
     "answer": 0,
-    "explanation": "活動電位は筋鞘に発生し、T管を通って細胞内部へ伝わる。"
+    "explanation": "活動電位は筋鞘に発生し、T管を通って細胞内部へ伝わる。",
+    "sourceType": "original"
   },
   {
     "id": "ch1-q015",
@@ -260,7 +274,8 @@ const QUESTIONS = [
       "骨膜"
     ],
     "answer": 0,
-    "explanation": "活動電位がT管を通って筋線維内部へ伝わると、筋小胞体からCa²⁺が放出される。"
+    "explanation": "活動電位がT管を通って筋線維内部へ伝わると、筋小胞体からCa²⁺が放出される。",
+    "sourceType": "original"
   },
   {
     "id": "ch1-q016",
@@ -279,7 +294,8 @@ const QUESTIONS = [
     ],
     "answer": 1,
     "explanation": "フィラメント滑走説では、フィラメント自体の長さは変化せず、アクチンとミオシンが互いに滑り込むことで筋全体が短縮・伸張する。",
-    "figureCaption": "フィラメント滑走説：収縮前と収縮後の比較"
+    "figureCaption": "フィラメント滑走説：収縮前と収縮後の比較",
+    "sourceType": "original"
   },
   {
     "id": "ch1-q017",
@@ -294,7 +310,8 @@ const QUESTIONS = [
       "受動的伸張"
     ],
     "answer": 0,
-    "explanation": "短縮性筋活動では筋の発揮する力が外的負荷を上回り、筋が短縮する。"
+    "explanation": "短縮性筋活動では筋の発揮する力が外的負荷を上回り、筋が短縮する。",
+    "sourceType": "original"
   },
   {
     "id": "ch1-q018",
@@ -309,7 +326,8 @@ const QUESTIONS = [
       "弛緩"
     ],
     "answer": 1,
-    "explanation": "伸張性筋活動では筋の発揮する力が外的負荷の抵抗を下回り、筋が伸張されながら力を発揮する。"
+    "explanation": "伸張性筋活動では筋の発揮する力が外的負荷の抵抗を下回り、筋が伸張されながら力を発揮する。",
+    "sourceType": "original"
   },
   {
     "id": "ch1-q019",
@@ -324,7 +342,8 @@ const QUESTIONS = [
       "滑走性"
     ],
     "answer": 2,
-    "explanation": "等尺性筋活動では筋の発揮する力と外的負荷が等しく、筋の長さが変化しない。"
+    "explanation": "等尺性筋活動では筋の発揮する力と外的負荷が等しく、筋の長さが変化しない。",
+    "sourceType": "original"
   },
   {
     "id": "ch1-q020",
@@ -339,7 +358,8 @@ const QUESTIONS = [
       "活動しない"
     ],
     "answer": 1,
-    "explanation": "バックスクワットでしゃがむ局面では、大腿四頭筋と大殿筋が伸張性筋活動を行う。"
+    "explanation": "バックスクワットでしゃがむ局面では、大腿四頭筋と大殿筋が伸張性筋活動を行う。",
+    "sourceType": "original"
   },
   {
     "id": "ch1-q021",
@@ -354,7 +374,8 @@ const QUESTIONS = [
       "すべて同じ"
     ],
     "answer": 0,
-    "explanation": "タイプⅠ（SO）線維は酸化能力と疲労耐性が高く、収縮・弛緩速度は遅い。"
+    "explanation": "タイプⅠ（SO）線維は酸化能力と疲労耐性が高く、収縮・弛緩速度は遅い。",
+    "sourceType": "original"
   },
   {
     "id": "ch1-q022",
@@ -369,7 +390,8 @@ const QUESTIONS = [
       "錘内線維"
     ],
     "answer": 2,
-    "explanation": "タイプⅡx（FG）線維は無酸素性能力に優れ、力は強いが疲労しやすいとされる。"
+    "explanation": "タイプⅡx（FG）線維は無酸素性能力に優れ、力は強いが疲労しやすいとされる。",
+    "sourceType": "original"
   },
   {
     "id": "ch1-q023",
@@ -384,7 +406,8 @@ const QUESTIONS = [
       "錘外線維のみ"
     ],
     "answer": 0,
-    "explanation": "持久的な活動ではタイプⅠ線維の貢献度が高い。"
+    "explanation": "持久的な活動ではタイプⅠ線維の貢献度が高い。",
+    "sourceType": "original"
   },
   {
     "id": "ch1-q024",
@@ -399,7 +422,8 @@ const QUESTIONS = [
       "末梢神経と筋肉"
     ],
     "answer": 0,
-    "explanation": "中枢神経系（CNS）は脳と脊髄から構成される。"
+    "explanation": "中枢神経系（CNS）は脳と脊髄から構成される。",
+    "sourceType": "original"
   },
   {
     "id": "ch1-q025",
@@ -414,7 +438,8 @@ const QUESTIONS = [
       "交感神経のみ"
     ],
     "answer": 1,
-    "explanation": "感覚（求心性）神経は末梢から中枢へ情報を送る。"
+    "explanation": "感覚（求心性）神経は末梢から中枢へ情報を送る。",
+    "sourceType": "original"
   },
   {
     "id": "ch1-q026",
@@ -432,7 +457,8 @@ const QUESTIONS = [
       "運動終板"
     ],
     "answer": 0,
-    "explanation": "樹状突起は他のニューロンからの信号を受け取る部分として説明されている。"
+    "explanation": "樹状突起は他のニューロンからの信号を受け取る部分として説明されている。",
+    "sourceType": "original"
   },
   {
     "id": "ch1-q027",
@@ -450,7 +476,8 @@ const QUESTIONS = [
       "錘内線維"
     ],
     "answer": 1,
-    "explanation": "軸索は細胞体から伸びる長い構造で、脊髄から筋肉まで信号を伝える。"
+    "explanation": "軸索は細胞体から伸びる長い構造で、脊髄から筋肉まで信号を伝える。",
+    "sourceType": "original"
   },
   {
     "id": "ch1-q028",
@@ -468,7 +495,8 @@ const QUESTIONS = [
       "ACh濃度"
     ],
     "answer": 0,
-    "explanation": "筋紡錘は筋の長さの変化、特に急速な伸張を感知する。"
+    "explanation": "筋紡錘は筋の長さの変化、特に急速な伸張を感知する。",
+    "sourceType": "original"
   },
   {
     "id": "ch1-q029",
@@ -486,7 +514,8 @@ const QUESTIONS = [
       "骨の長さ"
     ],
     "answer": 1,
-    "explanation": "GTOは筋が発揮する力（張力）の大きさを検知するセンサーとして説明されている。"
+    "explanation": "GTOは筋が発揮する力（張力）の大きさを検知するセンサーとして説明されている。",
+    "sourceType": "original"
   },
   {
     "id": "ch1-q030",
@@ -501,22 +530,24 @@ const QUESTIONS = [
       "骨と骨をつなぐ組織を指す"
     ],
     "answer": 1,
-    "explanation": "運動単位は、1つの運動神経と、それが支配する筋線維のグループから構成される。"
+    "explanation": "運動単位は、1つの運動神経と、それが支配する筋線維のグループから構成される。",
+    "sourceType": "original"
   },
   {
     "id": "ch1-q031",
     "chapter": 1,
     "category": "神経系・サイズの原理",
     "type": "standard",
-    "question": "サイズの原理による運動単位の動員順序として正しいものはどれか。",
+    "question": "タイプII線維の運動単位について、教科書の説明に合うものはどれか。",
     "choices": [
-      "タイプⅡx→Ⅱa→Ⅰ",
-      "タイプⅡa→Ⅰ→Ⅱx",
-      "タイプⅠ→Ⅱa→Ⅱx",
-      "すべて同時"
+      "タイプI線維の運動単位よりサイズが小さく、閾値も低い",
+      "タイプI線維の運動単位よりサイズが大きく、活性化するための閾値も高い",
+      "タイプI線維の運動単位とサイズ・閾値は必ず同じ",
+      "タイプII線維の運動単位は動員されない"
     ],
-    "answer": 2,
-    "explanation": "サイズの原理では、タイプⅠ→タイプⅡa→タイプⅡxの順に運動単位が動員される。"
+    "answer": 1,
+    "explanation": "教科書では、タイプII線維の運動単位はタイプI線維の運動単位よりサイズが大きく、活性化するための閾値も高いと説明されている。",
+    "sourceType": "original"
   },
   {
     "id": "ch1-q032",
@@ -531,7 +562,8 @@ const QUESTIONS = [
       "伸張反射"
     ],
     "answer": 1,
-    "explanation": "筋力の調節には、運動単位の動員と発火頻度の調節（Rate coding）が関与する。"
+    "explanation": "筋力の調節には、運動単位の動員と発火頻度の調節（Rate coding）が関与する。",
+    "sourceType": "original"
   },
   {
     "id": "ch1-q033",
@@ -549,7 +581,8 @@ const QUESTIONS = [
       "海綿骨"
     ],
     "answer": 1,
-    "explanation": "骨幹（Diaphysis）は長骨の中央の長い部分である。"
+    "explanation": "骨幹（Diaphysis）は長骨の中央の長い部分である。",
+    "sourceType": "original"
   },
   {
     "id": "ch1-q034",
@@ -567,7 +600,8 @@ const QUESTIONS = [
       "筋骨格"
     ],
     "answer": 1,
-    "explanation": "軸性骨格には頭蓋、脊柱、胸骨、肋骨が含まれ、重要臓器の保護や筋の付着部として機能する。"
+    "explanation": "軸性骨格には頭蓋、脊柱、胸骨、肋骨が含まれ、重要臓器の保護や筋の付着部として機能する。",
+    "sourceType": "original"
   },
   {
     "id": "ch1-q035",
@@ -585,7 +619,8 @@ const QUESTIONS = [
       "骨膜細胞"
     ],
     "answer": 1,
-    "explanation": "破骨細胞（Osteoclast）は古い骨を破壊する細胞である。"
+    "explanation": "破骨細胞（Osteoclast）は古い骨を破壊する細胞である。",
+    "sourceType": "original"
   },
   {
     "id": "ch1-q036",
@@ -603,7 +638,8 @@ const QUESTIONS = [
       "錘内線維"
     ],
     "answer": 1,
-    "explanation": "骨芽細胞（Osteoblast）は新しい骨の合成を促す細胞である。"
+    "explanation": "骨芽細胞（Osteoblast）は新しい骨の合成を促す細胞である。",
+    "sourceType": "original"
   },
   {
     "id": "ch1-q037",
@@ -621,7 +657,8 @@ const QUESTIONS = [
       "骨は筋収縮によって直接短縮する"
     ],
     "answer": 1,
-    "explanation": "ウォルフの法則は、骨が加えられたストレス（負荷）に応じて適応するという考え方である。"
+    "explanation": "ウォルフの法則は、骨が加えられたストレス（負荷）に応じて適応するという考え方である。",
+    "sourceType": "original"
   },
   {
     "id": "ch1-q038",
@@ -636,7 +673,8 @@ const QUESTIONS = [
       "筋膜"
     ],
     "answer": 1,
-    "explanation": "腱は筋と骨を結合する組織である。"
+    "explanation": "腱は筋と骨を結合する組織である。",
+    "sourceType": "original"
   },
   {
     "id": "ch1-q039",
@@ -651,7 +689,8 @@ const QUESTIONS = [
       "骨膜"
     ],
     "answer": 1,
-    "explanation": "靭帯は骨と骨をつなぐ組織で、コラーゲンに加えてエラスチンも含む。"
+    "explanation": "靭帯は骨と骨をつなぐ組織で、コラーゲンに加えてエラスチンも含む。",
+    "sourceType": "original"
   },
   {
     "id": "ch1-q040",
@@ -666,7 +705,8 @@ const QUESTIONS = [
       "腱が神経信号を作り、骨が筋を収縮させる"
     ],
     "answer": 1,
-    "explanation": "章のまとめでは、神経系→神経筋接合部→筋系（サルコメア）→腱→骨格系という一本の流れとして整理されている。"
+    "explanation": "章のまとめでは、神経系→神経筋接合部→筋系（サルコメア）→腱→骨格系という一本の流れとして整理されている。",
+    "sourceType": "original"
   },
   {
     "id": "ch1-case001-q01",
@@ -683,7 +723,8 @@ const QUESTIONS = [
       "ミオシンがアクチンを引き込む"
     ],
     "answer": 1,
-    "explanation": "まず神経の活動電位が神経筋接合部に到達してAChが放出される。その後、AChが受容体に結合し、筋鞘に活動電位が生じ、T管を介してCa²⁺放出へ進む。"
+    "explanation": "まず神経の活動電位が神経筋接合部に到達してAChが放出される。その後、AChが受容体に結合し、筋鞘に活動電位が生じ、T管を介してCa²⁺放出へ進む。",
+    "sourceType": "original"
   },
   {
     "id": "ch1-case001-q02",
@@ -700,7 +741,8 @@ const QUESTIONS = [
       "骨芽細胞が活動する"
     ],
     "answer": 0,
-    "explanation": "活動電位がT管を通って細胞内部へ伝わると、筋小胞体がCa²⁺を放出する。"
+    "explanation": "活動電位がT管を通って細胞内部へ伝わると、筋小胞体がCa²⁺を放出する。",
+    "sourceType": "original"
   },
   {
     "id": "ch1-case001-q03",
@@ -717,7 +759,8 @@ const QUESTIONS = [
       "ATPがアクチンを分解する"
     ],
     "answer": 0,
-    "explanation": "Ca²⁺がトロポニンと結合するとトロポミオシンが移動し、アクチン上のミオシン結合部位が露出する。"
+    "explanation": "Ca²⁺がトロポニンと結合するとトロポミオシンが移動し、アクチン上のミオシン結合部位が露出する。",
+    "sourceType": "original"
   },
   {
     "id": "ch1-case002-q01",
@@ -734,7 +777,8 @@ const QUESTIONS = [
       "筋活動はない"
     ],
     "answer": 1,
-    "explanation": "スクワットでしゃがむ局面では、大腿四頭筋と大殿筋が伸張性筋活動を行う。"
+    "explanation": "スクワットでしゃがむ局面では、大腿四頭筋と大殿筋が伸張性筋活動を行う。",
+    "sourceType": "original"
   },
   {
     "id": "ch1-case002-q02",
@@ -751,7 +795,8 @@ const QUESTIONS = [
       "完全弛緩"
     ],
     "answer": 0,
-    "explanation": "スクワットで立ち上がる局面では、大腿四頭筋と大殿筋が短縮性筋活動を行う。"
+    "explanation": "スクワットで立ち上がる局面では、大腿四頭筋と大殿筋が短縮性筋活動を行う。",
+    "sourceType": "original"
   },
   {
     "id": "ch1-case002-q03",
@@ -768,7 +813,8 @@ const QUESTIONS = [
       "筋紡錘による受動活動"
     ],
     "answer": 2,
-    "explanation": "脊柱起立筋や腹部の筋群は、動作中に等尺性筋活動によって姿勢を安定させる。"
+    "explanation": "脊柱起立筋や腹部の筋群は、動作中に等尺性筋活動によって姿勢を安定させる。",
+    "sourceType": "original"
   },
   {
     "id": "ch1-case003-q01",
@@ -785,7 +831,8 @@ const QUESTIONS = [
       "錘内線維"
     ],
     "answer": 0,
-    "explanation": "長距離走やウォーキングなどの持久的活動では、タイプⅠ線維の貢献度が高い。"
+    "explanation": "長距離走やウォーキングなどの持久的活動では、タイプⅠ線維の貢献度が高い。",
+    "sourceType": "original"
   },
   {
     "id": "ch1-case003-q02",
@@ -802,7 +849,8 @@ const QUESTIONS = [
       "筋線維タイプに違いはない"
     ],
     "answer": 1,
-    "explanation": "スプリントやウエイトリフティングなどではタイプⅡ線維の貢献度が高く、特にタイプⅡxは大きな力を発揮できる一方、疲労しやすい。"
+    "explanation": "スプリントやウエイトリフティングなどではタイプⅡ線維の貢献度が高く、特にタイプⅡxは大きな力を発揮できる一方、疲労しやすい。",
+    "sourceType": "original"
   },
   {
     "id": "ch1-case004-q01",
@@ -819,7 +867,8 @@ const QUESTIONS = [
       "骨芽細胞を直接刺激する"
     ],
     "answer": 0,
-    "explanation": "プライオメトリックトレーニングでは、素早い伸張の直後に短縮性筋活動を行い、伸張反射を利用してより力強い収縮を引き出す。"
+    "explanation": "プライオメトリックトレーニングでは、素早い伸張の直後に短縮性筋活動を行い、伸張反射を利用してより力強い収縮を引き出す。",
+    "sourceType": "original"
   },
   {
     "id": "ch1-case004-q02",
@@ -836,7 +885,8 @@ const QUESTIONS = [
       "筋紡錘＝ACh、GTO＝Ca²⁺"
     ],
     "answer": 1,
-    "explanation": "筋紡錘は筋の長さの変化を、GTOは筋が発揮する力（張力）を検知する。"
+    "explanation": "筋紡錘は筋の長さの変化を、GTOは筋が発揮する力（張力）を検知する。",
+    "sourceType": "original"
   },
   {
     "id": "ch1-case005-q01",
@@ -845,15 +895,16 @@ const QUESTIONS = [
     "type": "case",
     "caseId": "case-005",
     "caseTitle": "負荷増加と運動単位",
-    "question": "軽い負荷から徐々に負荷を増やしていくとき、サイズの原理に従う運動単位の動員順序はどれか。",
+    "question": "高負荷でより大きな力を発揮する際、活動させる運動単位の数を増やして力を調節する仕組みはどれか。",
     "choices": [
-      "タイプⅡx→Ⅱa→Ⅰ",
-      "タイプⅠ→Ⅱa→Ⅱx",
-      "Ⅱa→Ⅱx→Ⅰ",
-      "すべて同時"
+      "運動単位の動員",
+      "発火頻度の調節（Rate coding）",
+      "筋紡錘の伸張",
+      "骨リモデリング"
     ],
-    "answer": 1,
-    "explanation": "サイズの原理により、タイプⅠ→Ⅱa→Ⅱxの順に運動単位が動員される。"
+    "answer": 0,
+    "explanation": "教科書では、神経系による筋力調節の1つ目の仕組みとして、活性化される運動単位の数を変える「運動単位の動員」が説明されている。",
+    "sourceType": "original"
   },
   {
     "id": "ch1-case005-q02",
@@ -870,7 +921,8 @@ const QUESTIONS = [
       "AChの骨への結合"
     ],
     "answer": 0,
-    "explanation": "力の調節には、運動単位の動員と発火頻度の調節（Rate coding）が関与する。"
+    "explanation": "力の調節には、運動単位の動員と発火頻度の調節（Rate coding）が関与する。",
+    "sourceType": "original"
   },
   {
     "id": "ch1-q041",
@@ -885,7 +937,8 @@ const QUESTIONS = [
       "骨芽細胞＝長さ、破骨細胞＝力"
     ],
     "answer": 0,
-    "explanation": "筋紡錘は筋の長さ・伸張を検知し、GTOは発揮される力・張力を検知する。"
+    "explanation": "筋紡錘は筋の長さ・伸張を検知し、GTOは発揮される力・張力を検知する。",
+    "sourceType": "original"
   },
   {
     "id": "ch1-q042",
@@ -900,7 +953,8 @@ const QUESTIONS = [
       "筋→筋紡錘→骨"
     ],
     "answer": 1,
-    "explanation": "筋が生み出した力は腱を通じて骨に伝わり、骨格が関節を中心に運動を生み出す。"
+    "explanation": "筋が生み出した力は腱を通じて骨に伝わり、骨格が関節を中心に運動を生み出す。",
+    "sourceType": "original"
   },
   {
     "id": "ch1-q043",
@@ -915,7 +969,8 @@ const QUESTIONS = [
       "樹状突起と軸索"
     ],
     "answer": 0,
-    "explanation": "骨のリモデリングには古い骨を破壊する破骨細胞と、新しい骨の合成を促す骨芽細胞が関わる。"
+    "explanation": "骨のリモデリングには古い骨を破壊する破骨細胞と、新しい骨の合成を促す骨芽細胞が関わる。",
+    "sourceType": "original"
   },
   {
     "id": "ch1-q044",
@@ -930,7 +985,8 @@ const QUESTIONS = [
       "筋線維タイプを無視して考えるため"
     ],
     "answer": 1,
-    "explanation": "章のまとめでは、この一連の流れを丸暗記ではなくストーリーとして説明できることが次章以降の理解を助けるとしている。"
+    "explanation": "章のまとめでは、この一連の流れを丸暗記ではなくストーリーとして説明できることが次章以降の理解を助けるとしている。",
+    "sourceType": "original"
   },
   {
     "id": "ch1-fig001",
@@ -949,7 +1005,8 @@ const QUESTIONS = [
     ],
     "answer": 2,
     "explanation": "Z線から隣接するZ線までが1つのサルコメアである。サルコメアは骨格筋の基本的な機能的収縮単位である。",
-    "figureCaption": "サルコメア・アクチン・ミオシンと各帯の関係"
+    "figureCaption": "サルコメア・アクチン・ミオシンと各帯の関係",
+    "sourceType": "original"
   },
   {
     "id": "ch1-fig002",
@@ -968,7 +1025,8 @@ const QUESTIONS = [
     ],
     "answer": 1,
     "explanation": "H帯はA帯の中央付近にあり、ミオシンのみが存在する領域である。中央のM線はH帯の中央を通る。",
-    "figureCaption": "サルコメア・アクチン・ミオシンと各帯の関係"
+    "figureCaption": "サルコメア・アクチン・ミオシンと各帯の関係",
+    "sourceType": "original"
   },
   {
     "id": "ch1-fig003",
@@ -978,15 +1036,16 @@ const QUESTIONS = [
     "figureId": "fig-ch1-contraction",
     "image": "assets/figures/contraction_fig1_5.svg",
     "figureMode": "question",
-    "question": "図の⑤に相当する現象として正しいのはどれか。",
+    "question": "図(b)で、活動電位がT管を通じて筋線維内部に伝わった後に起こる現象はどれか。",
     "choices": [
       "AChが放出される",
-      "Ca²⁺が放出される",
+      "筋小胞体からCa²⁺が放出される",
       "AChが受容体に結合する",
-      "活動電位がT管へ伝わる"
+      "ミオシンがアクチンを引き込む"
     ],
     "answer": 1,
-    "explanation": "筋線維内へ活動電位が伝わると、筋小胞体からCa²⁺が放出される。Ca²⁺はトロポニンに結合し、筋収縮の開始につながる。"
+    "explanation": "図1.5の流れでは、活動電位がT管を通じて筋線維内部に伝わると、筋小胞体からCa²⁺が放出される。",
+    "sourceType": "original"
   },
   {
     "id": "ch1-fig004",
@@ -1004,7 +1063,8 @@ const QUESTIONS = [
       "どちらも検知しない"
     ],
     "answer": 0,
-    "explanation": "筋紡錘は筋の長さや伸張の変化を検知する。GTOは主に筋が発揮する張力を検知する。"
+    "explanation": "筋紡錘は筋の長さや伸張の変化を検知する。GTOは主に筋が発揮する張力を検知する。",
+    "sourceType": "original"
   }
 ]
 
@@ -1603,6 +1663,8 @@ function renderOptionReview(q) {
 
 
 function ensureFigureStyles() {
+  if (!document.getElementById('cptmate-source-badge-style')) { const st=document.createElement('style'); st.id='cptmate-source-badge-style'; st.textContent=".source-badge{display:inline-flex;align-items:center;margin:0 0 10px 8px;padding:4px 9px;border:1px solid var(--line,#d8dde6);border-radius:999px;font-size:12px;font-weight:700;line-height:1.2;background:var(--card,#fff);color:var(--muted,#667085)}.source-badge.source-mock,.source-badge.source-review{font-weight:800}"; document.head.appendChild(st); }
+
   if (document.getElementById("cptmateFigureStyles")) return;
   const style = document.createElement("style");
   style.id = "cptmateFigureStyles";
@@ -1947,6 +2009,17 @@ function restartCurrentPractice() {
   renderQuestion();
 }
 
+
+function getSourceLabel(sourceType) {
+  if (sourceType === "mock") return "模擬問題";
+  if (sourceType === "review") return "章末確認問題";
+  return "CPTmateオリジナル";
+}
+function renderSourceBadge(question) {
+  const type = question?.sourceType || "original";
+  return `<span class="source-badge source-${type}">${getSourceLabel(type)}</span>`;
+}
+
 function renderQuestion() {
   ensureOptionReviewStyles();
   setActiveNav("practice");
@@ -1957,6 +2030,7 @@ function renderQuestion() {
     return;
   }
   const q = queue[state.currentIndex];
+  const sourceBadge = renderSourceBadge(q);
   const saved = practiceSessionAnswers[q.id];
   const bookmarked = !!state.bookmarks[q.id];
   const letters = ["A", "B", "C", "D"];
@@ -2030,7 +2104,7 @@ function renderQuestion() {
       </div>
 
       ${questionFigure}
-      <p class="question-text">${q.question}</p>
+      <p class="question-text">${sourceBadge}${q.question}</p>
       <div>${choices}</div>
       ${result}
     </section>

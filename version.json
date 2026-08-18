@@ -1,6 +1,3 @@
 {
-  "version": "0.2.34",
-  "app": "CPTmate",
-  "releasedAt": "2026-08-18",
-  "updateMode": "github-pages-cache-busted-reload"
+  "version": "0.2.36"
 }
