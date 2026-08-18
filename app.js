@@ -1,4 +1,4 @@
-const APP_VERSION = "0.2.26";
+const APP_VERSION = "0.2.27";
 
 const QUESTIONS = [
   {
