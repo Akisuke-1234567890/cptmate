@@ -1,4 +1,4 @@
-const APP_VERSION = "0.2.28";
+const APP_VERSION = "0.2.29";
 
 const QUESTIONS = [
   {
@@ -1018,6 +1018,8 @@ const defaultState = {
 };
 
 let state = loadState();
+state.lastViewed = "home";
+saveState();
 let practiceQueue = [];
 let practiceLabel = "第1章すべて";
 let practiceSessionAnswers = {};
@@ -1262,7 +1264,7 @@ function renderHome() {
       <div class="label">CPTmate v${APP_VERSION}</div>
       <h2>今日も1問ずつ、確実に。</h2>
       <p>問題を解く → 解説で理解する → 間違いを復習する。この学習サイクルをここから育てていきます。</p>
-      <button class="primary-btn full" onclick="renderPracticeSelector()">問題演習を始める</button>
+      <button class="primary-btn full" onclick="openPracticeSelectorClean()">問題演習を始める</button>
     </section>
 
     <div class="section-title"><h2>学習状況</h2><button class="text-btn" onclick="renderStats()">詳細を見る →</button></div>
@@ -1304,6 +1306,17 @@ function startPracticeQueue(ids, label, index = 0) {
 function getPracticeQuestions() {
   const ids = practiceQueue.length ? practiceQueue : QUESTIONS.map(q => q.id);
   return ids.map(id => QUESTIONS.find(q => q.id === id)).filter(Boolean);
+}
+
+function openPracticeSelectorClean() {
+  practiceQueue = [];
+  practiceLabel = "第1章すべて";
+  practiceSessionAnswers = {};
+  practiceCompleted = false;
+  state.currentIndex = 0;
+  state.lastViewed = "practice-selector";
+  saveState();
+  renderPracticeSelector();
 }
 
 function renderPracticeSelector(selectedChapter = null) {

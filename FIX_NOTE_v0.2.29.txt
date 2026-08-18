@@ -1,0 +1,6 @@
+v0.2.29
+- 起動時にlastViewedをhomeへ固定。
+- ホームの「問題演習を始める」は毎回openPracticeSelectorClean()を経由。
+- queue / label / session answers / completion / currentIndexを入口で初期化。
+- index.htmlのapp.js/style.css参照バージョンを0.2.29へ更新。
+- 目的：アプリ再起動直後と、問題→ホーム→問題演習の再入場で表示状態を一致させる。
