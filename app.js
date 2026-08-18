@@ -1080,7 +1080,367 @@ const defaultState = {
 let state = loadState();
 state.lastViewed = "home";
 saveState();
-let practiceQueue = [];
+let practiceQueue = [{
+  "id": "ch1-review-001",
+  "chapter": 1,
+  "category": "章末確認・筋系",
+  "type": "standard",
+  "question": "骨格筋の基本的な収縮単位はどれか。",
+  "choices": [
+    "筋線維",
+    "サルコメア",
+    "筋原線維",
+    "筋小胞体"
+  ],
+  "answer": 1,
+  "explanation": "サルコメアはZ線からZ線までの構造で、筋収縮の最小機能単位である。",
+  "sourceType": "review",
+  "sourceLabel": "章末確認問題",
+  "sourceNote": "第1章 第1部 確認問題1"
+},
+{
+  "id": "ch1-review-002",
+  "chapter": 1,
+  "category": "章末確認・筋系",
+  "type": "standard",
+  "question": "ミオシンの主な役割として正しいものはどれか。",
+  "choices": [
+    "カルシウムを貯蔵する",
+    "ATPを合成する",
+    "アクチンを引き込む",
+    "神経伝達物質を放出する"
+  ],
+  "answer": 2,
+  "explanation": "ミオシン頭部はアクチンと結合し、パワーストロークによってアクチンを引き込む。",
+  "sourceType": "review",
+  "sourceLabel": "章末確認問題",
+  "sourceNote": "第1章 第1部 確認問題2"
+},
+{
+  "id": "ch1-review-003",
+  "chapter": 1,
+  "category": "章末確認・筋系",
+  "type": "standard",
+  "question": "安静時にアクチン上のミオシン結合部位を覆っているタンパク質はどれか。",
+  "choices": [
+    "トロポニン",
+    "トロポミオシン",
+    "ミオシン",
+    "カルモジュリン"
+  ],
+  "answer": 1,
+  "explanation": "トロポミオシンがミオシン結合部位を覆っている。カルシウムがトロポニンに結合すると、その位置関係が変化して収縮が進む。",
+  "sourceType": "review",
+  "sourceLabel": "章末確認問題",
+  "sourceNote": "第1章 第1部 確認問題3"
+},
+{
+  "id": "ch1-review-004",
+  "chapter": 1,
+  "category": "章末確認・神経系",
+  "type": "standard",
+  "question": "神経筋接合部で骨格筋へ放出される神経伝達物質はどれか。",
+  "choices": [
+    "ドーパミン",
+    "アセチルコリン",
+    "セロトニン",
+    "ノルアドレナリン"
+  ],
+  "answer": 1,
+  "explanation": "骨格筋の神経筋接合部ではアセチルコリンが放出され、筋線維側へ興奮を伝える。",
+  "sourceType": "review",
+  "sourceLabel": "章末確認問題",
+  "sourceNote": "第1章 第2部 確認問題1"
+},
+{
+  "id": "ch1-review-005",
+  "chapter": 1,
+  "category": "章末確認・筋収縮",
+  "type": "standard",
+  "question": "筋収縮の過程で、カルシウムが直接結合するタンパク質はどれか。",
+  "choices": [
+    "ミオシン",
+    "トロポミオシン",
+    "トロポニン",
+    "アクチン"
+  ],
+  "answer": 2,
+  "explanation": "カルシウムはトロポニンに結合し、その結果としてトロポミオシンの位置が変化し、アクチンとミオシンの相互作用が進む。",
+  "sourceType": "review",
+  "sourceLabel": "章末確認問題",
+  "sourceNote": "第1章 第2部 確認問題2"
+},
+{
+  "id": "ch1-review-006",
+  "chapter": 1,
+  "category": "章末確認・筋活動様式",
+  "type": "standard",
+  "question": "一般に最も大きな筋力を発揮できる筋活動様式はどれか。",
+  "choices": [
+    "短縮性筋活動",
+    "等尺性筋活動",
+    "伸張性筋活動",
+    "弛緩"
+  ],
+  "answer": 2,
+  "explanation": "教材では、伸張性筋活動が最も大きな筋力を発揮できると整理されている。",
+  "sourceType": "review",
+  "sourceLabel": "章末確認問題",
+  "sourceNote": "第1章 第2部 確認問題3"
+},
+{
+  "id": "ch1-review-007",
+  "chapter": 1,
+  "category": "章末確認・骨格系",
+  "type": "standard",
+  "question": "ウォルフの法則として正しいものはどれか。",
+  "choices": [
+    "骨は荷重刺激に適応する",
+    "骨は生涯変化しない",
+    "運動では骨密度は変化しない",
+    "骨は負荷を受けるほど必ず弱くなる"
+  ],
+  "answer": 0,
+  "explanation": "ウォルフの法則は、骨が加えられる力や負荷に適応して構造を変化させるという考え方である。",
+  "sourceType": "review",
+  "sourceLabel": "章末確認問題",
+  "sourceNote": "第1章 第4部 確認問題1"
+},
+{
+  "id": "ch1-review-008",
+  "chapter": 1,
+  "category": "章末確認・骨格系",
+  "type": "standard",
+  "question": "骨芽細胞の主な役割はどれか。",
+  "choices": [
+    "骨吸収",
+    "骨形成",
+    "神経伝達",
+    "筋収縮"
+  ],
+  "answer": 1,
+  "explanation": "骨芽細胞は新しい骨を形成する。骨吸収を担うのは破骨細胞である。",
+  "sourceType": "review",
+  "sourceLabel": "章末確認問題",
+  "sourceNote": "第1章 第4部 確認問題2"
+},
+{
+  "id": "ch1-review-009",
+  "chapter": 1,
+  "category": "章末確認・腱と靭帯",
+  "type": "standard",
+  "question": "靭帯が連結するものはどれか。",
+  "choices": [
+    "筋肉と骨",
+    "骨と骨",
+    "筋肉と筋肉",
+    "神経と筋肉"
+  ],
+  "answer": 1,
+  "explanation": "靭帯は骨と骨を連結する結合組織である。筋肉と骨をつなぐのは腱である。",
+  "sourceType": "review",
+  "sourceLabel": "章末確認問題",
+  "sourceNote": "第1章 第4部 確認問題3"
+},
+{
+  "id": "ch1-mock-001",
+  "chapter": 1,
+  "category": "模擬問題・筋収縮",
+  "type": "standard",
+  "question": "骨格筋が大きな力を発揮するとき、アクチンとミオシンの相互作用を直接担う構造として最も適切なのはどれか。",
+  "choices": [
+    "アクトミオシンのクロスブリッジ",
+    "筋紡錘",
+    "ゴルジ腱器官",
+    "骨芽細胞"
+  ],
+  "answer": 0,
+  "explanation": "アクチンとミオシンが相互作用するクロスブリッジ形成は筋収縮の中心的な機構である。",
+  "sourceType": "mock",
+  "sourceLabel": "模擬問題（再構成）",
+  "sourceNote": "NSCA-CPT模擬問題集 p.15 問10の論点を再構成"
+},
+{
+  "id": "ch1-mock-002",
+  "chapter": 1,
+  "category": "模擬問題・筋活動様式",
+  "type": "standard",
+  "question": "最大努力時の骨格筋で、筋の短縮速度が高くなるほど短縮性筋力は一般にどうなるか。",
+  "choices": [
+    "高くなる",
+    "低くなる",
+    "変化しない",
+    "速度とは無関係に一定になる"
+  ],
+  "answer": 1,
+  "explanation": "模擬問題集で扱われている力―速度関係では、短縮性収縮では短縮速度が高いほど発揮できる筋力は低下する。",
+  "sourceType": "mock",
+  "sourceLabel": "模擬問題（再構成）",
+  "sourceNote": "NSCA-CPT模擬問題集 p.16 問15の論点を再構成"
+},
+{
+  "id": "ch1-mock-003",
+  "chapter": 1,
+  "category": "模擬問題・運動単位",
+  "type": "standard",
+  "question": "すべての運動単位に共通する特徴として最も適切なのはどれか。",
+  "choices": [
+    "同じタイプの筋線維だけを含む",
+    "同じサイズの運動ニューロンを含む",
+    "ほぼ同じ数の筋線維を含む",
+    "必ず同じ大きさの筋線維を含む"
+  ],
+  "answer": 0,
+  "explanation": "1つの運動単位は1個の運動ニューロンと、それが支配する筋線維から構成される。1つの運動単位内の筋線維は同じタイプになる。",
+  "sourceType": "mock",
+  "sourceLabel": "模擬問題（再構成）",
+  "sourceNote": "NSCA-CPT模擬問題集 p.16 問16の論点を再構成"
+},
+{
+  "id": "ch1-mock-004",
+  "chapter": 1,
+  "category": "模擬問題・エネルギー",
+  "type": "standard",
+  "question": "筋収縮に直接利用される化学エネルギーを蓄えている物質はどれか。",
+  "choices": [
+    "クレアチンリン酸",
+    "ATP",
+    "グルコース",
+    "乳酸"
+  ],
+  "answer": 1,
+  "explanation": "筋収縮で直接利用されるエネルギー源はATPである。クレアチンリン酸はATP再合成に利用される。",
+  "sourceType": "mock",
+  "sourceLabel": "模擬問題（再構成）",
+  "sourceNote": "NSCA-CPT模擬問題集 p.17 問22の論点を再構成"
+},
+{
+  "id": "ch1-mock-005",
+  "chapter": 1,
+  "category": "模擬問題・加齢と筋",
+  "type": "standard",
+  "question": "サルコペニアを最も適切に表しているのはどれか。",
+  "choices": [
+    "加齢に伴う筋量・筋機能の低下",
+    "加齢に伴う骨密度だけの低下",
+    "遺伝による骨形成異常",
+    "一時的な筋肉痛"
+  ],
+  "answer": 0,
+  "explanation": "サルコペニアは加齢に伴う筋量や筋機能の低下を指す。",
+  "sourceType": "mock",
+  "sourceLabel": "模擬問題（再構成）",
+  "sourceNote": "NSCA-CPT模擬問題集 p.17 問24の論点を再構成"
+},
+{
+  "id": "ch1-mock-006",
+  "chapter": 1,
+  "category": "模擬問題・神経適応",
+  "type": "standard",
+  "question": "レジスタンストレーニング開始初期にみられる筋力向上の主な要因として最も適切なのはどれか。",
+  "choices": [
+    "神経系の適応",
+    "骨密度の急激な増加",
+    "筋線維数の急激な増加",
+    "脂肪細胞の増加"
+  ],
+  "answer": 0,
+  "explanation": "トレーニング初期の筋力向上には、筋肥大だけでなく神経系の適応が大きく関与する。",
+  "sourceType": "mock",
+  "sourceLabel": "模擬問題（再構成）",
+  "sourceNote": "NSCA-CPT模擬問題集 p.17 問26の論点を再構成"
+},
+{
+  "id": "ch1-mock-007",
+  "chapter": 1,
+  "category": "模擬問題・発火頻度",
+  "type": "standard",
+  "question": "レジスタンストレーニング初期の筋力発揮の調節に関係する神経系の変化として適切なのはどれか。",
+  "choices": [
+    "運動単位の発火頻度の上昇",
+    "骨芽細胞の活動低下",
+    "筋小胞体の消失",
+    "腱の短縮"
+  ],
+  "answer": 0,
+  "explanation": "運動単位の発火頻度を高めることは、すでに活動している運動単位が発揮する力の調節に関係する。",
+  "sourceType": "mock",
+  "sourceLabel": "模擬問題（再構成）",
+  "sourceNote": "NSCA-CPT模擬問題集 p.21 問41の論点を再構成"
+},
+{
+  "id": "ch1-mock-008",
+  "chapter": 1,
+  "category": "模擬問題・反射",
+  "type": "standard",
+  "question": "筋の長さが急激に変化したときに生じる不随意の反応として最も適切なのはどれか。",
+  "choices": [
+    "伸張反射",
+    "屈曲反射",
+    "交叉性伸展反射",
+    "姿勢反射のみ"
+  ],
+  "answer": 0,
+  "explanation": "筋の長さの急激な変化は筋紡錘からの情報を介して伸張反射を引き起こす。",
+  "sourceType": "mock",
+  "sourceLabel": "模擬問題（再構成）",
+  "sourceNote": "NSCA-CPT模擬問題集 p.21 問45の論点を再構成"
+},
+{
+  "id": "ch1-mock-009",
+  "chapter": 1,
+  "category": "模擬問題・筋活動様式",
+  "type": "standard",
+  "question": "運動中に「ネガティブ」と呼ばれる局面で、主働筋に生じている筋活動として最も適切なのはどれか。",
+  "choices": [
+    "等尺性筋活動",
+    "短縮性筋活動",
+    "伸張性筋活動",
+    "完全弛緩"
+  ],
+  "answer": 2,
+  "explanation": "一般にネガティブ局面は、筋が外力に抗しながら伸ばされる伸張性筋活動を指す。",
+  "sourceType": "mock",
+  "sourceLabel": "模擬問題（再構成）",
+  "sourceNote": "NSCA-CPT模擬問題集 p.22 問48の論点を再構成"
+},
+{
+  "id": "ch1-mock-010",
+  "chapter": 1,
+  "category": "模擬問題・筋活動",
+  "type": "standard",
+  "question": "ベンチプレスで主働筋に対して拮抗する筋として考えられる組み合わせはどれか。",
+  "choices": [
+    "三角筋前部と上腕二頭筋",
+    "三角筋後部と上腕二頭筋",
+    "三角筋後部と上腕三頭筋",
+    "大胸筋と上腕三頭筋"
+  ],
+  "answer": 1,
+  "explanation": "ベンチプレスの押す動作に対して、肩関節の動作などを考えると三角筋後部や上腕二頭筋が拮抗側として扱われる。",
+  "sourceType": "mock",
+  "sourceLabel": "模擬問題（再構成）",
+  "sourceNote": "NSCA-CPT模擬問題集 p.31 問43の論点を再構成"
+},
+{
+  "id": "ch1-mock-011",
+  "chapter": 1,
+  "category": "模擬問題・筋活動",
+  "type": "standard",
+  "question": "デッドリフトで体幹を安定させる際、等尺性に働く筋として最も適切なのはどれか。",
+  "choices": [
+    "大殿筋",
+    "腓腹筋",
+    "脊柱起立筋",
+    "前脛骨筋"
+  ],
+  "answer": 2,
+  "explanation": "デッドリフトでは脊柱起立筋群が体幹を安定させるために等尺性に働く場面がある。",
+  "sourceType": "mock",
+  "sourceLabel": "模擬問題（再構成）",
+  "sourceNote": "NSCA-CPT模擬問題集 p.32 問49の論点を再構成"
+}
+];
 let practiceLabel = "第1章すべて";
 let practiceSessionAnswers = {};
 let practiceCompleted = false;
@@ -2010,14 +2370,15 @@ function restartCurrentPractice() {
 }
 
 
-function getSourceLabel(sourceType) {
+function getSourceLabel(sourceType, question) {
+  if (question?.sourceLabel) return question.sourceLabel;
   if (sourceType === "mock") return "模擬問題";
   if (sourceType === "review") return "章末確認問題";
   return "CPTmateオリジナル";
 }
 function renderSourceBadge(question) {
   const type = question?.sourceType || "original";
-  return `<span class="source-badge source-${type}">${getSourceLabel(type)}</span>`;
+  return `<span class="source-badge source-${type}">${getSourceLabel(type, question)}</span>`;
 }
 
 function renderQuestion() {
