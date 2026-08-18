@@ -1825,10 +1825,30 @@ function renderPracticeSelector(selectedChapter = null) {
   const chapter = selectedChapter || chapters[0] || 1;
   const chapterQuestions = QUESTIONS.filter(q => q.chapter === chapter);
 
+  // 大分類は「1問＝1分類」にして、合計数が章の総問題数と必ず一致するようにする。
+  // 特にケーススタディは、内容上「筋系」「神経」などに属していても
+  // 大分類では「総合・ケーススタディ」にのみ計上する。
   const major = {
-    "筋系・筋収縮": q => /^(筋系|筋収縮|筋活動様式|筋線維タイプ)/.test(q.category) || /ケーススタディ・(筋収縮|筋活動様式|筋線維)/.test(q.category) || q.category.startsWith("図・筋収縮"),
-    "神経・感覚": q => /^(神経|神経筋接合部)/.test(q.category) || /ケーススタディ・(感覚受容器|運動単位)/.test(q.category) || q.category.includes("筋紡錘") || q.category.includes("GTO"),
-    "骨格・結合組織": q => q.category.startsWith("骨格系"),
+    "筋系・筋収縮": q => {
+      if (/^(総合|ケーススタディ)/.test(q.category)) return false;
+      return /^(筋系|筋収縮|筋活動様式|筋線維タイプ)/.test(q.category)
+        || /^(図・筋収縮|図・サルコメア)/.test(q.category)
+        || /^(章末確認・筋系|章末確認・筋収縮|章末確認・筋活動様式)/.test(q.category)
+        || /^(模擬問題・筋収縮|模擬問題・筋活動様式|模擬問題・エネルギー|模擬問題・加齢と筋|模擬問題・筋活動)/.test(q.category);
+    },
+    "神経・感覚": q => {
+      if (/^(総合|ケーススタディ)/.test(q.category)) return false;
+      return /^(神経|神経筋接合部)/.test(q.category)
+        || q.category.includes("筋紡錘")
+        || q.category.includes("GTO")
+        || /^(章末確認・神経)/.test(q.category)
+        || /^(模擬問題・運動単位|模擬問題・神経適応|模擬問題・発火頻度|模擬問題・反射)/.test(q.category);
+    },
+    "骨格・結合組織": q => {
+      if (/^(総合|ケーススタディ)/.test(q.category)) return false;
+      return q.category.startsWith("骨格系")
+        || /^(章末確認・骨格|章末確認・腱)/.test(q.category);
+    },
     "総合・ケーススタディ": q => q.category.startsWith("総合") || q.category.startsWith("ケーススタディ")
   };
 
@@ -1837,6 +1857,18 @@ function renderPracticeSelector(selectedChapter = null) {
     if (!ids.length) return "";
     return `<button class="practice-select-item" onclick='startPracticeQueue(${JSON.stringify(ids)}, ${JSON.stringify(name)})'><strong>${name}</strong><span>${ids.length}問</span></button>`;
   }).join("");
+
+  // 開発中のデータ不整合を検出。大分類の合計が章問題数と違う場合はコンソールに警告を出す。
+  const classifiedIds = Object.values(major).flatMap(fn => chapterQuestions.filter(fn).map(q => q.id));
+  const uniqueClassifiedIds = new Set(classifiedIds);
+  if (uniqueClassifiedIds.size !== chapterQuestions.length || classifiedIds.length !== uniqueClassifiedIds.size) {
+    console.warn("大分類の問題数が章総問題数と一致していません", {
+      chapter,
+      total: chapterQuestions.length,
+      classified: uniqueClassifiedIds.size,
+      duplicated: classifiedIds.length - uniqueClassifiedIds.size
+    });
+  }
 
   screenEl().innerHTML = `
     <div class="back-row"><button class="back-btn" onclick="renderHome()">‹</button><h2>問題演習</h2></div>
