@@ -1,17 +1,54 @@
-const APP_VERSION = "0.2.48";
+const APP_VERSION = "0.2.49";
 
-const __cptmate_v248_style = document.createElement("style");
-__cptmate_v248_style.textContent = `
-.bottom-nav, #bottomNav, .bottom-navigation {
-  position: fixed !important;
-  left: 0; right: 0; bottom: 0;
-  z-index: 1000;
-  padding-bottom: env(safe-area-inset-bottom);
-}
-body {
-  padding-bottom: calc(64px + env(safe-area-inset-bottom));
-}`;
-document.head.appendChild(__cptmate_v248_style);
+/* v0.2.49: bottom navigation robust viewport fixing */
+(function installCPTmateBottomNavFix() {
+  const apply = () => {
+    const buttons = Array.from(document.querySelectorAll(".nav-btn"));
+    if (!buttons.length) return;
+
+    let nav = buttons[0].parentElement;
+    while (nav && nav !== document.body) {
+      if (buttons.every(btn => nav.contains(btn))) break;
+      nav = nav.parentElement;
+    }
+    if (!nav || nav === document.body) nav = buttons[0].parentElement;
+
+    nav.style.setProperty("position", "fixed", "important");
+    nav.style.setProperty("left", "0", "important");
+    nav.style.setProperty("right", "0", "important");
+    nav.style.setProperty("bottom", "0", "important");
+    nav.style.setProperty("width", "100vw", "important");
+    nav.style.setProperty("max-width", "none", "important");
+    nav.style.setProperty("margin-left", "0", "important");
+    nav.style.setProperty("margin-right", "0", "important");
+    nav.style.setProperty("transform", "none", "important");
+    nav.style.setProperty("z-index", "9999", "important");
+    nav.style.setProperty("box-sizing", "border-box", "important");
+    nav.style.setProperty("padding-bottom", "env(safe-area-inset-bottom)", "important");
+
+    const display = getComputedStyle(nav).display;
+    if (display === "block" || display === "inline" || display === "inline-block") {
+      nav.style.setProperty("display", "flex", "important");
+    }
+
+    buttons.forEach(btn => {
+      btn.style.setProperty("flex", "1 1 0", "important");
+      btn.style.setProperty("min-width", "0", "important");
+      btn.style.setProperty("box-sizing", "border-box", "important");
+    });
+
+    document.body.style.setProperty(
+      "padding-bottom",
+      "calc(78px + env(safe-area-inset-bottom))",
+      "important"
+    );
+  };
+
+  apply();
+  requestAnimationFrame(apply);
+  setTimeout(apply, 100);
+  setTimeout(apply, 500);
+})();
 
 
 const QUESTIONS = [
@@ -2503,7 +2540,7 @@ function renderQuestion() {
 
   screenEl().innerHTML = `
     <div class="back-row">
-      <button class="back-btn" onclick="renderHome()">‹</button>
+      <button class="back-btn" onclick="openPracticeSelectorClean()">‹</button>
       <h2>問題演習</h2>
     </div>
     <div class="practice-mode-bar">${practiceLabel}<button onclick="renderPracticeSelector()">演習を変更</button></div>
