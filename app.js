@@ -1,4 +1,4 @@
-const APP_VERSION = "0.2.30";
+const APP_VERSION = "0.2.31";
 
 const QUESTIONS = [
   {
@@ -1328,6 +1328,9 @@ function openPracticeSelectorClean() {
 
 function renderPracticeSelector(selectedChapter = null) {
   resetPageScroll();
+  // 問題選択画面で使用するスタイルはensureFigureStyles内に定義されているため、
+  // 初回表示でもCSS注入前に描画されないよう、innerHTMLより前に確実に注入する。
+  ensureFigureStyles();
   // 問題選択画面を開いた時は、前回の演習状態を持ち込まない。
   // ホームから初回に開いた場合と、問題を解いて戻った場合で表示が変わらないようにする。
   practiceQueue = [];
