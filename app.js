@@ -1,4 +1,4 @@
-const APP_VERSION = "0.2.24";
+const APP_VERSION = "0.2.25";
 
 const QUESTIONS = [
   {
@@ -1540,7 +1540,7 @@ function ensureFigureStyles() {
     .question-figure img {
       display: block;
       width: 100%;
-      max-height: 500px;
+      max-height: 680px;
       object-fit: contain;
       border-radius: 12px;
       background: #fff;
