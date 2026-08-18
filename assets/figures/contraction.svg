@@ -1,27 +1,8 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 900">
-<rect width="1400" height="900" fill="#fff"/>
-<style>.t{font-family:-apple-system,BlinkMacSystemFont,"Noto Sans JP","Yu Gothic",sans-serif;fill:#173f42}.h{font-size:38px;font-weight:800}.sh{font-size:27px;font-weight:800}.tx{font-size:21px}.sm{font-size:18px}.b{font-weight:800}.panel{fill:#fbfdfd;stroke:#d4e1e2;stroke-width:3}</style>
-<text x="55" y="60" class="t h">神経刺激から筋収縮までの流れ</text>
-<rect x="45" y="90" width="1310" height="710" rx="24" class="panel"/>
-<!-- step boxes -->
-<g>
-<rect x="80" y="150" width="300" height="130" rx="18" fill="#eef7f6" stroke="#a9cfd0" stroke-width="3"/>
-<text x="105" y="190" class="t sh">① 活動電位</text><text x="105" y="228" class="t tx">運動神経終末へ到達</text><text x="105" y="258" class="t sm">↓ ACh放出</text>
-<rect x="550" y="150" width="300" height="130" rx="18" fill="#eef7f6" stroke="#a9cfd0" stroke-width="3"/>
-<text x="575" y="190" class="t sh">② ACh</text><text x="575" y="228" class="t tx">シナプス間隙へ放出</text><text x="575" y="258" class="t sm">↓ ACh受容体と結合</text>
-<rect x="1020" y="150" width="300" height="130" rx="18" fill="#eef7f6" stroke="#a9cfd0" stroke-width="3"/>
-<text x="1045" y="190" class="t sh">③ 筋線維</text><text x="1045" y="228" class="t tx">筋鞘に活動電位</text><text x="1045" y="258" class="t sm">↓ T管へ伝導</text>
-</g>
-<path d="M380 215 L540 215" stroke="#176f73" stroke-width="7"/><polygon points="535,200 560,215 535,230" fill="#176f73"/>
-<path d="M850 215 L1010 215" stroke="#176f73" stroke-width="7"/><polygon points="1005,200 1030,215 1005,230" fill="#176f73"/>
-<rect x="240" y="370" width="350" height="145" rx="18" fill="#fff4e8" stroke="#efc69c" stroke-width="3"/>
-<text x="265" y="410" class="t sh">④ T管 → 筋小胞体</text><text x="265" y="448" class="t tx">活動電位が細胞内部へ</text><text x="265" y="480" class="t sm">Ca²⁺放出</text>
-<rect x="810" y="370" width="350" height="145" rx="18" fill="#fff4e8" stroke="#efc69c" stroke-width="3"/>
-<text x="835" y="410" class="t sh">⑤ Ca²⁺ → トロポニン</text><text x="835" y="448" class="t tx">トロポニンと結合</text><text x="835" y="480" class="t sm">トロポミオシンが移動</text>
-<path d="M1170 280 C1170 330 1060 350 990 365" fill="none" stroke="#176f73" stroke-width="6"/><polygon points="1000,350 980,370 1005,375" fill="#176f73"/>
-<path d="M800 440 L610 440" stroke="#176f73" stroke-width="6"/><polygon points="615,425 590,440 615,455" fill="#176f73"/>
-<rect x="350" y="600" width="700" height="135" rx="18" fill="#eaf4f4" stroke="#b9d4d5" stroke-width="3"/>
-<text x="385" y="640" class="t sh">⑥ クロスブリッジ形成</text><text x="385" y="678" class="t tx">ミオシン頭部が露出したアクチン結合部位に結合</text><text x="385" y="710" class="t tx">→ アクチンをサルコメア中央へ引き込む → 力発揮</text>
-<path d="M985 515 C985 560 900 590 850 600" fill="none" stroke="#176f73" stroke-width="6"/><polygon points="855,585 835,605 860,610" fill="#176f73"/>
-<text x="55" y="850" class="t sm">※ CPTmate学習用模式図。教材の図1.5と本文の7段階の流れをもとに再構成。</text>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="800" viewBox="0 0 1200 800"><defs><marker id="a" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#6d8587"/></marker></defs><style>.title{font:700 30px sans-serif;fill:#173f43}.sub{font:600 18px sans-serif;fill:#557276}.label{font:600 16px sans-serif;fill:#173f43}.small{font:500 13px sans-serif;fill:#557276}.box{fill:#fff;stroke:#cbdedf;stroke-width:2}.teal{fill:#176b70}.green{stroke:#4c9f84}.blue{stroke:#2867a8}.orange{stroke:#d49b45}.red{stroke:#b54848}.purple{stroke:#76508c}.arrow{stroke:#6d8587;stroke-width:4;fill:none;marker-end:url(#a)}.thin{fill:none;stroke-width:4;stroke-linecap:round}</style><rect x="30" y="30" width="1140" height="740" rx="28" fill="#f7fbfb" stroke="#cbdedf" stroke-width="2"/>
+<text x="70" y="82" class="title">神経刺激から筋収縮まで</text><text x="70" y="112" class="sub">神経筋接合部での伝達からCa²⁺放出、クロスブリッジ形成まで</text>
+<g transform="translate(80 160)"><rect class="box" width="300" height="105" rx="20"/><text x="150" y="43" text-anchor="middle" class="label">① 活動電位</text><text x="150" y="72" text-anchor="middle" class="small">運動ニューロン終末へ到達</text></g>
+<path d="M385 212h95" class="arrow"/><g transform="translate(500 160)"><rect class="box" width="300" height="105" rx="20"/><text x="150" y="43" text-anchor="middle" class="label">② ACh放出</text><text x="150" y="72" text-anchor="middle" class="small">アセチルコリンが放出される</text></g>
+<path d="M805 212h95" class="arrow"/><g transform="translate(915 160)"><rect class="box" width="210" height="105" rx="20"/><text x="105" y="43" text-anchor="middle" class="label">③ ACh受容体</text><text x="105" y="72" text-anchor="middle" class="small">筋細胞膜を興奮</text></g>
+<path d="M1020 275v70H230v65" class="arrow"/><g transform="translate(80 365)"><rect class="box" width="300" height="105" rx="20"/><text x="150" y="43" text-anchor="middle" class="label">④ T管へ伝達</text><text x="150" y="72" text-anchor="middle" class="small">活動電位が筋線維内部へ</text></g>
+<path d="M385 417h95" class="arrow"/><g transform="translate(500 365)"><rect class="box" width="300" height="105" rx="20"/><text x="150" y="43" text-anchor="middle" class="label">⑤ Ca²⁺放出</text><text x="150" y="72" text-anchor="middle" class="small">筋小胞体からCa²⁺が放出</text></g>
+<path d="M650 475v65" class="arrow"/><g transform="translate(500 555)"><rect class="box" width="300" height="105" rx="20"/><text x="150" y="43" text-anchor="middle" class="label">⑥ トロポニン結合</text><text x="150" y="72" text-anchor="middle" class="small">結合部位が露出 → クロスブリッジ形成</text></g></svg>

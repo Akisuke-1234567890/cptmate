@@ -1,35 +1,7 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 900">
-<rect width="1400" height="900" fill="#fff"/>
-<style>.t{font-family:-apple-system,BlinkMacSystemFont,"Noto Sans JP","Yu Gothic",sans-serif;fill:#173f42}.h{font-size:38px;font-weight:800}.sh{font-size:28px;font-weight:800}.tx{font-size:22px}.sm{font-size:19px}.b{font-weight:800}.panel{fill:#fbfdfd;stroke:#d4e1e2;stroke-width:3}</style>
-<text x="55" y="60" class="t h">長骨の構造と骨リモデリング</text>
-<rect x="45" y="90" width="1310" height="680" rx="24" class="panel"/>
-<line x1="780" y1="120" x2="780" y2="735" stroke="#c7d3d4" stroke-width="2"/>
-<text x="90" y="145" class="t sh">長骨の主な構造</text>
-<text x="820" y="145" class="t sh">骨リモデリング（骨代謝のバランス）</text>
-<!-- bone -->
-<path d="M180 215 C145 245 145 305 190 330 L190 570 C145 595 145 655 180 685 C215 715 280 700 305 665 L305 230 C280 195 215 185 180 215Z" fill="#f4d28f" stroke="#c28a37" stroke-width="5"/>
-<path d="M205 245 C180 270 180 300 215 320 L215 580 C180 600 180 630 205 655 C230 675 265 665 285 640 L285 260 C265 235 230 225 205 245Z" fill="#fff2cf"/>
-<path d="M215 330 L285 330 L285 570 L215 570Z" fill="#f0e5c4"/>
-<path d="M230 360 L270 360 L270 540 L230 540Z" fill="#6f4d36" opacity=".65"/>
-<path d="M180 215 C145 245 145 305 190 330 L190 570 C145 595 145 655 180 685" fill="none" stroke="#d7a84e" stroke-width="10"/>
-<text x="350" y="250" class="t sm">骨端</text><line x1="340" y1="245" x2="280" y2="280" stroke="#173f42" stroke-width="2"/>
-<text x="350" y="325" class="t sm">関節面／関節軟骨</text><line x1="340" y1="315" x2="255" y2="250" stroke="#173f42" stroke-width="2"/>
-<text x="350" y="430" class="t sm">骨幹</text><line x1="340" y1="425" x2="285" y2="425" stroke="#173f42" stroke-width="2"/>
-<text x="350" y="485" class="t sm">骨髄腔</text><line x1="340" y1="480" x2="270" y2="480" stroke="#173f42" stroke-width="2"/>
-<text x="350" y="545" class="t sm">皮質骨（緻密骨）</text><line x1="340" y1="540" x2="205" y2="540" stroke="#173f42" stroke-width="2"/>
-<text x="350" y="605" class="t sm">海綿骨（柱状骨）</text><line x1="340" y1="600" x2="220" y2="630" stroke="#173f42" stroke-width="2"/>
-<text x="350" y="665" class="t sm">骨膜</text><line x1="340" y1="660" x2="195" y2="650" stroke="#173f42" stroke-width="2"/>
-<!-- remodeling -->
-<circle cx="940" cy="330" r="90" fill="#fde1de" stroke="#c95a4f" stroke-width="4"/><circle cx="1170" cy="330" r="90" fill="#e1f2e8" stroke="#4b9a78" stroke-width="4"/>
-<text x="895" y="320" class="t tx b">破骨細胞</text><text x="900" y="350" class="t sm">骨吸収</text>
-<text x="1125" y="320" class="t tx b">骨芽細胞</text><text x="1130" y="350" class="t sm">骨形成</text>
-<path d="M1025 285 C1050 250 1090 250 1110 275" fill="none" stroke="#2d6870" stroke-width="7"/><polygon points="1100,265 1125,275 1107,290" fill="#2d6870"/>
-<path d="M1110 385 C1080 420 1035 420 1010 395" fill="none" stroke="#2d6870" stroke-width="7"/><polygon points="1018,405 995,395 1012,380" fill="#2d6870"/>
-<text x="915" y="465" class="t tx b">骨は常に再形成される</text>
-<rect x="850" y="500" width="470" height="120" rx="18" fill="#eef7f6"/>
-<text x="880" y="540" class="t tx b">ウォルフの法則</text>
-<text x="880" y="578" class="t sm">骨は課せられたストレスに適応する</text>
-<text x="880" y="606" class="t sm">荷重・レジスタンス運動 → 骨密度への刺激</text>
-<rect x="45" y="790" width="1310" height="70" rx="18" fill="#fff4e8"/>
-<text x="75" y="833" class="t tx">皮質骨＝硬く緻密／海綿骨＝密度が低い。骨芽細胞＝形成、破骨細胞＝吸収。</text>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="800" viewBox="0 0 1200 800"><defs><marker id="a" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#6d8587"/></marker></defs><style>.title{font:700 30px sans-serif;fill:#173f43}.sub{font:600 18px sans-serif;fill:#557276}.label{font:600 16px sans-serif;fill:#173f43}.small{font:500 13px sans-serif;fill:#557276}.box{fill:#fff;stroke:#cbdedf;stroke-width:2}.teal{fill:#176b70}.green{stroke:#4c9f84}.blue{stroke:#2867a8}.orange{stroke:#d49b45}.red{stroke:#b54848}.purple{stroke:#76508c}.arrow{stroke:#6d8587;stroke-width:4;fill:none;marker-end:url(#a)}.thin{fill:none;stroke-width:4;stroke-linecap:round}</style><rect x="30" y="30" width="1140" height="740" rx="28" fill="#f7fbfb" stroke="#cbdedf" stroke-width="2"/><text x="70" y="80" class="title">長骨の構造と骨リモデリング</text><text x="70" y="108" class="sub">長骨の基本構造と骨吸収・骨形成のバランス</text>
+<g transform="translate(65 140)"><rect class="box" width="570" height="560" rx="22"/><text x="285" y="42" text-anchor="middle" class="label">長骨の基本構造（縦断面）</text><path d="M220 85 C145 105 125 180 155 235 L205 450 C215 500 175 545 215 565 L355 565 C395 545 355 500 365 450 L415 235 C445 180 425 105 350 85Z" fill="#f3d28d" stroke="#c38a3d" stroke-width="5"/>
+<path d="M225 110 C180 145 175 190 195 225 L235 445 C245 490 215 520 245 535 L325 535 C355 520 325 490 335 445 L375 225 C395 190 390 145 345 110Z" fill="#fff4d8" stroke="#d2a45d" stroke-width="3"/>
+<ellipse cx="285" cy="140" rx="95" ry="48" fill="#f0b5a8" stroke="#c26b63" stroke-width="3"/><ellipse cx="285" cy="520" rx="95" ry="48" fill="#f0b5a8" stroke="#c26b63" stroke-width="3"/>
+<g fill="#e6c274"><circle cx="250" cy="170" r="6"/><circle cx="275" cy="185" r="5"/><circle cx="305" cy="165" r="6"/><circle cx="330" cy="190" r="5"/><circle cx="250" cy="495" r="5"/><circle cx="280" cy="480" r="6"/><circle cx="315" cy="500" r="5"/></g>
+<text x="40" y="125" class="small">骨端</text><line x1="90" y1="130" x2="180" y2="145" class="thin orange"/><text x="40" y="300" class="small">骨幹</text><line x1="90" y1="305" x2="205" y2="330" class="thin orange"/><text x="390" y="280" class="small">皮質骨（緻密骨）</text><line x1="385" y1="285" x2="345" y2="300" class="thin orange"/><text x="390" y="350" class="small">骨髄腔（骨髄）</text><line x1="385" y1="355" x2="335" y2="365" class="thin orange"/><text x="390" y="420" class="small">海綿骨（骨小柱）</text><line x1="385" y1="425" x2="325" y2="470" class="thin orange"/><text x="40" y="585" class="small">骨膜：骨表面を覆う結合組織</text></g>
+<g transform="translate(665 140)"><rect class="box" width="470" height="560" rx="22"/><text x="235" y="42" text-anchor="middle" class="label">骨リモデリング（骨代謝のバランス）</text><circle cx="235" cy="265" r="150" fill="#f8fbfb" stroke="#d6e2e2" stroke-width="3"/><path d="M235 115 A150 150 0 0 1 380 265" class="arrow"/><path d="M380 265 A150 150 0 0 1 235 415" class="arrow"/><path d="M235 415 A150 150 0 0 1 90 265" class="arrow"/><path d="M90 265 A150 150 0 0 1 235 115" class="arrow"/><circle cx="235" cy="180" r="72" fill="#f6d7d7" stroke="#b54848" stroke-width="3"/><text x="235" y="175" text-anchor="middle" class="label">破骨細胞</text><text x="235" y="200" text-anchor="middle" class="small">骨吸収</text><circle cx="235" cy="350" r="72" fill="#dcefe8" stroke="#4c9f84" stroke-width="3"/><text x="235" y="345" text-anchor="middle" class="label">骨芽細胞</text><text x="235" y="370" text-anchor="middle" class="small">骨形成</text><rect x="65" y="455" width="340" height="80" rx="18" fill="#fff2df" stroke="#e4c18e" stroke-width="2"/><text x="235" y="485" text-anchor="middle" class="label">ウォルフの法則</text><text x="235" y="512" text-anchor="middle" class="small">骨は加わる負荷に適応して強くなる</text></g></svg>
