@@ -1,4 +1,4 @@
-const APP_VERSION = "0.2.36";
+const APP_VERSION = "0.2.40";
 
 const QUESTIONS = [
   {
@@ -2733,8 +2733,9 @@ async function checkForAppUpdate() {
   if (status) status.textContent = "最新版を確認しています…";
 
   try {
-    // GitHub Pages/Safariのキャッシュを避けて最新版のバージョン情報を取得。
-    const res = await fetch(`version.json?check=${Date.now()}`, {
+    // version.json は必ずキャッシュを回避して確認する。
+    const checkUrl = `version.json?check=${Date.now()}`;
+    const res = await fetch(checkUrl, {
       cache: "no-store",
       headers: { "Cache-Control": "no-cache" }
     });
@@ -2744,25 +2745,63 @@ async function checkForAppUpdate() {
     const latestVersion = String(latest.version || "").trim();
     if (!latestVersion) throw new Error("version.jsonのバージョン情報がありません。");
 
-    if (compareVersions(latestVersion, currentVersion) > 0) {
-      if (!confirm(`最新版 v${latestVersion} が利用できます。\n\n最新版へ更新しますか？`)) {
-        if (status) status.textContent = `現在のバージョン：v${currentVersion}`;
-        return;
-      }
-      if (status) status.textContent = `v${latestVersion} へ更新しています…`;
-    } else {
-      // 同一バージョンでも、ユーザーが「確認・更新」を押した場合は
-      // 最新ファイルを取り直すために明示的な再読込を行う。
-      if (!confirm(`最新版（v${currentVersion}）を確認しました。\n\n最新ファイルを再読み込みしますか？`)) {
-        if (status) status.textContent = `最新版です（v${currentVersion}）`;
-        return;
-      }
-      if (status) status.textContent = "最新ファイルを再読み込みしています…";
+    if (compareVersions(latestVersion, currentVersion) <= 0) {
+      if (status) status.textContent = `最新版です（v${currentVersion}）`;
+      return;
     }
 
-    // index.html → app.js/style.cssもDate.now()付きで読み込むため、
-    // GitHub Pages/CDN/Safariの古い静的ファイルを掴みにくくする。
-    // 学習データはlocalStorageなので、この再読込では保持される。
+    if (!confirm(`最新版 v${latestVersion} が利用できます。\n\n最新版へ更新しますか？`)) {
+      if (status) status.textContent = `現在のバージョン：v${currentVersion}`;
+      return;
+    }
+
+    if (status) status.textContent = `v${latestVersion} のファイルを取得しています…`;
+
+    // app.js / style.css を「新しいURL」として直接取得し、ブラウザキャッシュを使わせない。
+    // 取得確認後にページを再読み込みするため、旧app.jsのまま表示される問題を防ぐ。
+    const assetBase = new URL(".", window.location.href);
+    const assetNames = ["app.js", "style.css"];
+    for (const assetName of assetNames) {
+      const assetUrl = new URL(assetName, assetBase);
+      assetUrl.searchParams.set("v", latestVersion);
+      assetUrl.searchParams.set("update", String(Date.now()));
+
+      const assetRes = await fetch(assetUrl.toString(), {
+        cache: "no-store",
+        headers: { "Cache-Control": "no-cache" }
+      });
+      if (!assetRes.ok) throw new Error(`${assetName}: HTTP ${assetRes.status}`);
+
+      const assetText = await assetRes.text();
+
+      // app.js は取得したファイルのAPP_VERSIONを確認してから反映する。
+      if (assetName === "app.js") {
+        const match = assetText.match(/const APP_VERSION\s*=\s*"([^"]+)"/);
+        if (!match || compareVersions(match[1], latestVersion) !== 0) {
+          throw new Error(`app.jsのバージョンが一致しません（取得: ${match?.[1] || "不明"} / 最新: ${latestVersion}）`);
+        }
+
+        // Cache Storage に残っている旧ファイルがある環境でも、
+        // 次回読み込み時に新しいURLを優先できるように保存する。
+        if ("caches" in window) {
+          const cache = await caches.open("cptmate-assets-v1");
+          await cache.put(assetUrl.toString(), new Response(assetText, {
+            headers: { "Content-Type": "application/javascript; charset=utf-8" }
+          }));
+        }
+      } else if (assetName === "style.css" && "caches" in window) {
+        const cache = await caches.open("cptmate-assets-v1");
+        await cache.put(assetUrl.toString(), new Response(assetText, {
+          headers: { "Content-Type": "text/css; charset=utf-8" }
+        }));
+      }
+    }
+
+    if (status) status.textContent = `v${latestVersion} を確認しました。再読み込みしています…`;
+
+    // ページ自体も新しいURLで再読み込みする。
+    // app.js/style.cssには同じバージョンのクエリを付けるため、
+    // Safari/GitHub Pagesの古い静的アセットを掴む可能性を下げる。
     const url = new URL(window.location.href);
     url.searchParams.set("update", String(Date.now()));
     url.searchParams.set("v", latestVersion);
@@ -2770,7 +2809,7 @@ async function checkForAppUpdate() {
   } catch (error) {
     console.error("CPTmate update check failed:", error);
     if (status) status.textContent = "更新確認に失敗しました。";
-    alert("最新版を確認できませんでした。\n\nversion.jsonが公開されているか、通信状態を確認してください。");
+    alert(`最新版への更新に失敗しました。\n\n${error.message || error}\n\n通信状態とGitHub Pagesの公開状態を確認してください。`);
   }
 }
 

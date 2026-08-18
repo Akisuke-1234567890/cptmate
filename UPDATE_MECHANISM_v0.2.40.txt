@@ -1,0 +1,24 @@
+CPTmate 更新機構 v0.2.40
+
+今回判明した問題:
+- app.jsのAPP_VERSIONが0.2.36のまま残っていた。
+- version.jsonだけが新しいバージョンを示していた。
+- 更新確認後に現在ページを再読み込みするだけだったため、
+  Safari/GitHub Pagesのキャッシュにより古いapp.jsを再利用する可能性があった。
+- 「更新しますか？」の確認自体は出ても、実際のAPP_VERSIONが変わらない状態が発生した。
+
+修正:
+1. app.jsのAPP_VERSIONをリリースバージョンと同期。
+2. version.jsonをcache:no-storeで取得。
+3. 最新版が存在した場合、app.jsとstyle.cssを最新版URL（?v=バージョン&update=時刻）で直接fetch。
+4. app.jsの取得内容からAPP_VERSIONを抽出し、version.jsonのバージョンと一致することを確認。
+5. 一致しない場合は更新を中断し、エラーとして通知。
+6. 取得確認後、ページURLにもupdate/vパラメータを付けて再読み込み。
+7. Cache Storageが利用可能な場合は、取得した新しいassetを専用キャッシュへ保存。
+8. 学習データlocalStorageは変更しないため、更新によって学習履歴を消さない。
+
+検証ポイント:
+- 起動時表示：v0.2.40
+- 設定画面：現在のバージョン v0.2.40
+- 更新確認時：version.jsonとapp.jsのバージョンが一致
+- 「最新版へ更新しますか？」後に実際のapp.jsも新バージョンになる
