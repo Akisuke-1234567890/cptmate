@@ -1663,7 +1663,7 @@ function renderOptionReview(q) {
 
 
 function ensureFigureStyles() {
-  if (!document.getElementById('cptmate-source-badge-style')) { const st=document.createElement('style'); st.id='cptmate-source-badge-style'; st.textContent=".source-badge{display:inline-flex;align-items:center;margin:0 0 10px 8px;padding:4px 9px;border:1px solid var(--line,#d8dde6);border-radius:999px;font-size:12px;font-weight:700;line-height:1.2;background:var(--card,#fff);color:var(--muted,#667085)}.source-badge.source-mock,.source-badge.source-review{font-weight:800}"; document.head.appendChild(st); }
+  if (!document.getElementById('cptmate-source-badge-style')) { const st=document.createElement('style'); st.id='cptmate-source-badge-style'; st.textContent=".question-info-row{display:flex;align-items:center;justify-content:space-between;min-height:42px;margin:2px 0 8px;}.source-badge-wrap{display:flex;align-items:center;}.source-badge{display:inline-flex;align-items:center;margin:0;padding:4px 9px;border:1px solid var(--line,#d8dde6);border-radius:999px;font-size:12px;font-weight:700;line-height:1.2;background:var(--card,#fff);color:var(--muted,#667085)}.source-badge.source-mock,.source-badge.source-review{font-weight:800}"; document.head.appendChild(st); }
 
   if (document.getElementById("cptmateFigureStyles")) return;
   const style = document.createElement("style");
@@ -2099,12 +2099,13 @@ function renderQuestion() {
         <span>第${q.chapter}章　${q.category}</span>
         <span>この演習：${state.currentIndex + 1} / ${queue.length}</span>
       </div>
-      <div class="bookmark-row">
+      <div class="question-info-row">
+        <div class="source-badge-wrap">${sourceBadge}</div>
         <button class="bookmark" onclick="toggleBookmark('${q.id}')">${bookmarked ? "★" : "☆"}</button>
       </div>
 
       ${questionFigure}
-      <p class="question-text">${sourceBadge}${q.question}</p>
+      <p class="question-text">${q.question}</p>
       <div>${choices}</div>
       ${result}
     </section>
