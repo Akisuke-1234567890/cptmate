@@ -1,4 +1,4 @@
-const APP_VERSION = "0.2.31";
+const APP_VERSION = "0.2.32";
 
 const QUESTIONS = [
   {
@@ -2185,33 +2185,48 @@ function compareVersions(a, b) {
 
 async function checkForAppUpdate() {
   const status = document.getElementById("updateStatus");
+  const currentVersion = APP_VERSION;
   if (status) status.textContent = "最新版を確認しています…";
 
   try {
-    const res = await fetch(`version.json?ts=${Date.now()}`, { cache: "no-store" });
+    // GitHub Pages/Safariのキャッシュを避けて最新版のバージョン情報を取得。
+    const res = await fetch(`version.json?check=${Date.now()}`, {
+      cache: "no-store",
+      headers: { "Cache-Control": "no-cache" }
+    });
     if (!res.ok) throw new Error(`HTTP ${res.status}`);
+
     const latest = await res.json();
     const latestVersion = String(latest.version || "").trim();
-
     if (!latestVersion) throw new Error("version.jsonのバージョン情報がありません。");
 
-    if (compareVersions(latestVersion, APP_VERSION) > 0) {
+    if (compareVersions(latestVersion, currentVersion) > 0) {
       if (!confirm(`最新版 v${latestVersion} が利用できます。\n\n最新版へ更新しますか？`)) {
-        if (status) status.textContent = `現在のバージョン：v${APP_VERSION}`;
+        if (status) status.textContent = `現在のバージョン：v${currentVersion}`;
         return;
       }
-
       if (status) status.textContent = `v${latestVersion} へ更新しています…`;
-      location.replace(`${location.pathname}?update=${Date.now()}${location.hash}`);
-      return;
+    } else {
+      // 同一バージョンでも、ユーザーが「確認・更新」を押した場合は
+      // 最新ファイルを取り直すために明示的な再読込を行う。
+      if (!confirm(`最新版（v${currentVersion}）を確認しました。\n\n最新ファイルを再読み込みしますか？`)) {
+        if (status) status.textContent = `最新版です（v${currentVersion}）`;
+        return;
+      }
+      if (status) status.textContent = "最新ファイルを再読み込みしています…";
     }
 
-    if (status) status.textContent = `最新版です（v${APP_VERSION}）`;
-    alert(`最新版です。現在のバージョンは v${APP_VERSION} です。`);
+    // index.html → app.js/style.cssもDate.now()付きで読み込むため、
+    // GitHub Pages/CDN/Safariの古い静的ファイルを掴みにくくする。
+    // 学習データはlocalStorageなので、この再読込では保持される。
+    const url = new URL(window.location.href);
+    url.searchParams.set("update", String(Date.now()));
+    url.searchParams.set("v", latestVersion);
+    window.location.replace(url.toString());
   } catch (error) {
-    console.error(error);
-    if (status) status.textContent = "更新確認に失敗しました。通信状態を確認してください。";
-    alert("最新版を確認できませんでした。\n通信状態を確認して、もう一度お試しください。");
+    console.error("CPTmate update check failed:", error);
+    if (status) status.textContent = "更新確認に失敗しました。";
+    alert("最新版を確認できませんでした。\n\nversion.jsonが公開されているか、通信状態を確認してください。");
   }
 }
 

@@ -1,6 +1,6 @@
 {
-  "version": "0.2.7",
-  "name": "CPTmate",
-  "releasedAt": "2026-08-17",
-  "updateNote": "解答済み問題を再挑戦可能に変更。after図を解説欄へ移動し、図をタップして全画面拡大表示できるよう改善。"
+  "version": "0.2.32",
+  "app": "CPTmate",
+  "releasedAt": "2026-08-18",
+  "updateMode": "github-pages-cache-busted-reload"
 }
