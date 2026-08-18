@@ -1,4 +1,4 @@
-v0.2.32 原因特定・修正
+v0.2.33 原因特定・修正
 - 初回の問題演習画面だけ、章選択・大分類が灰色のピル状表示になる現象を確認。
 - 原因：現在の新しい問題選択CSS（chapter-select-item / practice-select-item）がensureFigureStyles()内に入っており、初回の問題演習画面ではCSS注入前に描画されていた。
 - 問題を一度解いた後はensureFigureStyles()が実行済みになるため、2回目は正しいカード表示になっていた。

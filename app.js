@@ -1,4 +1,4 @@
-const APP_VERSION = "0.2.32";
+const APP_VERSION = "0.2.33";
 
 const QUESTIONS = [
   {
@@ -1991,6 +1991,7 @@ function nextQuestion() {
   const queue = getPracticeQuestions();
   if (state.currentIndex >= queue.length - 1) {
     practiceCompleted = true;
+    state.lastViewed = "practice-complete";
     saveState();
     renderPracticeComplete();
     return;
@@ -2157,9 +2158,11 @@ function renderSettings() {
     <div class="back-row"><h2>設定</h2></div>
     <section class="card">
       <h3>データ</h3>
-      <p style="color:var(--muted);line-height:1.7;">v0.1では学習データをこのiPhoneのブラウザ内に保存しています。正式版ではバックアップ書き出し・復元を追加します。</p>
+      <p style="color:var(--muted);line-height:1.7;">学習データはこのiPhoneのブラウザ内に保存されます。必要に応じてバックアップ・復元ができます。</p>
       <button class="secondary-btn full" onclick="exportBackup()">現在の学習データをバックアップ</button>
+      <button class="secondary-btn full" onclick="importBackup()">バックアップから復元</button>
       <button class="secondary-btn full" onclick="renderFigureGallery()">図・イラスト一覧</button>
+      <input id="backupFileInput" type="file" accept="application/json,.json" style="display:none" onchange="importBackupFile(event)">
       <button class="secondary-btn full" onclick="resetProgress()">学習データをリセット</button>
     </section>
     <section class="card">
@@ -2244,6 +2247,41 @@ function exportBackup() {
   a.download = `CPTmate_backup_${new Date().toISOString().slice(0,10)}.json`;
   a.click();
   URL.revokeObjectURL(url);
+}
+
+function importBackup() {
+  const input = document.getElementById("backupFileInput");
+  if (input) input.click();
+}
+
+function importBackupFile(event) {
+  const file = event.target.files?.[0];
+  if (!file) return;
+  const reader = new FileReader();
+  reader.onload = () => {
+    try {
+      const payload = JSON.parse(String(reader.result || ""));
+      if (!payload || payload.app !== "CPTmate" || !payload.state) {
+        throw new Error("invalid backup");
+      }
+      if (!confirm("バックアップの学習データで現在の学習データを置き換えます。よろしいですか？")) return;
+      state = {
+        ...defaultState,
+        ...payload.state,
+        answers: { ...(payload.state.answers || {}) },
+        bookmarks: { ...(payload.state.bookmarks || {}) }
+      };
+      saveState();
+      renderSettings();
+      alert("学習データを復元しました。");
+    } catch (error) {
+      console.error("CPTmate backup restore failed:", error);
+      alert("バックアップを読み込めませんでした。CPTmateで作成したバックアップJSONを選択してください。");
+    } finally {
+      event.target.value = "";
+    }
+  };
+  reader.readAsText(file);
 }
 
 function resetProgress() {
