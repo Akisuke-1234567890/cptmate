@@ -1,4 +1,4 @@
-const APP_VERSION = "0.2.45";
+const APP_VERSION = "0.2.46";
 
 const QUESTIONS = [
   {
@@ -1068,6 +1068,9 @@ const QUESTIONS = [
   }
 ]
 
+const ALL_QUESTIONS = [...QUESTIONS, ...ADDITIONAL_QUESTIONS];
+let practiceQueue = [];
+
 const STORAGE_KEY = "cptmate_v01_state";
 
 const defaultState = {
@@ -1080,7 +1083,7 @@ const defaultState = {
 let state = loadState();
 state.lastViewed = "home";
 saveState();
-let practiceQueue = [{
+const ADDITIONAL_QUESTIONS = [{
   "id": "ch1-review-001",
   "chapter": 1,
   "category": "章末確認・筋系",
@@ -1705,18 +1708,18 @@ function renderHome() {
     <div class="section-title"><h2>現在のコンテンツ</h2></div>
     <section class="card">
       <h3>第1章：筋系、神経系、骨格系</h3>
-      <p style="color:var(--muted);line-height:1.7;margin:0;">第1章の問題演習を拡張中。今後、ケーススタディ・図問題・復習機能を順次強化します。</p>
+      <p style="color:var(--muted);line-height:1.7;margin:0;">第1章の問題演習、ケーススタディ、図問題、復習機能を収録しています。</p>
     </section>
   `;
 }
 
 function startPractice(index = 0) {
-  const ids = QUESTIONS.map(q => q.id);
+  const ids = ALL_QUESTIONS.map(q => q.id);
   startPracticeQueue(ids, "第1章すべて", index);
 }
 
 function startPracticeQueue(ids, label, index = 0) {
-  practiceQueue = ids.filter(id => QUESTIONS.some(q => q.id === id));
+  practiceQueue = ids.filter(id => ALL_QUESTIONS.some(q => q.id === id));
   practiceLabel = label || "問題演習";
   practiceSessionAnswers = {};
   practiceCompleted = false;
@@ -1731,8 +1734,8 @@ function startPracticeQueue(ids, label, index = 0) {
 }
 
 function getPracticeQuestions() {
-  const ids = practiceQueue.length ? practiceQueue : QUESTIONS.map(q => q.id);
-  return ids.map(id => QUESTIONS.find(q => q.id === id)).filter(Boolean);
+  const ids = practiceQueue.length ? practiceQueue : ALL_QUESTIONS.map(q => q.id);
+  return ids.map(id => ALL_QUESTIONS.find(q => q.id === id)).filter(Boolean);
 }
 
 function openPracticeSelectorClean() {
@@ -1792,8 +1795,8 @@ function buildRandomPracticeIds(questions, targetCount) {
 
 function startRandomPractice(scope, targetCount) {
   const questions = scope === "all"
-    ? QUESTIONS
-    : QUESTIONS.filter(q => q.chapter === Number(scope));
+    ? ALL_QUESTIONS
+    : ALL_QUESTIONS.filter(q => q.chapter === Number(scope));
   if (!questions.length) {
     alert("この条件に該当する問題がありません。");
     return;
@@ -1821,9 +1824,9 @@ function renderPracticeSelector(selectedChapter = null) {
   state.lastViewed = "practice-selector";
   saveState();
   setActiveNav("practice");
-  const chapters = [...new Set(QUESTIONS.map(q => q.chapter))].sort((a,b) => a-b);
+  const chapters = [...new Set(ALL_QUESTIONS.map(q => q.chapter))].sort((a,b) => a-b);
   const chapter = selectedChapter || chapters[0] || 1;
-  const chapterQuestions = QUESTIONS.filter(q => q.chapter === chapter);
+  const chapterQuestions = ALL_QUESTIONS.filter(q => q.chapter === chapter);
 
   // 第1章問題数の実データを基準に表示する。
   // 開発中に「バージョンだけ更新されて問題データが古い」状態を検知できるようにする。
@@ -1885,7 +1888,7 @@ function renderPracticeSelector(selectedChapter = null) {
     <section class="card practice-selector-card">
       <div class="selector-section-title">章を選択</div>
       <div class="chapter-select-list">${chapters.map(ch => `
-        <button class="chapter-select-item ${ch === chapter ? "active" : ""}" onclick="renderPracticeSelector(${ch})"><strong>第${ch}章</strong><span>${QUESTIONS.filter(q => q.chapter === ch).length}問</span></button>
+        <button class="chapter-select-item ${ch === chapter ? "active" : ""}" onclick="renderPracticeSelector(${ch})"><strong>第${ch}章</strong><span>${ALL_QUESTIONS.filter(q => q.chapter === ch).length}問</span></button>
       `).join("")}</div>
       <div class="selector-kicker" style="margin-top:16px;">選択中：第${chapter}章</div>
       <h3>どこから解きますか？</h3>
@@ -1926,7 +1929,7 @@ function renderPracticeSelector(selectedChapter = null) {
 }
 
 function startPracticeRange(chapter) {
-  const all = QUESTIONS.filter(q => q.chapter === chapter);
+  const all = ALL_QUESTIONS.filter(q => q.chapter === chapter);
   const start = Math.max(1, parseInt(document.getElementById("rangeStart")?.value || "1", 10));
   const end = Math.min(all.length, parseInt(document.getElementById("rangeEnd")?.value || String(all.length), 10));
   if (start > end) { alert("開始番号は終了番号以下にしてください。"); return; }
@@ -2237,8 +2240,7 @@ function renderQuestionFigure(q, mode = "default") {
   if (!q.image) return "";
   ensureFigureStyles();
   const caption = q.figureCaption || ({
-    "assets/figures/sarcomere_fig1_4.svg": "サルコメア・アクチン・ミオシンと各帯の関係",
-    "assets/figures/sarcomere_fig1_4.svg": "フィラメント滑走説：収縮前と収縮後の比較",
+    "assets/figures/sarcomere_fig1_4.svg": "サルコメア・アクチン・ミオシンとフィラメント滑走の関係",
     "assets/figures/contraction_fig1_5.svg": "神経から筋収縮までの流れ",
     "assets/figures/neuron.svg": "神経細胞の基本構造",
     "assets/figures/spindle_gto_fig1_7.svg": "筋紡錘とゴルジ腱器官の役割",
@@ -2564,7 +2566,7 @@ function wrongCount() {
 
 function renderReview() {
   setActiveNav("review");
-  const wrong = QUESTIONS.filter(q => state.answers[q.id] && !state.answers[q.id].correct);
+  const wrong = ALL_QUESTIONS.filter(q => state.answers[q.id] && !state.answers[q.id].correct);
 
   screenEl().innerHTML = `
     <div class="back-row"><h2>復習</h2></div>
@@ -2583,7 +2585,7 @@ function renderReview() {
 
 function renderFavorites() {
   setActiveNav("favorites");
-  const favorites = QUESTIONS.filter(q => state.bookmarks[q.id]);
+  const favorites = ALL_QUESTIONS.filter(q => state.bookmarks[q.id]);
 
   screenEl().innerHTML = `
     <div class="back-row"><h2>お気に入り</h2></div>
@@ -2601,13 +2603,13 @@ function renderFavorites() {
 }
 
 function startSpecific(id) {
-  const q = QUESTIONS.find(q => q.id === id);
+  const q = ALL_QUESTIONS.find(q => q.id === id);
   if (q) startPracticeQueue([q.id], `${q.category}・1問`);
 }
 
 function renderStats() {
   setActiveNav("stats");
-  const total = QUESTIONS.length;
+  const total = ALL_QUESTIONS.length;
   const answered = answeredCount();
   const correct = correctCount();
 
@@ -2644,7 +2646,7 @@ const FIGURE_LIBRARY = {
 
 function getFigureCatalog() {
   const used = {};
-  QUESTIONS.forEach(q => {
+  ALL_QUESTIONS.forEach(q => {
     if (!q.figureId || !FIGURE_LIBRARY[q.figureId]) return;
     used[q.figureId] ??= [];
     used[q.figureId].push(q.id);
@@ -2718,7 +2720,7 @@ function renderSettings() {
     </section>
     <section class="card">
       <h3>アプリ情報</h3>
-      <p style="margin:0 0 14px;color:var(--muted);">CPTmate v${APP_VERSION}<br>GitHub Pages向け試作版<br>第1章収録問題：${QUESTIONS.filter(q => q.chapter === 1).length}問</p>
+      <p style="margin:0 0 14px;color:var(--muted);">CPTmate v${APP_VERSION}<br>GitHub Pages向け試作版<br>第1章収録問題：${ALL_QUESTIONS.filter(q => q.chapter === 1).length}問</p>
       <button class="primary-btn full" onclick="checkForAppUpdate()">最新版を確認・更新</button>
       <p id="updateStatus" style="margin:10px 0 0;color:var(--muted);font-size:13px;text-align:center;">現在のバージョン：v${APP_VERSION}</p>
     </section>
