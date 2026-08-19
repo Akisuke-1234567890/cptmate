@@ -2661,14 +2661,8 @@ let practiceQueue = [];
 let practiceLabel = "第1章すべて";
 let practiceSessionAnswers = {};
 let practiceCompleted = false;
-let practiceRetrying = new Set();
 
-/* v0.2.73: 演習途中セッションを復旧。
- * - 下帯・戻る・演習選択への移動時に確認を出す。
- * - 問題列、現在位置、途中回答をlocalStorageへ保存。
- * - 完了した演習は途中セッションから外す。
- * - 既存のanswers/bookmarksはリセットしない。
- */
+/* v0.2.73: 演習途中保存・再開・離脱確認を復旧。 */
 function getSavedPracticeSession() {
   const s = state && state.practiceSession;
   if (!s || s.completed || !Array.isArray(s.queue) || !s.queue.length) return null;
@@ -2711,14 +2705,11 @@ function restorePracticeSession() {
   practiceLabel = saved.label;
   practiceSessionAnswers = { ...saved.answers };
   practiceCompleted = false;
-  practiceRetrying = new Set();
   state.currentIndex = saved.currentIndex;
   return true;
 }
 
-function hasActivePracticeSession() {
-  return !!getSavedPracticeSession();
-}
+function hasActivePracticeSession() { return !!getSavedPracticeSession(); }
 
 function pausePracticeSession() {
   if (!practiceQueue.length) return;
@@ -2741,7 +2732,6 @@ function discardPracticeSession() {
   practiceLabel = "第1章すべて";
   practiceSessionAnswers = {};
   practiceCompleted = false;
-  practiceRetrying = new Set();
   state.currentIndex = 0;
   state.practiceSession = null;
   saveState();
@@ -2764,24 +2754,10 @@ function loadState() {
   try {
     const saved = JSON.parse(localStorage.getItem(STORAGE_KEY));
     return saved ? { ...defaultState, ...saved } : { ...defaultState };
-  } catch {
-    return { ...defaultState };
-  }
+  } catch { return { ...defaultState }; }
 }
 
-function saveState() {
-  localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
-}
-
-/*
- * v0.2.58: 学習記録を「問題データ」から独立して維持するための正規化。
- * - 過去のanswers / bookmarksは削除しない。
- * - 現在存在する問題IDの記録だけを各種集計へ利用する。
- * - 将来問題IDを変更する場合はQUESTION_ID_ALIASESに旧ID→新IDを登録する。
- * - 新機能の表示値は保存せず、常に現在の問題データ＋answersから再計算する。
- */
-const STATE_SCHEMA_VERSION = 2;
-const QUESTION_ID_ALIASES = {};
+function saveState() { localStorage.setItem(STORAGE_KEY, JSON.stringify(state)); }
 
 function migrateStateToCurrentSchema() {
   const originalAnswers = (state.answers && typeof state.answers === "object")
@@ -3201,23 +3177,14 @@ function startPracticeQueue(ids, label, index = 0) {
   practiceQueue = ids.filter(id => ALL_QUESTIONS.some(q => q.id === id));
   practiceLabel = label || "問題演習";
   practiceSessionAnswers = {};
-  practiceRetrying = new Set();
   practiceCompleted = false;
-  if (!practiceQueue.length) {
-    alert("この条件に該当する問題がありません。");
-    return;
-  }
+  if (!practiceQueue.length) { alert("この条件に該当する問題がありません。"); return; }
   state.currentIndex = Math.max(0, Math.min(index, practiceQueue.length - 1));
   state.lastViewed = "practice";
   state.practiceSession = {
-    active: true,
-    queue: [...practiceQueue],
-    label: practiceLabel,
-    currentIndex: state.currentIndex,
-    answers: {},
-    startedAt: new Date().toISOString(),
-    pausedAt: null,
-    completed: false
+    active: true, queue: [...practiceQueue], label: practiceLabel,
+    currentIndex: state.currentIndex, answers: {},
+    startedAt: new Date().toISOString(), pausedAt: null, completed: false
   };
   saveState();
   renderQuestion();
@@ -3306,17 +3273,27 @@ function renderPracticeSelector(selectedChapter = null) {
   // 問題選択画面で使用するスタイルはensureFigureStyles内に定義されているため、
   // 初回表示でもCSS注入前に描画されないよう、innerHTMLより前に確実に注入する。
   ensureFigureStyles();
-  // 問題選択画面を開いた時は、前回の演習状態を持ち込まない。
-  // ホームから初回に開いた場合と、問題を解いて戻った場合で表示が変わらないようにする。
+  // 途中セッションは破棄せず、選択画面から再開できるようにする。
   practiceQueue = [];
   practiceLabel = "第1章すべて";
   practiceSessionAnswers = {};
   practiceCompleted = false;
-  state.currentIndex = 0;
   state.lastViewed = "practice-selector";
   saveState();
   setActiveNav("practice");
   const chapters = [...new Set(ALL_QUESTIONS.map(q => q.chapter))].sort((a,b) => a-b);
+  const savedSession = getSavedPracticeSession();
+  const resumeCard = savedSession ? `
+    <section class="card" style="border:2px solid rgba(15,95,99,.18);">
+      <h3>途中の演習があります</h3>
+      <p style="color:var(--muted);line-height:1.7;margin-top:0;">
+        ${savedSession.label}<br>
+        ${Math.min(savedSession.currentIndex + 1, savedSession.queue.length)} / ${savedSession.queue.length} 問から再開できます。
+      </p>
+      <button class="primary-btn full" onclick="resumePracticeSession()">途中から再開する</button>
+      <button class="secondary-btn full" onclick="discardPracticeSession(); renderPracticeSelector()">途中の演習を破棄して新しく始める</button>
+    </section>
+  ` : "";
   const chapter = selectedChapter || chapters[0] || 1;
   const chapterQuestions = ALL_QUESTIONS.filter(q => q.chapter === chapter);
 
@@ -3372,6 +3349,7 @@ function renderPracticeSelector(selectedChapter = null) {
 
   screenEl().innerHTML = `
     <div class="back-row"><button class="back-btn" onclick="renderHome()">‹</button><h2>問題演習</h2></div>
+    ${resumeCard}
     <section class="card practice-selector-card">
       <div class="selector-section-title">章を選択</div>
       <div class="chapter-select-list">${chapters.map(ch => `
@@ -4025,8 +4003,6 @@ function retryQuestion() {
   const queue = getPracticeQuestions();
   const q = queue[state.currentIndex];
   delete practiceSessionAnswers[q.id];
-  practiceRetrying.add(q.id);
-  syncPracticeSessionToState(true);
   renderQuestion();
 }
 
@@ -4035,14 +4011,9 @@ function answerQuestion(selected) {
   const queue = getPracticeQuestions();
   const q = queue[state.currentIndex];
   const correct = selected === q.answer;
-  const record = {
-    selected,
-    correct,
-    answeredAt: new Date().toISOString()
-  };
+  const record = { selected, correct, answeredAt: new Date().toISOString() };
   state.answers[q.id] = record;
   practiceSessionAnswers[q.id] = record;
-  practiceRetrying.delete(q.id);
   syncPracticeSessionToState(true);
   renderQuestion();
 }
@@ -4060,7 +4031,6 @@ function nextQuestion() {
   if (state.currentIndex >= queue.length - 1) {
     practiceCompleted = true;
     state.lastViewed = "practice-complete";
-    if (state.practiceSession) state.practiceSession.completed = true;
     state.practiceSession = null;
     saveState();
     renderPracticeComplete();
@@ -4415,8 +4385,7 @@ document.querySelectorAll(".nav-btn").forEach(btn => {
   btn.addEventListener("click", () => {
     const nav = btn.dataset.nav;
     const destination = () => {
-      if (nav === "home") mergeHomeAndStatsNavigation();
-      if (nav === "home") renderHome();
+      if (nav === "home") { mergeHomeAndStatsNavigation(); renderHome(); }
       if (nav === "favorites") renderFavorites();
       if (nav === "practice") renderPracticeSelector();
       if (nav === "review") renderReview();
