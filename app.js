@@ -3,6 +3,7 @@ const APP_VERSION = "0.2.63";
 /* v0.2.63: home logo placement + startup splash/crossfade */
 const CPTMATE_BRAND_LOGO = "assets/branding/cptmate-horizontal-logo.png";
 const CPTMATE_BRAND_ICON = "assets/branding/cptmate-app-icon.png";
+const CPTMATE_SPLASH_MARK = CPTMATE_BRAND_ICON;
 
 (function installCPTmateBrandingAndStartup() {
   const installIconLinks = () => {
@@ -139,7 +140,7 @@ const CPTMATE_BRAND_ICON = "assets/branding/cptmate-app-icon.png";
     splash.setAttribute("aria-live", "polite");
     splash.innerHTML = `
       <div class="cptmate-startup-splash__inner">
-        <img class="cptmate-startup-splash__logo" src="${CPTMATE_BRAND_LOGO}" alt="CPTmate" decoding="async" />
+        <img class="cptmate-startup-splash__logo" src="${CPTMATE_SPLASH_MARK}" alt="CPTmate" decoding="async" />
         <div class="cptmate-startup-splash__loader" aria-hidden="true"></div>
         <p class="cptmate-startup-splash__message">起動しています…</p>
       </div>
@@ -166,36 +167,34 @@ const CPTMATE_BRAND_ICON = "assets/branding/cptmate-app-icon.png";
   };
 })();
 
-/* v0.2.61: bottom navigation — 4 items, fixed order and equal-width grid */
+/* v0.2.64: bottom navigation — restore approved 4-item layout */
 (function installCPTmateBottomNavFix() {
   const apply = () => {
-    const buttons = Array.from(document.querySelectorAll(".nav-btn"));
-    if (!buttons.length) return;
+    const nav = document.querySelector(".bottom-nav");
+    if (!nav) return;
 
-    let nav = buttons[0].parentElement;
-    while (nav && nav !== document.body) {
-      if (buttons.every(btn => nav.contains(btn))) break;
-      nav = nav.parentElement;
-    }
-    if (!nav || nav === document.body) nav = buttons[0].parentElement;
+    const buttons = Array.from(nav.querySelectorAll(".nav-btn"));
+    const byKey = Object.fromEntries(buttons.map(btn => [btn.dataset.nav, btn]));
 
-    // 下帯は「ホーム・復習・お気に入り・設定」の4項目に固定。
+    // Approved order: Home / Review / Favorites / Settings.
     const navOrder = ["home", "review", "favorites", "settings"];
+
+    // Remove the legacy stats button from layout entirely.
+    const statsButton = byKey.stats;
+    if (statsButton) statsButton.remove();
+
     navOrder.forEach(key => {
-      const btn = buttons.find(item => item.dataset.nav === key);
+      const btn = byKey[key];
       if (btn) nav.appendChild(btn);
     });
-
-    // 学習状況ボタンが残っている旧HTMLにも対応して完全に非表示。
-    const statsButton = buttons.find(item => item.dataset.nav === "stats");
-    if (statsButton) statsButton.style.setProperty("display", "none", "important");
 
     nav.style.setProperty("position", "fixed", "important");
     nav.style.setProperty("left", "0", "important");
     nav.style.setProperty("right", "0", "important");
     nav.style.setProperty("bottom", "0", "important");
-    nav.style.setProperty("width", "100vw", "important");
+    nav.style.setProperty("width", "100%", "important");
     nav.style.setProperty("max-width", "none", "important");
+    nav.style.setProperty("height", "auto", "important");
     nav.style.setProperty("margin", "0", "important");
     nav.style.setProperty("transform", "none", "important");
     nav.style.setProperty("z-index", "9999", "important");
@@ -203,21 +202,47 @@ const CPTMATE_BRAND_ICON = "assets/branding/cptmate-app-icon.png";
     nav.style.setProperty("display", "grid", "important");
     nav.style.setProperty("grid-template-columns", "repeat(4, minmax(0, 1fr))", "important");
     nav.style.setProperty("align-items", "stretch", "important");
-    nav.style.setProperty("padding-bottom", "env(safe-area-inset-bottom)", "important");
+    nav.style.setProperty("padding", "0 0 env(safe-area-inset-bottom)", "important");
 
-    buttons.forEach(btn => {
-      if (btn === statsButton) return;
+    navOrder.forEach(key => {
+      const btn = byKey[key];
+      if (!btn) return;
+
       btn.style.setProperty("display", "flex", "important");
+      btn.style.setProperty("flex-direction", "column", "important");
+      btn.style.setProperty("align-items", "center", "important");
+      btn.style.setProperty("justify-content", "center", "important");
       btn.style.setProperty("width", "100%", "important");
       btn.style.setProperty("min-width", "0", "important");
-      btn.style.setProperty("flex", "none", "important");
-      btn.style.setProperty("box-sizing", "border-box", "important");
+      btn.style.setProperty("height", "68px", "important");
+      btn.style.setProperty("min-height", "68px", "important");
+      btn.style.setProperty("padding", "7px 2px 6px", "important");
       btn.style.setProperty("margin", "0", "important");
+      btn.style.setProperty("gap", "3px", "important");
+      btn.style.setProperty("box-sizing", "border-box", "important");
+      btn.style.setProperty("flex", "none", "important");
+      btn.style.setProperty("text-align", "center", "important");
+
+      const icon = btn.querySelector("span");
+      const label = btn.querySelector("small");
+
+      if (icon) {
+        icon.style.setProperty("display", "block", "important");
+        icon.style.setProperty("font-size", "22px", "important");
+        icon.style.setProperty("line-height", "1", "important");
+        icon.style.setProperty("height", "24px", "important");
+      }
+      if (label) {
+        label.style.setProperty("display", "block", "important");
+        label.style.setProperty("font-size", "10px", "important");
+        label.style.setProperty("line-height", "1.2", "important");
+        label.style.setProperty("white-space", "nowrap", "important");
+      }
     });
 
     document.body.style.setProperty(
       "padding-bottom",
-      "calc(78px + env(safe-area-inset-bottom))",
+      "calc(68px + env(safe-area-inset-bottom))",
       "important"
     );
   };
@@ -3574,10 +3599,7 @@ document.querySelectorAll(".nav-btn").forEach(btn => {
   btn.addEventListener("click", () => {
     const nav = btn.dataset.nav;
     if (nav === "home") mergeHomeAndStatsNavigation();
-renderHome();
-if (typeof window.__cptmateFinishSplash === "function") {
-  window.__cptmateFinishSplash();
-}
+    if (nav === "home") renderHome();
     if (nav === "favorites") renderFavorites();
     if (nav === "practice") renderPracticeSelector();
     if (nav === "review") renderReview();
@@ -3588,3 +3610,6 @@ if (typeof window.__cptmateFinishSplash === "function") {
 
 
 renderHome();
+if (typeof window.__cptmateFinishSplash === "function") {
+  window.__cptmateFinishSplash();
+}

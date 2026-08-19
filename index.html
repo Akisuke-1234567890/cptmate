@@ -1,17 +1,17 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-  <meta name="cptmate-build" content="0.2.63-home-logo-splash">
+  <meta name="cptmate-build" content="0.2.64-home-logo-splash">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
   <meta name="theme-color" content="#0f5f63">
   <title>CPTmate</title>
-  <link rel="stylesheet" href="style.css?v=0.2.63">
+  <link rel="stylesheet" href="style.css?v=0.2.64">
   <style>
     html,body{background:#f7fbfb;}
     #cptmate-startup-splash{position:fixed;inset:0;z-index:20000;display:flex;align-items:center;justify-content:center;background:#f7fbfb;}
     #cptmate-startup-splash .splash-inner{width:min(86vw,380px);display:flex;flex-direction:column;align-items:center;gap:22px;transform:translateY(-2vh);}
-    #cptmate-startup-splash img{display:block;width:min(330px,78vw);height:auto;max-height:100px;object-fit:contain;animation:cptmatePreloadPulse 1.15s ease-in-out infinite;}
+    #cptmate-startup-splash img{display:block;width:min(132px,34vw);height:auto;max-height:132px;object-fit:contain;animation:cptmatePreloadPulse 1.15s ease-in-out infinite;}
     #cptmate-startup-splash .splash-loader{width:34px;height:34px;border-radius:50%;border:3px solid rgba(15,95,99,.14);border-top-color:#0f5f63;animation:cptmatePreloadSpin .85s linear infinite;}
     #cptmate-startup-splash p{margin:-8px 0 0;color:#718486;font-size:12px;font-weight:700;letter-spacing:.08em;}
     @keyframes cptmatePreloadPulse{0%,100%{opacity:.92;transform:scale(.985)}50%{opacity:1;transform:scale(1)}}
@@ -22,7 +22,7 @@
 <body>
   <div id="cptmate-startup-splash" role="status" aria-live="polite">
     <div class="splash-inner">
-      <img src="assets/branding/cptmate-horizontal-logo.png" alt="CPTmate" decoding="async">
+      <img src="assets/branding/cptmate-app-icon.png" alt="CPTmate" decoding="async">
       <div class="splash-loader" aria-hidden="true"></div>
       <p>起動しています…</p>
     </div>
@@ -38,16 +38,15 @@
 
     <nav class="bottom-nav" aria-label="メインナビゲーション">
       <button data-nav="home" class="nav-btn active"><span>⌂</span><small>ホーム</small></button>
-      <button data-nav="favorites" class="nav-btn"><span>☆</span><small>お気に入り</small></button>
       <button data-nav="review" class="nav-btn"><span>↻</span><small>復習</small></button>
-      <button data-nav="stats" class="nav-btn"><span>▥</span><small>学習状況</small></button>
+      <button data-nav="favorites" class="nav-btn"><span>☆</span><small>お気に入り</small></button>
       <button data-nav="settings" class="nav-btn"><span>⚙</span><small>設定</small></button>
     </nav>
   </div>
 
   <script>
     const appScript = document.createElement("script");
-    appScript.src = `app.js?v=0.2.63&t=${Date.now()}`;
+    appScript.src = `app.js?v=0.2.64&t=${Date.now()}`;
     document.body.appendChild(appScript);
   </script>
 </body>
