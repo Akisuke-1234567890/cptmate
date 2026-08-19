@@ -1,17 +1,17 @@
-const APP_VERSION = "0.2.62";
+const APP_VERSION = "0.2.63";
 
-/* v0.2.62: CPTmate approved brand integration */
-(function installCPTmateBranding() {
-  const BRAND_ICON = "assets/branding/cptmate-app-icon.png";
-  const BRAND_LOGO = "assets/branding/cptmate-horizontal-logo.png";
+/* v0.2.63: home logo placement + startup splash/crossfade */
+const CPTMATE_BRAND_LOGO = "assets/branding/cptmate-horizontal-logo.png";
+const CPTMATE_BRAND_ICON = "assets/branding/cptmate-app-icon.png";
 
+(function installCPTmateBrandingAndStartup() {
   const installIconLinks = () => {
     const head = document.head;
     if (!head) return;
     if (!document.querySelector('link[data-cptmate-brand-icon="true"]')) {
       const link = document.createElement("link");
       link.rel = "apple-touch-icon";
-      link.href = BRAND_ICON;
+      link.href = CPTMATE_BRAND_ICON;
       link.dataset.cptmateBrandIcon = "true";
       head.appendChild(link);
     }
@@ -24,71 +24,147 @@ const APP_VERSION = "0.2.62";
     }
   };
 
-  const installHeaderLogo = () => {
-    const topbar = document.querySelector(".topbar");
-    if (!topbar) return;
-    const brandTarget = topbar.firstElementChild;
-    if (!brandTarget) return;
-    if (brandTarget.querySelector(".cptmate-brand-logo")) return;
-
-    brandTarget.innerHTML = "";
-    const img = document.createElement("img");
-    img.className = "cptmate-brand-logo";
-    img.src = BRAND_LOGO;
-    img.alt = "CPTmate — NSCA-CPT LEARNING";
-    img.decoding = "async";
-    img.loading = "eager";
-    brandTarget.appendChild(img);
-
-    brandTarget.style.setProperty("display", "flex", "important");
-    brandTarget.style.setProperty("align-items", "center", "important");
-    brandTarget.style.setProperty("min-width", "0", "important");
-    brandTarget.style.setProperty("width", "100%", "important");
-  };
-
   const installStyle = () => {
-    if (document.getElementById("cptmate-branding-style-v062")) return;
+    if (document.getElementById("cptmate-branding-style-v063")) return;
     const style = document.createElement("style");
-    style.id = "cptmate-branding-style-v062";
+    style.id = "cptmate-branding-style-v063";
     style.textContent = `
-      .cptmate-brand-logo {
-        display: block !important;
-        width: min(300px, 78vw) !important;
-        height: auto !important;
-        max-height: 58px !important;
-        object-fit: contain !important;
-        object-position: left center !important;
-        margin: 0 !important;
-      }
+      /* Header logo is intentionally not fixed. The official logo lives at the top of Home content. */
       .topbar {
-        background: #f7fbfb !important;
+        display: none !important;
+      }
+      .cptmate-home-logo-wrap {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 6px 0 16px;
+      }
+      .cptmate-home-logo {
+        display: block;
+        width: min(300px, 78vw);
+        height: auto;
+        max-height: 64px;
+        object-fit: contain;
+        object-position: center;
+      }
+      .cptmate-startup-splash {
+        position: fixed;
+        inset: 0;
+        z-index: 20000;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: #f7fbfb;
+        opacity: 1;
+        visibility: visible;
+        pointer-events: auto;
+        transition: opacity .36s ease, visibility 0s linear .36s;
+      }
+      .cptmate-startup-splash.is-exiting {
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+      }
+      .cptmate-startup-splash__inner {
+        width: min(86vw, 380px);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 22px;
+        transform: translateY(-2vh);
+      }
+      .cptmate-startup-splash__logo {
+        display: block;
+        width: min(330px, 78vw);
+        height: auto;
+        max-height: 100px;
+        object-fit: contain;
+        animation: cptmateSplashLogoPulse 1.15s ease-in-out infinite;
+      }
+      .cptmate-startup-splash__loader {
+        width: 34px;
+        height: 34px;
+        border-radius: 50%;
+        border: 3px solid rgba(15,95,99,.14);
+        border-top-color: #0f5f63;
+        animation: cptmateSplashSpin .85s linear infinite;
+      }
+      .cptmate-startup-splash__message {
+        margin: -8px 0 0;
+        color: #718486;
+        font-size: 12px;
+        font-weight: 700;
+        letter-spacing: .08em;
+      }
+      .screen.cptmate-home-ready {
+        animation: cptmateHomeCrossfade .36s ease both;
+      }
+      @keyframes cptmateSplashLogoPulse {
+        0%, 100% { opacity: .92; transform: scale(.985); }
+        50% { opacity: 1; transform: scale(1); }
+      }
+      @keyframes cptmateSplashSpin { to { transform: rotate(360deg); } }
+      @keyframes cptmateHomeCrossfade {
+        from { opacity: 0; transform: translateY(4px); }
+        to { opacity: 1; transform: translateY(0); }
       }
       @media (max-width: 430px) {
-        .cptmate-brand-logo {
-          width: min(270px, 76vw) !important;
-          max-height: 54px !important;
+        .cptmate-home-logo {
+          width: min(280px, 78vw);
+          max-height: 58px;
         }
+        .cptmate-startup-splash__logo {
+          width: min(310px, 80vw);
+        }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        .cptmate-startup-splash,
+        .screen.cptmate-home-ready { transition: none !important; animation: none !important; }
+        .cptmate-startup-splash__logo,
+        .cptmate-startup-splash__loader { animation: none !important; }
       }
     `;
     document.head.appendChild(style);
   };
 
-  const apply = () => {
-    installIconLinks();
-    installStyle();
-    installHeaderLogo();
+  const ensureSplash = () => {
+    let splash = document.getElementById("cptmate-startup-splash");
+    if (splash) return splash;
+    splash = document.createElement("div");
+    splash.id = "cptmate-startup-splash";
+    splash.className = "cptmate-startup-splash";
+    splash.setAttribute("role", "status");
+    splash.setAttribute("aria-live", "polite");
+    splash.innerHTML = `
+      <div class="cptmate-startup-splash__inner">
+        <img class="cptmate-startup-splash__logo" src="${CPTMATE_BRAND_LOGO}" alt="CPTmate" decoding="async" />
+        <div class="cptmate-startup-splash__loader" aria-hidden="true"></div>
+        <p class="cptmate-startup-splash__message">起動しています…</p>
+      </div>
+    `;
+    document.body.appendChild(splash);
+    return splash;
   };
 
-  if (document.readyState === "loading") {
-    document.addEventListener("DOMContentLoaded", apply, { once: true });
-  } else {
-    apply();
-  }
-  requestAnimationFrame(apply);
-  setTimeout(apply, 100);
-  setTimeout(apply, 500);
+  installIconLinks();
+  installStyle();
+  const splash = ensureSplash();
+  window.__cptmateSplashStartedAt = performance.now();
+  window.__cptmateFinishSplash = () => {
+    if (window.__cptmateSplashFinished) return;
+    window.__cptmateSplashFinished = true;
+    const elapsed = performance.now() - window.__cptmateSplashStartedAt;
+    const wait = Math.max(0, 1500 - elapsed);
+    setTimeout(() => {
+      const screen = document.getElementById("screen");
+      if (screen) screen.classList.add("cptmate-home-ready");
+      splash.classList.add("is-exiting");
+      setTimeout(() => splash.remove(), 420);
+    }, wait);
+  };
 })();
-
 
 /* v0.2.61: bottom navigation — 4 items, fixed order and equal-width grid */
 (function installCPTmateBottomNavFix() {
@@ -2254,6 +2330,10 @@ function renderHome() {
   }).join("");
 
   screenEl().innerHTML = `
+    <div class="cptmate-home-logo-wrap" aria-label="CPTmate">
+      <img class="cptmate-home-logo" src="${CPTMATE_BRAND_LOGO}" alt="CPTmate — NSCA-CPT LEARNING" decoding="async" loading="eager">
+    </div>
+
     <section class="hero">
       <div class="label">CPTmate v${APP_VERSION}</div>
       <h2>今日も1問ずつ、確実に。</h2>
@@ -3495,6 +3575,9 @@ document.querySelectorAll(".nav-btn").forEach(btn => {
     const nav = btn.dataset.nav;
     if (nav === "home") mergeHomeAndStatsNavigation();
 renderHome();
+if (typeof window.__cptmateFinishSplash === "function") {
+  window.__cptmateFinishSplash();
+}
     if (nav === "favorites") renderFavorites();
     if (nav === "practice") renderPracticeSelector();
     if (nav === "review") renderReview();
