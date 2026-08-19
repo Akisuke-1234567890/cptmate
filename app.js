@@ -1,4 +1,4 @@
-const APP_VERSION = "0.2.56";
+const APP_VERSION = "0.2.57";
 
 /* v0.2.49: bottom navigation robust viewport fixing */
 (function installCPTmateBottomNavFix() {
@@ -100,6 +100,123 @@ const APP_VERSION = "0.2.56";
       color: #174f52;
       background: #e7f3f2;
       border: 1px solid rgba(23,79,82,.18);
+    }
+  `;
+  document.head.appendChild(style);
+})();
+
+/* v0.2.57: home chapter accordion + progress graphs */
+(function installHomeChapterCardStyle() {
+  const style = document.createElement("style");
+  style.textContent = `
+    .home-chapter-card {
+      padding: 0;
+      overflow: hidden;
+    }
+    .home-chapter-summary {
+      width: 100%;
+      border: 0;
+      background: transparent;
+      padding: 20px 22px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      text-align: left;
+      cursor: pointer;
+      color: var(--text);
+      box-sizing: border-box;
+    }
+    .home-chapter-summary:active {
+      background: rgba(23,79,82,.04);
+    }
+    .home-chapter-summary-main {
+      min-width: 0;
+      flex: 1;
+    }
+    .home-chapter-title {
+      font-size: 22px;
+      font-weight: 900;
+      line-height: 1.25;
+      margin: 0;
+    }
+    .home-chapter-meta {
+      margin-top: 6px;
+      color: var(--muted);
+      font-size: 14px;
+      font-weight: 800;
+    }
+    .home-chapter-chevron {
+      flex: 0 0 auto;
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--soft);
+      color: var(--primary);
+      font-size: 22px;
+      font-weight: 900;
+      transition: transform .18s ease;
+    }
+    .home-chapter-card.open .home-chapter-chevron {
+      transform: rotate(90deg);
+    }
+    .home-chapter-body {
+      display: none;
+      padding: 0 22px 22px;
+    }
+    .home-chapter-card.open .home-chapter-body {
+      display: block;
+    }
+    .home-progress-row {
+      margin-top: 14px;
+    }
+    .home-progress-head {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 7px;
+    }
+    .home-progress-name {
+      font-weight: 900;
+      font-size: 15px;
+      line-height: 1.35;
+    }
+    .home-progress-value {
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 900;
+      white-space: nowrap;
+    }
+    .home-progress-track {
+      width: 100%;
+      height: 10px;
+      border-radius: 999px;
+      background: #e8eeee;
+      overflow: hidden;
+    }
+    .home-progress-fill {
+      height: 100%;
+      border-radius: inherit;
+      background: var(--primary);
+      min-width: 0;
+    }
+    .home-chapter-total {
+      margin-top: 18px;
+      padding-top: 16px;
+      border-top: 1px solid #e5ebeb;
+    }
+    .home-chapter-total .home-progress-name {
+      font-size: 16px;
+    }
+    .home-chapter-empty {
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.6;
+      padding-top: 6px;
     }
   `;
   document.head.appendChild(style);
@@ -1832,6 +1949,12 @@ function mergeHomeAndStatsNavigation() {
   }
 }
 
+function toggleHomeChapterCard(chapter) {
+  const card = document.querySelector(`.home-chapter-card[data-chapter="${chapter}"]`);
+  if (!card) return;
+  card.classList.toggle("open");
+}
+
 function renderHome() {
   resetPageScroll();
   state.lastViewed = "home";
@@ -1842,7 +1965,55 @@ function renderHome() {
   const answered = answeredCount();
   const correct = correctCount();
   const total = ALL_QUESTIONS.length;
-  const majorProgress = getChapterMajorProgress(1);
+  const chapters = [...new Set(ALL_QUESTIONS.map(q => q.chapter))].sort((a, b) => a - b);
+
+  const chapterCards = chapters.map((chapter, chapterIndex) => {
+    const questions = ALL_QUESTIONS.filter(q => q.chapter === chapter);
+    const progress = getChapterMajorProgress(chapter);
+    const chapterCorrect = questions.filter(q => state.answers[q.id]?.correct).length;
+    const chapterAnswered = questions.filter(q => !!state.answers[q.id]).length;
+    const chapterPercent = questions.length ? Math.round((chapterCorrect / questions.length) * 100) : 0;
+    const openClass = chapterIndex === 0 ? " open" : "";
+
+    return `
+      <section class="card home-chapter-card${openClass}" data-chapter="${chapter}">
+        <button class="home-chapter-summary" type="button" onclick="toggleHomeChapterCard(${chapter})" aria-expanded="${chapterIndex === 0 ? "true" : "false"}">
+          <div class="home-chapter-summary-main">
+            <div class="home-chapter-title">第${chapter}章</div>
+            <div class="home-chapter-meta">${questions.length}問 ・ 正解 ${chapterCorrect} / ${questions.length} ・ 解答済み ${chapterAnswered}問</div>
+          </div>
+          <span class="home-chapter-chevron">›</span>
+        </button>
+
+        <div class="home-chapter-body">
+          ${progress.map(item => {
+            const percent = item.total ? Math.round((item.correct / item.total) * 100) : 0;
+            return `
+              <div class="home-progress-row">
+                <div class="home-progress-head">
+                  <span class="home-progress-name">${item.name}</span>
+                  <span class="home-progress-value">正解 ${item.correct} / ${item.total}</span>
+                </div>
+                <div class="home-progress-track" aria-label="${item.name} 正解率 ${percent}%">
+                  <div class="home-progress-fill" style="width:${percent}%"></div>
+                </div>
+              </div>
+            `;
+          }).join("")}
+
+          <div class="home-chapter-total">
+            <div class="home-progress-head">
+              <span class="home-progress-name">第${chapter}章 全体</span>
+              <span class="home-progress-value">正解 ${chapterCorrect} / ${questions.length}</span>
+            </div>
+            <div class="home-progress-track" aria-label="第${chapter}章 全体 正解率 ${chapterPercent}%">
+              <div class="home-progress-fill" style="width:${chapterPercent}%"></div>
+            </div>
+          </div>
+        </div>
+      </section>
+    `;
+  }).join("");
 
   screenEl().innerHTML = `
     <section class="hero">
@@ -1862,22 +2033,13 @@ function renderHome() {
       </div>
     </section>
 
-    <section class="card">
-      <div class="selector-section-title">第1章・大分類</div>
-      <div class="practice-select-list">
-        ${majorProgress.map(item => `
-          <div class="practice-select-item" style="cursor:default;">
-            <strong>${item.name}</strong>
-            <span>正解 ${item.correct} / ${item.total}</span>
-          </div>
-        `).join("")}
-      </div>
-    </section>
+    <div class="section-title"><h2>章別の学習状況</h2></div>
+    ${chapterCards}
 
     <div class="section-title"><h2>現在のコンテンツ</h2></div>
     <section class="card">
-      <h3>第1章：筋系、神経系、骨格系</h3>
-      <p style="color:var(--muted);line-height:1.7;margin:0;">第1章・${total}問を収録しています。問題演習から分類別・ランダムなどの条件を選んで学習できます。</p>
+      <h3>${chapters.length === 1 ? "第1章：筋系、神経系、骨格系" : `全${chapters.length}章`}</h3>
+      <p style="color:var(--muted);line-height:1.7;margin:0;">現在収録されている${total}問を収録しています。問題演習から章・分類・ランダムなどの条件を選んで学習できます。</p>
     </section>
   `;
 }
