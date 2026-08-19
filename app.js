@@ -1,4 +1,4 @@
-const APP_VERSION = "0.2.66";
+const APP_VERSION = "0.2.67";
 
 /* v0.2.63: home logo placement + startup splash/crossfade */
 const CPTMATE_BRAND_LOGO = "assets/branding/cptmate-horizontal-logo.png";
@@ -82,7 +82,6 @@ const CPTMATE_SPLASH_MARK = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAaQAA
         height: auto;
         max-height: 100px;
         object-fit: contain;
-        animation: cptmateSplashLogoPulse 1.15s ease-in-out infinite;
       }
       .cptmate-startup-splash__loader {
         width: 34px;
@@ -102,10 +101,6 @@ const CPTMATE_SPLASH_MARK = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAaQAA
       .screen.cptmate-home-ready {
         animation: cptmateHomeCrossfade .36s ease both;
       }
-      @keyframes cptmateSplashLogoPulse {
-        0%, 100% { opacity: .92; transform: scale(.985); }
-        50% { opacity: 1; transform: scale(1); }
-      }
       @keyframes cptmateSplashSpin { to { transform: rotate(360deg); } }
       @keyframes cptmateHomeCrossfade {
         from { opacity: 0; transform: translateY(4px); }
@@ -123,7 +118,6 @@ const CPTMATE_SPLASH_MARK = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAaQAA
       @media (prefers-reduced-motion: reduce) {
         .cptmate-startup-splash,
         .screen.cptmate-home-ready { transition: none !important; animation: none !important; }
-        .cptmate-startup-splash__logo,
         .cptmate-startup-splash__loader { animation: none !important; }
       }
     `;
