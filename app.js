@@ -1,6 +1,96 @@
-const APP_VERSION = "0.2.63";
+const APP_VERSION = "0.2.62";
 
-/* v0.2.62: bottom navigation — 4 items, fixed order and equal-width grid */
+/* v0.2.62: CPTmate approved brand integration */
+(function installCPTmateBranding() {
+  const BRAND_ICON = "assets/branding/cptmate-app-icon.png";
+  const BRAND_LOGO = "assets/branding/cptmate-horizontal-logo.png";
+
+  const installIconLinks = () => {
+    const head = document.head;
+    if (!head) return;
+    if (!document.querySelector('link[data-cptmate-brand-icon="true"]')) {
+      const link = document.createElement("link");
+      link.rel = "apple-touch-icon";
+      link.href = BRAND_ICON;
+      link.dataset.cptmateBrandIcon = "true";
+      head.appendChild(link);
+    }
+    if (!document.querySelector('meta[data-cptmate-brand-theme="true"]')) {
+      const meta = document.createElement("meta");
+      meta.name = "theme-color";
+      meta.content = "#0f5f63";
+      meta.dataset.cptmateBrandTheme = "true";
+      head.appendChild(meta);
+    }
+  };
+
+  const installHeaderLogo = () => {
+    const topbar = document.querySelector(".topbar");
+    if (!topbar) return;
+    const brandTarget = topbar.firstElementChild;
+    if (!brandTarget) return;
+    if (brandTarget.querySelector(".cptmate-brand-logo")) return;
+
+    brandTarget.innerHTML = "";
+    const img = document.createElement("img");
+    img.className = "cptmate-brand-logo";
+    img.src = BRAND_LOGO;
+    img.alt = "CPTmate — NSCA-CPT LEARNING";
+    img.decoding = "async";
+    img.loading = "eager";
+    brandTarget.appendChild(img);
+
+    brandTarget.style.setProperty("display", "flex", "important");
+    brandTarget.style.setProperty("align-items", "center", "important");
+    brandTarget.style.setProperty("min-width", "0", "important");
+    brandTarget.style.setProperty("width", "100%", "important");
+  };
+
+  const installStyle = () => {
+    if (document.getElementById("cptmate-branding-style-v062")) return;
+    const style = document.createElement("style");
+    style.id = "cptmate-branding-style-v062";
+    style.textContent = `
+      .cptmate-brand-logo {
+        display: block !important;
+        width: min(300px, 78vw) !important;
+        height: auto !important;
+        max-height: 58px !important;
+        object-fit: contain !important;
+        object-position: left center !important;
+        margin: 0 !important;
+      }
+      .topbar {
+        background: #f7fbfb !important;
+      }
+      @media (max-width: 430px) {
+        .cptmate-brand-logo {
+          width: min(270px, 76vw) !important;
+          max-height: 54px !important;
+        }
+      }
+    `;
+    document.head.appendChild(style);
+  };
+
+  const apply = () => {
+    installIconLinks();
+    installStyle();
+    installHeaderLogo();
+  };
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", apply, { once: true });
+  } else {
+    apply();
+  }
+  requestAnimationFrame(apply);
+  setTimeout(apply, 100);
+  setTimeout(apply, 500);
+})();
+
+
+/* v0.2.61: bottom navigation — 4 items, fixed order and equal-width grid */
 (function installCPTmateBottomNavFix() {
   const apply = () => {
     const buttons = Array.from(document.querySelectorAll(".nav-btn"));
@@ -42,36 +132,11 @@ const APP_VERSION = "0.2.63";
     buttons.forEach(btn => {
       if (btn === statsButton) return;
       btn.style.setProperty("display", "flex", "important");
-      btn.style.setProperty("flex-direction", "column", "important");
-      btn.style.setProperty("align-items", "center", "important");
-      btn.style.setProperty("justify-content", "center", "important");
-      btn.style.setProperty("gap", "2px", "important");
       btn.style.setProperty("width", "100%", "important");
       btn.style.setProperty("min-width", "0", "important");
-      btn.style.setProperty("min-height", "72px", "important");
       btn.style.setProperty("flex", "none", "important");
       btn.style.setProperty("box-sizing", "border-box", "important");
       btn.style.setProperty("margin", "0", "important");
-      btn.style.setProperty("padding", "6px 0 4px", "important");
-      btn.style.setProperty("text-align", "center", "important");
-    });
-
-    buttons.forEach(btn => {
-      if (btn === statsButton) return;
-      const icon = btn.querySelector("span");
-      const label = btn.querySelector("small");
-      if (icon) {
-        icon.style.setProperty("display", "block", "important");
-        icon.style.setProperty("line-height", "1", "important");
-        icon.style.setProperty("font-size", "26px", "important");
-      }
-      if (label) {
-        label.style.setProperty("display", "block", "important");
-        label.style.setProperty("line-height", "1.2", "important");
-        label.style.setProperty("font-size", "12px", "important");
-        label.style.setProperty("margin", "2px 0 0", "important");
-        label.style.setProperty("white-space", "nowrap", "important");
-      }
     });
 
     document.body.style.setProperty(
@@ -1400,8 +1465,7 @@ const defaultState = {
   bookmarks: {},
   currentIndex: 0,
   lastViewed: "home",
-  schemaVersion: 3,
-  practiceSession: null
+  schemaVersion: 2
 };
 
 let state = loadState();
@@ -1775,103 +1839,6 @@ let practiceQueue = [];
 let practiceLabel = "第1章すべて";
 let practiceSessionAnswers = {};
 let practiceCompleted = false;
-let practiceRetrying = new Set();
-
-/* v0.2.63: 演習セッションを学習記録とは分離して永続化。
- * - 下帯・戻るで途中離脱しても、問題列・現在位置・途中回答を保持。
- * - 「正解済み→再挑戦→不正解」は最新結果を学習記録へ反映し、復習対象に戻す。
- */
-function getSavedPracticeSession() {
-  const s = state && state.practiceSession;
-  if (!s || s.completed || !Array.isArray(s.queue) || !s.queue.length) return null;
-  const validQueue = s.queue.filter(id => ALL_QUESTIONS.some(q => q.id === id));
-  if (!validQueue.length) return null;
-  const idx = Math.max(0, Math.min(Number(s.currentIndex) || 0, validQueue.length - 1));
-  return {
-    active: !!s.active,
-    queue: validQueue,
-    label: s.label || "問題演習",
-    currentIndex: idx,
-    answers: (s.answers && typeof s.answers === "object") ? { ...s.answers } : {},
-    startedAt: s.startedAt || new Date().toISOString(),
-    pausedAt: s.pausedAt || null
-  };
-}
-
-function syncPracticeSessionToState(active = true) {
-  if (!practiceQueue.length) {
-    state.practiceSession = null;
-  } else {
-    state.practiceSession = {
-      active,
-      queue: [...practiceQueue],
-      label: practiceLabel,
-      currentIndex: state.currentIndex,
-      answers: { ...practiceSessionAnswers },
-      startedAt: state.practiceSession?.startedAt || new Date().toISOString(),
-      pausedAt: active ? null : new Date().toISOString(),
-      completed: false
-    };
-  }
-  saveState();
-}
-
-function restorePracticeSession() {
-  const saved = getSavedPracticeSession();
-  if (!saved) return false;
-  practiceQueue = saved.queue;
-  practiceLabel = saved.label;
-  practiceSessionAnswers = { ...saved.answers };
-  practiceCompleted = false;
-  practiceRetrying = new Set();
-  state.currentIndex = saved.currentIndex;
-  return true;
-}
-
-function hasActivePracticeSession() {
-  return !!getSavedPracticeSession();
-}
-
-function pausePracticeSession() {
-  if (!practiceQueue.length) return;
-  syncPracticeSessionToState(false);
-}
-
-function resumePracticeSession() {
-  if (!restorePracticeSession()) {
-    alert("再開できる途中の演習がありません。");
-    renderPracticeSelector();
-    return;
-  }
-  state.lastViewed = "practice";
-  syncPracticeSessionToState(true);
-  renderQuestion();
-}
-
-function discardPracticeSession() {
-  practiceQueue = [];
-  practiceLabel = "第1章すべて";
-  practiceSessionAnswers = {};
-  practiceCompleted = false;
-  practiceRetrying = new Set();
-  state.currentIndex = 0;
-  state.practiceSession = null;
-  saveState();
-}
-
-function confirmPracticeLeave(destination) {
-  if (!hasActivePracticeSession() || state.lastViewed !== "practice") {
-    destination();
-    return;
-  }
-  const queue = getPracticeQuestions();
-  const position = Math.min(state.currentIndex + 1, queue.length);
-  const ok = confirm(`演習の途中です。\n\n${practiceLabel}\n現在 ${position} / ${queue.length} 問\n\n途中経過を保存して移動しますか？\n「キャンセル」で演習を続けられます。`);
-  if (!ok) return;
-  pausePracticeSession();
-  destination();
-}
-
 
 function loadState() {
   try {
@@ -1893,7 +1860,7 @@ function saveState() {
  * - 将来問題IDを変更する場合はQUESTION_ID_ALIASESに旧ID→新IDを登録する。
  * - 新機能の表示値は保存せず、常に現在の問題データ＋answersから再計算する。
  */
-const STATE_SCHEMA_VERSION = 3;
+const STATE_SCHEMA_VERSION = 2;
 const QUESTION_ID_ALIASES = {};
 
 function migrateStateToCurrentSchema() {
@@ -1972,8 +1939,6 @@ function accuracy() {
   return n ? Math.round(correctCount() / n * 100) : 0;
 }
 
-// 起動時も途中の演習セッションを復元する。ただし画面はホームから開始する。
-restorePracticeSession();
 
 const CHOICE_EXPLANATIONS = {
   "筋線維": "骨格筋を構成する細長い細胞。筋線維の内部には多数の筋原線維が並ぶ。",
@@ -2326,7 +2291,6 @@ function startPracticeQueue(ids, label, index = 0) {
   practiceQueue = ids.filter(id => ALL_QUESTIONS.some(q => q.id === id));
   practiceLabel = label || "問題演習";
   practiceSessionAnswers = {};
-  practiceRetrying = new Set();
   practiceCompleted = false;
   if (!practiceQueue.length) {
     alert("この条件に該当する問題がありません。");
@@ -2334,16 +2298,6 @@ function startPracticeQueue(ids, label, index = 0) {
   }
   state.currentIndex = Math.max(0, Math.min(index, practiceQueue.length - 1));
   state.lastViewed = "practice";
-  state.practiceSession = {
-    active: true,
-    queue: [...practiceQueue],
-    label: practiceLabel,
-    currentIndex: state.currentIndex,
-    answers: {},
-    startedAt: new Date().toISOString(),
-    pausedAt: null,
-    completed: false
-  };
   saveState();
   renderQuestion();
 }
@@ -2354,13 +2308,11 @@ function getPracticeQuestions() {
 }
 
 function openPracticeSelectorClean() {
-  if (state.lastViewed === "practice" && hasActivePracticeSession()) {
-    const queue = getPracticeQuestions();
-    const position = Math.min(state.currentIndex + 1, queue.length);
-    const ok = confirm(`演習の途中です。\n\n${practiceLabel}\n現在 ${position} / ${queue.length} 問\n\n途中経過を保存して演習選択へ戻りますか？`);
-    if (!ok) return;
-    pausePracticeSession();
-  }
+  practiceQueue = [];
+  practiceLabel = "第1章すべて";
+  practiceSessionAnswers = {};
+  practiceCompleted = false;
+  state.currentIndex = 0;
   state.lastViewed = "practice-selector";
   saveState();
   renderPracticeSelector();
@@ -2431,24 +2383,17 @@ function renderPracticeSelector(selectedChapter = null) {
   // 問題選択画面で使用するスタイルはensureFigureStyles内に定義されているため、
   // 初回表示でもCSS注入前に描画されないよう、innerHTMLより前に確実に注入する。
   ensureFigureStyles();
-  // v0.2.63: 途中演習は破棄せず、選択画面から再開できるようにする。
-  // 新しい演習を選んだ場合のみ startPracticeQueue() が既存セッションを置き換える。
+  // 問題選択画面を開いた時は、前回の演習状態を持ち込まない。
+  // ホームから初回に開いた場合と、問題を解いて戻った場合で表示が変わらないようにする。
+  practiceQueue = [];
+  practiceLabel = "第1章すべて";
+  practiceSessionAnswers = {};
+  practiceCompleted = false;
+  state.currentIndex = 0;
   state.lastViewed = "practice-selector";
   saveState();
   setActiveNav("practice");
   const chapters = [...new Set(ALL_QUESTIONS.map(q => q.chapter))].sort((a,b) => a-b);
-  const savedSession = getSavedPracticeSession();
-  const resumeCard = savedSession ? `
-    <section class="card" style="border:2px solid rgba(15,95,99,.18);">
-      <h3>途中の演習があります</h3>
-      <p style="color:var(--muted);line-height:1.7;margin-top:0;">
-        ${savedSession.label}<br>
-        ${Math.min(savedSession.currentIndex + 1, savedSession.queue.length)} / ${savedSession.queue.length} 問から再開できます。
-      </p>
-      <button class="primary-btn full" onclick="resumePracticeSession()">途中から再開する</button>
-      <button class="secondary-btn full" onclick="discardPracticeSession(); renderPracticeSelector()">途中の演習を破棄して新しく始める</button>
-    </section>
-  ` : "";
   const chapter = selectedChapter || chapters[0] || 1;
   const chapterQuestions = ALL_QUESTIONS.filter(q => q.chapter === chapter);
 
@@ -2511,7 +2456,6 @@ function renderPracticeSelector(selectedChapter = null) {
 
   screenEl().innerHTML = `
     <div class="back-row"><button class="back-btn" onclick="renderHome()">‹</button><h2>問題演習</h2></div>
-    ${resumeCard}
     <section class="card practice-selector-card">
       <div class="selector-section-title">章を選択</div>
       <div class="chapter-select-list">${chapters.map(ch => `
@@ -3035,24 +2979,9 @@ function renderPracticeComplete() {
 }
 
 function restartCurrentPractice() {
-  if (!practiceQueue.length) {
-    if (!restorePracticeSession()) return;
-  }
   practiceSessionAnswers = {};
-  practiceRetrying = new Set();
   practiceCompleted = false;
   state.currentIndex = 0;
-  state.lastViewed = "practice";
-  state.practiceSession = {
-    active: true,
-    queue: [...practiceQueue],
-    label: practiceLabel,
-    currentIndex: 0,
-    answers: {},
-    startedAt: new Date().toISOString(),
-    pausedAt: null,
-    completed: false
-  };
   saveState();
   renderQuestion();
 }
@@ -3081,7 +3010,7 @@ function renderQuestion() {
   const q = queue[state.currentIndex];
   const sourceBadge = renderSourceBadge(q);
   const saved = practiceSessionAnswers[q.id];
-  const hasAnswered = !!saved || (!practiceRetrying.has(q.id) && !!state.answers[q.id]);
+  const hasAnswered = !!state.answers[q.id];
   const bookmarked = !!state.bookmarks[q.id];
   const answerStatus = hasAnswered
     ? '<span class="question-answer-status answered">回答済み</span>'
@@ -3180,10 +3109,9 @@ function retryQuestion() {
   const queue = getPracticeQuestions();
   const q = queue[state.currentIndex];
   delete practiceSessionAnswers[q.id];
-  practiceRetrying.add(q.id);
-  syncPracticeSessionToState(true);
   renderQuestion();
 }
+
 
 function answerQuestion(selected) {
   const queue = getPracticeQuestions();
@@ -3194,13 +3122,9 @@ function answerQuestion(selected) {
     correct,
     answeredAt: new Date().toISOString()
   };
-
-  // 学習記録は「最新の解答結果」を保持する。
-  // 正解済み問題を再挑戦して不正解になった場合も、ここで最新結果が不正解に更新され、復習対象へ戻る。
   state.answers[q.id] = record;
   practiceSessionAnswers[q.id] = record;
-  practiceRetrying.delete(q.id);
-  syncPracticeSessionToState(true);
+  saveState();
   renderQuestion();
 }
 
@@ -3208,7 +3132,7 @@ function previousQuestion() {
   const queue = getPracticeQuestions();
   if (state.currentIndex <= 0) return;
   state.currentIndex -= 1;
-  syncPracticeSessionToState(true);
+  saveState();
   renderQuestion();
 }
 
@@ -3217,15 +3141,12 @@ function nextQuestion() {
   if (state.currentIndex >= queue.length - 1) {
     practiceCompleted = true;
     state.lastViewed = "practice-complete";
-    // 完了した演習は「途中セッション」から外す。完了画面では現在のpracticeQueueを使って再挑戦できる。
-    if (state.practiceSession) state.practiceSession.completed = true;
-    state.practiceSession = null;
     saveState();
     renderPracticeComplete();
     return;
   }
   state.currentIndex += 1;
-  syncPracticeSessionToState(true);
+  saveState();
   renderQuestion();
 }
 
@@ -3240,7 +3161,6 @@ function wrongCount() {
 }
 
 function renderReview() {
-  state.lastViewed = "review";
   setActiveNav("review");
   const wrong = ALL_QUESTIONS.filter(q => state.answers[q.id] && !state.answers[q.id].correct);
 
@@ -3260,7 +3180,6 @@ function renderReview() {
 }
 
 function renderFavorites() {
-  state.lastViewed = "favorites";
   setActiveNav("favorites");
   const favorites = ALL_QUESTIONS.filter(q => state.bookmarks[q.id]);
 
@@ -3394,7 +3313,6 @@ function ensureFigureGalleryStyles() {
 }
 
 function renderSettings() {
-  state.lastViewed = "settings";
   setActiveNav("settings");
   screenEl().innerHTML = `
     <div class="back-row"><h2>設定</h2></div>
@@ -3575,15 +3493,13 @@ function resetProgress() {
 document.querySelectorAll(".nav-btn").forEach(btn => {
   btn.addEventListener("click", () => {
     const nav = btn.dataset.nav;
-    const destination = () => {
-      if (nav === "home") { mergeHomeAndStatsNavigation(); renderHome(); }
-      if (nav === "favorites") renderFavorites();
-      if (nav === "practice") renderPracticeSelector();
-      if (nav === "review") renderReview();
-      if (nav === "stats") renderStats();
-      if (nav === "settings") renderSettings();
-    };
-    confirmPracticeLeave(destination);
+    if (nav === "home") mergeHomeAndStatsNavigation();
+renderHome();
+    if (nav === "favorites") renderFavorites();
+    if (nav === "practice") renderPracticeSelector();
+    if (nav === "review") renderReview();
+    if (nav === "stats") renderStats();
+    if (nav === "settings") renderSettings();
   });
 });
 
