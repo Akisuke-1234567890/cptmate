@@ -1,4 +1,4 @@
-const APP_VERSION = "0.2.67";
+const APP_VERSION = "0.2.69";
 
 /* v0.2.63: home logo placement + startup splash/crossfade */
 const CPTMATE_BRAND_LOGO = "assets/branding/cptmate-horizontal-logo.png";
@@ -9,13 +9,44 @@ const CPTMATE_SPLASH_MARK = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAaQAA
   const installIconLinks = () => {
     const head = document.head;
     if (!head) return;
+
+    const applyCenteredIcon = (link) => {
+      const img = new Image();
+      img.onload = () => {
+        const size = 180;
+        const canvas = document.createElement("canvas");
+        canvas.width = size;
+        canvas.height = size;
+        const ctx = canvas.getContext("2d");
+        if (!ctx) return;
+
+        // iPhoneホーム画面での視覚的な上下ズレを抑えるため、
+        // 元ロゴを均等な安全余白の中に配置し、わずかに下へ補正。
+        const padding = 13;
+        const visualShiftY = 3;
+        const maxW = size - padding * 2;
+        const maxH = size - padding * 2;
+        const scale = Math.min(maxW / img.naturalWidth, maxH / img.naturalHeight);
+        const drawW = img.naturalWidth * scale;
+        const drawH = img.naturalHeight * scale;
+        const x = (size - drawW) / 2;
+        const y = (size - drawH) / 2 + visualShiftY;
+
+        ctx.clearRect(0, 0, size, size);
+        ctx.drawImage(img, x, y, drawW, drawH);
+        link.href = canvas.toDataURL("image/png");
+      };
+      img.src = CPTMATE_BRAND_ICON;
+    };
+
     if (!document.querySelector('link[data-cptmate-brand-icon="true"]')) {
       const link = document.createElement("link");
       link.rel = "apple-touch-icon";
-      link.href = CPTMATE_BRAND_ICON;
       link.dataset.cptmateBrandIcon = "true";
       head.appendChild(link);
+      applyCenteredIcon(link);
     }
+
     if (!document.querySelector('meta[data-cptmate-brand-theme="true"]')) {
       const meta = document.createElement("meta");
       meta.name = "theme-color";
