@@ -1,4 +1,4 @@
-const APP_VERSION = "0.2.81";
+const APP_VERSION = "0.2.83";
 
 /* v0.2.63: home logo placement + startup splash/crossfade */
 const CPTMATE_BRAND_LOGO = "assets/branding/cptmate-horizontal-logo.png";
@@ -4615,16 +4615,19 @@ async function checkForAppUpdate() {
 
     if (status) status.textContent = `v${latestVersion} のファイルを取得しています…`;
 
-    // app.js / style.css を「新しいURL」として直接取得し、ブラウザキャッシュを使わせない。
-    // 取得確認後にページを再読み込みするため、旧app.jsのまま表示される問題を防ぐ。
-    const assetBase = new URL(".", window.location.href);
+    // app.js / style.css を現在ページの同一ディレクトリから取得する。
+    // URLコンストラクタに依存せず、iPhone Safari / ホーム画面起動でも
+    // 「The string did not match the expected pattern.」が出にくい実装にする。
+    const currentUrl = String(window.location.href || "");
+    const cleanUrl = currentUrl.split("#")[0].split("?")[0];
+    const slashIndex = cleanUrl.lastIndexOf("/");
+    const assetBase = slashIndex >= 0 ? cleanUrl.slice(0, slashIndex + 1) : cleanUrl + "/";
     const assetNames = ["app.js", "style.css"];
     for (const assetName of assetNames) {
-      const assetUrl = new URL(assetName, assetBase);
-      assetUrl.searchParams.set("v", latestVersion);
-      assetUrl.searchParams.set("update", String(Date.now()));
+      const separator = assetBase.includes("?") ? "&" : "?";
+      const assetUrl = `${assetBase}${assetName}${separator}v=${encodeURIComponent(latestVersion)}&update=${Date.now()}`;
 
-      const assetRes = await fetch(assetUrl.toString(), {
+      const assetRes = await fetch(assetUrl, {
         cache: "no-store",
         headers: { "Cache-Control": "no-cache" }
       });
@@ -4642,28 +4645,35 @@ async function checkForAppUpdate() {
         // Cache Storage に残っている旧ファイルがある環境でも、
         // 次回読み込み時に新しいURLを優先できるように保存する。
         if ("caches" in window) {
-          const cache = await caches.open("cptmate-assets-v1");
-          await cache.put(assetUrl.toString(), new Response(assetText, {
-            headers: { "Content-Type": "application/javascript; charset=utf-8" }
-          }));
+          try {
+            const cache = await caches.open("cptmate-assets-v1");
+            await cache.put(assetUrl, new Response(assetText, {
+              headers: { "Content-Type": "application/javascript; charset=utf-8" }
+            }));
+          } catch (cacheError) {
+            console.warn("CPTmate app.js cache save skipped:", cacheError);
+          }
         }
       } else if (assetName === "style.css" && "caches" in window) {
-        const cache = await caches.open("cptmate-assets-v1");
-        await cache.put(assetUrl.toString(), new Response(assetText, {
-          headers: { "Content-Type": "text/css; charset=utf-8" }
-        }));
+        try {
+          const cache = await caches.open("cptmate-assets-v1");
+          await cache.put(assetUrl, new Response(assetText, {
+            headers: { "Content-Type": "text/css; charset=utf-8" }
+          }));
+        } catch (cacheError) {
+          console.warn("CPTmate style.css cache save skipped:", cacheError);
+        }
       }
     }
 
     if (status) status.textContent = `v${latestVersion} を確認しました。再読み込みしています…`;
 
-    // ページ自体も新しいURLで再読み込みする。
-    // app.js/style.cssには同じバージョンのクエリを付けるため、
-    // Safari/GitHub Pagesの古い静的アセットを掴む可能性を下げる。
-    const url = new URL(window.location.href);
-    url.searchParams.set("update", String(Date.now()));
-    url.searchParams.set("v", latestVersion);
-    window.location.replace(url.toString());
+    // ページ自体もキャッシュ回避用のクエリを付けて再読み込みする。
+    const reloadBase = String(window.location.href || "").split("#")[0].split("?")[0];
+    const reloadSeparator = reloadBase.includes("?") ? "&" : "?";
+    window.location.replace(
+      `${reloadBase}${reloadSeparator}update=${Date.now()}&v=${encodeURIComponent(latestVersion)}`
+    );
   } catch (error) {
     console.error("CPTmate update check failed:", error);
     if (status) status.textContent = "更新確認に失敗しました。";
