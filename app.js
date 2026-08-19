@@ -3433,11 +3433,11 @@ function renderHome() {
     const chapterCorrect = questions.filter(q => state.answers[q.id]?.correct).length;
     const chapterAnswered = questions.filter(q => !!state.answers[q.id]).length;
     const chapterPercent = questions.length ? Math.round((chapterCorrect / questions.length) * 100) : 0;
-    const openClass = chapterIndex === 0 ? " open" : "";
+    const openClass = "";
 
     return `
       <section class="card home-chapter-card${openClass}" data-chapter="${chapter}">
-        <button class="home-chapter-summary" type="button" onclick="toggleHomeChapterCard(${chapter})" aria-expanded="${chapterIndex === 0 ? "true" : "false"}">
+        <button class="home-chapter-summary" type="button" onclick="toggleHomeChapterCard(${chapter})" aria-expanded="false">
           <div class="home-chapter-summary-main">
             <div class="home-chapter-title">第${chapter}章</div>
             <div class="home-chapter-meta">${questions.length}問 ・ 正解 ${chapterCorrect} / ${questions.length} ・ 解答済み ${chapterAnswered}問</div>
@@ -4566,7 +4566,7 @@ function renderSettings() {
     </section>
     <section class="card">
       <h3>アプリ情報</h3>
-      <p style="margin:0 0 14px;color:var(--muted);">CPTmate v${APP_VERSION}<br>GitHub Pages向け試作版<br>第1章収録問題：${ALL_QUESTIONS.filter(q => q.chapter === 1).length}問</p>
+      <p style="margin:0 0 14px;color:var(--muted);">CPTmate v${APP_VERSION}</p>
       <button class="primary-btn full" onclick="checkForAppUpdate()">最新版を確認・更新</button>
       <p id="updateStatus" style="margin:10px 0 0;color:var(--muted);font-size:13px;text-align:center;">現在のバージョン：v${APP_VERSION}</p>
     </section>
