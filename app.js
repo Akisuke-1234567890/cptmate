@@ -1,4 +1,4 @@
-const APP_VERSION = "0.2.84";
+const APP_VERSION = "0.2.85";
 
 /* v0.2.63: home logo placement + startup splash/crossfade */
 const CPTMATE_BRAND_LOGO = "assets/branding/cptmate-horizontal-logo.png";
@@ -2989,366 +2989,961 @@ const defaultState = {
 let state = loadState();
 state.lastViewed = "home";
 saveState();
-const ADDITIONAL_QUESTIONS = [{
-  "id": "ch1-review-001",
-  "chapter": 1,
-  "category": "章末確認・筋系",
-  "type": "standard",
-  "question": "骨格筋の基本的な収縮単位はどれか。",
-  "choices": [
-    "筋線維",
-    "サルコメア",
-    "筋原線維",
-    "筋小胞体"
-  ],
-  "answer": 1,
-  "explanation": "サルコメアはZ線からZ線までの構造で、筋収縮の最小機能単位である。",
-  "sourceType": "review",
-  "sourceLabel": "章末確認問題",
-  "sourceNote": "第1章 第1部 確認問題1"
-},
-{
-  "id": "ch1-review-002",
-  "chapter": 1,
-  "category": "章末確認・筋系",
-  "type": "standard",
-  "question": "ミオシンの主な役割として正しいものはどれか。",
-  "choices": [
-    "カルシウムを貯蔵する",
-    "ATPを合成する",
-    "アクチンを引き込む",
-    "神経伝達物質を放出する"
-  ],
-  "answer": 2,
-  "explanation": "ミオシン頭部はアクチンと結合し、パワーストロークによってアクチンを引き込む。",
-  "sourceType": "review",
-  "sourceLabel": "章末確認問題",
-  "sourceNote": "第1章 第1部 確認問題2"
-},
-{
-  "id": "ch1-review-003",
-  "chapter": 1,
-  "category": "章末確認・筋系",
-  "type": "standard",
-  "question": "安静時にアクチン上のミオシン結合部位を覆っているタンパク質はどれか。",
-  "choices": [
-    "トロポニン",
-    "トロポミオシン",
-    "ミオシン",
-    "カルモジュリン"
-  ],
-  "answer": 1,
-  "explanation": "トロポミオシンがミオシン結合部位を覆っている。カルシウムがトロポニンに結合すると、その位置関係が変化して収縮が進む。",
-  "sourceType": "review",
-  "sourceLabel": "章末確認問題",
-  "sourceNote": "第1章 第1部 確認問題3"
-},
-{
-  "id": "ch1-review-004",
-  "chapter": 1,
-  "category": "章末確認・神経系",
-  "type": "standard",
-  "question": "神経筋接合部で骨格筋へ放出される神経伝達物質はどれか。",
-  "choices": [
-    "ドーパミン",
-    "アセチルコリン",
-    "セロトニン",
-    "ノルアドレナリン"
-  ],
-  "answer": 1,
-  "explanation": "骨格筋の神経筋接合部ではアセチルコリンが放出され、筋線維側へ興奮を伝える。",
-  "sourceType": "review",
-  "sourceLabel": "章末確認問題",
-  "sourceNote": "第1章 第2部 確認問題1"
-},
-{
-  "id": "ch1-review-005",
-  "chapter": 1,
-  "category": "章末確認・筋収縮",
-  "type": "standard",
-  "question": "筋収縮の過程で、カルシウムが直接結合するタンパク質はどれか。",
-  "choices": [
-    "ミオシン",
-    "トロポミオシン",
-    "トロポニン",
-    "アクチン"
-  ],
-  "answer": 2,
-  "explanation": "カルシウムはトロポニンに結合し、その結果としてトロポミオシンの位置が変化し、アクチンとミオシンの相互作用が進む。",
-  "sourceType": "review",
-  "sourceLabel": "章末確認問題",
-  "sourceNote": "第1章 第2部 確認問題2"
-},
-{
-  "id": "ch1-review-006",
-  "chapter": 1,
-  "category": "章末確認・筋活動様式",
-  "type": "standard",
-  "question": "一般に最も大きな筋力を発揮できる筋活動様式はどれか。",
-  "choices": [
-    "短縮性筋活動",
-    "等尺性筋活動",
-    "伸張性筋活動",
-    "弛緩"
-  ],
-  "answer": 2,
-  "explanation": "教材では、伸張性筋活動が最も大きな筋力を発揮できると整理されている。",
-  "sourceType": "review",
-  "sourceLabel": "章末確認問題",
-  "sourceNote": "第1章 第2部 確認問題3"
-},
-{
-  "id": "ch1-review-007",
-  "chapter": 1,
-  "category": "章末確認・骨格系",
-  "type": "standard",
-  "question": "ウォルフの法則として正しいものはどれか。",
-  "choices": [
-    "骨は荷重刺激に適応する",
-    "骨は生涯変化しない",
-    "運動では骨密度は変化しない",
-    "骨は負荷を受けるほど必ず弱くなる"
-  ],
-  "answer": 0,
-  "explanation": "ウォルフの法則は、骨が加えられる力や負荷に適応して構造を変化させるという考え方である。",
-  "sourceType": "review",
-  "sourceLabel": "章末確認問題",
-  "sourceNote": "第1章 第4部 確認問題1"
-},
-{
-  "id": "ch1-review-008",
-  "chapter": 1,
-  "category": "章末確認・骨格系",
-  "type": "standard",
-  "question": "骨芽細胞の主な役割はどれか。",
-  "choices": [
-    "骨吸収",
-    "骨形成",
-    "神経伝達",
-    "筋収縮"
-  ],
-  "answer": 1,
-  "explanation": "骨芽細胞は新しい骨を形成する。骨吸収を担うのは破骨細胞である。",
-  "sourceType": "review",
-  "sourceLabel": "章末確認問題",
-  "sourceNote": "第1章 第4部 確認問題2"
-},
-{
-  "id": "ch1-review-009",
-  "chapter": 1,
-  "category": "章末確認・腱と靭帯",
-  "type": "standard",
-  "question": "靭帯が連結するものはどれか。",
-  "choices": [
-    "筋肉と骨",
-    "骨と骨",
-    "筋肉と筋肉",
-    "神経と筋肉"
-  ],
-  "answer": 1,
-  "explanation": "靭帯は骨と骨を連結する結合組織である。筋肉と骨をつなぐのは腱である。",
-  "sourceType": "review",
-  "sourceLabel": "章末確認問題",
-  "sourceNote": "第1章 第4部 確認問題3"
-},
-{
-  "id": "ch1-mock-001",
-  "chapter": 1,
-  "category": "模擬問題・筋収縮",
-  "type": "standard",
-  "question": "骨格筋が大きな力を発揮するとき、アクチンとミオシンの相互作用を直接担う構造として最も適切なのはどれか。",
-  "choices": [
-    "アクトミオシンのクロスブリッジ",
-    "筋紡錘",
-    "ゴルジ腱器官",
-    "骨芽細胞"
-  ],
-  "answer": 0,
-  "explanation": "アクチンとミオシンが相互作用するクロスブリッジ形成は筋収縮の中心的な機構である。",
-  "sourceType": "mock",
-  "sourceLabel": "模擬問題（再構成）",
-  "sourceNote": "NSCA-CPT模擬問題集 p.15 問10の論点を再構成"
-},
-{
-  "id": "ch1-mock-002",
-  "chapter": 1,
-  "category": "模擬問題・筋活動様式",
-  "type": "standard",
-  "question": "最大努力時の骨格筋で、筋の短縮速度が高くなるほど短縮性筋力は一般にどうなるか。",
-  "choices": [
-    "高くなる",
-    "低くなる",
-    "変化しない",
-    "速度とは無関係に一定になる"
-  ],
-  "answer": 1,
-  "explanation": "模擬問題集で扱われている力―速度関係では、短縮性収縮では短縮速度が高いほど発揮できる筋力は低下する。",
-  "sourceType": "mock",
-  "sourceLabel": "模擬問題（再構成）",
-  "sourceNote": "NSCA-CPT模擬問題集 p.16 問15の論点を再構成"
-},
-{
-  "id": "ch1-mock-003",
-  "chapter": 1,
-  "category": "模擬問題・運動単位",
-  "type": "standard",
-  "question": "すべての運動単位に共通する特徴として最も適切なのはどれか。",
-  "choices": [
-    "同じタイプの筋線維だけを含む",
-    "同じサイズの運動ニューロンを含む",
-    "ほぼ同じ数の筋線維を含む",
-    "必ず同じ大きさの筋線維を含む"
-  ],
-  "answer": 0,
-  "explanation": "1つの運動単位は1個の運動ニューロンと、それが支配する筋線維から構成される。1つの運動単位内の筋線維は同じタイプになる。",
-  "sourceType": "mock",
-  "sourceLabel": "模擬問題（再構成）",
-  "sourceNote": "NSCA-CPT模擬問題集 p.16 問16の論点を再構成"
-},
-{
-  "id": "ch1-mock-004",
-  "chapter": 1,
-  "category": "模擬問題・エネルギー",
-  "type": "standard",
-  "question": "筋収縮に直接利用される化学エネルギーを蓄えている物質はどれか。",
-  "choices": [
-    "クレアチンリン酸",
-    "ATP",
-    "グルコース",
-    "乳酸"
-  ],
-  "answer": 1,
-  "explanation": "筋収縮で直接利用されるエネルギー源はATPである。クレアチンリン酸はATP再合成に利用される。",
-  "sourceType": "mock",
-  "sourceLabel": "模擬問題（再構成）",
-  "sourceNote": "NSCA-CPT模擬問題集 p.17 問22の論点を再構成"
-},
-{
-  "id": "ch1-mock-005",
-  "chapter": 1,
-  "category": "模擬問題・加齢と筋",
-  "type": "standard",
-  "question": "サルコペニアを最も適切に表しているのはどれか。",
-  "choices": [
-    "加齢に伴う筋量・筋機能の低下",
-    "加齢に伴う骨密度だけの低下",
-    "遺伝による骨形成異常",
-    "一時的な筋肉痛"
-  ],
-  "answer": 0,
-  "explanation": "サルコペニアは加齢に伴う筋量や筋機能の低下を指す。",
-  "sourceType": "mock",
-  "sourceLabel": "模擬問題（再構成）",
-  "sourceNote": "NSCA-CPT模擬問題集 p.17 問24の論点を再構成"
-},
-{
-  "id": "ch1-mock-006",
-  "chapter": 1,
-  "category": "模擬問題・神経適応",
-  "type": "standard",
-  "question": "レジスタンストレーニング開始初期にみられる筋力向上の主な要因として最も適切なのはどれか。",
-  "choices": [
-    "神経系の適応",
-    "骨密度の急激な増加",
-    "筋線維数の急激な増加",
-    "脂肪細胞の増加"
-  ],
-  "answer": 0,
-  "explanation": "トレーニング初期の筋力向上には、筋肥大だけでなく神経系の適応が大きく関与する。",
-  "sourceType": "mock",
-  "sourceLabel": "模擬問題（再構成）",
-  "sourceNote": "NSCA-CPT模擬問題集 p.17 問26の論点を再構成"
-},
-{
-  "id": "ch1-mock-007",
-  "chapter": 1,
-  "category": "模擬問題・発火頻度",
-  "type": "standard",
-  "question": "レジスタンストレーニング初期の筋力発揮の調節に関係する神経系の変化として適切なのはどれか。",
-  "choices": [
-    "運動単位の発火頻度の上昇",
-    "骨芽細胞の活動低下",
-    "筋小胞体の消失",
-    "腱の短縮"
-  ],
-  "answer": 0,
-  "explanation": "運動単位の発火頻度を高めることは、すでに活動している運動単位が発揮する力の調節に関係する。",
-  "sourceType": "mock",
-  "sourceLabel": "模擬問題（再構成）",
-  "sourceNote": "NSCA-CPT模擬問題集 p.21 問41の論点を再構成"
-},
-{
-  "id": "ch1-mock-008",
-  "chapter": 1,
-  "category": "模擬問題・反射",
-  "type": "standard",
-  "question": "筋の長さが急激に変化したときに生じる不随意の反応として最も適切なのはどれか。",
-  "choices": [
-    "伸張反射",
-    "屈曲反射",
-    "交叉性伸展反射",
-    "姿勢反射のみ"
-  ],
-  "answer": 0,
-  "explanation": "筋の長さの急激な変化は筋紡錘からの情報を介して伸張反射を引き起こす。",
-  "sourceType": "mock",
-  "sourceLabel": "模擬問題（再構成）",
-  "sourceNote": "NSCA-CPT模擬問題集 p.21 問45の論点を再構成"
-},
-{
-  "id": "ch1-mock-009",
-  "chapter": 1,
-  "category": "模擬問題・筋活動様式",
-  "type": "standard",
-  "question": "運動中に「ネガティブ」と呼ばれる局面で、主働筋に生じている筋活動として最も適切なのはどれか。",
-  "choices": [
-    "等尺性筋活動",
-    "短縮性筋活動",
-    "伸張性筋活動",
-    "完全弛緩"
-  ],
-  "answer": 2,
-  "explanation": "一般にネガティブ局面は、筋が外力に抗しながら伸ばされる伸張性筋活動を指す。",
-  "sourceType": "mock",
-  "sourceLabel": "模擬問題（再構成）",
-  "sourceNote": "NSCA-CPT模擬問題集 p.22 問48の論点を再構成"
-},
-{
-  "id": "ch1-mock-010",
-  "chapter": 1,
-  "category": "模擬問題・筋活動",
-  "type": "standard",
-  "question": "ベンチプレスで主働筋に対して拮抗する筋として考えられる組み合わせはどれか。",
-  "choices": [
-    "三角筋前部と上腕二頭筋",
-    "三角筋後部と上腕二頭筋",
-    "三角筋後部と上腕三頭筋",
-    "大胸筋と上腕三頭筋"
-  ],
-  "answer": 1,
-  "explanation": "ベンチプレスの押す動作に対して、肩関節の動作などを考えると三角筋後部や上腕二頭筋が拮抗側として扱われる。",
-  "sourceType": "mock",
-  "sourceLabel": "模擬問題（再構成）",
-  "sourceNote": "NSCA-CPT模擬問題集 p.31 問43の論点を再構成"
-},
-{
-  "id": "ch1-mock-011",
-  "chapter": 1,
-  "category": "模擬問題・筋活動",
-  "type": "standard",
-  "question": "デッドリフトで体幹を安定させる際、等尺性に働く筋として最も適切なのはどれか。",
-  "choices": [
-    "大殿筋",
-    "腓腹筋",
-    "脊柱起立筋",
-    "前脛骨筋"
-  ],
-  "answer": 2,
-  "explanation": "デッドリフトでは脊柱起立筋群が体幹を安定させるために等尺性に働く場面がある。",
-  "sourceType": "mock",
-  "sourceLabel": "模擬問題（再構成）",
-  "sourceNote": "NSCA-CPT模擬問題集 p.32 問49の論点を再構成"
-}
+const ADDITIONAL_QUESTIONS = [
+  {
+    "id": "ch1-review-001",
+    "chapter": 1,
+    "category": "章末確認・筋系",
+    "type": "standard",
+    "question": "骨格筋の基本的な収縮単位はどれか。",
+    "choices": [
+      "筋線維",
+      "サルコメア",
+      "筋原線維",
+      "筋小胞体"
+    ],
+    "answer": 1,
+    "explanation": "サルコメアはZ線からZ線までの構造で、筋収縮の最小機能単位である。",
+    "sourceType": "review",
+    "sourceLabel": "章末確認問題",
+    "sourceNote": "第1章 第1部 確認問題1"
+  },
+  {
+    "id": "ch1-review-002",
+    "chapter": 1,
+    "category": "章末確認・筋系",
+    "type": "standard",
+    "question": "ミオシンの主な役割として正しいものはどれか。",
+    "choices": [
+      "カルシウムを貯蔵する",
+      "ATPを合成する",
+      "アクチンを引き込む",
+      "神経伝達物質を放出する"
+    ],
+    "answer": 2,
+    "explanation": "ミオシン頭部はアクチンと結合し、パワーストロークによってアクチンを引き込む。",
+    "sourceType": "review",
+    "sourceLabel": "章末確認問題",
+    "sourceNote": "第1章 第1部 確認問題2"
+  },
+  {
+    "id": "ch1-review-003",
+    "chapter": 1,
+    "category": "章末確認・筋系",
+    "type": "standard",
+    "question": "安静時にアクチン上のミオシン結合部位を覆っているタンパク質はどれか。",
+    "choices": [
+      "トロポニン",
+      "トロポミオシン",
+      "ミオシン",
+      "カルモジュリン"
+    ],
+    "answer": 1,
+    "explanation": "トロポミオシンがミオシン結合部位を覆っている。カルシウムがトロポニンに結合すると、その位置関係が変化して収縮が進む。",
+    "sourceType": "review",
+    "sourceLabel": "章末確認問題",
+    "sourceNote": "第1章 第1部 確認問題3"
+  },
+  {
+    "id": "ch1-review-004",
+    "chapter": 1,
+    "category": "章末確認・神経系",
+    "type": "standard",
+    "question": "神経筋接合部で骨格筋へ放出される神経伝達物質はどれか。",
+    "choices": [
+      "ドーパミン",
+      "アセチルコリン",
+      "セロトニン",
+      "ノルアドレナリン"
+    ],
+    "answer": 1,
+    "explanation": "骨格筋の神経筋接合部ではアセチルコリンが放出され、筋線維側へ興奮を伝える。",
+    "sourceType": "review",
+    "sourceLabel": "章末確認問題",
+    "sourceNote": "第1章 第2部 確認問題1"
+  },
+  {
+    "id": "ch1-review-005",
+    "chapter": 1,
+    "category": "章末確認・筋収縮",
+    "type": "standard",
+    "question": "筋収縮の過程で、カルシウムが直接結合するタンパク質はどれか。",
+    "choices": [
+      "ミオシン",
+      "トロポミオシン",
+      "トロポニン",
+      "アクチン"
+    ],
+    "answer": 2,
+    "explanation": "カルシウムはトロポニンに結合し、その結果としてトロポミオシンの位置が変化し、アクチンとミオシンの相互作用が進む。",
+    "sourceType": "review",
+    "sourceLabel": "章末確認問題",
+    "sourceNote": "第1章 第2部 確認問題2"
+  },
+  {
+    "id": "ch1-review-006",
+    "chapter": 1,
+    "category": "章末確認・筋活動様式",
+    "type": "standard",
+    "question": "一般に最も大きな筋力を発揮できる筋活動様式はどれか。",
+    "choices": [
+      "短縮性筋活動",
+      "等尺性筋活動",
+      "伸張性筋活動",
+      "弛緩"
+    ],
+    "answer": 2,
+    "explanation": "教材では、伸張性筋活動が最も大きな筋力を発揮できると整理されている。",
+    "sourceType": "review",
+    "sourceLabel": "章末確認問題",
+    "sourceNote": "第1章 第2部 確認問題3"
+  },
+  {
+    "id": "ch1-review-007",
+    "chapter": 1,
+    "category": "章末確認・骨格系",
+    "type": "standard",
+    "question": "ウォルフの法則として正しいものはどれか。",
+    "choices": [
+      "骨は荷重刺激に適応する",
+      "骨は生涯変化しない",
+      "運動では骨密度は変化しない",
+      "骨は負荷を受けるほど必ず弱くなる"
+    ],
+    "answer": 0,
+    "explanation": "ウォルフの法則は、骨が加えられる力や負荷に適応して構造を変化させるという考え方である。",
+    "sourceType": "review",
+    "sourceLabel": "章末確認問題",
+    "sourceNote": "第1章 第4部 確認問題1"
+  },
+  {
+    "id": "ch1-review-008",
+    "chapter": 1,
+    "category": "章末確認・骨格系",
+    "type": "standard",
+    "question": "骨芽細胞の主な役割はどれか。",
+    "choices": [
+      "骨吸収",
+      "骨形成",
+      "神経伝達",
+      "筋収縮"
+    ],
+    "answer": 1,
+    "explanation": "骨芽細胞は新しい骨を形成する。骨吸収を担うのは破骨細胞である。",
+    "sourceType": "review",
+    "sourceLabel": "章末確認問題",
+    "sourceNote": "第1章 第4部 確認問題2"
+  },
+  {
+    "id": "ch1-review-009",
+    "chapter": 1,
+    "category": "章末確認・腱と靭帯",
+    "type": "standard",
+    "question": "靭帯が連結するものはどれか。",
+    "choices": [
+      "筋肉と骨",
+      "骨と骨",
+      "筋肉と筋肉",
+      "神経と筋肉"
+    ],
+    "answer": 1,
+    "explanation": "靭帯は骨と骨を連結する結合組織である。筋肉と骨をつなぐのは腱である。",
+    "sourceType": "review",
+    "sourceLabel": "章末確認問題",
+    "sourceNote": "第1章 第4部 確認問題3"
+  },
+  {
+    "id": "ch1-mock-001",
+    "chapter": 1,
+    "category": "模擬問題・筋収縮",
+    "type": "standard",
+    "question": "骨格筋が大きな力を発揮するとき、アクチンとミオシンの相互作用を直接担う構造として最も適切なのはどれか。",
+    "choices": [
+      "アクトミオシンのクロスブリッジ",
+      "筋紡錘",
+      "ゴルジ腱器官",
+      "骨芽細胞"
+    ],
+    "answer": 0,
+    "explanation": "アクチンとミオシンが相互作用するクロスブリッジ形成は筋収縮の中心的な機構である。",
+    "sourceType": "mock",
+    "sourceLabel": "模擬問題（再構成）",
+    "sourceNote": "NSCA-CPT模擬問題集 p.15 問10の論点を再構成"
+  },
+  {
+    "id": "ch1-mock-002",
+    "chapter": 1,
+    "category": "模擬問題・筋活動様式",
+    "type": "standard",
+    "question": "最大努力時の骨格筋で、筋の短縮速度が高くなるほど短縮性筋力は一般にどうなるか。",
+    "choices": [
+      "高くなる",
+      "低くなる",
+      "変化しない",
+      "速度とは無関係に一定になる"
+    ],
+    "answer": 1,
+    "explanation": "模擬問題集で扱われている力―速度関係では、短縮性収縮では短縮速度が高いほど発揮できる筋力は低下する。",
+    "sourceType": "mock",
+    "sourceLabel": "模擬問題（再構成）",
+    "sourceNote": "NSCA-CPT模擬問題集 p.16 問15の論点を再構成"
+  },
+  {
+    "id": "ch1-mock-003",
+    "chapter": 1,
+    "category": "模擬問題・運動単位",
+    "type": "standard",
+    "question": "すべての運動単位に共通する特徴として最も適切なのはどれか。",
+    "choices": [
+      "同じタイプの筋線維だけを含む",
+      "同じサイズの運動ニューロンを含む",
+      "ほぼ同じ数の筋線維を含む",
+      "必ず同じ大きさの筋線維を含む"
+    ],
+    "answer": 0,
+    "explanation": "1つの運動単位は1個の運動ニューロンと、それが支配する筋線維から構成される。1つの運動単位内の筋線維は同じタイプになる。",
+    "sourceType": "mock",
+    "sourceLabel": "模擬問題（再構成）",
+    "sourceNote": "NSCA-CPT模擬問題集 p.16 問16の論点を再構成"
+  },
+  {
+    "id": "ch1-mock-004",
+    "chapter": 1,
+    "category": "模擬問題・エネルギー",
+    "type": "standard",
+    "question": "筋収縮に直接利用される化学エネルギーを蓄えている物質はどれか。",
+    "choices": [
+      "クレアチンリン酸",
+      "ATP",
+      "グルコース",
+      "乳酸"
+    ],
+    "answer": 1,
+    "explanation": "筋収縮で直接利用されるエネルギー源はATPである。クレアチンリン酸はATP再合成に利用される。",
+    "sourceType": "mock",
+    "sourceLabel": "模擬問題（再構成）",
+    "sourceNote": "NSCA-CPT模擬問題集 p.17 問22の論点を再構成"
+  },
+  {
+    "id": "ch1-mock-005",
+    "chapter": 1,
+    "category": "模擬問題・加齢と筋",
+    "type": "standard",
+    "question": "サルコペニアを最も適切に表しているのはどれか。",
+    "choices": [
+      "加齢に伴う筋量・筋機能の低下",
+      "加齢に伴う骨密度だけの低下",
+      "遺伝による骨形成異常",
+      "一時的な筋肉痛"
+    ],
+    "answer": 0,
+    "explanation": "サルコペニアは加齢に伴う筋量や筋機能の低下を指す。",
+    "sourceType": "mock",
+    "sourceLabel": "模擬問題（再構成）",
+    "sourceNote": "NSCA-CPT模擬問題集 p.17 問24の論点を再構成"
+  },
+  {
+    "id": "ch1-mock-006",
+    "chapter": 1,
+    "category": "模擬問題・神経適応",
+    "type": "standard",
+    "question": "レジスタンストレーニング開始初期にみられる筋力向上の主な要因として最も適切なのはどれか。",
+    "choices": [
+      "神経系の適応",
+      "骨密度の急激な増加",
+      "筋線維数の急激な増加",
+      "脂肪細胞の増加"
+    ],
+    "answer": 0,
+    "explanation": "トレーニング初期の筋力向上には、筋肥大だけでなく神経系の適応が大きく関与する。",
+    "sourceType": "mock",
+    "sourceLabel": "模擬問題（再構成）",
+    "sourceNote": "NSCA-CPT模擬問題集 p.17 問26の論点を再構成"
+  },
+  {
+    "id": "ch1-mock-007",
+    "chapter": 1,
+    "category": "模擬問題・発火頻度",
+    "type": "standard",
+    "question": "レジスタンストレーニング初期の筋力発揮の調節に関係する神経系の変化として適切なのはどれか。",
+    "choices": [
+      "運動単位の発火頻度の上昇",
+      "骨芽細胞の活動低下",
+      "筋小胞体の消失",
+      "腱の短縮"
+    ],
+    "answer": 0,
+    "explanation": "運動単位の発火頻度を高めることは、すでに活動している運動単位が発揮する力の調節に関係する。",
+    "sourceType": "mock",
+    "sourceLabel": "模擬問題（再構成）",
+    "sourceNote": "NSCA-CPT模擬問題集 p.21 問41の論点を再構成"
+  },
+  {
+    "id": "ch1-mock-008",
+    "chapter": 1,
+    "category": "模擬問題・反射",
+    "type": "standard",
+    "question": "筋の長さが急激に変化したときに生じる不随意の反応として最も適切なのはどれか。",
+    "choices": [
+      "伸張反射",
+      "屈曲反射",
+      "交叉性伸展反射",
+      "姿勢反射のみ"
+    ],
+    "answer": 0,
+    "explanation": "筋の長さの急激な変化は筋紡錘からの情報を介して伸張反射を引き起こす。",
+    "sourceType": "mock",
+    "sourceLabel": "模擬問題（再構成）",
+    "sourceNote": "NSCA-CPT模擬問題集 p.21 問45の論点を再構成"
+  },
+  {
+    "id": "ch1-mock-009",
+    "chapter": 1,
+    "category": "模擬問題・筋活動様式",
+    "type": "standard",
+    "question": "運動中に「ネガティブ」と呼ばれる局面で、主働筋に生じている筋活動として最も適切なのはどれか。",
+    "choices": [
+      "等尺性筋活動",
+      "短縮性筋活動",
+      "伸張性筋活動",
+      "完全弛緩"
+    ],
+    "answer": 2,
+    "explanation": "一般にネガティブ局面は、筋が外力に抗しながら伸ばされる伸張性筋活動を指す。",
+    "sourceType": "mock",
+    "sourceLabel": "模擬問題（再構成）",
+    "sourceNote": "NSCA-CPT模擬問題集 p.22 問48の論点を再構成"
+  },
+  {
+    "id": "ch1-mock-010",
+    "chapter": 1,
+    "category": "模擬問題・筋活動",
+    "type": "standard",
+    "question": "ベンチプレスで主働筋に対して拮抗する筋として考えられる組み合わせはどれか。",
+    "choices": [
+      "三角筋前部と上腕二頭筋",
+      "三角筋後部と上腕二頭筋",
+      "三角筋後部と上腕三頭筋",
+      "大胸筋と上腕三頭筋"
+    ],
+    "answer": 1,
+    "explanation": "ベンチプレスの押す動作に対して、肩関節の動作などを考えると三角筋後部や上腕二頭筋が拮抗側として扱われる。",
+    "sourceType": "mock",
+    "sourceLabel": "模擬問題（再構成）",
+    "sourceNote": "NSCA-CPT模擬問題集 p.31 問43の論点を再構成"
+  },
+  {
+    "id": "ch1-mock-011",
+    "chapter": 1,
+    "category": "模擬問題・筋活動",
+    "type": "standard",
+    "question": "デッドリフトで体幹を安定させる際、等尺性に働く筋として最も適切なのはどれか。",
+    "choices": [
+      "大殿筋",
+      "腓腹筋",
+      "脊柱起立筋",
+      "前脛骨筋"
+    ],
+    "answer": 2,
+    "explanation": "デッドリフトでは脊柱起立筋群が体幹を安定させるために等尺性に働く場面がある。",
+    "sourceType": "mock",
+    "sourceLabel": "模擬問題（再構成）",
+    "sourceNote": "NSCA-CPT模擬問題集 p.32 問49の論点を再構成"
+  },
+  {
+    "id": "ch1-q045",
+    "chapter": 1,
+    "category": "筋系・調節タンパク質",
+    "type": "standard",
+    "question": "アクチンフィラメントの長さを適切に保つ働きに関係するタンパク質はどれか。",
+    "choices": [
+      "トロポニン",
+      "ネプリン",
+      "ミオグロビン",
+      "GTO"
+    ],
+    "answer": 1,
+    "explanation": "教材では、ネプリンの働きによりアクチンフィラメントが適切な長さに保たれると説明されている。",
+    "sourceType": "original",
+    "sourceLabel": "CPTmateオリジナル",
+    "sourceNote": "第1・2章教材を基準に精査・再構成"
+  },
+  {
+    "id": "ch1-q046",
+    "chapter": 1,
+    "category": "筋系・構造",
+    "type": "standard",
+    "question": "ミオシンフィラメントの位置を保つ働きに関係するタンパク質はどれか。",
+    "choices": [
+      "タイチン",
+      "トロポニン",
+      "ミオグロビン",
+      "コラーゲン"
+    ],
+    "answer": 0,
+    "explanation": "教材では、タイチンがミオシンフィラメントのアクチンに対する位置を保つ働きをすると説明されている。",
+    "sourceType": "original",
+    "sourceLabel": "CPTmateオリジナル",
+    "sourceNote": "第1・2章教材を基準に精査・再構成"
+  },
+  {
+    "id": "ch1-q047",
+    "chapter": 1,
+    "category": "筋活動様式",
+    "type": "standard",
+    "question": "新しいエクササイズを開始した24〜48時間後に生じる筋の疼痛や不快感について、教材の説明に最も合うものはどれか。",
+    "choices": [
+      "主に乳酸の蓄積が原因である",
+      "結合組織と筋組織の損傷に伴う炎症反応が関係する",
+      "AChが不足することが主因である",
+      "骨芽細胞の活動低下が主因である"
+    ],
+    "answer": 1,
+    "explanation": "教材ではDOMSは乳酸の蓄積ではなく、結合組織と筋組織の損傷に伴う炎症反応が痛覚受容器を刺激することが原因と説明され、主に伸張性筋活動に伴う微小断裂が関係するとされている。",
+    "sourceType": "original",
+    "sourceLabel": "CPTmateオリジナル",
+    "sourceNote": "第1・2章教材を基準に精査・再構成"
+  },
+  {
+    "id": "ch1-q048",
+    "chapter": 1,
+    "category": "筋線維タイプ",
+    "type": "standard",
+    "question": "酸化能力が高い筋線維で、酸素を筋細胞膜からミトコンドリアへ運ぶタンパク質はどれか。",
+    "choices": [
+      "ミオグロビン",
+      "トロポミオシン",
+      "コラーゲン",
+      "トロポニン"
+    ],
+    "answer": 0,
+    "explanation": "教材では、ミオグロビンは筋細胞膜からミトコンドリアへ酸素を運搬し、有酸素性能力を高めると説明されている。",
+    "sourceType": "original",
+    "sourceLabel": "CPTmateオリジナル",
+    "sourceNote": "第1・2章教材を基準に精査・再構成"
+  },
+  {
+    "id": "ch1-q049",
+    "chapter": 1,
+    "category": "筋線維タイプ",
+    "type": "standard",
+    "question": "教材の表1.1に照らした場合、野球またはソフトボールで貢献度が高い筋線維タイプはどれか。",
+    "choices": [
+      "タイプⅠ",
+      "タイプⅡ",
+      "錘内線維",
+      "タイプⅠとⅡは常に同じ"
+    ],
+    "answer": 1,
+    "explanation": "教材の表1.1では、野球またはソフトボールにおけるタイプⅡの貢献度が高いと示されている。",
+    "sourceType": "original",
+    "sourceLabel": "CPTmateオリジナル",
+    "sourceNote": "第1・2章教材を基準に精査・再構成"
+  },
+  {
+    "id": "ch1-q050",
+    "chapter": 1,
+    "category": "神経系",
+    "type": "standard",
+    "question": "骨格筋の随意運動をつかさどる神経系と、心臓や血管などの不随意機能を制御する神経系の組み合わせとして正しいものはどれか。",
+    "choices": [
+      "体性神経系―自律神経系",
+      "自律神経系―体性神経系",
+      "感覚神経―運動神経",
+      "中枢神経系―骨格系"
+    ],
+    "answer": 0,
+    "explanation": "教材では、体性神経系が骨格筋の活動をつかさどり、自律神経系が心臓や血管の平滑筋の収縮などの不随意機能を制御すると説明されている。",
+    "sourceType": "original",
+    "sourceLabel": "CPTmateオリジナル",
+    "sourceNote": "第1・2章教材を基準に精査・再構成"
+  },
+  {
+    "id": "ch1-q051",
+    "chapter": 1,
+    "category": "神経系",
+    "type": "standard",
+    "question": "運動時に交感神経が果たす役割として、教材の説明に合うものはどれか。",
+    "choices": [
+      "活動筋への血流を減らし消化を優先する",
+      "心臓からの血流を増加させ、肺の換気を良くし、活動筋への血流再分配を支える",
+      "骨芽細胞を直接刺激して骨を形成する",
+      "筋紡錘の感度を必ずゼロにする"
+    ],
+    "answer": 1,
+    "explanation": "教材では交感神経が心臓からの血流を増加させ、肺の換気を良くし、活動している骨格筋への血流再分配や発汗を支えると説明されている。",
+    "sourceType": "original",
+    "sourceLabel": "CPTmateオリジナル",
+    "sourceNote": "第1・2章教材を基準に精査・再構成"
+  },
+  {
+    "id": "ch1-q052",
+    "chapter": 1,
+    "category": "骨格系",
+    "type": "standard",
+    "question": "骨格系の機能として、教材で挙げられているものはどれか。",
+    "choices": [
+      "カルシウムやリンの貯蔵、血球形成、臓器や脊髄の保護",
+      "AChの合成、筋収縮、体温調節のみ",
+      "筋フィラメントの滑走、ATP合成、神経伝達",
+      "GTOの感度調節、肺胞換気、血圧測定"
+    ],
+    "answer": 0,
+    "explanation": "教材では骨はミネラルの貯蔵場所、血球形成の場所、臓器や脊髄の保護などの機能を担うと説明されている。",
+    "sourceType": "original",
+    "sourceLabel": "CPTmateオリジナル",
+    "sourceNote": "第1・2章教材を基準に精査・再構成"
+  },
+  {
+    "id": "ch1-q053",
+    "chapter": 1,
+    "category": "骨格系・リモデリング",
+    "type": "standard",
+    "question": "皮質骨と海綿骨について、教材の説明に合うものはどれか。",
+    "choices": [
+      "皮質骨は主に長骨骨幹の表層をなし、海綿骨はより低密度である",
+      "海綿骨は皮質骨より常に密度が高い",
+      "皮質骨は血球形成だけを担い、海綿骨は筋収縮を担う",
+      "両者は構造的な違いがない"
+    ],
+    "answer": 0,
+    "explanation": "教材では皮質骨は硬く緻密で主に長骨骨幹の表層をなし、海綿骨は皮質骨より密度が低く長骨内部などを形成すると説明されている。",
+    "sourceType": "original",
+    "sourceLabel": "CPTmateオリジナル",
+    "sourceNote": "第1・2章教材を基準に精査・再構成"
+  },
+  {
+    "id": "ch1-q054",
+    "chapter": 1,
+    "category": "骨格系・リモデリング",
+    "type": "standard",
+    "question": "骨粗鬆症に対する運動について、教材の説明に最も合うものはどれか。",
+    "choices": [
+      "荷重負荷運動やレジスタンストレーニングは骨の健康に有用である",
+      "運動は骨密度に影響しない",
+      "骨に負荷をかけるほど必ず骨密度が低下する",
+      "カルシウム摂取だけで運動の必要はない"
+    ],
+    "answer": 0,
+    "explanation": "教材ではウォーキングやランニングなどの荷重負荷運動、レジスタンストレーニングが骨密度の増加に効果的と説明されている。",
+    "sourceType": "original",
+    "sourceLabel": "CPTmateオリジナル",
+    "sourceNote": "第1・2章教材を基準に精査・再構成"
+  },
+  {
+    "id": "ch1-q055",
+    "chapter": 1,
+    "category": "骨格系・腱靭帯",
+    "type": "standard",
+    "question": "腱と靭帯の組成・役割について、教材の説明に合うものはどれか。",
+    "choices": [
+      "腱は筋と骨を結び、靭帯は骨と骨を結ぶ",
+      "腱は骨と骨を結び、靭帯は筋と骨を結ぶ",
+      "腱と靭帯はいずれも筋と骨だけを結ぶ",
+      "腱と靭帯はいずれも神経伝達を担う"
+    ],
+    "answer": 0,
+    "explanation": "教材では腱は筋と骨を結び、主にコラーゲンで構成される一方、靭帯は骨と骨を結び、コラーゲンに加えてエラスチンを含むと説明されている。",
+    "sourceType": "original",
+    "sourceLabel": "CPTmateオリジナル",
+    "sourceNote": "第1・2章教材を基準に精査・再構成"
+  },
+  {
+    "id": "ch1-q056",
+    "chapter": 1,
+    "category": "図・長骨",
+  "type": "figure",
+    "question": "図1.8の長骨の構造で、骨幹の内部に示されている空間として最も適切なのはどれか。",
+    "choices": [
+      "骨髄腔",
+      "関節面",
+      "骨端軟骨板",
+      "関節軟骨"
+    ],
+    "answer": 0,
+    "explanation": "図1.8では長骨の中央部である骨幹の内部に骨髄腔が示されている。",
+    "sourceType": "original",
+    "sourceLabel": "CPTmateオリジナル",
+    "sourceNote": "第1・2章教材を基準に精査・再構成"
+  },
+  {
+    "id": "ch1-q057",
+    "chapter": 1,
+    "category": "図・骨格",
+  "type": "figure",
+    "question": "図1.9で、頭蓋・脊柱・胸骨・肋骨などを含む骨格の区分はどれか。",
+    "choices": [
+      "付属性骨格",
+      "軸性骨格",
+      "末梢骨格",
+      "関節骨格"
+    ],
+    "answer": 1,
+    "explanation": "図1.9と本文では、頭蓋、脊柱、胸骨、肋骨などは軸性骨格に含まれると説明されている。",
+    "sourceType": "original",
+    "sourceLabel": "CPTmateオリジナル",
+    "sourceNote": "第1・2章教材を基準に精査・再構成"
+  },
+  {
+    "id": "ch1-q058",
+    "chapter": 1,
+    "category": "図・ニューロン",
+  "type": "figure",
+    "question": "図1.6で、細胞体から伸びて長距離にわたりインパルスを伝える構造はどれか。",
+    "choices": [
+      "樹状突起",
+      "軸索",
+      "ニッスル体",
+      "核小体"
+    ],
+    "answer": 1,
+    "explanation": "図1.6では軸索が細胞体から伸びる長い構造として示され、運動神経では筋へ活動電位を伝える経路となる。",
+    "sourceType": "original",
+    "sourceLabel": "CPTmateオリジナル",
+    "sourceNote": "第1・2章教材を基準に精査・再構成"
+  },
+  {
+    "id": "ch1-q059",
+    "chapter": 1,
+    "category": "図・筋紡錘とGTO",
+  "type": "figure",
+    "question": "図1.7に示される筋紡錘とゴルジ腱器官（GTO）の位置関係として正しいものはどれか。",
+    "choices": [
+      "筋紡錘は筋内、GTOは筋と骨が付着する腱にある",
+      "筋紡錘は骨の内部、GTOは神経細胞体にある",
+      "両方とも筋線維内部だけにある",
+      "筋紡錘は腱にあり、GTOは筋腹にある"
+    ],
+    "answer": 0,
+    "explanation": "図1.7では筋紡錘が骨格筋内に、GTOが筋と骨が付着する腱の接合部に示されている。",
+    "sourceType": "original",
+    "sourceLabel": "CPTmateオリジナル",
+    "sourceNote": "第1・2章教材を基準に精査・再構成"
+  },
+  {
+    "id": "ch2-review-001",
+    "chapter": 2,
+    "category": "血液・酸素運搬",
+    "type": "standard",
+    "question": "安静時のヒトの動脈血のpHはおおよそどれか。",
+    "choices": [
+      "6.6",
+      "7.1",
+      "7.4",
+      "7.9"
+    ],
+    "answer": 2,
+    "explanation": "本章では安静時の動脈血の正常なpHを約7.4としている。",
+    "sourceType": "review",
+    "sourceLabel": "章末確認問題",
+    "sourceNote": "第2章 学習教材「理解度チェック（全10問）」をCPTmate用4択問題として再構成"
+  },
+  {
+    "id": "ch2-review-002",
+    "chapter": 2,
+    "category": "血液・酸素運搬",
+    "type": "standard",
+    "question": "心臓血管系において、酸素を主に運搬する役割を担っているのはどれか。",
+    "choices": [
+      "血漿に溶解した酸素",
+      "ヘモグロビン",
+      "白血球",
+      "血小板"
+    ],
+    "answer": 1,
+    "explanation": "酸素は主に赤血球中のヘモグロビンと結合して運ばれ、血漿に直接溶解する量はごくわずかである。",
+    "sourceType": "review",
+    "sourceLabel": "章末確認問題",
+    "sourceNote": "第2章 学習教材「理解度チェック（全10問）」をCPTmate用4択問題として再構成"
+  },
+  {
+    "id": "ch2-review-003",
+    "chapter": 2,
+    "category": "血液・酸素運搬",
+    "type": "standard",
+    "question": "運動中、深部体温の上昇と血液pHの低下が起こると、酸素‐ヘモグロビン解離曲線はどうなるか。",
+    "choices": [
+      "左へ移動し酸素を離しにくくなる",
+      "右へ移動し酸素を離しやすくなる",
+      "変化しない",
+      "上下にのみ移動する"
+    ],
+    "answer": 1,
+    "explanation": "深部体温の上昇と血液の酸性化は、解離曲線を右へ移動させ、活動筋への酸素放出を促進する。",
+    "sourceType": "review",
+    "sourceLabel": "章末確認問題",
+    "sourceNote": "第2章 学習教材「理解度チェック（全10問）」をCPTmate用4択問題として再構成"
+  },
+  {
+    "id": "ch2-review-004",
+    "chapter": 2,
+    "category": "心臓・循環",
+    "type": "standard",
+    "question": "心臓の刺激伝導系において、最初に電気的インパルスを発生させる部位はどれか。",
+    "choices": [
+      "房室結節（AV結節）",
+      "洞房結節（SA結節）",
+      "プルキンエ線維",
+      "僧帽弁"
+    ],
+    "answer": 1,
+    "explanation": "SA結節は心臓本来のペースメーカーであり、刺激伝導系の起点となる。",
+    "sourceType": "review",
+    "sourceLabel": "章末確認問題",
+    "sourceNote": "第2章 学習教材「理解度チェック（全10問）」をCPTmate用4択問題として再構成"
+  },
+  {
+    "id": "ch2-review-005",
+    "chapter": 2,
+    "category": "心臓・循環",
+    "type": "standard",
+    "question": "運動開始時に活動筋への血流再分配を促進する組み合わせはどれか。",
+    "choices": [
+      "活動筋の細動脈収縮＋非活動器官の細動脈拡張",
+      "活動筋の細動脈拡張＋非活動器官の細動脈収縮",
+      "両方とも収縮",
+      "両方とも拡張"
+    ],
+    "answer": 1,
+    "explanation": "活動筋では局所的な代謝性・血管拡張性の作用が交感神経の収縮作用を打ち消し、非活動器官では収縮が起こり、活動筋への血流が優先される。",
+    "sourceType": "review",
+    "sourceLabel": "章末確認問題",
+    "sourceNote": "第2章 学習教材「理解度チェック（全10問）」をCPTmate用4択問題として再構成"
+  },
+  {
+    "id": "ch2-review-006",
+    "chapter": 2,
+    "category": "心臓・循環",
+    "type": "standard",
+    "question": "平均動脈圧（MAP）の計算式として正しいものはどれか。",
+    "choices": [
+      "（SBP＋DBP）÷2",
+      "DBP＋0.333×（SBP－DBP）",
+      "SBP－DBP",
+      "SBP＋DBP"
+    ],
+    "answer": 1,
+    "explanation": "本章ではMAPをDBP＋［0.333×（SBP－DBP）］で算出し、単純平均ではないと説明している。",
+    "sourceType": "review",
+    "sourceLabel": "章末確認問題",
+    "sourceNote": "第2章 学習教材「理解度チェック（全10問）」をCPTmate用4択問題として再構成"
+  },
+  {
+    "id": "ch2-review-007",
+    "chapter": 2,
+    "category": "心臓・循環",
+    "type": "standard",
+    "question": "心拍出量（Q）を求める基本式として正しいものはどれか。",
+    "choices": [
+      "SV×HR",
+      "SV÷HR",
+      "HR－SV",
+      "SV＋HR"
+    ],
+    "answer": 0,
+    "explanation": "心拍出量は1回拍出量（SV）×心拍数（HR）で求める。",
+    "sourceType": "review",
+    "sourceLabel": "章末確認問題",
+    "sourceNote": "第2章 学習教材「理解度チェック（全10問）」をCPTmate用4択問題として再構成"
+  },
+  {
+    "id": "ch2-review-008",
+    "chapter": 2,
+    "category": "心臓・循環",
+    "type": "standard",
+    "question": "フランク・スターリングの法則の説明として最も適切なのはどれか。",
+    "choices": [
+      "心室への充満が増えるほど収縮力が増大する",
+      "心拍数が増えるほど必ずSVが減少する",
+      "動静脈酸素較差が増えるほど心拍出量が減少する",
+      "静脈還流が増えると心臓は収縮しなくなる"
+    ],
+    "answer": 0,
+    "explanation": "心室が伸張されるほど収縮力が増大し、送り出される血液量が増えるという長さ‐張力関係に基づく原理である。",
+    "sourceType": "review",
+    "sourceLabel": "章末確認問題",
+    "sourceNote": "第2章 学習教材「理解度チェック（全10問）」をCPTmate用4択問題として再構成"
+  },
+  {
+    "id": "ch2-review-009",
+    "chapter": 2,
+    "category": "呼吸・ガス交換",
+    "type": "standard",
+    "question": "安静時の正常な呼吸で肺に出入りする空気量を指す用語はどれか。",
+    "choices": [
+      "肺活量",
+      "1回換気量",
+      "残気量",
+      "全肺気量"
+    ],
+    "answer": 1,
+    "explanation": "安静時の通常呼吸で1回に出入りする空気量は1回換気量である。",
+    "sourceType": "review",
+    "sourceLabel": "章末確認問題",
+    "sourceNote": "第2章 学習教材「理解度チェック（全10問）」をCPTmate用4択問題として再構成"
+  },
+  {
+    "id": "ch2-review-010",
+    "chapter": 2,
+    "category": "酸素摂取・運動適応",
+    "type": "standard",
+    "question": "VO2maxについて誤っている記述はどれか。",
+    "choices": [
+      "最大心拍出量に関係する",
+      "骨格筋の最大酸素取り込み能力に関係する",
+      "VO2maxが高いほど疾病・死亡リスクが上昇する",
+      "最大動静脈酸素較差に関係する"
+    ],
+    "answer": 2,
+    "explanation": "本章ではVO2maxが高いほど心血管疾患、疾病率、死亡率のリスクは低くなると説明している。",
+    "sourceType": "review",
+    "sourceLabel": "章末確認問題",
+    "sourceNote": "第2章 学習教材「理解度チェック（全10問）」をCPTmate用4択問題として再構成"
+  },
+  {
+    "id": "ch2-q081",
+    "chapter": 2,
+    "category": "総合・心肺統合",
+    "type": "standard",
+    "question": "運動開始から高強度運動までの酸素供給を考えたとき、呼吸器系・循環系・活動筋の関係として最も適切なのはどれか。",
+    "choices": [
+      "肺でガス交換→心臓が血液を送り出す→血液が活動筋へ酸素を運ぶ",
+      "心臓が酸素を作り→肺が筋へ直接酸素を送る",
+      "活動筋が酸素を作り→血液が肺へ運ぶ",
+      "肺胞は酸素交換に関与せず心臓だけで酸素供給を完結する"
+    ],
+    "answer": 0,
+    "explanation": "本章のまとめでは、呼吸器系が肺胞でガス交換を行い、心臓が血液を送り出し、血管系が酸素を活動筋へ届ける一連の流れとして整理されている。",
+    "sourceType": "original",
+    "sourceLabel": "CPTmateオリジナル",
+    "sourceNote": "第1・2章教材を基準に精査・再構成"
+  },
+  {
+    "id": "ch2-q082",
+    "chapter": 2,
+    "category": "総合・心肺統合",
+    "type": "standard",
+    "question": "VO2を高めるための心肺系の要素を、本章のフィックの式とVO2maxの説明に沿って考えた場合、最も適切なのはどれか。",
+    "choices": [
+      "心拍出量と動静脈酸素較差の両方が関係する",
+      "心拍数だけが関係する",
+      "肺活量だけで決まる",
+      "血圧だけで決まる"
+    ],
+    "answer": 0,
+    "explanation": "本章ではVO2＝心拍出量×動静脈酸素較差とし、VO2maxには最大心拍出量、骨格筋の酸素取り込み能力、最大動静脈酸素較差が関係すると説明している。",
+    "sourceType": "original",
+    "sourceLabel": "CPTmateオリジナル",
+    "sourceNote": "第1・2章教材を基準に精査・再構成"
+  },
+  {
+    "id": "ch2-q083",
+    "chapter": 2,
+    "category": "総合・心肺統合",
+    "type": "standard",
+    "question": "高強度運動中に深部体温が上昇し、pHが低下し、活動筋への血流も増加した。この3つの反応を酸素供給の観点から最も適切に説明しているものはどれか。",
+    "choices": [
+      "酸素を活動筋へ渡しやすくする方向の反応が重なる",
+      "すべて酸素運搬を抑制する反応である",
+      "血液の酸素量とは無関係である",
+      "肺胞でのガス交換を停止させる反応である"
+    ],
+    "answer": 0,
+    "explanation": "本章では体温上昇・pH低下がHbからの酸素放出を促し、活動筋の血流増加が酸素供給を支える方向に働くと説明している。",
+    "sourceType": "original",
+    "sourceLabel": "CPTmateオリジナル",
+    "sourceNote": "第1・2章教材を基準に精査・再構成"
+  },
+  {
+    "id": "ch2-q084",
+    "chapter": 2,
+    "category": "総合・心肺統合",
+    "type": "standard",
+    "question": "心拍数90拍/分、SV70mL/拍、動静脈酸素較差10mL/100mLの場合、VO2を計算する際の最初のステップとして正しいものはどれか。",
+    "choices": [
+      "90×70で心拍出量を求める",
+      "90＋70で血液量を求める",
+      "10÷70で肺活量を求める",
+      "70－90でMAPを求める"
+    ],
+    "answer": 0,
+    "explanation": "フィックの式の計算では、まず心拍数×SVから心拍出量を求め、その後に動静脈酸素較差を掛ける。",
+    "sourceType": "original",
+    "sourceLabel": "CPTmateオリジナル",
+    "sourceNote": "第1・2章教材を基準に精査・再構成"
+  },
+  {
+    "id": "ch2-case001-q01",
+    "chapter": 2,
+    "category": "ケーススタディ・運動時酸素供給",
+  "type": "case",
+    "question": "クライアントが高強度運動中に「筋へ酸素を届ける仕組み」を質問した。最も適切な説明はどれか。",
+    "choices": [
+      "肺胞で取り込んだ酸素を血液が運び、心拍出量によって活動筋へ届ける",
+      "酸素は筋肉が直接肺から吸収する",
+      "ヘモグロビンは二酸化炭素だけを運ぶ",
+      "心臓は血液を送り出さず筋ポンプだけで酸素を運ぶ"
+    ],
+    "answer": 0,
+    "explanation": "本章では肺胞でのガス交換、ヘモグロビンによる酸素運搬、心拍出量による血液輸送が一連の酸素供給系として説明されている。",
+    "sourceType": "original",
+    "sourceLabel": "CPTmateオリジナル",
+    "sourceNote": "第1・2章教材を基準に精査・再構成"
+  },
+  {
+    "id": "ch2-case001-q02",
+    "chapter": 2,
+    "category": "ケーススタディ・運動時酸素供給",
+  "type": "case",
+    "question": "同じクライアントで運動強度が上がると動静脈酸素較差も増えた。この変化が意味するものはどれか。",
+    "choices": [
+      "血液から活動組織へ取り込まれる酸素量が増えている",
+      "血液が肺へ酸素を返している",
+      "心拍出量が必ず低下している",
+      "肺胞の酸素分圧が必ずゼロになる"
+    ],
+    "answer": 0,
+    "explanation": "本章の表2.1では運動強度の増加に伴い動静脈酸素較差が増え、血液から組織へ取り込まれる酸素量が増えることが示されている。",
+    "sourceType": "original",
+    "sourceLabel": "CPTmateオリジナル",
+    "sourceNote": "第1・2章教材を基準に精査・再構成"
+  },
+  {
+    "id": "ch2-case002-q01",
+    "chapter": 2,
+    "category": "ケーススタディ・循環",
+  "type": "case",
+    "question": "クライアントが運動中に活動筋への血流が増える理由を尋ねた。最も適切なのはどれか。",
+    "choices": [
+      "活動筋の局所的な血管拡張が起こり、非活動組織からの血流再分配も加わる",
+      "すべての血管が同じ程度に収縮する",
+      "活動筋では血管が完全に閉じる",
+      "血流は運動中に再分配されない"
+    ],
+    "answer": 0,
+    "explanation": "本章では活動筋の局所的な血管拡張と、非活動的な器官での血管収縮などにより血流が再分配されると説明している。",
+    "sourceType": "original",
+    "sourceLabel": "CPTmateオリジナル",
+    "sourceNote": "第1・2章教材を基準に精査・再構成"
+  },
+  {
+    "id": "ch2-case002-q02",
+    "chapter": 2,
+    "category": "ケーススタディ・循環",
+  "type": "case",
+    "question": "同じ状況で静脈還流が増えて心室への充満が増えた。フランク・スターリングの法則から予想されるのはどれか。",
+    "choices": [
+      "収縮力と1回拍出量が増える方向",
+      "必ず心拍数がゼロになる",
+      "酸素飽和度が直接100%になる",
+      "肺活量が増える"
+    ],
+    "answer": 0,
+    "explanation": "静脈還流増加による心室充満の増加は心筋の伸張を増やし、フランク・スターリングの法則により収縮力とSVが増える方向に働く。",
+    "sourceType": "original",
+    "sourceLabel": "CPTmateオリジナル",
+    "sourceNote": "第1・2章教材を基準に精査・再構成"
+  }
 ];
 
 const ALL_QUESTIONS = [...QUESTIONS, ...ADDITIONAL_QUESTIONS];
@@ -3751,7 +4346,8 @@ function getChapterMajorProgress(chapter = 1) {
     2: { "血液・酸素運搬": q => q.category === "血液・酸素運搬",
 "心臓・循環": q => q.category === "心臓・循環",
 "呼吸・ガス交換": q => q.category === "呼吸・ガス交換",
-"酸素摂取・運動適応": q => q.category === "酸素摂取・運動適応" }
+"酸素摂取・運動適応": q => q.category === "酸素摂取・運動適応",
+"総合・ケーススタディ": q => q.category.startsWith("総合") || q.category.startsWith("ケーススタディ") }
   };
   const major = majorByChapter[chapter] || {};
   return Object.entries(major).map(([name, fn]) => {
@@ -3997,22 +4593,8 @@ function renderPracticeSelector(selectedChapter = null) {
   const chapter = selectedChapter || chapters[0] || 1;
   const chapterQuestions = ALL_QUESTIONS.filter(q => q.chapter === chapter);
 
-  // 第1章問題数の実データを基準に表示する。
-  // 開発中に「バージョンだけ更新されて問題データが古い」状態を検知できるようにする。
-  if (chapter === 1 && chapterQuestions.length !== 80) {
-    console.error("CPTmate 第1章問題データ不一致:", {
-      expected: 80,
-      actual: chapterQuestions.length,
-      appVersion: APP_VERSION
-    });
-  }
-  if (chapter === 2 && chapterQuestions.length !== 60) {
-    console.error("CPTmate 第2章問題データ不一致:", {
-      expected: 60,
-      actual: chapterQuestions.length,
-      appVersion: APP_VERSION
-    });
-  }
+  // 章ごとの問題数は固定値を持たず、現在のALL_QUESTIONSを正とする。
+  // 今後の章追加・問題精査で問題数が変わっても、UIと学習状況が自動追従する。
 
   // 大分類は章ごとに定義し、1問が必ず1分類にだけ入るようにする。
   const majorByChapter = {
