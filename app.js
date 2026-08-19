@@ -1,4 +1,4 @@
-const APP_VERSION = "0.2.76";
+const APP_VERSION = "0.2.77";
 
 /* v0.2.63: home logo placement + startup splash/crossfade */
 const CPTMATE_BRAND_LOGO = "assets/branding/cptmate-horizontal-logo.png";
@@ -2672,6 +2672,11 @@ const ADDITIONAL_QUESTIONS = [{
 ];
 
 const ALL_QUESTIONS = [...QUESTIONS, ...ADDITIONAL_QUESTIONS];
+
+// v0.2.77: 問題データ初期化後に学習記録を現在の問題IDへ同期。
+// これより前に実行するとALL_QUESTIONSのconst初期化前参照で起動が停止する。
+migrateStateToCurrentSchema();
+
 let practiceQueue = [];
 
 let practiceLabel = "第1章すべて";
@@ -2832,8 +2837,7 @@ function migrateStateToCurrentSchema() {
   }
 }
 
-migrateStateToCurrentSchema();
-
+// Migration is intentionally invoked after ALL_QUESTIONS is initialized.
 function getCurrentAnswer(id) {
   return state.answers && state.answers[id] ? state.answers[id] : null;
 }
