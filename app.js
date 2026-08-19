@@ -1,4 +1,4 @@
-const APP_VERSION = "0.2.79";
+const APP_VERSION = "0.2.80";
 
 /* v0.2.63: home logo placement + startup splash/crossfade */
 const CPTMATE_BRAND_LOGO = "assets/branding/cptmate-horizontal-logo.png";
@@ -348,6 +348,23 @@ const CPTMATE_SPLASH_MARK = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAaQAA
       white-space: nowrap !important;
       overflow: hidden !important;
       text-overflow: ellipsis !important;
+    }
+    .source-badge-group {
+      display: flex !important;
+      align-items: center !important;
+      gap: 6px !important;
+      min-width: 0 !important;
+      flex-wrap: wrap !important;
+    }
+    .source-badge.source-origin {
+      color: #174f52 !important;
+      background: #eef8f7 !important;
+      border-color: rgba(23,79,82,.18) !important;
+    }
+    .source-badge.source-basis {
+      font-weight: 700 !important;
+      color: var(--muted, #667085) !important;
+      background: var(--card, #fff) !important;
     }
     .question-action-group {
       display: flex !important;
@@ -1584,7 +1601,7 @@ const QUESTIONS = [
     "answer": 2,
     "explanation": "本章では、動脈血の正常な水素イオン濃度（pH）を約7.4としている。",
     "sourceType": "textbook",
-    "sourceLabel": "第2章 教科書",
+    "sourceLabel": "教科書ベース",
     "sourceNote": "ユーザー提供の第2章PDFを基準に作成"
   },
   {
@@ -1602,7 +1619,7 @@ const QUESTIONS = [
     "answer": 1,
     "explanation": "本章では、血液は血漿、赤血球、白血球、血小板から構成され、それぞれ約55%、45%、1%未満と説明されている。",
     "sourceType": "textbook",
-    "sourceLabel": "第2章 教科書",
+    "sourceLabel": "教科書ベース",
     "sourceNote": "ユーザー提供の第2章PDFを基準に作成"
   },
   {
@@ -1620,7 +1637,7 @@ const QUESTIONS = [
     "answer": 1,
     "explanation": "酸素は主に赤血球中のヘモグロビンによって運ばれる。",
     "sourceType": "textbook",
-    "sourceLabel": "第2章 教科書",
+    "sourceLabel": "教科書ベース",
     "sourceNote": "ユーザー提供の第2章PDFを基準に作成"
   },
   {
@@ -1638,7 +1655,7 @@ const QUESTIONS = [
     "answer": 2,
     "explanation": "健康な血液は100mL当たり約15gのヘモグロビンを含むとされている。",
     "sourceType": "textbook",
-    "sourceLabel": "第2章 教科書",
+    "sourceLabel": "教科書ベース",
     "sourceNote": "ユーザー提供の第2章PDFを基準に作成"
   },
   {
@@ -1656,7 +1673,7 @@ const QUESTIONS = [
     "answer": 1,
     "explanation": "酸素がヘモグロビンと結合すると、続く酸素分子の結合が促進される協同的結合がS字形の理由の一つである。",
     "sourceType": "textbook",
-    "sourceLabel": "第2章 教科書",
+    "sourceLabel": "教科書ベース",
     "sourceNote": "ユーザー提供の第2章PDFを基準に作成"
   },
   {
@@ -1674,7 +1691,7 @@ const QUESTIONS = [
     "answer": 1,
     "explanation": "本章では、深部体温の上昇により解離曲線は右へ移動し、ヘモグロビンから酸素が放出されやすくなると説明している。",
     "sourceType": "textbook",
-    "sourceLabel": "第2章 教科書",
+    "sourceLabel": "教科書ベース",
     "sourceNote": "ユーザー提供の第2章PDFを基準に作成"
   },
   {
@@ -1692,7 +1709,7 @@ const QUESTIONS = [
     "answer": 1,
     "explanation": "低pH（酸性）の血液では解離曲線が右へ移動する。運動時には体温上昇とpH低下が酸素放出を促す方向に働く。",
     "sourceType": "textbook",
-    "sourceLabel": "第2章 教科書",
+    "sourceLabel": "教科書ベース",
     "sourceNote": "ユーザー提供の第2章PDFを基準に作成"
   },
   {
@@ -1710,7 +1727,7 @@ const QUESTIONS = [
     "answer": 0,
     "explanation": "心臓は右心房、左心房、右心室、左心室の4つの部屋から構成される。",
     "sourceType": "textbook",
-    "sourceLabel": "第2章 教科書",
+    "sourceLabel": "教科書ベース",
     "sourceNote": "ユーザー提供の第2章PDFを基準に作成"
   },
   {
@@ -1728,7 +1745,7 @@ const QUESTIONS = [
     "answer": 1,
     "explanation": "刺激伝導系は洞房結節（SA結節）から始まり、心房へインパルスが広がる。",
     "sourceType": "textbook",
-    "sourceLabel": "第2章 教科書",
+    "sourceLabel": "教科書ベース",
     "sourceNote": "ユーザー提供の第2章PDFを基準に作成"
   },
   {
@@ -1746,7 +1763,7 @@ const QUESTIONS = [
     "answer": 1,
     "explanation": "本章では、SA結節→AV結節→プルキンエ系→心室収縮という流れで説明されている。",
     "sourceType": "textbook",
-    "sourceLabel": "第2章 教科書",
+    "sourceLabel": "教科書ベース",
     "sourceNote": "ユーザー提供の第2章PDFを基準に作成"
   },
   {
@@ -1764,7 +1781,7 @@ const QUESTIONS = [
     "answer": 1,
     "explanation": "P波は心房の脱分極、QRS波は心室の脱分極、T波は心室の再分極を表す。",
     "sourceType": "textbook",
-    "sourceLabel": "第2章 教科書",
+    "sourceLabel": "教科書ベース",
     "sourceNote": "ユーザー提供の第2章PDFを基準に作成"
   },
   {
@@ -1782,7 +1799,7 @@ const QUESTIONS = [
     "answer": 1,
     "explanation": "右心室から肺動脈を通って肺へ血液が運ばれ、そこでガス交換が行われる。",
     "sourceType": "textbook",
-    "sourceLabel": "第2章 教科書",
+    "sourceLabel": "教科書ベース",
     "sourceNote": "ユーザー提供の第2章PDFを基準に作成"
   },
   {
@@ -1800,7 +1817,7 @@ const QUESTIONS = [
     "answer": 1,
     "explanation": "肺で酸素を積み込んだ血液は肺静脈を経て左心房へ戻る。",
     "sourceType": "textbook",
-    "sourceLabel": "第2章 教科書",
+    "sourceLabel": "教科書ベース",
     "sourceNote": "ユーザー提供の第2章PDFを基準に作成"
   },
   {
@@ -1818,7 +1835,7 @@ const QUESTIONS = [
     "answer": 0,
     "explanation": "運動中は活動筋の細動脈が局所的な代謝反応などにより拡張し、筋への血流量が増加する。",
     "sourceType": "textbook",
-    "sourceLabel": "第2章 教科書",
+    "sourceLabel": "教科書ベース",
     "sourceNote": "ユーザー提供の第2章PDFを基準に作成"
   },
   {
@@ -1836,7 +1853,7 @@ const QUESTIONS = [
     "answer": 0,
     "explanation": "骨格筋の収縮によって静脈が圧迫され、静脈弁とともに血液を心臓へ戻す筋ポンプ作用が生じる。",
     "sourceType": "textbook",
-    "sourceLabel": "第2章 教科書",
+    "sourceLabel": "教科書ベース",
     "sourceNote": "ユーザー提供の第2章PDFを基準に作成"
   },
   {
@@ -1854,7 +1871,7 @@ const QUESTIONS = [
     "answer": 1,
     "explanation": "本章では、安静時は副交感神経が優位で心拍数が低く抑えられ、運動時には交感神経が優位になると説明している。",
     "sourceType": "textbook",
-    "sourceLabel": "第2章 教科書",
+    "sourceLabel": "教科書ベース",
     "sourceNote": "ユーザー提供の第2章PDFを基準に作成"
   },
   {
@@ -1872,7 +1889,7 @@ const QUESTIONS = [
     "answer": 1,
     "explanation": "RPP（double product）は心拍数×収縮期血圧で求める。",
     "sourceType": "textbook",
-    "sourceLabel": "第2章 教科書",
+    "sourceLabel": "教科書ベース",
     "sourceNote": "ユーザー提供の第2章PDFを基準に作成"
   },
   {
@@ -1890,7 +1907,7 @@ const QUESTIONS = [
     "answer": 0,
     "explanation": "本章ではMAP＝拡張期血圧＋0.333×（収縮期血圧−拡張期血圧）としている。",
     "sourceType": "textbook",
-    "sourceLabel": "第2章 教科書",
+    "sourceLabel": "教科書ベース",
     "sourceNote": "ユーザー提供の第2章PDFを基準に作成"
   },
   {
@@ -1908,7 +1925,7 @@ const QUESTIONS = [
     "answer": 0,
     "explanation": "心拍出量は1回拍出量（SV）×心拍数（HR）で求められる。",
     "sourceType": "textbook",
-    "sourceLabel": "第2章 教科書",
+    "sourceLabel": "教科書ベース",
     "sourceNote": "ユーザー提供の第2章PDFを基準に作成"
   },
   {
@@ -1926,7 +1943,7 @@ const QUESTIONS = [
     "answer": 1,
     "explanation": "1回拍出量は拡張末期容量（EDV）−収縮末期容量（ESV）で求める。",
     "sourceType": "textbook",
-    "sourceLabel": "第2章 教科書",
+    "sourceLabel": "教科書ベース",
     "sourceNote": "ユーザー提供の第2章PDFを基準に作成"
   },
   {
@@ -1944,7 +1961,7 @@ const QUESTIONS = [
     "answer": 0,
     "explanation": "左心室が伸張されるほど収縮力が増大し、心室から押し出される血液量が増大するという長さ‐張力関係に基づく。",
     "sourceType": "textbook",
-    "sourceLabel": "第2章 教科書",
+    "sourceLabel": "教科書ベース",
     "sourceNote": "ユーザー提供の第2章PDFを基準に作成"
   },
   {
@@ -1962,7 +1979,7 @@ const QUESTIONS = [
     "answer": 0,
     "explanation": "本章では呼吸器系の主な機能を酸素と二酸化炭素の交換としている。",
     "sourceType": "textbook",
-    "sourceLabel": "第2章 教科書",
+    "sourceLabel": "教科書ベース",
     "sourceNote": "ユーザー提供の第2章PDFを基準に作成"
   },
   {
@@ -1980,7 +1997,7 @@ const QUESTIONS = [
     "answer": 0,
     "explanation": "鼻腔は通過する空気に対して加温、加湿、濾過の3つの機能を果たす。",
     "sourceType": "textbook",
-    "sourceLabel": "第2章 教科書",
+    "sourceLabel": "教科書ベース",
     "sourceNote": "ユーザー提供の第2章PDFを基準に作成"
   },
   {
@@ -1998,7 +2015,7 @@ const QUESTIONS = [
     "answer": 0,
     "explanation": "吸気は横隔膜と外肋間筋を利用する能動的過程であり、横隔膜の収縮で胸郭が拡大して肺内圧が低下する。",
     "sourceType": "textbook",
-    "sourceLabel": "第2章 教科書",
+    "sourceLabel": "教科書ベース",
     "sourceNote": "ユーザー提供の第2章PDFを基準に作成"
   },
   {
@@ -2016,7 +2033,7 @@ const QUESTIONS = [
     "answer": 0,
     "explanation": "安静時の呼気は受動的反応で、外肋間筋と横隔膜が弛緩することで肺内圧が上昇し、空気が排出される。",
     "sourceType": "textbook",
-    "sourceLabel": "第2章 教科書",
+    "sourceLabel": "教科書ベース",
     "sourceNote": "ユーザー提供の第2章PDFを基準に作成"
   },
   {
@@ -2034,7 +2051,7 @@ const QUESTIONS = [
     "answer": 1,
     "explanation": "安静時の通常呼吸で肺に出入りする空気の量は1回換気量である。",
     "sourceType": "textbook",
-    "sourceLabel": "第2章 教科書",
+    "sourceLabel": "教科書ベース",
     "sourceNote": "ユーザー提供の第2章PDFを基準に作成"
   },
   {
@@ -2052,7 +2069,7 @@ const QUESTIONS = [
     "answer": 3,
     "explanation": "通常の呼気の後に肺に残っている空気量は機能的残気量である。",
     "sourceType": "textbook",
-    "sourceLabel": "第2章 教科書",
+    "sourceLabel": "教科書ベース",
     "sourceNote": "ユーザー提供の第2章PDFを基準に作成"
   },
   {
@@ -2070,7 +2087,7 @@ const QUESTIONS = [
     "answer": 0,
     "explanation": "ガスは濃度・分圧の勾配に従って拡散する。本章では肺胞と毛細血管の間のガス交換を拡散として説明している。",
     "sourceType": "textbook",
-    "sourceLabel": "第2章 教科書",
+    "sourceLabel": "教科書ベース",
     "sourceNote": "ユーザー提供の第2章PDFを基準に作成"
   },
   {
@@ -2088,7 +2105,7 @@ const QUESTIONS = [
     "answer": 0,
     "explanation": "図2.11では、肺胞PO₂は約100mmHg、肺へ戻る静脈血PO₂は約40mmHgとして示されている。",
     "sourceType": "textbook",
-    "sourceLabel": "第2章 教科書",
+    "sourceLabel": "教科書ベース",
     "sourceNote": "ユーザー提供の第2章PDFを基準に作成"
   },
   {
@@ -2106,7 +2123,7 @@ const QUESTIONS = [
     "answer": 0,
     "explanation": "VO₂＝心拍出量×動静脈酸素較差。さらに心拍出量は心拍数×1回拍出量で表される。",
     "sourceType": "textbook",
-    "sourceLabel": "第2章 教科書",
+    "sourceLabel": "教科書ベース",
     "sourceNote": "ユーザー提供の第2章PDFを基準に作成"
   },
   {
@@ -2124,7 +2141,7 @@ const QUESTIONS = [
     "answer": 0,
     "explanation": "動静脈酸素較差は動脈血の酸素量から静脈血の酸素量を引いたもので、血液100mL当たりの酸素量で示される。",
     "sourceType": "textbook",
-    "sourceLabel": "第2章 教科書",
+    "sourceLabel": "教科書ベース",
     "sourceNote": "ユーザー提供の第2章PDFを基準に作成"
   },
   {
@@ -2142,7 +2159,7 @@ const QUESTIONS = [
     "answer": 0,
     "explanation": "表2.1では、動脈血20mLに対して静脈還流が14、10、4mLとなり、取り込まれる酸素量は6、10、16mL/血液100mLへ増加する。",
     "sourceType": "textbook",
-    "sourceLabel": "第2章 教科書",
+    "sourceLabel": "教科書ベース",
     "sourceNote": "ユーザー提供の第2章PDFを基準に作成"
   },
   {
@@ -2160,7 +2177,7 @@ const QUESTIONS = [
     "answer": 3,
     "explanation": "本章では、VO₂maxが高いほど心血管疾患、疾病率、死亡率のリスクが低くなると説明している。",
     "sourceType": "textbook",
-    "sourceLabel": "第2章 教科書",
+    "sourceLabel": "教科書ベース",
     "sourceNote": "ユーザー提供の第2章PDFを基準に作成"
   },
   {
@@ -2178,7 +2195,7 @@ const QUESTIONS = [
     "answer": 1,
     "explanation": "本章では安静時VO₂を通常3.5mL/kg/分としている。",
     "sourceType": "textbook",
-    "sourceLabel": "第2章 教科書",
+    "sourceLabel": "教科書ベース",
     "sourceNote": "ユーザー提供の第2章PDFを基準に作成"
   },
   {
@@ -2196,7 +2213,7 @@ const QUESTIONS = [
     "answer": 0,
     "explanation": "本章では、VO₂max向上には最大1回拍出量の増加と、毛細血管・ミトコンドリア密度の増加などの末梢適応が関連するとしている。",
     "sourceType": "textbook",
-    "sourceLabel": "第2章 教科書",
+    "sourceLabel": "教科書ベース",
     "sourceNote": "ユーザー提供の第2章PDFを基準に作成"
   },
   {
@@ -2214,7 +2231,7 @@ const QUESTIONS = [
     "answer": 0,
     "explanation": "本章では、通常トレーニングを行っても最大心拍数は変化せず、最大1回拍出量の増加により最大心拍出量が増加すると説明している。",
     "sourceType": "textbook",
-    "sourceLabel": "第2章 教科書",
+    "sourceLabel": "教科書ベース",
     "sourceNote": "ユーザー提供の第2章PDFを基準に作成"
   },
   {
@@ -2232,7 +2249,7 @@ const QUESTIONS = [
     "answer": 0,
     "explanation": "活動筋では局所的な代謝反応による血管拡張が起こり、他の組織から活動筋へ血液が再分配される。",
     "sourceType": "textbook",
-    "sourceLabel": "第2章 教科書",
+    "sourceLabel": "教科書ベース",
     "sourceNote": "ユーザー提供の第2章PDFを基準に作成"
   },
   {
@@ -2250,7 +2267,7 @@ const QUESTIONS = [
     "answer": 1,
     "explanation": "心拍出量は80×65＝5200mL/分。これに6/100を掛けると、VO₂＝312mL/分となる。本章にも同じ計算例が示されている。",
     "sourceType": "textbook",
-    "sourceLabel": "第2章 教科書",
+    "sourceLabel": "教科書ベース",
     "sourceNote": "ユーザー提供の第2章PDFを基準に作成"
   },
   {
@@ -2268,7 +2285,7 @@ const QUESTIONS = [
     "answer": 0,
     "explanation": "上大静脈は頭部と上肢から、下大静脈は体幹と下肢から脱酸素状態の血液を運ぶ。",
     "sourceType": "textbook",
-    "sourceLabel": "第2章 教科書",
+    "sourceLabel": "教科書ベース",
     "sourceNote": "ユーザー提供の第2章PDFを基準に作成"
   },
   {
@@ -2286,7 +2303,7 @@ const QUESTIONS = [
     "answer": 0,
     "explanation": "本章ではVO₂maxが高いほど、心血管疾患、疾病率、死亡率のリスクが低くなると説明している。",
     "sourceType": "textbook",
-    "sourceLabel": "第2章 教科書",
+    "sourceLabel": "教科書ベース",
     "sourceNote": "ユーザー提供の第2章PDFを基準に作成"
   },
 {
@@ -2304,7 +2321,7 @@ const QUESTIONS = [
   "answer": 0,
   "explanation": "本章では、血液に溶解する酸素は非常に少なく、血液100mL当たり約0.3mLと説明されている。酸素は主にヘモグロビンによって運ばれる。",
   "sourceType": "textbook",
-  "sourceLabel": "第2章 教科書",
+  "sourceLabel": "教科書ベース",
   "sourceNote": "ユーザー提供の第2章PDFを基準に作成"
 },
 {
@@ -2322,7 +2339,7 @@ const QUESTIONS = [
   "answer": 1,
   "explanation": "本章では、ヘモグロビン1gで約1.39mLの酸素を運ぶことができるとしている。",
   "sourceType": "textbook",
-  "sourceLabel": "第2章 教科書",
+  "sourceLabel": "教科書ベース",
   "sourceNote": "ユーザー提供の第2章PDFを基準に作成"
 },
 {
@@ -2340,7 +2357,7 @@ const QUESTIONS = [
   "answer": 2,
   "explanation": "本章では、15gのヘモグロビンが1g当たり約1.39mLの酸素を運ぶため、血液100mL当たりの酸素運搬能力は約20.8mLとしている。",
   "sourceType": "textbook",
-  "sourceLabel": "第2章 教科書",
+  "sourceLabel": "教科書ベース",
   "sourceNote": "ユーザー提供の第2章PDFを基準に作成"
 },
 {
@@ -2358,7 +2375,7 @@ const QUESTIONS = [
   "answer": 2,
   "explanation": "本章では、貧血症ではない健康な成人の血液量は平均約5.0Lで、体重の7%近くを占めるとしている。",
   "sourceType": "textbook",
-  "sourceLabel": "第2章 教科書",
+  "sourceLabel": "教科書ベース",
   "sourceNote": "ユーザー提供の第2章PDFを基準に作成"
 },
 {
@@ -2376,7 +2393,7 @@ const QUESTIONS = [
   "answer": 2,
   "explanation": "酸素分圧は760mmHg×20.93/100で、約159mmHgとなる。",
   "sourceType": "textbook",
-  "sourceLabel": "第2章 教科書",
+  "sourceLabel": "教科書ベース",
   "sourceNote": "ユーザー提供の第2章PDFを基準に作成"
 },
 {
@@ -2394,7 +2411,7 @@ const QUESTIONS = [
   "answer": 2,
   "explanation": "本章では、酸素分圧が約60mmHgでヘモグロビンの酸素飽和度が約90%に達すると、解離曲線が平坦になり始めるとしている。",
   "sourceType": "textbook",
-  "sourceLabel": "第2章 教科書",
+  "sourceLabel": "教科書ベース",
   "sourceNote": "ユーザー提供の第2章PDFを基準に作成"
 },
 {
@@ -2412,7 +2429,7 @@ const QUESTIONS = [
   "answer": 0,
   "explanation": "SA結節からのインパルスは心房へ瞬時に広がる一方、AV結節の通過に時間がかかる。その時間差によって心房内の血液を心室へ送り込むことが可能になる。",
   "sourceType": "textbook",
-  "sourceLabel": "第2章 教科書",
+  "sourceLabel": "教科書ベース",
   "sourceNote": "ユーザー提供の第2章PDFを基準に作成"
 },
 {
@@ -2430,7 +2447,7 @@ const QUESTIONS = [
   "answer": 2,
   "explanation": "本章では、脱酸素状態の血液でも酸素が全くないわけではなく、安静時は約70%の飽和度であると説明している。",
   "sourceType": "textbook",
-  "sourceLabel": "第2章 教科書",
+  "sourceLabel": "教科書ベース",
   "sourceNote": "ユーザー提供の第2章PDFを基準に作成"
 },
 {
@@ -2448,7 +2465,7 @@ const QUESTIONS = [
   "answer": 0,
   "explanation": "本章では、心臓および肺における肺循環と、それ以外の身体への体循環が閉鎖循環系を構成すると説明している。",
   "sourceType": "textbook",
-  "sourceLabel": "第2章 教科書",
+  "sourceLabel": "教科書ベース",
   "sourceNote": "ユーザー提供の第2章PDFを基準に作成"
 },
 {
@@ -2466,7 +2483,7 @@ const QUESTIONS = [
   "answer": 0,
   "explanation": "本章では、体循環の動脈は通常高圧で、大動脈で約100mmHg、細動脈でも約60mmHgと説明している。",
   "sourceType": "textbook",
-  "sourceLabel": "第2章 教科書",
+  "sourceLabel": "教科書ベース",
   "sourceNote": "ユーザー提供の第2章PDFを基準に作成"
 },
 {
@@ -2484,7 +2501,7 @@ const QUESTIONS = [
   "answer": 0,
   "explanation": "静脈は低圧であるため、一方向性の弁が血液の逆流を防ぎ、骨格筋の収縮による静脈還流を助ける。",
   "sourceType": "textbook",
-  "sourceLabel": "第2章 教科書",
+  "sourceLabel": "教科書ベース",
   "sourceNote": "ユーザー提供の第2章PDFを基準に作成"
 },
 {
@@ -2502,7 +2519,7 @@ const QUESTIONS = [
   "answer": 1,
   "explanation": "本章では、DBPを血液が力強く送り出されていない拡張期に動脈壁へかかる圧力として説明している。",
   "sourceType": "textbook",
-  "sourceLabel": "第2章 教科書",
+  "sourceLabel": "教科書ベース",
   "sourceNote": "ユーザー提供の第2章PDFを基準に作成"
 },
 {
@@ -2520,7 +2537,7 @@ const QUESTIONS = [
   "answer": 1,
   "explanation": "心周期は、心臓が血液を充満させる拡張期と、収縮して血液を送り出す収縮期によって構成される。",
   "sourceType": "textbook",
-  "sourceLabel": "第2章 教科書",
+  "sourceLabel": "教科書ベース",
   "sourceNote": "ユーザー提供の第2章PDFを基準に作成"
 },
 {
@@ -2538,7 +2555,7 @@ const QUESTIONS = [
   "answer": 3,
   "explanation": "本章では、MAPを収縮期血圧と拡張期血圧の単純平均とはせず、DBP＋0.333×（SBP−DBP）で算出するとしている。",
   "sourceType": "textbook",
-  "sourceLabel": "第2章 教科書",
+  "sourceLabel": "教科書ベース",
   "sourceNote": "ユーザー提供の第2章PDFを基準に作成"
 },
 {
@@ -2556,7 +2573,7 @@ const QUESTIONS = [
   "answer": 0,
   "explanation": "本章では、活動筋の細動脈では一酸化窒素の局所的な放出によって交感神経系の作用が無効化され、血管が拡張すると説明している。",
   "sourceType": "textbook",
-  "sourceLabel": "第2章 教科書",
+  "sourceLabel": "教科書ベース",
   "sourceNote": "ユーザー提供の第2章PDFを基準に作成"
 },
 {
@@ -2574,7 +2591,7 @@ const QUESTIONS = [
   "answer": 1,
   "explanation": "本章では、運動中は非活動的な臓器への血管が収縮する一方、活動筋の細動脈が拡張し、血液が活動筋へ再分配されると説明している。",
   "sourceType": "textbook",
-  "sourceLabel": "第2章 教科書",
+  "sourceLabel": "教科書ベース",
   "sourceNote": "ユーザー提供の第2章PDFを基準に作成"
 },
 {
@@ -2592,7 +2609,7 @@ const QUESTIONS = [
   "answer": 2,
   "explanation": "本章では、気管から気管支、細気管支へと約23回の分岐を経て、肺胞に到達すると説明している。",
   "sourceType": "textbook",
-  "sourceLabel": "第2章 教科書",
+  "sourceLabel": "教科書ベース",
   "sourceNote": "ユーザー提供の第2章PDFを基準に作成"
 },
 {
@@ -2610,7 +2627,7 @@ const QUESTIONS = [
   "answer": 1,
   "explanation": "肺活量測定では、できるだけ大きく息を吸って肺を満たし、次にできるだけ大きく息を吐く。その最大努力による呼吸の動きが肺活量の指標となる。",
   "sourceType": "textbook",
-  "sourceLabel": "第2章 教科書",
+  "sourceLabel": "教科書ベース",
   "sourceNote": "ユーザー提供の第2章PDFを基準に作成"
 },
 {
@@ -2628,7 +2645,7 @@ const QUESTIONS = [
   "answer": 0,
   "explanation": "本章では、全肺気量は肺活量と残気量との合計として示されている。",
   "sourceType": "textbook",
-  "sourceLabel": "第2章 教科書",
+  "sourceLabel": "教科書ベース",
   "sourceNote": "ユーザー提供の第2章PDFを基準に作成"
 },
 {
@@ -2646,7 +2663,7 @@ const QUESTIONS = [
   "answer": 1,
   "explanation": "本章の図2.11では、肺胞のPO₂は約100mmHg、肺へ戻ってくる静脈血のPO₂は約40mmHgと示され、この分圧勾配により酸素が血液へ拡散する。",
   "sourceType": "textbook",
-  "sourceLabel": "第2章 教科書",
+  "sourceLabel": "教科書ベース",
   "sourceNote": "ユーザー提供の第2章PDFを基準に作成"
 }
 ]
@@ -3918,7 +3935,7 @@ function renderOptionReview(q) {
 
 
 function ensureFigureStyles() {
-  if (!document.getElementById('cptmate-source-badge-style')) { const st=document.createElement('style'); st.id='cptmate-source-badge-style'; st.textContent=".question-info-row{display:flex;align-items:center;justify-content:space-between;min-height:42px;margin:2px 0 8px;}.source-badge-wrap{display:flex;align-items:center;}.source-badge{display:inline-flex;align-items:center;margin:0;padding:4px 9px;border:1px solid var(--line,#d8dde6);border-radius:999px;font-size:12px;font-weight:700;line-height:1.2;background:var(--card,#fff);color:var(--muted,#667085)}.source-badge.source-mock,.source-badge.source-review{font-weight:800}"; document.head.appendChild(st); }
+  if (!document.getElementById('cptmate-source-badge-style')) { const st=document.createElement('style'); st.id='cptmate-source-badge-style'; st.textContent=".question-info-row{display:flex;align-items:center;justify-content:space-between;min-height:42px;margin:2px 0 8px;}.source-badge-wrap{display:flex;align-items:center;}.source-badge{display:inline-flex;align-items:center;margin:0;padding:4px 9px;border:1px solid var(--line,#d8dde6);border-radius:999px;font-size:12px;font-weight:700;line-height:1.2;background:var(--card,#fff);color:var(--muted,#667085)}.source-badge.source-mock,.source-badge.source-review,.source-badge.source-textbook{font-weight:800}"; document.head.appendChild(st); }
 
   if (document.getElementById("cptmateFigureStyles")) return;
   const style = document.createElement("style");
@@ -4266,13 +4283,21 @@ function restartCurrentPractice() {
 
 function getSourceLabel(sourceType, question) {
   if (question?.sourceLabel) return question.sourceLabel;
-  if (sourceType === "mock") return "模擬問題";
-  if (sourceType === "review") return "章末確認問題";
+  if (sourceType === "mock") return "模擬問題ベース";
+  if (sourceType === "review") return "章末確認ベース";
+  if (sourceType === "textbook") return "教科書ベース";
   return "CPTmateオリジナル";
+}
+function getSourceOriginLabel(sourceType) {
+  if (sourceType === "original") return "CPTmateオリジナル";
+  return "CPTmate再構成";
 }
 function renderSourceBadge(question) {
   const type = question?.sourceType || "original";
-  return `<span class="source-badge source-${type}">${getSourceLabel(type, question)}</span>`;
+  const origin = getSourceOriginLabel(type);
+  const basis = getSourceLabel(type, question);
+  const basisBadge = type === "original" ? "" : `<span class="source-badge source-basis source-${type}">${basis}</span>`;
+  return `<div class="source-badge-group"><span class="source-badge source-origin source-${type}">${origin}</span>${basisBadge}</div>`;
 }
 
 function renderQuestion() {
@@ -4358,7 +4383,7 @@ function renderQuestion() {
     <section class="card">
       ${q.type === "case" ? `
         <div class="case-badge">
-          CASE STUDY${q.caseTitle ? `　${q.caseTitle}` : ""}
+          ケーススタディ${q.caseTitle ? `　${q.caseTitle}` : ""}
         </div>
       ` : ""}
 
