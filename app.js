@@ -1,4 +1,4 @@
-const APP_VERSION = "0.2.74";
+const APP_VERSION = "0.2.76";
 
 /* v0.2.63: home logo placement + startup splash/crossfade */
 const CPTMATE_BRAND_LOGO = "assets/branding/cptmate-horizontal-logo.png";
@@ -165,6 +165,18 @@ const CPTMATE_SPLASH_MARK = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAaQAA
       setTimeout(() => splash.remove(), 420);
     }, wait);
   };
+
+  // v0.2.75: 起動処理の例外で終了関数が呼ばれなくても、
+  // スプラッシュが永久に残らないよう安全弁を設置する。
+  window.setTimeout(() => {
+    const screen = document.getElementById("screen");
+    if (screen) screen.classList.add("cptmate-home-ready");
+    const currentSplash = document.getElementById("cptmate-startup-splash");
+    if (currentSplash) {
+      currentSplash.classList.add("is-exiting");
+      window.setTimeout(() => currentSplash.remove(), 420);
+    }
+  }, 2300);
 })();
 
 /* v0.2.64: bottom navigation — restore approved 4-item layout */
@@ -2280,6 +2292,10 @@ const QUESTIONS = [
 ]
 
 const STORAGE_KEY = "cptmate_v01_state";
+
+// v0.2.76: 旧問題ID引き継ぎ用。
+// 現在エイリアスがない場合でも移行処理を安全に実行する。
+const QUESTION_ID_ALIASES = Object.freeze({});
 
 const defaultState = {
   answers: {},
