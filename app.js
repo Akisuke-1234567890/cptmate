@@ -1,6 +1,6 @@
-const APP_VERSION = "0.2.59";
+const APP_VERSION = "0.2.61";
 
-/* v0.2.49: bottom navigation robust viewport fixing */
+/* v0.2.61: bottom navigation — 4 items, fixed order and equal-width grid */
 (function installCPTmateBottomNavFix() {
   const apply = () => {
     const buttons = Array.from(document.querySelectorAll(".nav-btn"));
@@ -13,13 +13,16 @@ const APP_VERSION = "0.2.59";
     }
     if (!nav || nav === document.body) nav = buttons[0].parentElement;
 
-    // v0.2.59: 下帯の並びを「ホーム・復習・お気に入り・学習状況・設定」に統一。
-    // 見た目だけでなくDOM順も入れ替え、タップ順・読み上げ順も一致させる。
-    const navOrder = ["home", "review", "favorites", "stats", "settings"];
+    // 下帯は「ホーム・復習・お気に入り・設定」の4項目に固定。
+    const navOrder = ["home", "review", "favorites", "settings"];
     navOrder.forEach(key => {
       const btn = buttons.find(item => item.dataset.nav === key);
       if (btn) nav.appendChild(btn);
     });
+
+    // 学習状況ボタンが残っている旧HTMLにも対応して完全に非表示。
+    const statsButton = buttons.find(item => item.dataset.nav === "stats");
+    if (statsButton) statsButton.style.setProperty("display", "none", "important");
 
     nav.style.setProperty("position", "fixed", "important");
     nav.style.setProperty("left", "0", "important");
@@ -27,22 +30,23 @@ const APP_VERSION = "0.2.59";
     nav.style.setProperty("bottom", "0", "important");
     nav.style.setProperty("width", "100vw", "important");
     nav.style.setProperty("max-width", "none", "important");
-    nav.style.setProperty("margin-left", "0", "important");
-    nav.style.setProperty("margin-right", "0", "important");
+    nav.style.setProperty("margin", "0", "important");
     nav.style.setProperty("transform", "none", "important");
     nav.style.setProperty("z-index", "9999", "important");
     nav.style.setProperty("box-sizing", "border-box", "important");
+    nav.style.setProperty("display", "grid", "important");
+    nav.style.setProperty("grid-template-columns", "repeat(4, minmax(0, 1fr))", "important");
+    nav.style.setProperty("align-items", "stretch", "important");
     nav.style.setProperty("padding-bottom", "env(safe-area-inset-bottom)", "important");
 
-    const display = getComputedStyle(nav).display;
-    if (display === "block" || display === "inline" || display === "inline-block") {
-      nav.style.setProperty("display", "flex", "important");
-    }
-
     buttons.forEach(btn => {
-      btn.style.setProperty("flex", "1 1 0", "important");
+      if (btn === statsButton) return;
+      btn.style.setProperty("display", "flex", "important");
+      btn.style.setProperty("width", "100%", "important");
       btn.style.setProperty("min-width", "0", "important");
+      btn.style.setProperty("flex", "none", "important");
       btn.style.setProperty("box-sizing", "border-box", "important");
+      btn.style.setProperty("margin", "0", "important");
     });
 
     document.body.style.setProperty(
@@ -57,7 +61,6 @@ const APP_VERSION = "0.2.59";
   setTimeout(apply, 100);
   setTimeout(apply, 500);
 })();
-
 /* v0.2.50: previous/next question navigation */
 (function installQuestionNavStyle() {
   const style = document.createElement("style");
@@ -108,6 +111,70 @@ const APP_VERSION = "0.2.59";
       color: #174f52;
       background: #e7f3f2;
       border: 1px solid rgba(23,79,82,.18);
+    }
+    .question-info-row {
+      display: grid !important;
+      grid-template-columns: minmax(0, 1fr) auto !important;
+      align-items: center !important;
+      column-gap: 12px !important;
+      min-height: 42px !important;
+      margin: 2px 0 8px !important;
+      width: 100% !important;
+      box-sizing: border-box !important;
+    }
+    .source-badge-wrap {
+      display: flex !important;
+      align-items: center !important;
+      justify-content: flex-start !important;
+      min-width: 0 !important;
+    }
+    .source-badge {
+      display: inline-flex !important;
+      align-items: center !important;
+      max-width: 100% !important;
+      box-sizing: border-box !important;
+      margin: 0 !important;
+      padding: 5px 10px !important;
+      border: 1px solid var(--line, #d8dde6) !important;
+      border-radius: 999px !important;
+      background: var(--card, #fff) !important;
+      color: var(--muted, #667085) !important;
+      font-size: 12px !important;
+      font-weight: 800 !important;
+      line-height: 1.2 !important;
+      white-space: nowrap !important;
+      overflow: hidden !important;
+      text-overflow: ellipsis !important;
+    }
+    .question-action-group {
+      display: flex !important;
+      align-items: center !important;
+      justify-content: flex-end !important;
+      gap: 8px !important;
+      min-width: 0 !important;
+      justify-self: end !important;
+    }
+    .bookmark {
+      display: inline-flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      width: 44px !important;
+      height: 44px !important;
+      min-width: 44px !important;
+      margin: 0 !important;
+      padding: 0 !important;
+      border: 0 !important;
+      border-radius: 50% !important;
+      background: transparent !important;
+      color: #0f6b6f !important;
+      font-size: 34px !important;
+      line-height: 1 !important;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI Symbol", sans-serif !important;
+      cursor: pointer !important;
+      box-sizing: border-box !important;
+    }
+    .bookmark:active {
+      background: rgba(15,107,111,.08) !important;
     }
   `;
   document.head.appendChild(style);
@@ -2024,13 +2091,10 @@ function getChapterMajorProgress(chapter = 1) {
 }
 
 function mergeHomeAndStatsNavigation() {
+  // v0.2.61: 学習状況はホームへ統合済み。
+  // 下帯の4項目レイアウトは installCPTmateBottomNavFix() が一元管理する。
   const statsButton = document.querySelector('.nav-btn[data-nav="stats"]');
-  if (!statsButton) return;
-  statsButton.style.setProperty('display', 'none', 'important');
-  const nav = statsButton.parentElement;
-  if (nav) {
-    nav.style.setProperty('grid-template-columns', 'repeat(4, minmax(0, 1fr))', 'important');
-  }
+  if (statsButton) statsButton.style.setProperty('display', 'none', 'important');
 }
 
 function toggleHomeChapterCard(chapter) {
@@ -2937,9 +3001,9 @@ function renderQuestion() {
       </div>
       <div class="question-info-row">
         <div class="source-badge-wrap">${sourceBadge}</div>
-        <div style="display:flex;align-items:center;gap:8px;">
+        <div class="question-action-group">
           ${answerStatus}
-          <button class="bookmark" onclick="toggleBookmark('${q.id}')">${bookmarked ? "★" : "☆"}</button>
+          <button class="bookmark" type="button" aria-label="${bookmarked ? "お気に入りから削除" : "お気に入りに追加"}" onclick="toggleBookmark('${q.id}')">${bookmarked ? "★" : "☆"}</button>
         </div>
       </div>
 
