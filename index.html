@@ -1,20 +1,19 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-  <meta name="cptmate-build" content="0.2.69-home-logo-splash">
+  <meta name="cptmate-build" content="0.2.70-home-logo-splash">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
   <meta name="theme-color" content="#0f5f63">
   <title>CPTmate</title>
-  <link rel="stylesheet" href="style.css?v=0.2.69">
+  <link rel="stylesheet" href="style.css?v=0.2.70">
   <style>
     html,body{background:#f7fbfb;}
     #cptmate-startup-splash{position:fixed;inset:0;z-index:20000;display:flex;align-items:center;justify-content:center;background:#f7fbfb;}
     #cptmate-startup-splash .splash-inner{width:min(86vw,380px);display:flex;flex-direction:column;align-items:center;gap:22px;transform:translateY(-2vh);}
-    #cptmate-startup-splash img{display:block;width:min(300px,72vw);height:auto;max-height:none;object-fit:contain;animation:cptmatePreloadPulse 1.15s ease-in-out infinite;}
+    #cptmate-startup-splash img{display:block;width:min(300px,72vw);height:auto;max-height:none;object-fit:contain;animation:none !important;}
     #cptmate-startup-splash .splash-loader{width:34px;height:34px;border-radius:50%;border:3px solid rgba(15,95,99,.14);border-top-color:#0f5f63;animation:cptmatePreloadSpin .85s linear infinite;}
     #cptmate-startup-splash p{margin:-8px 0 0;color:#718486;font-size:12px;font-weight:700;letter-spacing:.08em;}
-    @keyframes cptmatePreloadPulse{0%,100%{opacity:.92;transform:scale(.985)}50%{opacity:1;transform:scale(1)}}
     @keyframes cptmatePreloadSpin{to{transform:rotate(360deg)}}
     @media(prefers-reduced-motion:reduce){#cptmate-startup-splash img,#cptmate-startup-splash .splash-loader{animation:none}}
   </style>
@@ -46,7 +45,7 @@
 
   <script>
     const appScript = document.createElement("script");
-    appScript.src = `app.js?v=0.2.69&t=${Date.now()}`;
+    appScript.src = `app.js?v=0.2.70&t=${Date.now()}`;
     document.body.appendChild(appScript);
   </script>
 </body>
