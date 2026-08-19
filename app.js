@@ -1,4 +1,4 @@
-const APP_VERSION = "0.2.83";
+const APP_VERSION = "0.2.84";
 
 /* v0.2.63: home logo placement + startup splash/crossfade */
 const CPTMATE_BRAND_LOGO = "assets/branding/cptmate-horizontal-logo.png";
@@ -1586,7 +1586,7 @@ const QUESTIONS = [
     "explanation": "筋紡錘は筋の長さや伸張の変化を検知する。GTOは主に筋が発揮する張力を検知する。",
     "sourceType": "original"
   },
-{
+  {
     "id": "ch02-q001",
     "chapter": 2,
     "category": "血液・酸素運搬",
@@ -1601,7 +1601,7 @@ const QUESTIONS = [
     "answer": 2,
     "explanation": "本章では、動脈血の正常な水素イオン濃度（pH）を約7.4としている。",
     "sourceType": "original",
-      "sourceNote": "ユーザー提供の第2章PDFを基準にCPTmateオリジナル問題として作成"
+    "sourceNote": "ユーザー提供の第2章PDFを基準にCPTmateオリジナル問題として作成"
   },
   {
     "id": "ch02-q002",
@@ -1618,7 +1618,7 @@ const QUESTIONS = [
     "answer": 1,
     "explanation": "本章では、血液は血漿、赤血球、白血球、血小板から構成され、それぞれ約55%、45%、1%未満と説明されている。",
     "sourceType": "original",
-      "sourceNote": "ユーザー提供の第2章PDFを基準にCPTmateオリジナル問題として作成"
+    "sourceNote": "ユーザー提供の第2章PDFを基準にCPTmateオリジナル問題として作成"
   },
   {
     "id": "ch02-q003",
@@ -1635,7 +1635,7 @@ const QUESTIONS = [
     "answer": 1,
     "explanation": "酸素は主に赤血球中のヘモグロビンによって運ばれる。",
     "sourceType": "original",
-      "sourceNote": "ユーザー提供の第2章PDFを基準にCPTmateオリジナル問題として作成"
+    "sourceNote": "ユーザー提供の第2章PDFを基準にCPTmateオリジナル問題として作成"
   },
   {
     "id": "ch02-q004",
@@ -1652,7 +1652,7 @@ const QUESTIONS = [
     "answer": 2,
     "explanation": "健康な血液は100mL当たり約15gのヘモグロビンを含むとされている。",
     "sourceType": "original",
-      "sourceNote": "ユーザー提供の第2章PDFを基準にCPTmateオリジナル問題として作成"
+    "sourceNote": "ユーザー提供の第2章PDFを基準にCPTmateオリジナル問題として作成"
   },
   {
     "id": "ch02-q005",
@@ -1669,7 +1669,7 @@ const QUESTIONS = [
     "answer": 1,
     "explanation": "酸素がヘモグロビンと結合すると、続く酸素分子の結合が促進される協同的結合がS字形の理由の一つである。",
     "sourceType": "original",
-      "sourceNote": "ユーザー提供の第2章PDFを基準にCPTmateオリジナル問題として作成"
+    "sourceNote": "ユーザー提供の第2章PDFを基準にCPTmateオリジナル問題として作成"
   },
   {
     "id": "ch02-q006",
@@ -1686,7 +1686,7 @@ const QUESTIONS = [
     "answer": 1,
     "explanation": "本章では、深部体温の上昇により解離曲線は右へ移動し、ヘモグロビンから酸素が放出されやすくなると説明している。",
     "sourceType": "original",
-      "sourceNote": "ユーザー提供の第2章PDFを基準にCPTmateオリジナル問題として作成"
+    "sourceNote": "ユーザー提供の第2章PDFを基準にCPTmateオリジナル問題として作成"
   },
   {
     "id": "ch02-q007",
@@ -1703,7 +1703,7 @@ const QUESTIONS = [
     "answer": 1,
     "explanation": "低pH（酸性）の血液では解離曲線が右へ移動する。運動時には体温上昇とpH低下が酸素放出を促す方向に働く。",
     "sourceType": "original",
-      "sourceNote": "ユーザー提供の第2章PDFを基準にCPTmateオリジナル問題として作成"
+    "sourceNote": "ユーザー提供の第2章PDFを基準にCPTmateオリジナル問題として作成"
   },
   {
     "id": "ch02-q008",
@@ -1720,7 +1720,7 @@ const QUESTIONS = [
     "answer": 0,
     "explanation": "心臓は右心房、左心房、右心室、左心室の4つの部屋から構成される。",
     "sourceType": "original",
-      "sourceNote": "ユーザー提供の第2章PDFを基準にCPTmateオリジナル問題として作成"
+    "sourceNote": "ユーザー提供の第2章PDFを基準にCPTmateオリジナル問題として作成"
   },
   {
     "id": "ch02-q009",
@@ -1737,7 +1737,7 @@ const QUESTIONS = [
     "answer": 1,
     "explanation": "刺激伝導系は洞房結節（SA結節）から始まり、心房へインパルスが広がる。",
     "sourceType": "original",
-      "sourceNote": "ユーザー提供の第2章PDFを基準にCPTmateオリジナル問題として作成"
+    "sourceNote": "ユーザー提供の第2章PDFを基準にCPTmateオリジナル問題として作成"
   },
   {
     "id": "ch02-q010",
@@ -1754,7 +1754,7 @@ const QUESTIONS = [
     "answer": 1,
     "explanation": "本章では、SA結節→AV結節→プルキンエ系→心室収縮という流れで説明されている。",
     "sourceType": "original",
-      "sourceNote": "ユーザー提供の第2章PDFを基準にCPTmateオリジナル問題として作成"
+    "sourceNote": "ユーザー提供の第2章PDFを基準にCPTmateオリジナル問題として作成"
   },
   {
     "id": "ch02-q011",
@@ -1771,7 +1771,7 @@ const QUESTIONS = [
     "answer": 1,
     "explanation": "P波は心房の脱分極、QRS波は心室の脱分極、T波は心室の再分極を表す。",
     "sourceType": "original",
-      "sourceNote": "ユーザー提供の第2章PDFを基準にCPTmateオリジナル問題として作成"
+    "sourceNote": "ユーザー提供の第2章PDFを基準にCPTmateオリジナル問題として作成"
   },
   {
     "id": "ch02-q012",
@@ -1788,7 +1788,7 @@ const QUESTIONS = [
     "answer": 1,
     "explanation": "右心室から肺動脈を通って肺へ血液が運ばれ、そこでガス交換が行われる。",
     "sourceType": "original",
-      "sourceNote": "ユーザー提供の第2章PDFを基準にCPTmateオリジナル問題として作成"
+    "sourceNote": "ユーザー提供の第2章PDFを基準にCPTmateオリジナル問題として作成"
   },
   {
     "id": "ch02-q013",
@@ -1805,7 +1805,7 @@ const QUESTIONS = [
     "answer": 1,
     "explanation": "肺で酸素を積み込んだ血液は肺静脈を経て左心房へ戻る。",
     "sourceType": "original",
-      "sourceNote": "ユーザー提供の第2章PDFを基準にCPTmateオリジナル問題として作成"
+    "sourceNote": "ユーザー提供の第2章PDFを基準にCPTmateオリジナル問題として作成"
   },
   {
     "id": "ch02-q014",
@@ -1822,7 +1822,7 @@ const QUESTIONS = [
     "answer": 0,
     "explanation": "運動中は活動筋の細動脈が局所的な代謝反応などにより拡張し、筋への血流量が増加する。",
     "sourceType": "original",
-      "sourceNote": "ユーザー提供の第2章PDFを基準にCPTmateオリジナル問題として作成"
+    "sourceNote": "ユーザー提供の第2章PDFを基準にCPTmateオリジナル問題として作成"
   },
   {
     "id": "ch02-q015",
@@ -1839,7 +1839,7 @@ const QUESTIONS = [
     "answer": 0,
     "explanation": "骨格筋の収縮によって静脈が圧迫され、静脈弁とともに血液を心臓へ戻す筋ポンプ作用が生じる。",
     "sourceType": "original",
-      "sourceNote": "ユーザー提供の第2章PDFを基準にCPTmateオリジナル問題として作成"
+    "sourceNote": "ユーザー提供の第2章PDFを基準にCPTmateオリジナル問題として作成"
   },
   {
     "id": "ch02-q016",
@@ -1856,7 +1856,7 @@ const QUESTIONS = [
     "answer": 1,
     "explanation": "本章では、安静時は副交感神経が優位で心拍数が低く抑えられ、運動時には交感神経が優位になると説明している。",
     "sourceType": "original",
-      "sourceNote": "ユーザー提供の第2章PDFを基準にCPTmateオリジナル問題として作成"
+    "sourceNote": "ユーザー提供の第2章PDFを基準にCPTmateオリジナル問題として作成"
   },
   {
     "id": "ch02-q017",
@@ -1873,7 +1873,7 @@ const QUESTIONS = [
     "answer": 1,
     "explanation": "RPP（double product）は心拍数×収縮期血圧で求める。",
     "sourceType": "original",
-      "sourceNote": "ユーザー提供の第2章PDFを基準にCPTmateオリジナル問題として作成"
+    "sourceNote": "ユーザー提供の第2章PDFを基準にCPTmateオリジナル問題として作成"
   },
   {
     "id": "ch02-q018",
@@ -1890,7 +1890,7 @@ const QUESTIONS = [
     "answer": 0,
     "explanation": "本章ではMAP＝拡張期血圧＋0.333×（収縮期血圧−拡張期血圧）としている。",
     "sourceType": "original",
-      "sourceNote": "ユーザー提供の第2章PDFを基準にCPTmateオリジナル問題として作成"
+    "sourceNote": "ユーザー提供の第2章PDFを基準にCPTmateオリジナル問題として作成"
   },
   {
     "id": "ch02-q019",
@@ -1907,7 +1907,7 @@ const QUESTIONS = [
     "answer": 0,
     "explanation": "心拍出量は1回拍出量（SV）×心拍数（HR）で求められる。",
     "sourceType": "original",
-      "sourceNote": "ユーザー提供の第2章PDFを基準にCPTmateオリジナル問題として作成"
+    "sourceNote": "ユーザー提供の第2章PDFを基準にCPTmateオリジナル問題として作成"
   },
   {
     "id": "ch02-q020",
@@ -1924,7 +1924,7 @@ const QUESTIONS = [
     "answer": 1,
     "explanation": "1回拍出量は拡張末期容量（EDV）−収縮末期容量（ESV）で求める。",
     "sourceType": "original",
-      "sourceNote": "ユーザー提供の第2章PDFを基準にCPTmateオリジナル問題として作成"
+    "sourceNote": "ユーザー提供の第2章PDFを基準にCPTmateオリジナル問題として作成"
   },
   {
     "id": "ch02-q021",
@@ -1941,7 +1941,7 @@ const QUESTIONS = [
     "answer": 0,
     "explanation": "左心室が伸張されるほど収縮力が増大し、心室から押し出される血液量が増大するという長さ‐張力関係に基づく。",
     "sourceType": "original",
-      "sourceNote": "ユーザー提供の第2章PDFを基準にCPTmateオリジナル問題として作成"
+    "sourceNote": "ユーザー提供の第2章PDFを基準にCPTmateオリジナル問題として作成"
   },
   {
     "id": "ch02-q022",
@@ -1958,7 +1958,7 @@ const QUESTIONS = [
     "answer": 0,
     "explanation": "本章では呼吸器系の主な機能を酸素と二酸化炭素の交換としている。",
     "sourceType": "original",
-      "sourceNote": "ユーザー提供の第2章PDFを基準にCPTmateオリジナル問題として作成"
+    "sourceNote": "ユーザー提供の第2章PDFを基準にCPTmateオリジナル問題として作成"
   },
   {
     "id": "ch02-q023",
@@ -1975,7 +1975,7 @@ const QUESTIONS = [
     "answer": 0,
     "explanation": "鼻腔は通過する空気に対して加温、加湿、濾過の3つの機能を果たす。",
     "sourceType": "original",
-      "sourceNote": "ユーザー提供の第2章PDFを基準にCPTmateオリジナル問題として作成"
+    "sourceNote": "ユーザー提供の第2章PDFを基準にCPTmateオリジナル問題として作成"
   },
   {
     "id": "ch02-q024",
@@ -1992,7 +1992,7 @@ const QUESTIONS = [
     "answer": 0,
     "explanation": "吸気は横隔膜と外肋間筋を利用する能動的過程であり、横隔膜の収縮で胸郭が拡大して肺内圧が低下する。",
     "sourceType": "original",
-      "sourceNote": "ユーザー提供の第2章PDFを基準にCPTmateオリジナル問題として作成"
+    "sourceNote": "ユーザー提供の第2章PDFを基準にCPTmateオリジナル問題として作成"
   },
   {
     "id": "ch02-q025",
@@ -2009,7 +2009,7 @@ const QUESTIONS = [
     "answer": 0,
     "explanation": "安静時の呼気は受動的反応で、外肋間筋と横隔膜が弛緩することで肺内圧が上昇し、空気が排出される。",
     "sourceType": "original",
-      "sourceNote": "ユーザー提供の第2章PDFを基準にCPTmateオリジナル問題として作成"
+    "sourceNote": "ユーザー提供の第2章PDFを基準にCPTmateオリジナル問題として作成"
   },
   {
     "id": "ch02-q026",
@@ -2026,7 +2026,7 @@ const QUESTIONS = [
     "answer": 1,
     "explanation": "安静時の通常呼吸で肺に出入りする空気の量は1回換気量である。",
     "sourceType": "original",
-      "sourceNote": "ユーザー提供の第2章PDFを基準にCPTmateオリジナル問題として作成"
+    "sourceNote": "ユーザー提供の第2章PDFを基準にCPTmateオリジナル問題として作成"
   },
   {
     "id": "ch02-q027",
@@ -2043,7 +2043,7 @@ const QUESTIONS = [
     "answer": 3,
     "explanation": "通常の呼気の後に肺に残っている空気量は機能的残気量である。",
     "sourceType": "original",
-      "sourceNote": "ユーザー提供の第2章PDFを基準にCPTmateオリジナル問題として作成"
+    "sourceNote": "ユーザー提供の第2章PDFを基準にCPTmateオリジナル問題として作成"
   },
   {
     "id": "ch02-q028",
@@ -2060,7 +2060,7 @@ const QUESTIONS = [
     "answer": 0,
     "explanation": "ガスは濃度・分圧の勾配に従って拡散する。本章では肺胞と毛細血管の間のガス交換を拡散として説明している。",
     "sourceType": "original",
-      "sourceNote": "ユーザー提供の第2章PDFを基準にCPTmateオリジナル問題として作成"
+    "sourceNote": "ユーザー提供の第2章PDFを基準にCPTmateオリジナル問題として作成"
   },
   {
     "id": "ch02-q029",
@@ -2077,7 +2077,7 @@ const QUESTIONS = [
     "answer": 0,
     "explanation": "図2.11では、肺胞PO₂は約100mmHg、肺へ戻る静脈血PO₂は約40mmHgとして示されている。",
     "sourceType": "original",
-      "sourceNote": "ユーザー提供の第2章PDFを基準にCPTmateオリジナル問題として作成"
+    "sourceNote": "ユーザー提供の第2章PDFを基準にCPTmateオリジナル問題として作成"
   },
   {
     "id": "ch02-q030",
@@ -2094,7 +2094,7 @@ const QUESTIONS = [
     "answer": 0,
     "explanation": "VO₂＝心拍出量×動静脈酸素較差。さらに心拍出量は心拍数×1回拍出量で表される。",
     "sourceType": "original",
-      "sourceNote": "ユーザー提供の第2章PDFを基準にCPTmateオリジナル問題として作成"
+    "sourceNote": "ユーザー提供の第2章PDFを基準にCPTmateオリジナル問題として作成"
   },
   {
     "id": "ch02-q031",
@@ -2111,7 +2111,7 @@ const QUESTIONS = [
     "answer": 0,
     "explanation": "動静脈酸素較差は動脈血の酸素量から静脈血の酸素量を引いたもので、血液100mL当たりの酸素量で示される。",
     "sourceType": "original",
-      "sourceNote": "ユーザー提供の第2章PDFを基準にCPTmateオリジナル問題として作成"
+    "sourceNote": "ユーザー提供の第2章PDFを基準にCPTmateオリジナル問題として作成"
   },
   {
     "id": "ch02-q032",
@@ -2128,7 +2128,7 @@ const QUESTIONS = [
     "answer": 0,
     "explanation": "表2.1では、動脈血20mLに対して静脈還流が14、10、4mLとなり、取り込まれる酸素量は6、10、16mL/血液100mLへ増加する。",
     "sourceType": "original",
-      "sourceNote": "ユーザー提供の第2章PDFを基準にCPTmateオリジナル問題として作成"
+    "sourceNote": "ユーザー提供の第2章PDFを基準にCPTmateオリジナル問題として作成"
   },
   {
     "id": "ch02-q033",
@@ -2145,7 +2145,7 @@ const QUESTIONS = [
     "answer": 3,
     "explanation": "本章では、VO₂maxが高いほど心血管疾患、疾病率、死亡率のリスクが低くなると説明している。",
     "sourceType": "original",
-      "sourceNote": "ユーザー提供の第2章PDFを基準にCPTmateオリジナル問題として作成"
+    "sourceNote": "ユーザー提供の第2章PDFを基準にCPTmateオリジナル問題として作成"
   },
   {
     "id": "ch02-q034",
@@ -2162,7 +2162,7 @@ const QUESTIONS = [
     "answer": 1,
     "explanation": "本章では安静時VO₂を通常3.5mL/kg/分としている。",
     "sourceType": "original",
-      "sourceNote": "ユーザー提供の第2章PDFを基準にCPTmateオリジナル問題として作成"
+    "sourceNote": "ユーザー提供の第2章PDFを基準にCPTmateオリジナル問題として作成"
   },
   {
     "id": "ch02-q035",
@@ -2179,7 +2179,7 @@ const QUESTIONS = [
     "answer": 0,
     "explanation": "本章では、VO₂max向上には最大1回拍出量の増加と、毛細血管・ミトコンドリア密度の増加などの末梢適応が関連するとしている。",
     "sourceType": "original",
-      "sourceNote": "ユーザー提供の第2章PDFを基準にCPTmateオリジナル問題として作成"
+    "sourceNote": "ユーザー提供の第2章PDFを基準にCPTmateオリジナル問題として作成"
   },
   {
     "id": "ch02-q036",
@@ -2196,7 +2196,7 @@ const QUESTIONS = [
     "answer": 0,
     "explanation": "本章では、通常トレーニングを行っても最大心拍数は変化せず、最大1回拍出量の増加により最大心拍出量が増加すると説明している。",
     "sourceType": "original",
-      "sourceNote": "ユーザー提供の第2章PDFを基準にCPTmateオリジナル問題として作成"
+    "sourceNote": "ユーザー提供の第2章PDFを基準にCPTmateオリジナル問題として作成"
   },
   {
     "id": "ch02-q037",
@@ -2213,7 +2213,7 @@ const QUESTIONS = [
     "answer": 0,
     "explanation": "活動筋では局所的な代謝反応による血管拡張が起こり、他の組織から活動筋へ血液が再分配される。",
     "sourceType": "original",
-      "sourceNote": "ユーザー提供の第2章PDFを基準にCPTmateオリジナル問題として作成"
+    "sourceNote": "ユーザー提供の第2章PDFを基準にCPTmateオリジナル問題として作成"
   },
   {
     "id": "ch02-q038",
@@ -2230,7 +2230,7 @@ const QUESTIONS = [
     "answer": 1,
     "explanation": "心拍出量は80×65＝5200mL/分。これに6/100を掛けると、VO₂＝312mL/分となる。本章にも同じ計算例が示されている。",
     "sourceType": "original",
-      "sourceNote": "ユーザー提供の第2章PDFを基準にCPTmateオリジナル問題として作成"
+    "sourceNote": "ユーザー提供の第2章PDFを基準にCPTmateオリジナル問題として作成"
   },
   {
     "id": "ch02-q039",
@@ -2247,7 +2247,7 @@ const QUESTIONS = [
     "answer": 0,
     "explanation": "上大静脈は頭部と上肢から、下大静脈は体幹と下肢から脱酸素状態の血液を運ぶ。",
     "sourceType": "original",
-      "sourceNote": "ユーザー提供の第2章PDFを基準にCPTmateオリジナル問題として作成"
+    "sourceNote": "ユーザー提供の第2章PDFを基準にCPTmateオリジナル問題として作成"
   },
   {
     "id": "ch02-q040",
@@ -2264,348 +2264,708 @@ const QUESTIONS = [
     "answer": 0,
     "explanation": "本章ではVO₂maxが高いほど、心血管疾患、疾病率、死亡率のリスクが低くなると説明している。",
     "sourceType": "original",
-      "sourceNote": "ユーザー提供の第2章PDFを基準にCPTmateオリジナル問題として作成"
+    "sourceNote": "ユーザー提供の第2章PDFを基準にCPTmateオリジナル問題として作成"
   },
-{
-  "id": "ch02-q041",
-  "chapter": 2,
-  "category": "血液・酸素運搬",
-  "type": "standard",
-  "question": "血液100mLに溶解している酸素の量として、本章で示されている値はどれか。",
-  "choices": [
-    "約0.3mL",
-    "約3mL",
-    "約10mL",
-    "約20mL"
-  ],
-  "answer": 0,
-  "explanation": "本章では、血液に溶解する酸素は非常に少なく、血液100mL当たり約0.3mLと説明されている。酸素は主にヘモグロビンによって運ばれる。",
-  "sourceType": "original",
-  "sourceNote": "ユーザー提供の第2章PDFを基準にCPTmateオリジナル問題として作成"
-},
-{
-  "id": "ch02-q042",
-  "chapter": 2,
-  "category": "血液・酸素運搬",
-  "type": "standard",
-  "question": "1gのヘモグロビンが運ぶことのできる酸素量として、本章で示されている値はどれか。",
-  "choices": [
-    "約0.13mL",
-    "約1.39mL",
-    "約13.9mL",
-    "約139mL"
-  ],
-  "answer": 1,
-  "explanation": "本章では、ヘモグロビン1gで約1.39mLの酸素を運ぶことができるとしている。",
-  "sourceType": "original",
-  "sourceNote": "ユーザー提供の第2章PDFを基準にCPTmateオリジナル問題として作成"
-},
-{
-  "id": "ch02-q043",
-  "chapter": 2,
-  "category": "血液・酸素運搬",
-  "type": "standard",
-  "question": "健康な血液100mL当たり約15gのヘモグロビンがあるとき、本章で示される血液の酸素運搬能力はおよそどれか。",
-  "choices": [
-    "約2.1mL/100mL",
-    "約10.0mL/100mL",
-    "約20.8mL/100mL",
-    "約30.8mL/100mL"
-  ],
-  "answer": 2,
-  "explanation": "本章では、15gのヘモグロビンが1g当たり約1.39mLの酸素を運ぶため、血液100mL当たりの酸素運搬能力は約20.8mLとしている。",
-  "sourceType": "original",
-  "sourceNote": "ユーザー提供の第2章PDFを基準にCPTmateオリジナル問題として作成"
-},
-{
-  "id": "ch02-q044",
-  "chapter": 2,
-  "category": "血液・酸素運搬",
-  "type": "standard",
-  "question": "本章で示される、健康な成人の平均的な血液量はおよそどれか。",
-  "choices": [
-    "約1.0L",
-    "約2.5L",
-    "約5.0L",
-    "約10.0L"
-  ],
-  "answer": 2,
-  "explanation": "本章では、貧血症ではない健康な成人の血液量は平均約5.0Lで、体重の7%近くを占めるとしている。",
-  "sourceType": "original",
-  "sourceNote": "ユーザー提供の第2章PDFを基準にCPTmateオリジナル問題として作成"
-},
-{
-  "id": "ch02-q045",
-  "chapter": 2,
-  "category": "血液・酸素運搬",
-  "type": "standard",
-  "question": "海面位で標準大気圧760mmHg、大気中の酸素濃度20.93%の場合、酸素分圧はおよそいくつか。",
-  "choices": [
-    "約76mmHg",
-    "約100mmHg",
-    "約159mmHg",
-    "約760mmHg"
-  ],
-  "answer": 2,
-  "explanation": "酸素分圧は760mmHg×20.93/100で、約159mmHgとなる。",
-  "sourceType": "original",
-  "sourceNote": "ユーザー提供の第2章PDFを基準にCPTmateオリジナル問題として作成"
-},
-{
-  "id": "ch02-q046",
-  "chapter": 2,
-  "category": "血液・酸素運搬",
-  "type": "standard",
-  "question": "本章では、酸素分圧が約60mmHgに達したときのヘモグロビン酸素飽和度をおよそ何%としているか。",
-  "choices": [
-    "約50%",
-    "約70%",
-    "約90%",
-    "約100%"
-  ],
-  "answer": 2,
-  "explanation": "本章では、酸素分圧が約60mmHgでヘモグロビンの酸素飽和度が約90%に達すると、解離曲線が平坦になり始めるとしている。",
-  "sourceType": "original",
-  "sourceNote": "ユーザー提供の第2章PDFを基準にCPTmateオリジナル問題として作成"
-},
-{
-  "id": "ch02-q047",
-  "chapter": 2,
-  "category": "心臓・循環",
-  "type": "standard",
-  "question": "心臓の刺激伝導系で、SA結節から発生したインパルスが心室へ伝わるまでに生じる時間差の意義として、本章の説明に合うものはどれか。",
-  "choices": [
-    "心房の血液を心室へ送る時間を確保する",
-    "肺でのガス交換を停止させる",
-    "心室の再分極を防ぐ",
-    "静脈弁を閉じる"
-  ],
-  "answer": 0,
-  "explanation": "SA結節からのインパルスは心房へ瞬時に広がる一方、AV結節の通過に時間がかかる。その時間差によって心房内の血液を心室へ送り込むことが可能になる。",
-  "sourceType": "original",
-  "sourceNote": "ユーザー提供の第2章PDFを基準にCPTmateオリジナル問題として作成"
-},
-{
-  "id": "ch02-q048",
-  "chapter": 2,
-  "category": "心臓・循環",
-  "type": "standard",
-  "question": "本章では、安静時の静脈血の酸素飽和度をおよそ何%としているか。",
-  "choices": [
-    "約20%",
-    "約40%",
-    "約70%",
-    "約98%"
-  ],
-  "answer": 2,
-  "explanation": "本章では、脱酸素状態の血液でも酸素が全くないわけではなく、安静時は約70%の飽和度であると説明している。",
-  "sourceType": "original",
-  "sourceNote": "ユーザー提供の第2章PDFを基準にCPTmateオリジナル問題として作成"
-},
-{
-  "id": "ch02-q049",
-  "chapter": 2,
-  "category": "心臓・循環",
-  "type": "standard",
-  "question": "肺循環と体循環について、本章の説明として正しいものはどれか。",
-  "choices": [
-    "肺循環と体循環は閉鎖循環系を構成する",
-    "肺循環では血液は必ず大動脈を通る",
-    "体循環では静脈が心臓から血液を送り出す",
-    "肺静脈は必ず脱酸素状態の血液を運ぶ"
-  ],
-  "answer": 0,
-  "explanation": "本章では、心臓および肺における肺循環と、それ以外の身体への体循環が閉鎖循環系を構成すると説明している。",
-  "sourceType": "original",
-  "sourceNote": "ユーザー提供の第2章PDFを基準にCPTmateオリジナル問題として作成"
-},
-{
-  "id": "ch02-q050",
-  "chapter": 2,
-  "category": "心臓・循環",
-  "type": "standard",
-  "question": "本章で示される動脈系の血圧について、正しい組み合わせはどれか。",
-  "choices": [
-    "大動脈約100mmHg、細動脈約60mmHg",
-    "大動脈約60mmHg、細動脈約100mmHg",
-    "大動脈約20mmHg、細動脈約10mmHg",
-    "大動脈約760mmHg、細動脈約159mmHg"
-  ],
-  "answer": 0,
-  "explanation": "本章では、体循環の動脈は通常高圧で、大動脈で約100mmHg、細動脈でも約60mmHgと説明している。",
-  "sourceType": "original",
-  "sourceNote": "ユーザー提供の第2章PDFを基準にCPTmateオリジナル問題として作成"
-},
-{
-  "id": "ch02-q051",
-  "chapter": 2,
-  "category": "心臓・循環",
-  "type": "standard",
-  "question": "静脈に備わる一方向性の弁の主な役割はどれか。",
-  "choices": [
-    "血液の逆流を防ぐ",
-    "動脈圧を上げる",
-    "肺胞を拡張する",
-    "心室を脱分極させる"
-  ],
-  "answer": 0,
-  "explanation": "静脈は低圧であるため、一方向性の弁が血液の逆流を防ぎ、骨格筋の収縮による静脈還流を助ける。",
-  "sourceType": "original",
-  "sourceNote": "ユーザー提供の第2章PDFを基準にCPTmateオリジナル問題として作成"
-},
-{
-  "id": "ch02-q052",
-  "chapter": 2,
-  "category": "心臓・循環",
-  "type": "standard",
-  "question": "拡張期血圧（DBP）について、本章の説明として正しいものはどれか。",
-  "choices": [
-    "心室収縮中に動脈壁へかかる最高圧である",
-    "心室が力強く血液を送り出していない拡張期に動脈壁へかかる圧力である",
-    "肺胞内の酸素分圧である",
-    "心拍数と収縮期血圧の積である"
-  ],
-  "answer": 1,
-  "explanation": "本章では、DBPを血液が力強く送り出されていない拡張期に動脈壁へかかる圧力として説明している。",
-  "sourceType": "original",
-  "sourceNote": "ユーザー提供の第2章PDFを基準にCPTmateオリジナル問題として作成"
-},
-{
-  "id": "ch02-q053",
-  "chapter": 2,
-  "category": "心臓・循環",
-  "type": "standard",
-  "question": "心周期を構成する2つの時期として正しいものはどれか。",
-  "choices": [
-    "吸気と呼気",
-    "収縮期と拡張期",
-    "脱分極と拡散",
-    "肺循環と体循環"
-  ],
-  "answer": 1,
-  "explanation": "心周期は、心臓が血液を充満させる拡張期と、収縮して血液を送り出す収縮期によって構成される。",
-  "sourceType": "original",
-  "sourceNote": "ユーザー提供の第2章PDFを基準にCPTmateオリジナル問題として作成"
-},
-{
-  "id": "ch02-q054",
-  "chapter": 2,
-  "category": "心臓・循環",
-  "type": "standard",
-  "question": "平均動脈圧（MAP）について、本章の説明として誤っているものはどれか。",
-  "choices": [
-    "心周期を通しての平均血圧である",
-    "収縮期血圧と拡張期血圧の単純な平均値として考えてはならない",
-    "拡張期血圧と収縮期・拡張期血圧の差を用いて算出できる",
-    "収縮期血圧と拡張期血圧を足して2で割ればよい"
-  ],
-  "answer": 3,
-  "explanation": "本章では、MAPを収縮期血圧と拡張期血圧の単純平均とはせず、DBP＋0.333×（SBP−DBP）で算出するとしている。",
-  "sourceType": "original",
-  "sourceNote": "ユーザー提供の第2章PDFを基準にCPTmateオリジナル問題として作成"
-},
-{
-  "id": "ch02-q055",
-  "chapter": 2,
-  "category": "心臓・循環",
-  "type": "standard",
-  "question": "運動中に活動している骨格筋の細動脈が拡張することに関係する局所的な物質として、本章で挙げられているものはどれか。",
-  "choices": [
-    "一酸化窒素（NO）",
-    "ヘモグロビン",
-    "フィブリン",
-    "インスリン"
-  ],
-  "answer": 0,
-  "explanation": "本章では、活動筋の細動脈では一酸化窒素の局所的な放出によって交感神経系の作用が無効化され、血管が拡張すると説明している。",
-  "sourceType": "original",
-  "sourceNote": "ユーザー提供の第2章PDFを基準にCPTmateオリジナル問題として作成"
-},
-{
-  "id": "ch02-q056",
-  "chapter": 2,
-  "category": "心臓・循環",
-  "type": "standard",
-  "question": "運動中の血流再分配について、本章の説明に合うものはどれか。",
-  "choices": [
-    "活動筋への血流が減り、非活動器官だけに血液が集まる",
-    "非活動的な臓器への血流を供給する動脈が収縮し、活動筋への血流が増加する",
-    "すべての細動脈が同じ程度に拡張する",
-    "静脈が動脈の代わりに血液を送り出す"
-  ],
-  "answer": 1,
-  "explanation": "本章では、運動中は非活動的な臓器への血管が収縮する一方、活動筋の細動脈が拡張し、血液が活動筋へ再分配されると説明している。",
-  "sourceType": "original",
-  "sourceNote": "ユーザー提供の第2章PDFを基準にCPTmateオリジナル問題として作成"
-},
-{
-  "id": "ch02-q057",
-  "chapter": 2,
-  "category": "呼吸・ガス交換",
-  "type": "standard",
-  "question": "気管から肺胞へ至るまでの気道の分岐について、本章で示されている回数はおよそ何回か。",
-  "choices": [
-    "約3回",
-    "約10回",
-    "約23回",
-    "約50回"
-  ],
-  "answer": 2,
-  "explanation": "本章では、気管から気管支、細気管支へと約23回の分岐を経て、肺胞に到達すると説明している。",
-  "sourceType": "original",
-  "sourceNote": "ユーザー提供の第2章PDFを基準にCPTmateオリジナル問題として作成"
-},
-{
-  "id": "ch02-q058",
-  "chapter": 2,
-  "category": "呼吸・ガス交換",
-  "type": "standard",
-  "question": "肺活量について、本章の説明として正しいものはどれか。",
-  "choices": [
-    "通常の呼気後に肺に残る空気量である",
-    "最大努力で息を吸ってから吐いたときの空気量である",
-    "肺に存在する空気の総量である",
-    "安静時の1回の呼吸で出入りする空気量である"
-  ],
-  "answer": 1,
-  "explanation": "肺活量測定では、できるだけ大きく息を吸って肺を満たし、次にできるだけ大きく息を吐く。その最大努力による呼吸の動きが肺活量の指標となる。",
-  "sourceType": "original",
-  "sourceNote": "ユーザー提供の第2章PDFを基準にCPTmateオリジナル問題として作成"
-},
-{
-  "id": "ch02-q059",
-  "chapter": 2,
-  "category": "呼吸・ガス交換",
-  "type": "standard",
-  "question": "全肺気量（TLC）を構成する組み合わせとして、本章の図2.9の説明に合うものはどれか。",
-  "choices": [
-    "肺活量＋残気量",
-    "1回換気量＋心拍出量",
-    "機能的残気量＋動静脈酸素較差",
-    "吸気＋心拍数"
-  ],
-  "answer": 0,
-  "explanation": "本章では、全肺気量は肺活量と残気量との合計として示されている。",
-  "sourceType": "original",
-  "sourceNote": "ユーザー提供の第2章PDFを基準にCPTmateオリジナル問題として作成"
-},
-{
-  "id": "ch02-q060",
-  "chapter": 2,
-  "category": "呼吸・ガス交換",
-  "type": "standard",
-  "question": "本章の図2.11に示される肺胞と静脈血の酸素分圧の関係として正しいものはどれか。",
-  "choices": [
-    "肺胞約40mmHg、静脈血約100mmHg",
-    "肺胞約100mmHg、静脈血約40mmHg",
-    "肺胞約159mmHg、静脈血約100mmHg",
-    "肺胞約20mmHg、静脈血約10mmHg"
-  ],
-  "answer": 1,
-  "explanation": "本章の図2.11では、肺胞のPO₂は約100mmHg、肺へ戻ってくる静脈血のPO₂は約40mmHgと示され、この分圧勾配により酸素が血液へ拡散する。",
-  "sourceType": "original",
-  "sourceNote": "ユーザー提供の第2章PDFを基準にCPTmateオリジナル問題として作成"
-}
+  {
+    "id": "ch02-q041",
+    "chapter": 2,
+    "category": "血液・酸素運搬",
+    "type": "standard",
+    "question": "血液100mLに溶解している酸素の量として、本章で示されている値はどれか。",
+    "choices": [
+      "約0.3mL",
+      "約3mL",
+      "約10mL",
+      "約20mL"
+    ],
+    "answer": 0,
+    "explanation": "本章では、血液に溶解する酸素は非常に少なく、血液100mL当たり約0.3mLと説明されている。酸素は主にヘモグロビンによって運ばれる。",
+    "sourceType": "original",
+    "sourceNote": "ユーザー提供の第2章PDFを基準にCPTmateオリジナル問題として作成"
+  },
+  {
+    "id": "ch02-q042",
+    "chapter": 2,
+    "category": "血液・酸素運搬",
+    "type": "standard",
+    "question": "1gのヘモグロビンが運ぶことのできる酸素量として、本章で示されている値はどれか。",
+    "choices": [
+      "約0.13mL",
+      "約1.39mL",
+      "約13.9mL",
+      "約139mL"
+    ],
+    "answer": 1,
+    "explanation": "本章では、ヘモグロビン1gで約1.39mLの酸素を運ぶことができるとしている。",
+    "sourceType": "original",
+    "sourceNote": "ユーザー提供の第2章PDFを基準にCPTmateオリジナル問題として作成"
+  },
+  {
+    "id": "ch02-q043",
+    "chapter": 2,
+    "category": "血液・酸素運搬",
+    "type": "standard",
+    "question": "健康な血液100mL当たり約15gのヘモグロビンがあるとき、本章で示される血液の酸素運搬能力はおよそどれか。",
+    "choices": [
+      "約2.1mL/100mL",
+      "約10.0mL/100mL",
+      "約20.8mL/100mL",
+      "約30.8mL/100mL"
+    ],
+    "answer": 2,
+    "explanation": "本章では、15gのヘモグロビンが1g当たり約1.39mLの酸素を運ぶため、血液100mL当たりの酸素運搬能力は約20.8mLとしている。",
+    "sourceType": "original",
+    "sourceNote": "ユーザー提供の第2章PDFを基準にCPTmateオリジナル問題として作成"
+  },
+  {
+    "id": "ch02-q044",
+    "chapter": 2,
+    "category": "血液・酸素運搬",
+    "type": "standard",
+    "question": "本章で示される、健康な成人の平均的な血液量はおよそどれか。",
+    "choices": [
+      "約1.0L",
+      "約2.5L",
+      "約5.0L",
+      "約10.0L"
+    ],
+    "answer": 2,
+    "explanation": "本章では、貧血症ではない健康な成人の血液量は平均約5.0Lで、体重の7%近くを占めるとしている。",
+    "sourceType": "original",
+    "sourceNote": "ユーザー提供の第2章PDFを基準にCPTmateオリジナル問題として作成"
+  },
+  {
+    "id": "ch02-q045",
+    "chapter": 2,
+    "category": "血液・酸素運搬",
+    "type": "standard",
+    "question": "海面位で標準大気圧760mmHg、大気中の酸素濃度20.93%の場合、酸素分圧はおよそいくつか。",
+    "choices": [
+      "約76mmHg",
+      "約100mmHg",
+      "約159mmHg",
+      "約760mmHg"
+    ],
+    "answer": 2,
+    "explanation": "酸素分圧は760mmHg×20.93/100で、約159mmHgとなる。",
+    "sourceType": "original",
+    "sourceNote": "ユーザー提供の第2章PDFを基準にCPTmateオリジナル問題として作成"
+  },
+  {
+    "id": "ch02-q046",
+    "chapter": 2,
+    "category": "血液・酸素運搬",
+    "type": "standard",
+    "question": "本章では、酸素分圧が約60mmHgに達したときのヘモグロビン酸素飽和度をおよそ何%としているか。",
+    "choices": [
+      "約50%",
+      "約70%",
+      "約90%",
+      "約100%"
+    ],
+    "answer": 2,
+    "explanation": "本章では、酸素分圧が約60mmHgでヘモグロビンの酸素飽和度が約90%に達すると、解離曲線が平坦になり始めるとしている。",
+    "sourceType": "original",
+    "sourceNote": "ユーザー提供の第2章PDFを基準にCPTmateオリジナル問題として作成"
+  },
+  {
+    "id": "ch02-q047",
+    "chapter": 2,
+    "category": "心臓・循環",
+    "type": "standard",
+    "question": "心臓の刺激伝導系で、SA結節から発生したインパルスが心室へ伝わるまでに生じる時間差の意義として、本章の説明に合うものはどれか。",
+    "choices": [
+      "心房の血液を心室へ送る時間を確保する",
+      "肺でのガス交換を停止させる",
+      "心室の再分極を防ぐ",
+      "静脈弁を閉じる"
+    ],
+    "answer": 0,
+    "explanation": "SA結節からのインパルスは心房へ瞬時に広がる一方、AV結節の通過に時間がかかる。その時間差によって心房内の血液を心室へ送り込むことが可能になる。",
+    "sourceType": "original",
+    "sourceNote": "ユーザー提供の第2章PDFを基準にCPTmateオリジナル問題として作成"
+  },
+  {
+    "id": "ch02-q048",
+    "chapter": 2,
+    "category": "心臓・循環",
+    "type": "standard",
+    "question": "本章では、安静時の静脈血の酸素飽和度をおよそ何%としているか。",
+    "choices": [
+      "約20%",
+      "約40%",
+      "約70%",
+      "約98%"
+    ],
+    "answer": 2,
+    "explanation": "本章では、脱酸素状態の血液でも酸素が全くないわけではなく、安静時は約70%の飽和度であると説明している。",
+    "sourceType": "original",
+    "sourceNote": "ユーザー提供の第2章PDFを基準にCPTmateオリジナル問題として作成"
+  },
+  {
+    "id": "ch02-q049",
+    "chapter": 2,
+    "category": "心臓・循環",
+    "type": "standard",
+    "question": "肺循環と体循環について、本章の説明として正しいものはどれか。",
+    "choices": [
+      "肺循環と体循環は閉鎖循環系を構成する",
+      "肺循環では血液は必ず大動脈を通る",
+      "体循環では静脈が心臓から血液を送り出す",
+      "肺静脈は必ず脱酸素状態の血液を運ぶ"
+    ],
+    "answer": 0,
+    "explanation": "本章では、心臓および肺における肺循環と、それ以外の身体への体循環が閉鎖循環系を構成すると説明している。",
+    "sourceType": "original",
+    "sourceNote": "ユーザー提供の第2章PDFを基準にCPTmateオリジナル問題として作成"
+  },
+  {
+    "id": "ch02-q050",
+    "chapter": 2,
+    "category": "心臓・循環",
+    "type": "standard",
+    "question": "本章で示される動脈系の血圧について、正しい組み合わせはどれか。",
+    "choices": [
+      "大動脈約100mmHg、細動脈約60mmHg",
+      "大動脈約60mmHg、細動脈約100mmHg",
+      "大動脈約20mmHg、細動脈約10mmHg",
+      "大動脈約760mmHg、細動脈約159mmHg"
+    ],
+    "answer": 0,
+    "explanation": "本章では、体循環の動脈は通常高圧で、大動脈で約100mmHg、細動脈でも約60mmHgと説明している。",
+    "sourceType": "original",
+    "sourceNote": "ユーザー提供の第2章PDFを基準にCPTmateオリジナル問題として作成"
+  },
+  {
+    "id": "ch02-q051",
+    "chapter": 2,
+    "category": "心臓・循環",
+    "type": "standard",
+    "question": "静脈に備わる一方向性の弁の主な役割はどれか。",
+    "choices": [
+      "血液の逆流を防ぐ",
+      "動脈圧を上げる",
+      "肺胞を拡張する",
+      "心室を脱分極させる"
+    ],
+    "answer": 0,
+    "explanation": "静脈は低圧であるため、一方向性の弁が血液の逆流を防ぎ、骨格筋の収縮による静脈還流を助ける。",
+    "sourceType": "original",
+    "sourceNote": "ユーザー提供の第2章PDFを基準にCPTmateオリジナル問題として作成"
+  },
+  {
+    "id": "ch02-q052",
+    "chapter": 2,
+    "category": "心臓・循環",
+    "type": "standard",
+    "question": "拡張期血圧（DBP）について、本章の説明として正しいものはどれか。",
+    "choices": [
+      "心室収縮中に動脈壁へかかる最高圧である",
+      "心室が力強く血液を送り出していない拡張期に動脈壁へかかる圧力である",
+      "肺胞内の酸素分圧である",
+      "心拍数と収縮期血圧の積である"
+    ],
+    "answer": 1,
+    "explanation": "本章では、DBPを血液が力強く送り出されていない拡張期に動脈壁へかかる圧力として説明している。",
+    "sourceType": "original",
+    "sourceNote": "ユーザー提供の第2章PDFを基準にCPTmateオリジナル問題として作成"
+  },
+  {
+    "id": "ch02-q053",
+    "chapter": 2,
+    "category": "心臓・循環",
+    "type": "standard",
+    "question": "心周期を構成する2つの時期として正しいものはどれか。",
+    "choices": [
+      "吸気と呼気",
+      "収縮期と拡張期",
+      "脱分極と拡散",
+      "肺循環と体循環"
+    ],
+    "answer": 1,
+    "explanation": "心周期は、心臓が血液を充満させる拡張期と、収縮して血液を送り出す収縮期によって構成される。",
+    "sourceType": "original",
+    "sourceNote": "ユーザー提供の第2章PDFを基準にCPTmateオリジナル問題として作成"
+  },
+  {
+    "id": "ch02-q054",
+    "chapter": 2,
+    "category": "心臓・循環",
+    "type": "standard",
+    "question": "平均動脈圧（MAP）について、本章の説明として誤っているものはどれか。",
+    "choices": [
+      "心周期を通しての平均血圧である",
+      "収縮期血圧と拡張期血圧の単純な平均値として考えてはならない",
+      "拡張期血圧と収縮期・拡張期血圧の差を用いて算出できる",
+      "収縮期血圧と拡張期血圧を足して2で割ればよい"
+    ],
+    "answer": 3,
+    "explanation": "本章では、MAPを収縮期血圧と拡張期血圧の単純平均とはせず、DBP＋0.333×（SBP−DBP）で算出するとしている。",
+    "sourceType": "original",
+    "sourceNote": "ユーザー提供の第2章PDFを基準にCPTmateオリジナル問題として作成"
+  },
+  {
+    "id": "ch02-q055",
+    "chapter": 2,
+    "category": "心臓・循環",
+    "type": "standard",
+    "question": "運動中に活動している骨格筋の細動脈が拡張することに関係する局所的な物質として、本章で挙げられているものはどれか。",
+    "choices": [
+      "一酸化窒素（NO）",
+      "ヘモグロビン",
+      "フィブリン",
+      "インスリン"
+    ],
+    "answer": 0,
+    "explanation": "本章では、活動筋の細動脈では一酸化窒素の局所的な放出によって交感神経系の作用が無効化され、血管が拡張すると説明している。",
+    "sourceType": "original",
+    "sourceNote": "ユーザー提供の第2章PDFを基準にCPTmateオリジナル問題として作成"
+  },
+  {
+    "id": "ch02-q056",
+    "chapter": 2,
+    "category": "心臓・循環",
+    "type": "standard",
+    "question": "運動中の血流再分配について、本章の説明に合うものはどれか。",
+    "choices": [
+      "活動筋への血流が減り、非活動器官だけに血液が集まる",
+      "非活動的な臓器への血流を供給する動脈が収縮し、活動筋への血流が増加する",
+      "すべての細動脈が同じ程度に拡張する",
+      "静脈が動脈の代わりに血液を送り出す"
+    ],
+    "answer": 1,
+    "explanation": "本章では、運動中は非活動的な臓器への血管が収縮する一方、活動筋の細動脈が拡張し、血液が活動筋へ再分配されると説明している。",
+    "sourceType": "original",
+    "sourceNote": "ユーザー提供の第2章PDFを基準にCPTmateオリジナル問題として作成"
+  },
+  {
+    "id": "ch02-q057",
+    "chapter": 2,
+    "category": "呼吸・ガス交換",
+    "type": "standard",
+    "question": "気管から肺胞へ至るまでの気道の分岐について、本章で示されている回数はおよそ何回か。",
+    "choices": [
+      "約3回",
+      "約10回",
+      "約23回",
+      "約50回"
+    ],
+    "answer": 2,
+    "explanation": "本章では、気管から気管支、細気管支へと約23回の分岐を経て、肺胞に到達すると説明している。",
+    "sourceType": "original",
+    "sourceNote": "ユーザー提供の第2章PDFを基準にCPTmateオリジナル問題として作成"
+  },
+  {
+    "id": "ch02-q058",
+    "chapter": 2,
+    "category": "呼吸・ガス交換",
+    "type": "standard",
+    "question": "肺活量について、本章の説明として正しいものはどれか。",
+    "choices": [
+      "通常の呼気後に肺に残る空気量である",
+      "最大努力で息を吸ってから吐いたときの空気量である",
+      "肺に存在する空気の総量である",
+      "安静時の1回の呼吸で出入りする空気量である"
+    ],
+    "answer": 1,
+    "explanation": "肺活量測定では、できるだけ大きく息を吸って肺を満たし、次にできるだけ大きく息を吐く。その最大努力による呼吸の動きが肺活量の指標となる。",
+    "sourceType": "original",
+    "sourceNote": "ユーザー提供の第2章PDFを基準にCPTmateオリジナル問題として作成"
+  },
+  {
+    "id": "ch02-q059",
+    "chapter": 2,
+    "category": "呼吸・ガス交換",
+    "type": "standard",
+    "question": "全肺気量（TLC）を構成する組み合わせとして、本章の図2.9の説明に合うものはどれか。",
+    "choices": [
+      "肺活量＋残気量",
+      "1回換気量＋心拍出量",
+      "機能的残気量＋動静脈酸素較差",
+      "吸気＋心拍数"
+    ],
+    "answer": 0,
+    "explanation": "本章では、全肺気量は肺活量と残気量との合計として示されている。",
+    "sourceType": "original",
+    "sourceNote": "ユーザー提供の第2章PDFを基準にCPTmateオリジナル問題として作成"
+  },
+  {
+    "id": "ch02-q060",
+    "chapter": 2,
+    "category": "呼吸・ガス交換",
+    "type": "standard",
+    "question": "本章の図2.11に示される肺胞と静脈血の酸素分圧の関係として正しいものはどれか。",
+    "choices": [
+      "肺胞約40mmHg、静脈血約100mmHg",
+      "肺胞約100mmHg、静脈血約40mmHg",
+      "肺胞約159mmHg、静脈血約100mmHg",
+      "肺胞約20mmHg、静脈血約10mmHg"
+    ],
+    "answer": 1,
+    "explanation": "本章の図2.11では、肺胞のPO₂は約100mmHg、肺へ戻ってくる静脈血のPO₂は約40mmHgと示され、この分圧勾配により酸素が血液へ拡散する。",
+    "sourceType": "original",
+    "sourceNote": "ユーザー提供の第2章PDFを基準にCPTmateオリジナル問題として作成"
+  },
+  {
+    "id": "ch02-q061",
+    "chapter": 2,
+    "category": "血液・酸素運搬",
+    "type": "standard",
+    "question": "健康な血液100mLにヘモグロビン約15gが含まれ、1gのヘモグロビンが約1.39mLの酸素を運ぶとする。この血液100mLの酸素運搬能力として最も近い値はどれか。",
+    "choices": [
+      "約2.1mL",
+      "約20.8mL",
+      "約39.0mL",
+      "約208mL"
+    ],
+    "answer": 1,
+    "explanation": "本章では、健康な血液100mLに約15gのヘモグロビンがあり、1g当たり約1.39mLの酸素を運べるため、酸素運搬能力は約20.8mL/100mLと示されている。",
+    "sourceType": "original",
+    "sourceLabel": "CPTmateオリジナル",
+    "sourceNote": "第2章PDFの酸素運搬の記載を基準に新規作成"
+  },
+  {
+    "id": "ch02-q062",
+    "chapter": 2,
+    "category": "血液・酸素運搬",
+    "type": "standard",
+    "question": "血液100mLあたりの酸素量について、本章の説明に最も合う組み合わせはどれか。",
+    "choices": [
+      "ヘモグロビン結合：約20.8mL、溶解：約0.3mL",
+      "ヘモグロビン結合：約0.3mL、溶解：約20.8mL",
+      "ヘモグロビン結合：約10mL、溶解：約10mL",
+      "ヘモグロビン結合：約39mL、溶解：約0mL"
+    ],
+    "answer": 0,
+    "explanation": "本章では酸素は主にヘモグロビンによって運ばれ、血液100mLに溶解している酸素は約0.3mLとごく少ない。一方、健康な血液の酸素運搬能力は約20.8mL/100mLである。",
+    "sourceType": "original",
+    "sourceLabel": "CPTmateオリジナル",
+    "sourceNote": "第2章PDFの酸素運搬の記載を基準に新規作成"
+  },
+  {
+    "id": "ch02-q063",
+    "chapter": 2,
+    "category": "血液・酸素運搬",
+    "type": "standard",
+    "question": "高強度運動中に深部体温が上昇し、血液のpHが低下した。このとき酸素‐ヘモグロビン解離曲線と酸素放出について最も適切なのはどれか。",
+    "choices": [
+      "左へ移動し、酸素を放出しにくくなる",
+      "右へ移動し、活動筋へ酸素を放出しやすくなる",
+      "移動せず、酸素親和度だけが上昇する",
+      "右へ移動し、ヘモグロビンの酸素親和度が上昇する"
+    ],
+    "answer": 1,
+    "explanation": "本章では運動による深部体温上昇と血液pH低下によって曲線が右へ移動し、ヘモグロビンの酸素親和度が低下して活動筋へ酸素を放出しやすくなると説明している。",
+    "sourceType": "original",
+    "sourceLabel": "CPTmateオリジナル",
+    "sourceNote": "第2章PDFの酸素‐ヘモグロビン解離曲線の記載を基準に新規作成"
+  },
+  {
+    "id": "ch02-q064",
+    "chapter": 2,
+    "category": "血液・酸素運搬",
+    "type": "standard",
+    "question": "動脈血の酸素含有量が20mL/血液100mL、静脈血が4mL/血液100mLだった。動静脈酸素較差はいくつか。",
+    "choices": [
+      "4mL/100mL",
+      "16mL/100mL",
+      "20mL/100mL",
+      "24mL/100mL"
+    ],
+    "answer": 1,
+    "explanation": "動静脈酸素較差は動脈血の酸素量から静脈血の酸素量を引いて求めるため、20−4＝16mL/血液100mLとなる。本章の表2.1でも高強度運動時は16mL/100mLと示されている。",
+    "sourceType": "original",
+    "sourceLabel": "CPTmateオリジナル",
+    "sourceNote": "第2章PDFの表2.1を基準に新規作成"
+  },
+  {
+    "id": "ch02-q065",
+    "chapter": 2,
+    "category": "血液・酸素運搬",
+    "type": "standard",
+    "question": "健康な成人の平均血液量が約5.0Lで、体重の約7%に相当すると本章にある。これは血液の役割についてどの説明につながるか。",
+    "choices": [
+      "血液は主に骨格筋の収縮を直接行う",
+      "血液は酸素・栄養素の運搬と代謝副産物の除去に関与する",
+      "血液は肺胞でのみ存在する",
+      "血液量は運動中も循環に関係しない"
+    ],
+    "answer": 1,
+    "explanation": "本章では血液が酸素、栄養素、代謝副産物の体内輸送に関わると説明している。血液量はその循環機能を支える重要な要素である。",
+    "sourceType": "original",
+    "sourceLabel": "CPTmateオリジナル",
+    "sourceNote": "第2章PDFの心肺系・血液の記載を基準に新規作成"
+  },
+  {
+    "id": "ch02-q066",
+    "chapter": 2,
+    "category": "心臓・循環",
+    "type": "standard",
+    "question": "心電図でP波の後にQRS波が現れる。これらの組み合わせとして本章の説明に合うものはどれか。",
+    "choices": [
+      "P波＝心室脱分極、QRS波＝心房脱分極",
+      "P波＝心房脱分極、QRS波＝心室脱分極",
+      "P波＝心室再分極、QRS波＝心房再分極",
+      "P波＝心室収縮、QRS波＝心室再分極"
+    ],
+    "answer": 1,
+    "explanation": "本章ではP波は心房の脱分極、QRS波は心室の脱分極、T波は心室の再分極を表すとしている。",
+    "sourceType": "original",
+    "sourceLabel": "CPTmateオリジナル",
+    "sourceNote": "第2章PDFの心電図の記載を基準に新規作成"
+  },
+  {
+    "id": "ch02-q067",
+    "chapter": 2,
+    "category": "心臓・循環",
+    "type": "standard",
+    "question": "心拍数150拍/分、収縮期血圧160mmHgのとき、心拍数‐血圧積（RPP）はいくつか。",
+    "choices": [
+      "310",
+      "2,400",
+      "15,000",
+      "24,000"
+    ],
+    "answer": 3,
+    "explanation": "RPPは心拍数×収縮期血圧なので、150×160＝24,000となる。",
+    "sourceType": "original",
+    "sourceLabel": "CPTmateオリジナル",
+    "sourceNote": "第2章PDFの式2.1を基準に新規作成"
+  },
+  {
+    "id": "ch02-q068",
+    "chapter": 2,
+    "category": "心臓・循環",
+    "type": "standard",
+    "question": "収縮期血圧120mmHg、拡張期血圧75mmHgの場合、本章の式を用いた平均動脈圧（MAP）に最も近い値はどれか。",
+    "choices": [
+      "75mmHg",
+      "82mmHg",
+      "90mmHg",
+      "120mmHg"
+    ],
+    "answer": 2,
+    "explanation": "MAP＝DBP＋0.333×(SBP−DBP)なので、75＋0.333×45≒90mmHgとなる。本章では単純なSBPとDBPの平均ではないと説明している。",
+    "sourceType": "original",
+    "sourceLabel": "CPTmateオリジナル",
+    "sourceNote": "第2章PDFの式2.2を基準に新規作成"
+  },
+  {
+    "id": "ch02-q069",
+    "chapter": 2,
+    "category": "心臓・循環",
+    "type": "standard",
+    "question": "拡張末期容量（EDV）が130mL、収縮末期容量（ESV）が50mL、心拍数が100拍/分の場合、心拍出量はどれか。",
+    "choices": [
+      "5.0L/分",
+      "8.0L/分",
+      "13.0L/分",
+      "18.0L/分"
+    ],
+    "answer": 1,
+    "explanation": "SV＝EDV−ESV＝130−50＝80mL/拍。心拍出量＝SV×HR＝80×100＝8,000mL/分、つまり8.0L/分となる。",
+    "sourceType": "original",
+    "sourceLabel": "CPTmateオリジナル",
+    "sourceNote": "第2章PDFの式2.3〜2.5を基準に新規作成"
+  },
+  {
+    "id": "ch02-q070",
+    "chapter": 2,
+    "category": "心臓・循環",
+    "type": "standard",
+    "question": "静脈還流が増加して心室への血液充満が増えたとき、フランク・スターリングの法則から予想される変化はどれか。",
+    "choices": [
+      "心室の伸張が増え、収縮力と駆出される血液量が増える",
+      "心室の伸張が減り、収縮力が低下する",
+      "心拍出量が必ずゼロになる",
+      "動脈血の酸素分圧だけが上昇する"
+    ],
+    "answer": 0,
+    "explanation": "本章では左心室が伸張されるほど収縮力が増大し、心室から押し出される血液量が増大すると説明している。",
+    "sourceType": "original",
+    "sourceLabel": "CPTmateオリジナル",
+    "sourceNote": "第2章PDFのフランク・スターリングの法則を基準に新規作成"
+  },
+  {
+    "id": "ch02-q071",
+    "chapter": 2,
+    "category": "呼吸・ガス交換",
+    "type": "standard",
+    "question": "運動中に呼吸がより深くなり、吸気を強める必要が生じた。このとき安静時の吸気に加えて働く筋として、本章に挙げられているものはどれか。",
+    "choices": [
+      "斜角筋・胸鎖乳突筋など",
+      "上腕二頭筋だけ",
+      "腓腹筋だけ",
+      "咬筋だけ"
+    ],
+    "answer": 0,
+    "explanation": "本章では運動中、横隔膜と外肋間筋に加えて斜角筋、胸鎖乳突筋、大胸筋、小胸筋なども吸気に関与すると説明している。",
+    "sourceType": "original",
+    "sourceLabel": "CPTmateオリジナル",
+    "sourceNote": "第2章PDFの呼吸運動の記載を基準に新規作成"
+  },
+  {
+    "id": "ch02-q072",
+    "chapter": 2,
+    "category": "呼吸・ガス交換",
+    "type": "standard",
+    "question": "運動中の呼気について、本章の説明として最も適切なのはどれか。",
+    "choices": [
+      "安静時と同様に完全に受動的である",
+      "内肋間筋と腹筋が働いて空気の排出を助ける",
+      "横隔膜が強く収縮して空気を排出する",
+      "肺胞が能動的に空気を押し出す"
+    ],
+    "answer": 1,
+    "explanation": "安静時の呼気は受動的だが、運動中は内肋間筋と腹筋が働いて肺への空気の出入りを助けると本章で説明されている。",
+    "sourceType": "original",
+    "sourceLabel": "CPTmateオリジナル",
+    "sourceNote": "第2章PDFの呼気の記載を基準に新規作成"
+  },
+  {
+    "id": "ch02-q073",
+    "chapter": 2,
+    "category": "呼吸・ガス交換",
+    "type": "standard",
+    "question": "肺胞気の酸素分圧が約100mmHg、静脈血の酸素分圧が約40mmHgである場合、肺胞と血液の間で酸素はどちら向きに移動するか。",
+    "choices": [
+      "血液から肺胞へ",
+      "肺胞から血液へ",
+      "どちらにも移動しない",
+      "血液から気管へ直接移動する"
+    ],
+    "answer": 1,
+    "explanation": "本章ではガスは分圧の高い側から低い側へ拡散すると説明している。肺胞PO₂約100mmHg、静脈血PO₂約40mmHgなので酸素は肺胞から血液へ移動する。",
+    "sourceType": "original",
+    "sourceLabel": "CPTmateオリジナル",
+    "sourceNote": "第2章PDFの図2.11とガス交換の記載を基準に新規作成"
+  },
+  {
+    "id": "ch02-q074",
+    "chapter": 2,
+    "category": "呼吸・ガス交換",
+    "type": "standard",
+    "question": "静脈血の二酸化炭素分圧が約46mmHgであることから、肺でのガス交換について最も適切なのはどれか。",
+    "choices": [
+      "二酸化炭素は肺胞側へ拡散する方向になる",
+      "二酸化炭素は必ず血液へ取り込まれる",
+      "二酸化炭素は筋ポンプで肺胞へ運ばれる",
+      "二酸化炭素の移動には濃度・分圧差が関係しない"
+    ],
+    "answer": 0,
+    "explanation": "本章ではガスは分圧差に応じて拡散すると説明し、静脈血のCO₂分圧を約46mmHgとしている。肺で血液からCO₂を除去する方向に拡散が生じる。",
+    "sourceType": "original",
+    "sourceLabel": "CPTmateオリジナル",
+    "sourceNote": "第2章PDFのガス交換の記載を基準に新規作成"
+  },
+  {
+    "id": "ch02-q075",
+    "chapter": 2,
+    "category": "呼吸・ガス交換",
+    "type": "standard",
+    "question": "肺活量（VC）と残気量（RV）の関係について、本章の図2.9の説明に合うものはどれか。",
+    "choices": [
+      "TLC＝VC＋RV",
+      "VC＝TLC＋RV",
+      "RV＝VC＋TLC",
+      "TLC＝VC−RV"
+    ],
+    "answer": 0,
+    "explanation": "本章では全肺気量（TLC）は肺活量（VC）と残気量（RV）の合計として示されている。",
+    "sourceType": "original",
+    "sourceLabel": "CPTmateオリジナル",
+    "sourceNote": "第2章PDFの図2.9を基準に新規作成"
+  },
+  {
+    "id": "ch02-q076",
+    "chapter": 2,
+    "category": "酸素摂取・運動適応",
+    "type": "standard",
+    "question": "心拍数90拍/分、1回拍出量70mL/拍、動静脈酸素較差10mL/血液100mLの人の酸素摂取量（VO₂）はどれか。",
+    "choices": [
+      "63mL/分",
+      "630mL/分",
+      "6,300mL/分",
+      "63,000mL/分"
+    ],
+    "answer": 1,
+    "explanation": "VO₂＝(HR×SV)×動静脈酸素較差。90×70＝6,300mL/分の心拍出量に、10mL/100mLを掛けると630mL/分となる。",
+    "sourceType": "original",
+    "sourceLabel": "CPTmateオリジナル",
+    "sourceNote": "第2章PDFの式2.6.1〜2.6.2を基準に新規作成"
+  },
+  {
+    "id": "ch02-q077",
+    "chapter": 2,
+    "category": "酸素摂取・運動適応",
+    "type": "standard",
+    "question": "高強度運動で動静脈酸素較差が安静時より大きくなる主な意味として最も適切なのはどれか。",
+    "choices": [
+      "活動筋が血液から取り込む酸素量が増える",
+      "動脈血の酸素量が必ずゼロになる",
+      "心拍数が必ず低下する",
+      "肺胞への血流がなくなる"
+    ],
+    "answer": 0,
+    "explanation": "本章では動静脈酸素較差を、動脈血から静脈血へ移る間に運動で取り込まれた酸素量として説明し、運動強度の増加とともに増大するとしている。",
+    "sourceType": "original",
+    "sourceLabel": "CPTmateオリジナル",
+    "sourceNote": "第2章PDFの動静脈酸素較差と表2.1を基準に新規作成"
+  },
+  {
+    "id": "ch02-q078",
+    "chapter": 2,
+    "category": "酸素摂取・運動適応",
+    "type": "standard",
+    "question": "VO₂maxをできるだけ正確に測定する方法として、本章で示されているものはどれか。",
+    "choices": [
+      "安静時の血圧測定だけ",
+      "トレッドミルなどを用いた漸増運動負荷試験と呼気ガス代謝測定",
+      "握力測定だけ",
+      "安静時の体温測定だけ"
+    ],
+    "answer": 1,
+    "explanation": "本章ではVO₂maxを正確に得る方法として、トレッドミルなどを用いた漸増運動負荷試験と呼気ガス代謝モニターによる酸素消費量の測定を挙げている。",
+    "sourceType": "original",
+    "sourceLabel": "CPTmateオリジナル",
+    "sourceNote": "第2章PDFのVO₂max測定の記載を基準に新規作成"
+  },
+  {
+    "id": "ch02-q079",
+    "chapter": 2,
+    "category": "酸素摂取・運動適応",
+    "type": "standard",
+    "question": "有酸素性持久系トレーニング後の変化として、本章の説明に合う組み合わせはどれか。",
+    "choices": [
+      "最大心拍数は通常変化せず、最大1回拍出量が増加し、毛細血管とミトコンドリアの適応が生じる",
+      "最大心拍数だけが大幅に増加し、毛細血管は減少する",
+      "最大1回拍出量が低下し、ミトコンドリアも減少する",
+      "動静脈酸素較差は必ず低下する"
+    ],
+    "answer": 0,
+    "explanation": "本章では持久系トレーニングによって通常は最大心拍数が変化せず、最大1回拍出量が増加することで最大心拍出量が増え、毛細血管数とミトコンドリア数の増加が最大動静脈酸素較差の増加に関与すると説明している。",
+    "sourceType": "original",
+    "sourceLabel": "CPTmateオリジナル",
+    "sourceNote": "第2章PDFのVO₂maxトレーニング適応の記載を基準に新規作成"
+  },
+  {
+    "id": "ch02-q080",
+    "chapter": 2,
+    "category": "酸素摂取・運動適応",
+    "type": "standard",
+    "question": "有酸素性能力が低い人と高い人を比較した場合、有酸素性運動プログラムによるVO₂maxの改善について本章が示している傾向はどれか。",
+    "choices": [
+      "有酸素性能力が低い人のほうが大きな割合で向上することがよくある",
+      "有酸素性能力が低い人は必ず向上しない",
+      "能力が高い人だけが向上する",
+      "両者は必ず同じ割合で向上する"
+    ],
+    "answer": 0,
+    "explanation": "本章では、有酸素性能力が低い人は高い人と比べて、有酸素性運動プログラムによってVO₂maxが大きな割合で向上することがよくあると説明している。",
+    "sourceType": "original",
+    "sourceLabel": "CPTmateオリジナル",
+    "sourceNote": "第2章PDFのVO₂maxトレーニング適応の記載を基準に新規作成"
+  }
 ]
 
 const STORAGE_KEY = "cptmate_v01_state";
@@ -4222,22 +4582,17 @@ function restartCurrentPractice() {
 
 
 function getSourceLabel(sourceType, question) {
-  if (question?.sourceLabel) return question.sourceLabel;
-  if (sourceType === "mock") return "模擬問題ベース";
-  if (sourceType === "review") return "章末確認ベース";
-  if (sourceType === "textbook") return "教科書ベース";
+  if (sourceType === "mock") return "模擬問題（再構築）";
+  if (sourceType === "review") return "章末確認問題";
   return "CPTmateオリジナル";
 }
 function getSourceOriginLabel(sourceType) {
-  if (sourceType === "original") return "CPTmateオリジナル";
-  return "CPTmate再構成";
+  return getSourceLabel(sourceType);
 }
 function renderSourceBadge(question) {
   const type = question?.sourceType || "original";
-  const origin = getSourceOriginLabel(type);
-  const basis = getSourceLabel(type, question);
-  const basisBadge = type === "original" ? "" : `<span class="source-badge source-basis source-${type}">${basis}</span>`;
-  return `<div class="source-badge-group"><span class="source-badge source-origin source-${type}">${origin}</span>${basisBadge}</div>`;
+  const label = getSourceLabel(type, question);
+  return `<div class="source-badge-group"><span class="source-badge source-origin source-${type}">${label}</span></div>`;
 }
 
 function renderQuestion() {
