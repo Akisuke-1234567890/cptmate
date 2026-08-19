@@ -1,4 +1,4 @@
-const APP_VERSION = "0.2.52";
+const APP_VERSION = "0.2.53";
 
 /* v0.2.49: bottom navigation robust viewport fixing */
 (function installCPTmateBottomNavFix() {
@@ -62,6 +62,9 @@ const APP_VERSION = "0.2.52";
     }
     .question-nav-actions-above-card {
       margin: 10px 0 12px;
+    }
+    .question-nav-actions-below-card {
+      margin-top: 12px;
     }
     .question-nav-btn {
       min-height: 52px;
@@ -2541,8 +2544,9 @@ function renderQuestion() {
   const q = queue[state.currentIndex];
   const sourceBadge = renderSourceBadge(q);
   const saved = practiceSessionAnswers[q.id];
+  const hasAnswered = !!state.answers[q.id];
   const bookmarked = !!state.bookmarks[q.id];
-  const answerStatus = saved
+  const answerStatus = hasAnswered
     ? '<span class="question-answer-status answered">回答済み</span>'
     : '<span class="question-answer-status unanswered">未解答</span>';
   const letters = ["A", "B", "C", "D"];
@@ -2589,6 +2593,10 @@ function renderQuestion() {
 
     <div class="post-answer-actions">
       <button class="secondary-btn full" onclick="retryQuestion()">もう一度この問題を解く</button>
+      <div class="question-nav-actions question-nav-actions-below-card">
+        <button class="secondary-btn question-nav-btn" onclick="previousQuestion()" ${state.currentIndex <= 0 ? "disabled" : ""}>‹ 前の問題</button>
+        <button class="primary-btn question-nav-btn" onclick="nextQuestion()">次の問題 ›</button>
+      </div>
     </div>
   ` : "";
 
