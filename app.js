@@ -1,4 +1,4 @@
-const APP_VERSION = "0.2.72";
+const APP_VERSION = "0.2.73";
 
 /* v0.2.63: home logo placement + startup splash/crossfade */
 const CPTMATE_BRAND_LOGO = "assets/branding/cptmate-horizontal-logo.png";
@@ -2286,7 +2286,8 @@ const defaultState = {
   bookmarks: {},
   currentIndex: 0,
   lastViewed: "home",
-  schemaVersion: 2
+  schemaVersion: 2,
+  practiceSession: null
 };
 
 let state = loadState();
@@ -2660,6 +2661,104 @@ let practiceQueue = [];
 let practiceLabel = "第1章すべて";
 let practiceSessionAnswers = {};
 let practiceCompleted = false;
+let practiceRetrying = new Set();
+
+/* v0.2.73: 演習途中セッションを復旧。
+ * - 下帯・戻る・演習選択への移動時に確認を出す。
+ * - 問題列、現在位置、途中回答をlocalStorageへ保存。
+ * - 完了した演習は途中セッションから外す。
+ * - 既存のanswers/bookmarksはリセットしない。
+ */
+function getSavedPracticeSession() {
+  const s = state && state.practiceSession;
+  if (!s || s.completed || !Array.isArray(s.queue) || !s.queue.length) return null;
+  const validQueue = s.queue.filter(id => ALL_QUESTIONS.some(q => q.id === id));
+  if (!validQueue.length) return null;
+  const idx = Math.max(0, Math.min(Number(s.currentIndex) || 0, validQueue.length - 1));
+  return {
+    active: !!s.active,
+    queue: validQueue,
+    label: s.label || "問題演習",
+    currentIndex: idx,
+    answers: (s.answers && typeof s.answers === "object") ? { ...s.answers } : {},
+    startedAt: s.startedAt || new Date().toISOString(),
+    pausedAt: s.pausedAt || null
+  };
+}
+
+function syncPracticeSessionToState(active = true) {
+  if (!practiceQueue.length) {
+    state.practiceSession = null;
+  } else {
+    state.practiceSession = {
+      active,
+      queue: [...practiceQueue],
+      label: practiceLabel,
+      currentIndex: state.currentIndex,
+      answers: { ...practiceSessionAnswers },
+      startedAt: state.practiceSession?.startedAt || new Date().toISOString(),
+      pausedAt: active ? null : new Date().toISOString(),
+      completed: false
+    };
+  }
+  saveState();
+}
+
+function restorePracticeSession() {
+  const saved = getSavedPracticeSession();
+  if (!saved) return false;
+  practiceQueue = saved.queue;
+  practiceLabel = saved.label;
+  practiceSessionAnswers = { ...saved.answers };
+  practiceCompleted = false;
+  practiceRetrying = new Set();
+  state.currentIndex = saved.currentIndex;
+  return true;
+}
+
+function hasActivePracticeSession() {
+  return !!getSavedPracticeSession();
+}
+
+function pausePracticeSession() {
+  if (!practiceQueue.length) return;
+  syncPracticeSessionToState(false);
+}
+
+function resumePracticeSession() {
+  if (!restorePracticeSession()) {
+    alert("再開できる途中の演習がありません。");
+    renderPracticeSelector();
+    return;
+  }
+  state.lastViewed = "practice";
+  syncPracticeSessionToState(true);
+  renderQuestion();
+}
+
+function discardPracticeSession() {
+  practiceQueue = [];
+  practiceLabel = "第1章すべて";
+  practiceSessionAnswers = {};
+  practiceCompleted = false;
+  practiceRetrying = new Set();
+  state.currentIndex = 0;
+  state.practiceSession = null;
+  saveState();
+}
+
+function confirmPracticeLeave(destination) {
+  if (!hasActivePracticeSession() || state.lastViewed !== "practice") {
+    destination();
+    return;
+  }
+  const queue = getPracticeQuestions();
+  const position = Math.min(state.currentIndex + 1, queue.length);
+  const ok = confirm(`演習の途中です。\n\n${practiceLabel}\n現在 ${position} / ${queue.length} 問\n\n途中経過を保存して移動しますか？\n「キャンセル」で演習を続けられます。`);
+  if (!ok) return;
+  pausePracticeSession();
+  destination();
+}
 
 function loadState() {
   try {
@@ -3102,6 +3201,7 @@ function startPracticeQueue(ids, label, index = 0) {
   practiceQueue = ids.filter(id => ALL_QUESTIONS.some(q => q.id === id));
   practiceLabel = label || "問題演習";
   practiceSessionAnswers = {};
+  practiceRetrying = new Set();
   practiceCompleted = false;
   if (!practiceQueue.length) {
     alert("この条件に該当する問題がありません。");
@@ -3109,6 +3209,16 @@ function startPracticeQueue(ids, label, index = 0) {
   }
   state.currentIndex = Math.max(0, Math.min(index, practiceQueue.length - 1));
   state.lastViewed = "practice";
+  state.practiceSession = {
+    active: true,
+    queue: [...practiceQueue],
+    label: practiceLabel,
+    currentIndex: state.currentIndex,
+    answers: {},
+    startedAt: new Date().toISOString(),
+    pausedAt: null,
+    completed: false
+  };
   saveState();
   renderQuestion();
 }
@@ -3119,11 +3229,13 @@ function getPracticeQuestions() {
 }
 
 function openPracticeSelectorClean() {
-  practiceQueue = [];
-  practiceLabel = "第1章すべて";
-  practiceSessionAnswers = {};
-  practiceCompleted = false;
-  state.currentIndex = 0;
+  if (state.lastViewed === "practice" && hasActivePracticeSession()) {
+    const queue = getPracticeQuestions();
+    const position = Math.min(state.currentIndex + 1, queue.length);
+    const ok = confirm(`演習の途中です。\n\n${practiceLabel}\n現在 ${position} / ${queue.length} 問\n\n途中経過を保存して演習選択へ戻りますか？`);
+    if (!ok) return;
+    pausePracticeSession();
+  }
   state.lastViewed = "practice-selector";
   saveState();
   renderPracticeSelector();
@@ -3913,6 +4025,8 @@ function retryQuestion() {
   const queue = getPracticeQuestions();
   const q = queue[state.currentIndex];
   delete practiceSessionAnswers[q.id];
+  practiceRetrying.add(q.id);
+  syncPracticeSessionToState(true);
   renderQuestion();
 }
 
@@ -3928,7 +4042,8 @@ function answerQuestion(selected) {
   };
   state.answers[q.id] = record;
   practiceSessionAnswers[q.id] = record;
-  saveState();
+  practiceRetrying.delete(q.id);
+  syncPracticeSessionToState(true);
   renderQuestion();
 }
 
@@ -3936,7 +4051,7 @@ function previousQuestion() {
   const queue = getPracticeQuestions();
   if (state.currentIndex <= 0) return;
   state.currentIndex -= 1;
-  saveState();
+  syncPracticeSessionToState(true);
   renderQuestion();
 }
 
@@ -3945,12 +4060,14 @@ function nextQuestion() {
   if (state.currentIndex >= queue.length - 1) {
     practiceCompleted = true;
     state.lastViewed = "practice-complete";
+    if (state.practiceSession) state.practiceSession.completed = true;
+    state.practiceSession = null;
     saveState();
     renderPracticeComplete();
     return;
   }
   state.currentIndex += 1;
-  saveState();
+  syncPracticeSessionToState(true);
   renderQuestion();
 }
 
@@ -4297,13 +4414,16 @@ function resetProgress() {
 document.querySelectorAll(".nav-btn").forEach(btn => {
   btn.addEventListener("click", () => {
     const nav = btn.dataset.nav;
-    if (nav === "home") mergeHomeAndStatsNavigation();
-    if (nav === "home") renderHome();
-    if (nav === "favorites") renderFavorites();
-    if (nav === "practice") renderPracticeSelector();
-    if (nav === "review") renderReview();
-    if (nav === "stats") renderStats();
-    if (nav === "settings") renderSettings();
+    const destination = () => {
+      if (nav === "home") mergeHomeAndStatsNavigation();
+      if (nav === "home") renderHome();
+      if (nav === "favorites") renderFavorites();
+      if (nav === "practice") renderPracticeSelector();
+      if (nav === "review") renderReview();
+      if (nav === "stats") renderStats();
+      if (nav === "settings") renderSettings();
+    };
+    confirmPracticeLeave(destination);
   });
 });
 
