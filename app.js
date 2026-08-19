@@ -1,4 +1,4 @@
-const APP_VERSION = "0.2.57";
+const APP_VERSION = "0.2.58";
 
 /* v0.2.49: bottom navigation robust viewport fixing */
 (function installCPTmateBottomNavFix() {
@@ -105,7 +105,7 @@ const APP_VERSION = "0.2.57";
   document.head.appendChild(style);
 })();
 
-/* v0.2.57: home chapter accordion + progress graphs */
+/* v0.2.57-v0.2.58: home chapter accordion + progress graphs */
 (function installHomeChapterCardStyle() {
   const style = document.createElement("style");
   style.textContent = `
@@ -199,10 +199,12 @@ const APP_VERSION = "0.2.57";
       overflow: hidden;
     }
     .home-progress-fill {
+      display: block;
       height: 100%;
-      border-radius: inherit;
-      background: var(--primary);
       min-width: 0;
+      border-radius: inherit;
+      background: var(--primary, var(--teal, #0f5f63)) !important;
+      transition: width .2s ease;
     }
     .home-chapter-total {
       margin-top: 18px;
@@ -1297,7 +1299,8 @@ const defaultState = {
   answers: {},
   bookmarks: {},
   currentIndex: 0,
-  lastViewed: "home"
+  lastViewed: "home",
+  schemaVersion: 2
 };
 
 let state = loadState();
@@ -1685,12 +1688,85 @@ function saveState() {
   localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
 }
 
+/*
+ * v0.2.58: 学習記録を「問題データ」から独立して維持するための正規化。
+ * - 過去のanswers / bookmarksは削除しない。
+ * - 現在存在する問題IDの記録だけを各種集計へ利用する。
+ * - 将来問題IDを変更する場合はQUESTION_ID_ALIASESに旧ID→新IDを登録する。
+ * - 新機能の表示値は保存せず、常に現在の問題データ＋answersから再計算する。
+ */
+const STATE_SCHEMA_VERSION = 2;
+const QUESTION_ID_ALIASES = {};
+
+function migrateStateToCurrentSchema() {
+  const originalAnswers = (state.answers && typeof state.answers === "object")
+    ? state.answers
+    : {};
+  const originalBookmarks = (state.bookmarks && typeof state.bookmarks === "object")
+    ? state.bookmarks
+    : {};
+
+  // 既存記録は、現在の問題データに存在しないIDも含めて保持する。
+  // 問題を将来整理・差し替えしても、過去記録そのものを破棄しない。
+  const normalizedAnswers = { ...originalAnswers };
+  const normalizedBookmarks = { ...originalBookmarks };
+  Object.keys(normalizedBookmarks).forEach(id => {
+    normalizedBookmarks[id] = !!normalizedBookmarks[id];
+  });
+
+  // 将来の問題ID変更時も、旧記録を新IDへ引き継げるようにする。
+  Object.entries(originalAnswers).forEach(([oldId, record]) => {
+    const newId = QUESTION_ID_ALIASES[oldId];
+    if (!newId || normalizedAnswers[newId] !== undefined) return;
+    if (ALL_QUESTIONS.some(q => q.id === newId)) {
+      normalizedAnswers[newId] = record;
+    }
+  });
+  Object.entries(originalBookmarks).forEach(([oldId, value]) => {
+    const newId = QUESTION_ID_ALIASES[oldId];
+    if (!newId || normalizedBookmarks[newId] !== undefined) return;
+    if (ALL_QUESTIONS.some(q => q.id === newId)) {
+      normalizedBookmarks[newId] = !!value;
+    }
+  });
+
+  const before = JSON.stringify({
+    answers: state.answers || {},
+    bookmarks: state.bookmarks || {},
+    schemaVersion: state.schemaVersion || 0
+  });
+  const after = JSON.stringify({
+    answers: normalizedAnswers,
+    bookmarks: normalizedBookmarks,
+    schemaVersion: STATE_SCHEMA_VERSION
+  });
+
+  state.answers = normalizedAnswers;
+  state.bookmarks = normalizedBookmarks;
+  state.schemaVersion = STATE_SCHEMA_VERSION;
+
+  if (before !== after) {
+    saveState();
+    console.info("CPTmate 学習記録を現在の問題データへ同期しました。", {
+      schemaVersion: STATE_SCHEMA_VERSION,
+      answers: Object.keys(state.answers).length,
+      bookmarks: Object.keys(state.bookmarks).length
+    });
+  }
+}
+
+migrateStateToCurrentSchema();
+
+function getCurrentAnswer(id) {
+  return state.answers && state.answers[id] ? state.answers[id] : null;
+}
+
 function answeredCount() {
-  return Object.keys(state.answers).length;
+  return ALL_QUESTIONS.filter(q => !!getCurrentAnswer(q.id)).length;
 }
 
 function correctCount() {
-  return Object.values(state.answers).filter(a => a.correct).length;
+  return ALL_QUESTIONS.filter(q => getCurrentAnswer(q.id)?.correct === true).length;
 }
 
 function accuracy() {
@@ -1926,7 +2002,7 @@ function getChapterMajorProgress(chapter = 1) {
       if (/^(総合|ケーススタディ)/.test(q.category)) return false;
       return /^(骨格|結合組織|関節)/.test(q.category)
         || /^(図・長骨|図・骨格)/.test(q.category)
-        || /^(章末確認・骨格|章末確認・結合組織|章末確認・関節)/.test(q.category)
+        || /^(章末確認・骨格|章末確認・結合組織|章末確認・関節|章末確認・腱と靭帯)/.test(q.category)
         || /^(模擬問題・骨格|模擬問題・結合組織|模擬問題・関節)/.test(q.category);
     },
     "総合・ケーススタディ": q => /^(総合|ケーススタディ)/.test(q.category)
@@ -1995,7 +2071,7 @@ function renderHome() {
                   <span class="home-progress-value">正解 ${item.correct} / ${item.total}</span>
                 </div>
                 <div class="home-progress-track" aria-label="${item.name} 正解率 ${percent}%">
-                  <div class="home-progress-fill" style="width:${percent}%"></div>
+                  <div class="home-progress-fill" style="width:${percent}% !important"></div>
                 </div>
               </div>
             `;
@@ -2007,7 +2083,7 @@ function renderHome() {
               <span class="home-progress-value">正解 ${chapterCorrect} / ${questions.length}</span>
             </div>
             <div class="home-progress-track" aria-label="第${chapter}章 全体 正解率 ${chapterPercent}%">
-              <div class="home-progress-fill" style="width:${chapterPercent}%"></div>
+              <div class="home-progress-fill" style="width:${chapterPercent}% !important"></div>
             </div>
           </div>
         </div>
@@ -2919,7 +2995,7 @@ function toggleBookmark(id) {
 }
 
 function wrongCount() {
-  return Object.values(state.answers).filter(a => !a.correct).length;
+  return ALL_QUESTIONS.filter(q => getCurrentAnswer(q.id)?.correct === false).length;
 }
 
 function renderReview() {
