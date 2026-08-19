@@ -1,4 +1,4 @@
-const APP_VERSION = "0.2.51";
+const APP_VERSION = "0.2.52";
 
 /* v0.2.49: bottom navigation robust viewport fixing */
 (function installCPTmateBottomNavFix() {
@@ -59,6 +59,9 @@ const APP_VERSION = "0.2.51";
       grid-template-columns: 1fr 1fr;
       gap: 10px;
       margin-top: 10px;
+    }
+    .question-nav-actions-above-card {
+      margin: 10px 0 12px;
     }
     .question-nav-btn {
       min-height: 52px;
@@ -2596,6 +2599,11 @@ function renderQuestion() {
     </div>
     <div class="practice-mode-bar">${practiceLabel}</div>
 
+    <div class="question-nav-actions question-nav-actions-above-card">
+      <button class="secondary-btn question-nav-btn" onclick="previousQuestion()" ${state.currentIndex <= 0 ? "disabled" : ""}>‹ 前の問題</button>
+      <button class="primary-btn question-nav-btn" onclick="nextQuestion()">次の問題 ›</button>
+    </div>
+
     <section class="card">
       ${q.type === "case" ? `
         <div class="case-badge">
@@ -2617,10 +2625,6 @@ function renderQuestion() {
 
       ${questionFigure}
       <p class="question-text">${q.question}</p>
-      <div class="question-nav-actions" style="margin:0 0 12px;">
-        <button class="secondary-btn question-nav-btn" onclick="previousQuestion()" ${state.currentIndex <= 0 ? "disabled" : ""}>‹ 前の問題</button>
-        <button class="primary-btn question-nav-btn" onclick="nextQuestion()">次の問題 ›</button>
-      </div>
       <div>${choices}</div>
       ${result}
     </section>
