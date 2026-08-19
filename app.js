@@ -1,4 +1,4 @@
-const APP_VERSION = "0.2.63";
+const APP_VERSION = "0.2.66";
 
 /* v0.2.63: home logo placement + startup splash/crossfade */
 const CPTMATE_BRAND_LOGO = "assets/branding/cptmate-horizontal-logo.png";
