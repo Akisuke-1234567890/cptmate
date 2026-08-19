@@ -1,4 +1,4 @@
-const APP_VERSION = "0.2.54";
+const APP_VERSION = "0.2.55";
 
 /* v0.2.49: bottom navigation robust viewport fixing */
 (function installCPTmateBottomNavFix() {
@@ -2064,12 +2064,10 @@ function renderPracticeSelector(selectedChapter = null) {
       <div class="selector-kicker" style="margin-top:16px;">選択中：第${chapter}章</div>
       <h3>どこから解きますか？</h3>
       <p class="selector-note">章を通して解くほか、分類や問題番号を絞って確認できます。</p>
-      <button class="practice-select-item primary-choice" onclick='startPracticeQueue(${JSON.stringify(chapterQuestions.map(q=>q.id))}, ${JSON.stringify(`第${chapter}章すべて`)})'><strong>第${chapter}章すべて</strong><span>${chapterQuestions.length}問</span></button>
-    </section>
-
-    <section class="card">
-      <div class="selector-section-title">大分類</div>
-      <div class="practice-select-list">${majorButtons}</div>
+      <div class="practice-select-list">
+        <button class="practice-select-item primary-choice" onclick='startPracticeQueue(${JSON.stringify(chapterQuestions.map(q=>q.id))}, ${JSON.stringify(`第${chapter}章すべて`)})'><strong>第${chapter}章すべて</strong><span>${chapterQuestions.length}問</span></button>
+        ${majorButtons}
+      </div>
     </section>
 
 
