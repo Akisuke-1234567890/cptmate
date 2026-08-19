@@ -1,4 +1,4 @@
-const APP_VERSION = "0.2.78";
+const APP_VERSION = "0.2.79";
 
 /* v0.2.63: home logo placement + startup splash/crossfade */
 const CPTMATE_BRAND_LOGO = "assets/branding/cptmate-horizontal-logo.png";
@@ -2288,7 +2288,367 @@ const QUESTIONS = [
     "sourceType": "textbook",
     "sourceLabel": "第2章 教科書",
     "sourceNote": "ユーザー提供の第2章PDFを基準に作成"
-  }
+  },
+{
+  "id": "ch02-q041",
+  "chapter": 2,
+  "category": "血液・酸素運搬",
+  "type": "standard",
+  "question": "血液100mLに溶解している酸素の量として、本章で示されている値はどれか。",
+  "choices": [
+    "約0.3mL",
+    "約3mL",
+    "約10mL",
+    "約20mL"
+  ],
+  "answer": 0,
+  "explanation": "本章では、血液に溶解する酸素は非常に少なく、血液100mL当たり約0.3mLと説明されている。酸素は主にヘモグロビンによって運ばれる。",
+  "sourceType": "textbook",
+  "sourceLabel": "第2章 教科書",
+  "sourceNote": "ユーザー提供の第2章PDFを基準に作成"
+},
+{
+  "id": "ch02-q042",
+  "chapter": 2,
+  "category": "血液・酸素運搬",
+  "type": "standard",
+  "question": "1gのヘモグロビンが運ぶことのできる酸素量として、本章で示されている値はどれか。",
+  "choices": [
+    "約0.13mL",
+    "約1.39mL",
+    "約13.9mL",
+    "約139mL"
+  ],
+  "answer": 1,
+  "explanation": "本章では、ヘモグロビン1gで約1.39mLの酸素を運ぶことができるとしている。",
+  "sourceType": "textbook",
+  "sourceLabel": "第2章 教科書",
+  "sourceNote": "ユーザー提供の第2章PDFを基準に作成"
+},
+{
+  "id": "ch02-q043",
+  "chapter": 2,
+  "category": "血液・酸素運搬",
+  "type": "standard",
+  "question": "健康な血液100mL当たり約15gのヘモグロビンがあるとき、本章で示される血液の酸素運搬能力はおよそどれか。",
+  "choices": [
+    "約2.1mL/100mL",
+    "約10.0mL/100mL",
+    "約20.8mL/100mL",
+    "約30.8mL/100mL"
+  ],
+  "answer": 2,
+  "explanation": "本章では、15gのヘモグロビンが1g当たり約1.39mLの酸素を運ぶため、血液100mL当たりの酸素運搬能力は約20.8mLとしている。",
+  "sourceType": "textbook",
+  "sourceLabel": "第2章 教科書",
+  "sourceNote": "ユーザー提供の第2章PDFを基準に作成"
+},
+{
+  "id": "ch02-q044",
+  "chapter": 2,
+  "category": "血液・酸素運搬",
+  "type": "standard",
+  "question": "本章で示される、健康な成人の平均的な血液量はおよそどれか。",
+  "choices": [
+    "約1.0L",
+    "約2.5L",
+    "約5.0L",
+    "約10.0L"
+  ],
+  "answer": 2,
+  "explanation": "本章では、貧血症ではない健康な成人の血液量は平均約5.0Lで、体重の7%近くを占めるとしている。",
+  "sourceType": "textbook",
+  "sourceLabel": "第2章 教科書",
+  "sourceNote": "ユーザー提供の第2章PDFを基準に作成"
+},
+{
+  "id": "ch02-q045",
+  "chapter": 2,
+  "category": "血液・酸素運搬",
+  "type": "standard",
+  "question": "海面位で標準大気圧760mmHg、大気中の酸素濃度20.93%の場合、酸素分圧はおよそいくつか。",
+  "choices": [
+    "約76mmHg",
+    "約100mmHg",
+    "約159mmHg",
+    "約760mmHg"
+  ],
+  "answer": 2,
+  "explanation": "酸素分圧は760mmHg×20.93/100で、約159mmHgとなる。",
+  "sourceType": "textbook",
+  "sourceLabel": "第2章 教科書",
+  "sourceNote": "ユーザー提供の第2章PDFを基準に作成"
+},
+{
+  "id": "ch02-q046",
+  "chapter": 2,
+  "category": "血液・酸素運搬",
+  "type": "standard",
+  "question": "本章では、酸素分圧が約60mmHgに達したときのヘモグロビン酸素飽和度をおよそ何%としているか。",
+  "choices": [
+    "約50%",
+    "約70%",
+    "約90%",
+    "約100%"
+  ],
+  "answer": 2,
+  "explanation": "本章では、酸素分圧が約60mmHgでヘモグロビンの酸素飽和度が約90%に達すると、解離曲線が平坦になり始めるとしている。",
+  "sourceType": "textbook",
+  "sourceLabel": "第2章 教科書",
+  "sourceNote": "ユーザー提供の第2章PDFを基準に作成"
+},
+{
+  "id": "ch02-q047",
+  "chapter": 2,
+  "category": "心臓・循環",
+  "type": "standard",
+  "question": "心臓の刺激伝導系で、SA結節から発生したインパルスが心室へ伝わるまでに生じる時間差の意義として、本章の説明に合うものはどれか。",
+  "choices": [
+    "心房の血液を心室へ送る時間を確保する",
+    "肺でのガス交換を停止させる",
+    "心室の再分極を防ぐ",
+    "静脈弁を閉じる"
+  ],
+  "answer": 0,
+  "explanation": "SA結節からのインパルスは心房へ瞬時に広がる一方、AV結節の通過に時間がかかる。その時間差によって心房内の血液を心室へ送り込むことが可能になる。",
+  "sourceType": "textbook",
+  "sourceLabel": "第2章 教科書",
+  "sourceNote": "ユーザー提供の第2章PDFを基準に作成"
+},
+{
+  "id": "ch02-q048",
+  "chapter": 2,
+  "category": "心臓・循環",
+  "type": "standard",
+  "question": "本章では、安静時の静脈血の酸素飽和度をおよそ何%としているか。",
+  "choices": [
+    "約20%",
+    "約40%",
+    "約70%",
+    "約98%"
+  ],
+  "answer": 2,
+  "explanation": "本章では、脱酸素状態の血液でも酸素が全くないわけではなく、安静時は約70%の飽和度であると説明している。",
+  "sourceType": "textbook",
+  "sourceLabel": "第2章 教科書",
+  "sourceNote": "ユーザー提供の第2章PDFを基準に作成"
+},
+{
+  "id": "ch02-q049",
+  "chapter": 2,
+  "category": "心臓・循環",
+  "type": "standard",
+  "question": "肺循環と体循環について、本章の説明として正しいものはどれか。",
+  "choices": [
+    "肺循環と体循環は閉鎖循環系を構成する",
+    "肺循環では血液は必ず大動脈を通る",
+    "体循環では静脈が心臓から血液を送り出す",
+    "肺静脈は必ず脱酸素状態の血液を運ぶ"
+  ],
+  "answer": 0,
+  "explanation": "本章では、心臓および肺における肺循環と、それ以外の身体への体循環が閉鎖循環系を構成すると説明している。",
+  "sourceType": "textbook",
+  "sourceLabel": "第2章 教科書",
+  "sourceNote": "ユーザー提供の第2章PDFを基準に作成"
+},
+{
+  "id": "ch02-q050",
+  "chapter": 2,
+  "category": "心臓・循環",
+  "type": "standard",
+  "question": "本章で示される動脈系の血圧について、正しい組み合わせはどれか。",
+  "choices": [
+    "大動脈約100mmHg、細動脈約60mmHg",
+    "大動脈約60mmHg、細動脈約100mmHg",
+    "大動脈約20mmHg、細動脈約10mmHg",
+    "大動脈約760mmHg、細動脈約159mmHg"
+  ],
+  "answer": 0,
+  "explanation": "本章では、体循環の動脈は通常高圧で、大動脈で約100mmHg、細動脈でも約60mmHgと説明している。",
+  "sourceType": "textbook",
+  "sourceLabel": "第2章 教科書",
+  "sourceNote": "ユーザー提供の第2章PDFを基準に作成"
+},
+{
+  "id": "ch02-q051",
+  "chapter": 2,
+  "category": "心臓・循環",
+  "type": "standard",
+  "question": "静脈に備わる一方向性の弁の主な役割はどれか。",
+  "choices": [
+    "血液の逆流を防ぐ",
+    "動脈圧を上げる",
+    "肺胞を拡張する",
+    "心室を脱分極させる"
+  ],
+  "answer": 0,
+  "explanation": "静脈は低圧であるため、一方向性の弁が血液の逆流を防ぎ、骨格筋の収縮による静脈還流を助ける。",
+  "sourceType": "textbook",
+  "sourceLabel": "第2章 教科書",
+  "sourceNote": "ユーザー提供の第2章PDFを基準に作成"
+},
+{
+  "id": "ch02-q052",
+  "chapter": 2,
+  "category": "心臓・循環",
+  "type": "standard",
+  "question": "拡張期血圧（DBP）について、本章の説明として正しいものはどれか。",
+  "choices": [
+    "心室収縮中に動脈壁へかかる最高圧である",
+    "心室が力強く血液を送り出していない拡張期に動脈壁へかかる圧力である",
+    "肺胞内の酸素分圧である",
+    "心拍数と収縮期血圧の積である"
+  ],
+  "answer": 1,
+  "explanation": "本章では、DBPを血液が力強く送り出されていない拡張期に動脈壁へかかる圧力として説明している。",
+  "sourceType": "textbook",
+  "sourceLabel": "第2章 教科書",
+  "sourceNote": "ユーザー提供の第2章PDFを基準に作成"
+},
+{
+  "id": "ch02-q053",
+  "chapter": 2,
+  "category": "心臓・循環",
+  "type": "standard",
+  "question": "心周期を構成する2つの時期として正しいものはどれか。",
+  "choices": [
+    "吸気と呼気",
+    "収縮期と拡張期",
+    "脱分極と拡散",
+    "肺循環と体循環"
+  ],
+  "answer": 1,
+  "explanation": "心周期は、心臓が血液を充満させる拡張期と、収縮して血液を送り出す収縮期によって構成される。",
+  "sourceType": "textbook",
+  "sourceLabel": "第2章 教科書",
+  "sourceNote": "ユーザー提供の第2章PDFを基準に作成"
+},
+{
+  "id": "ch02-q054",
+  "chapter": 2,
+  "category": "心臓・循環",
+  "type": "standard",
+  "question": "平均動脈圧（MAP）について、本章の説明として誤っているものはどれか。",
+  "choices": [
+    "心周期を通しての平均血圧である",
+    "収縮期血圧と拡張期血圧の単純な平均値として考えてはならない",
+    "拡張期血圧と収縮期・拡張期血圧の差を用いて算出できる",
+    "収縮期血圧と拡張期血圧を足して2で割ればよい"
+  ],
+  "answer": 3,
+  "explanation": "本章では、MAPを収縮期血圧と拡張期血圧の単純平均とはせず、DBP＋0.333×（SBP−DBP）で算出するとしている。",
+  "sourceType": "textbook",
+  "sourceLabel": "第2章 教科書",
+  "sourceNote": "ユーザー提供の第2章PDFを基準に作成"
+},
+{
+  "id": "ch02-q055",
+  "chapter": 2,
+  "category": "心臓・循環",
+  "type": "standard",
+  "question": "運動中に活動している骨格筋の細動脈が拡張することに関係する局所的な物質として、本章で挙げられているものはどれか。",
+  "choices": [
+    "一酸化窒素（NO）",
+    "ヘモグロビン",
+    "フィブリン",
+    "インスリン"
+  ],
+  "answer": 0,
+  "explanation": "本章では、活動筋の細動脈では一酸化窒素の局所的な放出によって交感神経系の作用が無効化され、血管が拡張すると説明している。",
+  "sourceType": "textbook",
+  "sourceLabel": "第2章 教科書",
+  "sourceNote": "ユーザー提供の第2章PDFを基準に作成"
+},
+{
+  "id": "ch02-q056",
+  "chapter": 2,
+  "category": "心臓・循環",
+  "type": "standard",
+  "question": "運動中の血流再分配について、本章の説明に合うものはどれか。",
+  "choices": [
+    "活動筋への血流が減り、非活動器官だけに血液が集まる",
+    "非活動的な臓器への血流を供給する動脈が収縮し、活動筋への血流が増加する",
+    "すべての細動脈が同じ程度に拡張する",
+    "静脈が動脈の代わりに血液を送り出す"
+  ],
+  "answer": 1,
+  "explanation": "本章では、運動中は非活動的な臓器への血管が収縮する一方、活動筋の細動脈が拡張し、血液が活動筋へ再分配されると説明している。",
+  "sourceType": "textbook",
+  "sourceLabel": "第2章 教科書",
+  "sourceNote": "ユーザー提供の第2章PDFを基準に作成"
+},
+{
+  "id": "ch02-q057",
+  "chapter": 2,
+  "category": "呼吸・ガス交換",
+  "type": "standard",
+  "question": "気管から肺胞へ至るまでの気道の分岐について、本章で示されている回数はおよそ何回か。",
+  "choices": [
+    "約3回",
+    "約10回",
+    "約23回",
+    "約50回"
+  ],
+  "answer": 2,
+  "explanation": "本章では、気管から気管支、細気管支へと約23回の分岐を経て、肺胞に到達すると説明している。",
+  "sourceType": "textbook",
+  "sourceLabel": "第2章 教科書",
+  "sourceNote": "ユーザー提供の第2章PDFを基準に作成"
+},
+{
+  "id": "ch02-q058",
+  "chapter": 2,
+  "category": "呼吸・ガス交換",
+  "type": "standard",
+  "question": "肺活量について、本章の説明として正しいものはどれか。",
+  "choices": [
+    "通常の呼気後に肺に残る空気量である",
+    "最大努力で息を吸ってから吐いたときの空気量である",
+    "肺に存在する空気の総量である",
+    "安静時の1回の呼吸で出入りする空気量である"
+  ],
+  "answer": 1,
+  "explanation": "肺活量測定では、できるだけ大きく息を吸って肺を満たし、次にできるだけ大きく息を吐く。その最大努力による呼吸の動きが肺活量の指標となる。",
+  "sourceType": "textbook",
+  "sourceLabel": "第2章 教科書",
+  "sourceNote": "ユーザー提供の第2章PDFを基準に作成"
+},
+{
+  "id": "ch02-q059",
+  "chapter": 2,
+  "category": "呼吸・ガス交換",
+  "type": "standard",
+  "question": "全肺気量（TLC）を構成する組み合わせとして、本章の図2.9の説明に合うものはどれか。",
+  "choices": [
+    "肺活量＋残気量",
+    "1回換気量＋心拍出量",
+    "機能的残気量＋動静脈酸素較差",
+    "吸気＋心拍数"
+  ],
+  "answer": 0,
+  "explanation": "本章では、全肺気量は肺活量と残気量との合計として示されている。",
+  "sourceType": "textbook",
+  "sourceLabel": "第2章 教科書",
+  "sourceNote": "ユーザー提供の第2章PDFを基準に作成"
+},
+{
+  "id": "ch02-q060",
+  "chapter": 2,
+  "category": "呼吸・ガス交換",
+  "type": "standard",
+  "question": "本章の図2.11に示される肺胞と静脈血の酸素分圧の関係として正しいものはどれか。",
+  "choices": [
+    "肺胞約40mmHg、静脈血約100mmHg",
+    "肺胞約100mmHg、静脈血約40mmHg",
+    "肺胞約159mmHg、静脈血約100mmHg",
+    "肺胞約20mmHg、静脈血約10mmHg"
+  ],
+  "answer": 1,
+  "explanation": "本章の図2.11では、肺胞のPO₂は約100mmHg、肺へ戻ってくる静脈血のPO₂は約40mmHgと示され、この分圧勾配により酸素が血液へ拡散する。",
+  "sourceType": "textbook",
+  "sourceLabel": "第2章 教科書",
+  "sourceNote": "ユーザー提供の第2章PDFを基準に作成"
+}
 ]
 
 const STORAGE_KEY = "cptmate_v01_state";
@@ -3329,9 +3689,9 @@ function renderPracticeSelector(selectedChapter = null) {
       appVersion: APP_VERSION
     });
   }
-  if (chapter === 2 && chapterQuestions.length !== 40) {
+  if (chapter === 2 && chapterQuestions.length !== 60) {
     console.error("CPTmate 第2章問題データ不一致:", {
-      expected: 40,
+      expected: 60,
       actual: chapterQuestions.length,
       appVersion: APP_VERSION
     });
