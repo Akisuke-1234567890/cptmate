@@ -1,6 +1,6 @@
-const APP_VERSION = "0.2.61";
+const APP_VERSION = "0.2.62";
 
-/* v0.2.61: bottom navigation — 4 items, fixed order and equal-width grid */
+/* v0.2.62: bottom navigation — 4 items, fixed order and equal-width grid */
 (function installCPTmateBottomNavFix() {
   const apply = () => {
     const buttons = Array.from(document.querySelectorAll(".nav-btn"));
@@ -42,11 +42,36 @@ const APP_VERSION = "0.2.61";
     buttons.forEach(btn => {
       if (btn === statsButton) return;
       btn.style.setProperty("display", "flex", "important");
+      btn.style.setProperty("flex-direction", "column", "important");
+      btn.style.setProperty("align-items", "center", "important");
+      btn.style.setProperty("justify-content", "center", "important");
+      btn.style.setProperty("gap", "2px", "important");
       btn.style.setProperty("width", "100%", "important");
       btn.style.setProperty("min-width", "0", "important");
+      btn.style.setProperty("min-height", "72px", "important");
       btn.style.setProperty("flex", "none", "important");
       btn.style.setProperty("box-sizing", "border-box", "important");
       btn.style.setProperty("margin", "0", "important");
+      btn.style.setProperty("padding", "6px 0 4px", "important");
+      btn.style.setProperty("text-align", "center", "important");
+    });
+
+    buttons.forEach(btn => {
+      if (btn === statsButton) return;
+      const icon = btn.querySelector("span");
+      const label = btn.querySelector("small");
+      if (icon) {
+        icon.style.setProperty("display", "block", "important");
+        icon.style.setProperty("line-height", "1", "important");
+        icon.style.setProperty("font-size", "26px", "important");
+      }
+      if (label) {
+        label.style.setProperty("display", "block", "important");
+        label.style.setProperty("line-height", "1.2", "important");
+        label.style.setProperty("font-size", "12px", "important");
+        label.style.setProperty("margin", "2px 0 0", "important");
+        label.style.setProperty("white-space", "nowrap", "important");
+      }
     });
 
     document.body.style.setProperty(
