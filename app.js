@@ -1,4 +1,4 @@
-const APP_VERSION = "0.2.77";
+const APP_VERSION = "0.2.78";
 
 /* v0.2.63: home logo placement + startup splash/crossfade */
 const CPTMATE_BRAND_LOGO = "assets/branding/cptmate-horizontal-logo.png";
@@ -2292,6 +2292,9 @@ const QUESTIONS = [
 ]
 
 const STORAGE_KEY = "cptmate_v01_state";
+
+// v0.2.78: 学習データの保存形式バージョンを明示。
+const STATE_SCHEMA_VERSION = 2;
 
 // v0.2.76: 旧問題ID引き継ぎ用。
 // 現在エイリアスがない場合でも移行処理を安全に実行する。
