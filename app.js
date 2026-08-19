@@ -1,4 +1,4 @@
-const APP_VERSION = "0.2.68";
+const APP_VERSION = "0.2.69";
 
 /* v0.2.63: home logo placement + startup splash/crossfade */
 const CPTMATE_BRAND_LOGO = "assets/branding/cptmate-horizontal-logo.png";
@@ -82,7 +82,7 @@ const CPTMATE_SPLASH_MARK = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAaQAA
         height: auto;
         max-height: 100px;
         object-fit: contain;
-        animation: cptmateSplashLogoPulse 1.15s ease-in-out infinite;
+        animation: none !important;
       }
       .cptmate-startup-splash__loader {
         width: 34px;
