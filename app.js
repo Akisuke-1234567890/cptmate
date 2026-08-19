@@ -1,4 +1,4 @@
-const APP_VERSION = "0.2.53";
+const APP_VERSION = "0.2.54";
 
 /* v0.2.49: bottom navigation robust viewport fixing */
 (function installCPTmateBottomNavFix() {
@@ -1787,14 +1787,62 @@ function setActiveNav(name) {
   });
 }
 
+function getChapterMajorProgress(chapter = 1) {
+  const chapterQuestions = ALL_QUESTIONS.filter(q => q.chapter === chapter);
+  const major = {
+    "筋系・筋収縮": q => {
+      if (/^(総合|ケーススタディ)/.test(q.category)) return false;
+      return /^(筋系|筋収縮|筋活動様式|筋線維タイプ)/.test(q.category)
+        || /^(図・筋収縮|図・サルコメア)/.test(q.category)
+        || /^(章末確認・筋系|章末確認・筋収縮|章末確認・筋活動様式)/.test(q.category)
+        || /^(模擬問題・筋収縮|模擬問題・筋活動様式|模擬問題・エネルギー|模擬問題・加齢と筋|模擬問題・筋活動)/.test(q.category);
+    },
+    "神経・感覚": q => {
+      if (/^(総合|ケーススタディ)/.test(q.category)) return false;
+      return /^(神経|神経筋接合部)/.test(q.category)
+        || q.category.includes("筋紡錘")
+        || q.category.includes("GTO")
+        || /^(章末確認・神経)/.test(q.category)
+        || /^(模擬問題・運動単位|模擬問題・神経適応|模擬問題・発火頻度|模擬問題・反射)/.test(q.category);
+    },
+    "骨格・結合組織": q => {
+      if (/^(総合|ケーススタディ)/.test(q.category)) return false;
+      return /^(骨格|結合組織|関節)/.test(q.category)
+        || /^(図・長骨|図・骨格)/.test(q.category)
+        || /^(章末確認・骨格|章末確認・結合組織|章末確認・関節)/.test(q.category)
+        || /^(模擬問題・骨格|模擬問題・結合組織|模擬問題・関節)/.test(q.category);
+    },
+    "総合・ケーススタディ": q => /^(総合|ケーススタディ)/.test(q.category)
+  };
+  return Object.entries(major).map(([name, fn]) => {
+    const questions = chapterQuestions.filter(fn);
+    const correct = questions.filter(q => state.answers[q.id]?.correct).length;
+    const answered = questions.filter(q => !!state.answers[q.id]).length;
+    return { name, total: questions.length, correct, answered };
+  }).filter(x => x.total > 0);
+}
+
+function mergeHomeAndStatsNavigation() {
+  const statsButton = document.querySelector('.nav-btn[data-nav="stats"]');
+  if (!statsButton) return;
+  statsButton.style.setProperty('display', 'none', 'important');
+  const nav = statsButton.parentElement;
+  if (nav) {
+    nav.style.setProperty('grid-template-columns', 'repeat(4, minmax(0, 1fr))', 'important');
+  }
+}
+
 function renderHome() {
   resetPageScroll();
   state.lastViewed = "home";
   saveState();
   setActiveNav("home");
+  mergeHomeAndStatsNavigation();
 
   const answered = answeredCount();
   const correct = correctCount();
+  const total = ALL_QUESTIONS.length;
+  const majorProgress = getChapterMajorProgress(1);
 
   screenEl().innerHTML = `
     <section class="hero">
@@ -1804,18 +1852,32 @@ function renderHome() {
       <button class="primary-btn full" onclick="openPracticeSelectorClean()">問題演習を始める</button>
     </section>
 
-    <div class="section-title"><h2>学習状況</h2><button class="text-btn" onclick="renderStats()">詳細を見る →</button></div>
+    <div class="section-title"><h2>学習状況</h2></div>
     <section class="card">
       <div class="stat-grid">
         <div class="stat"><div class="num">${answered}</div><div class="label">解答済み</div></div>
+        <div class="stat"><div class="num">${correct}</div><div class="label">正解数</div></div>
         <div class="stat"><div class="num">${accuracy()}%</div><div class="label">正答率</div></div>
+        <div class="stat"><div class="num">${Math.max(0, total - answered)}</div><div class="label">未解答</div></div>
+      </div>
+    </section>
+
+    <section class="card">
+      <div class="selector-section-title">第1章・大分類</div>
+      <div class="practice-select-list">
+        ${majorProgress.map(item => `
+          <div class="practice-select-item" style="cursor:default;">
+            <strong>${item.name}</strong>
+            <span>正解 ${item.correct} / ${item.total}</span>
+          </div>
+        `).join("")}
       </div>
     </section>
 
     <div class="section-title"><h2>現在のコンテンツ</h2></div>
     <section class="card">
       <h3>第1章：筋系、神経系、骨格系</h3>
-      <p style="color:var(--muted);line-height:1.7;margin:0;">第1章の問題演習を拡張中。今後、ケーススタディ・図問題・復習機能を順次強化します。</p>
+      <p style="color:var(--muted);line-height:1.7;margin:0;">第1章・${total}問を収録しています。問題演習から分類別・ランダムなどの条件を選んで学習できます。</p>
     </section>
   `;
 }
@@ -1973,9 +2035,11 @@ function renderPracticeSelector(selectedChapter = null) {
   };
 
   const majorButtons = Object.entries(major).map(([name, fn]) => {
-    const ids = chapterQuestions.filter(fn).map(q => q.id);
+    const categoryQuestions = chapterQuestions.filter(fn);
+    const ids = categoryQuestions.map(q => q.id);
     if (!ids.length) return "";
-    return `<button class="practice-select-item" onclick='startPracticeQueue(${JSON.stringify(ids)}, ${JSON.stringify(name)})'><strong>${name}</strong><span>${ids.length}問</span></button>`;
+    const categoryCorrect = categoryQuestions.filter(q => state.answers[q.id]?.correct).length;
+    return `<button class="practice-select-item" onclick='startPracticeQueue(${JSON.stringify(ids)}, ${JSON.stringify(name)})'><strong>${name}</strong><span>正解 ${categoryCorrect} / ${ids.length}</span></button>`;
   }).join("");
 
   // 開発中のデータ不整合を検出。大分類の合計が章問題数と違う場合はコンソールに警告を出す。
@@ -3016,7 +3080,8 @@ function resetProgress() {
 document.querySelectorAll(".nav-btn").forEach(btn => {
   btn.addEventListener("click", () => {
     const nav = btn.dataset.nav;
-    if (nav === "home") renderHome();
+    if (nav === "home") mergeHomeAndStatsNavigation();
+renderHome();
     if (nav === "favorites") renderFavorites();
     if (nav === "practice") renderPracticeSelector();
     if (nav === "review") renderReview();
