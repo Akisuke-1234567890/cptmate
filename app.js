@@ -3363,7 +3363,7 @@ const ADDITIONAL_QUESTIONS = [
       "GTO"
     ],
     "answer": 1,
-    "explanation": "教材では、ネプリンの働きによりアクチンフィラメントが適切な長さに保たれると説明されている。",
+    "explanation": "ネプリンはアクチンフィラメントの長さを適切に保つ働きに関係するタンパク質である。",
     "sourceType": "original",
     "sourceLabel": "CPTmateオリジナル",
     "sourceNote": "第1・2章教材を基準に精査・再構成"
@@ -3381,7 +3381,7 @@ const ADDITIONAL_QUESTIONS = [
       "コラーゲン"
     ],
     "answer": 0,
-    "explanation": "教材では、タイチンがミオシンフィラメントのアクチンに対する位置を保つ働きをすると説明されている。",
+    "explanation": "タイチンはミオシンフィラメントをサルコメア内の適切な位置に保つ働きに関係する。",
     "sourceType": "original",
     "sourceLabel": "CPTmateオリジナル",
     "sourceNote": "第1・2章教材を基準に精査・再構成"
@@ -3391,7 +3391,7 @@ const ADDITIONAL_QUESTIONS = [
     "chapter": 1,
     "category": "筋活動様式",
     "type": "standard",
-    "question": "新しいエクササイズを開始した24〜48時間後に生じる筋の疼痛や不快感について、教材の説明に最も合うものはどれか。",
+    "question": "新しいエクササイズを開始した24〜48時間後に生じる筋の疼痛や不快感の主な原因として、最も適切なのはどれか。",
     "choices": [
       "主に乳酸の蓄積が原因である",
       "結合組織と筋組織の損傷に伴う炎症反応が関係する",
@@ -3399,7 +3399,7 @@ const ADDITIONAL_QUESTIONS = [
       "骨芽細胞の活動低下が主因である"
     ],
     "answer": 1,
-    "explanation": "教材ではDOMSは乳酸の蓄積ではなく、結合組織と筋組織の損傷に伴う炎症反応が痛覚受容器を刺激することが原因と説明され、主に伸張性筋活動に伴う微小断裂が関係するとされている。",
+    "explanation": "遅発性筋痛（DOMS）は、主に伸張性筋活動に伴う筋・結合組織の微小損傷と、それに伴う炎症反応が関係する。乳酸の蓄積が主因ではない。",
     "sourceType": "original",
     "sourceLabel": "CPTmateオリジナル",
     "sourceNote": "第1・2章教材を基準に精査・再構成"
@@ -3417,7 +3417,7 @@ const ADDITIONAL_QUESTIONS = [
       "トロポニン"
     ],
     "answer": 0,
-    "explanation": "教材では、ミオグロビンは筋細胞膜からミトコンドリアへ酸素を運搬し、有酸素性能力を高めると説明されている。",
+    "explanation": "ミオグロビンは筋細胞内で酸素の運搬に関与し、ミトコンドリアへの酸素供給を支える。",
     "sourceType": "original",
     "sourceLabel": "CPTmateオリジナル",
     "sourceNote": "第1・2章教材を基準に精査・再構成"
@@ -3427,7 +3427,7 @@ const ADDITIONAL_QUESTIONS = [
     "chapter": 1,
     "category": "筋線維タイプ",
     "type": "standard",
-    "question": "教材の表1.1に照らした場合、野球またはソフトボールで貢献度が高い筋線維タイプはどれか。",
+    "question": "野球またはソフトボールのように、瞬発的な力発揮を多く含む競技で貢献度が高い筋線維タイプはどれか。",
     "choices": [
       "タイプⅠ",
       "タイプⅡ",
@@ -3435,7 +3435,7 @@ const ADDITIONAL_QUESTIONS = [
       "タイプⅠとⅡは常に同じ"
     ],
     "answer": 1,
-    "explanation": "教材の表1.1では、野球またはソフトボールにおけるタイプⅡの貢献度が高いと示されている。",
+    "explanation": "野球・ソフトボールでは、瞬発的な力発揮を必要とする動作が多く、タイプⅡ線維の貢献度が高い。",
     "sourceType": "original",
     "sourceLabel": "CPTmateオリジナル",
     "sourceNote": "第1・2章教材を基準に精査・再構成"
@@ -3453,7 +3453,7 @@ const ADDITIONAL_QUESTIONS = [
       "中枢神経系―骨格系"
     ],
     "answer": 0,
-    "explanation": "教材では、体性神経系が骨格筋の活動をつかさどり、自律神経系が心臓や血管の平滑筋の収縮などの不随意機能を制御すると説明されている。",
+    "explanation": "体性神経系は骨格筋の随意運動をつかさどり、自律神経系は心臓や血管などの不随意機能を調節する。",
     "sourceType": "original",
     "sourceLabel": "CPTmateオリジナル",
     "sourceNote": "第1・2章教材を基準に精査・再構成"
@@ -3463,7 +3463,7 @@ const ADDITIONAL_QUESTIONS = [
     "chapter": 1,
     "category": "神経系",
     "type": "standard",
-    "question": "運動時に交感神経が果たす役割として、教材の説明に合うものはどれか。",
+    "question": "運動時に交感神経活動が高まったときに起こる反応として、最も適切なのはどれか。",
     "choices": [
       "活動筋への血流を減らし消化を優先する",
       "心臓からの血流を増加させ、肺の換気を良くし、活動筋への血流再分配を支える",
@@ -3471,7 +3471,7 @@ const ADDITIONAL_QUESTIONS = [
       "筋紡錘の感度を必ずゼロにする"
     ],
     "answer": 1,
-    "explanation": "教材では交感神経が心臓からの血流を増加させ、肺の換気を良くし、活動している骨格筋への血流再分配や発汗を支えると説明されている。",
+    "explanation": "運動時の交感神経活動は、心機能を高め、活動筋への血流再分配を支え、発汗などの反応にも関与する。",
     "sourceType": "original",
     "sourceLabel": "CPTmateオリジナル",
     "sourceNote": "第1・2章教材を基準に精査・再構成"
@@ -3481,7 +3481,7 @@ const ADDITIONAL_QUESTIONS = [
     "chapter": 1,
     "category": "骨格系",
     "type": "standard",
-    "question": "骨格系の機能として、教材で挙げられているものはどれか。",
+    "question": "骨格系の機能として最も適切な組み合わせはどれか。",
     "choices": [
       "カルシウムやリンの貯蔵、血球形成、臓器や脊髄の保護",
       "AChの合成、筋収縮、体温調節のみ",
@@ -3489,7 +3489,7 @@ const ADDITIONAL_QUESTIONS = [
       "GTOの感度調節、肺胞換気、血圧測定"
     ],
     "answer": 0,
-    "explanation": "教材では骨はミネラルの貯蔵場所、血球形成の場所、臓器や脊髄の保護などの機能を担うと説明されている。",
+    "explanation": "骨格系には、カルシウムやリンなどのミネラルの貯蔵、血球形成、臓器や脊髄の保護などの機能がある。",
     "sourceType": "original",
     "sourceLabel": "CPTmateオリジナル",
     "sourceNote": "第1・2章教材を基準に精査・再構成"
@@ -3499,7 +3499,7 @@ const ADDITIONAL_QUESTIONS = [
     "chapter": 1,
     "category": "骨格系・リモデリング",
     "type": "standard",
-    "question": "皮質骨と海綿骨について、教材の説明に合うものはどれか。",
+    "question": "皮質骨と海綿骨の特徴について、最も適切なものはどれか。",
     "choices": [
       "皮質骨は主に長骨骨幹の表層をなし、海綿骨はより低密度である",
       "海綿骨は皮質骨より常に密度が高い",
@@ -3507,7 +3507,7 @@ const ADDITIONAL_QUESTIONS = [
       "両者は構造的な違いがない"
     ],
     "answer": 0,
-    "explanation": "教材では皮質骨は硬く緻密で主に長骨骨幹の表層をなし、海綿骨は皮質骨より密度が低く長骨内部などを形成すると説明されている。",
+    "explanation": "皮質骨は硬く緻密で、長骨では主に骨幹の表層を形成する。海綿骨は皮質骨より低密度で、骨内部などにみられる。",
     "sourceType": "original",
     "sourceLabel": "CPTmateオリジナル",
     "sourceNote": "第1・2章教材を基準に精査・再構成"
@@ -3517,7 +3517,7 @@ const ADDITIONAL_QUESTIONS = [
     "chapter": 1,
     "category": "骨格系・リモデリング",
     "type": "standard",
-    "question": "骨粗鬆症に対する運動について、教材の説明に最も合うものはどれか。",
+    "question": "骨の健康を維持・改善する運動として、最も適切なのはどれか。",
     "choices": [
       "荷重負荷運動やレジスタンストレーニングは骨の健康に有用である",
       "運動は骨密度に影響しない",
@@ -3525,7 +3525,7 @@ const ADDITIONAL_QUESTIONS = [
       "カルシウム摂取だけで運動の必要はない"
     ],
     "answer": 0,
-    "explanation": "教材ではウォーキングやランニングなどの荷重負荷運動、レジスタンストレーニングが骨密度の増加に効果的と説明されている。",
+    "explanation": "荷重負荷運動やレジスタンストレーニングは、骨への機械的刺激を通じて骨の健康維持・改善に役立つ。",
     "sourceType": "original",
     "sourceLabel": "CPTmateオリジナル",
     "sourceNote": "第1・2章教材を基準に精査・再構成"
@@ -3535,7 +3535,7 @@ const ADDITIONAL_QUESTIONS = [
     "chapter": 1,
     "category": "骨格系・腱靭帯",
     "type": "standard",
-    "question": "腱と靭帯の組成・役割について、教材の説明に合うものはどれか。",
+    "question": "腱と靭帯の役割について正しいものはどれか。",
     "choices": [
       "腱は筋と骨を結び、靭帯は骨と骨を結ぶ",
       "腱は骨と骨を結び、靭帯は筋と骨を結ぶ",
@@ -3543,7 +3543,7 @@ const ADDITIONAL_QUESTIONS = [
       "腱と靭帯はいずれも神経伝達を担う"
     ],
     "answer": 0,
-    "explanation": "教材では腱は筋と骨を結び、主にコラーゲンで構成される一方、靭帯は骨と骨を結び、コラーゲンに加えてエラスチンを含むと説明されている。",
+    "explanation": "腱は筋と骨を結び、靭帯は骨と骨を結ぶ。いずれも主にコラーゲンを含む結合組織である。",
     "sourceType": "original",
     "sourceLabel": "CPTmateオリジナル",
     "sourceNote": "第1・2章教材を基準に精査・再構成"
@@ -3552,8 +3552,11 @@ const ADDITIONAL_QUESTIONS = [
     "id": "ch1-q056",
     "chapter": 1,
     "category": "図・長骨",
+    "figureId": "fig-ch1-long-bone",
+    "image": "assets/figures/long_bone_fig1_8.svg",
+    "figureMode": "question",
   "type": "figure",
-    "question": "図1.8の長骨の構造で、骨幹の内部に示されている空間として最も適切なのはどれか。",
+    "question": "図に示された長骨の構造で、骨幹の内部にある空間はどれか。",
     "choices": [
       "骨髄腔",
       "関節面",
@@ -3561,7 +3564,7 @@ const ADDITIONAL_QUESTIONS = [
       "関節軟骨"
     ],
     "answer": 0,
-    "explanation": "図1.8では長骨の中央部である骨幹の内部に骨髄腔が示されている。",
+    "explanation": "骨髄腔は長骨の骨幹内部にある空間で、骨髄を収めている。",
     "sourceType": "original",
     "sourceLabel": "CPTmateオリジナル",
     "sourceNote": "第1・2章教材を基準に精査・再構成"
@@ -3570,8 +3573,11 @@ const ADDITIONAL_QUESTIONS = [
     "id": "ch1-q057",
     "chapter": 1,
     "category": "図・骨格",
+    "figureId": "fig-ch1-skeleton",
+    "image": "assets/figures/skeleton_fig1_9.svg",
+    "figureMode": "question",
   "type": "figure",
-    "question": "図1.9で、頭蓋・脊柱・胸骨・肋骨などを含む骨格の区分はどれか。",
+    "question": "図に示された骨格のうち、頭蓋・脊柱・胸骨・肋骨などを含む区分はどれか。",
     "choices": [
       "付属性骨格",
       "軸性骨格",
@@ -3579,7 +3585,7 @@ const ADDITIONAL_QUESTIONS = [
       "関節骨格"
     ],
     "answer": 1,
-    "explanation": "図1.9と本文では、頭蓋、脊柱、胸骨、肋骨などは軸性骨格に含まれると説明されている。",
+    "explanation": "頭蓋、脊柱、胸骨、肋骨などは軸性骨格に含まれる。",
     "sourceType": "original",
     "sourceLabel": "CPTmateオリジナル",
     "sourceNote": "第1・2章教材を基準に精査・再構成"
@@ -3588,8 +3594,11 @@ const ADDITIONAL_QUESTIONS = [
     "id": "ch1-q058",
     "chapter": 1,
     "category": "図・ニューロン",
+    "figureId": "fig-ch1-neuron",
+    "image": "assets/figures/neuron.svg",
+    "figureMode": "question",
   "type": "figure",
-    "question": "図1.6で、細胞体から伸びて長距離にわたりインパルスを伝える構造はどれか。",
+    "question": "図に示された神経細胞の構造のうち、細胞体から伸びて長距離にわたりインパルスを伝えるのはどれか。",
     "choices": [
       "樹状突起",
       "軸索",
@@ -3597,7 +3606,7 @@ const ADDITIONAL_QUESTIONS = [
       "核小体"
     ],
     "answer": 1,
-    "explanation": "図1.6では軸索が細胞体から伸びる長い構造として示され、運動神経では筋へ活動電位を伝える経路となる。",
+    "explanation": "軸索は細胞体から伸びる長い突起で、活動電位を遠くの標的へ伝える。",
     "sourceType": "original",
     "sourceLabel": "CPTmateオリジナル",
     "sourceNote": "第1・2章教材を基準に精査・再構成"
@@ -3606,8 +3615,11 @@ const ADDITIONAL_QUESTIONS = [
     "id": "ch1-q059",
     "chapter": 1,
     "category": "図・筋紡錘とGTO",
+    "figureId": "fig-ch1-spindle-gto",
+    "image": "assets/figures/spindle_gto_fig1_7.svg",
+    "figureMode": "question",
   "type": "figure",
-    "question": "図1.7に示される筋紡錘とゴルジ腱器官（GTO）の位置関係として正しいものはどれか。",
+    "question": "図に示された筋紡錘とゴルジ腱器官（GTO）の位置関係として正しいものはどれか。",
     "choices": [
       "筋紡錘は筋内、GTOは筋と骨が付着する腱にある",
       "筋紡錘は骨の内部、GTOは神経細胞体にある",
@@ -3615,7 +3627,7 @@ const ADDITIONAL_QUESTIONS = [
       "筋紡錘は腱にあり、GTOは筋腹にある"
     ],
     "answer": 0,
-    "explanation": "図1.7では筋紡錘が骨格筋内に、GTOが筋と骨が付着する腱の接合部に示されている。",
+    "explanation": "筋紡錘は骨格筋内にあり、GTOは筋と骨をつなぐ腱の部分にある。",
     "sourceType": "original",
     "sourceLabel": "CPTmateオリジナル",
     "sourceNote": "第1・2章教材を基準に精査・再構成"
