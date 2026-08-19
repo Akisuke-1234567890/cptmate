@@ -1,4 +1,4 @@
-const APP_VERSION = "0.2.73";
+const APP_VERSION = "0.2.74";
 
 /* v0.2.63: home logo placement + startup splash/crossfade */
 const CPTMATE_BRAND_LOGO = "assets/branding/cptmate-horizontal-logo.png";
@@ -4397,7 +4397,23 @@ document.querySelectorAll(".nav-btn").forEach(btn => {
 });
 
 
-renderHome();
+// 起動スプラッシュは初期ホーム描画より先に終了タイマーを開始する。
+// ホーム側の例外で起動ロゴが残り続けることを防止する。
 if (typeof window.__cptmateFinishSplash === "function") {
   window.__cptmateFinishSplash();
+}
+try {
+  renderHome();
+} catch (error) {
+  console.error("[CPTmate] initial renderHome failed:", error);
+  const screen = document.getElementById("screen");
+  if (screen) {
+    screen.innerHTML = `
+      <div class="card" style="margin:24px;padding:24px;text-align:center;">
+        <h2 style="margin-top:0;">CPTmate</h2>
+        <p>ホーム画面の読み込みに失敗しました。</p>
+        <button class="btn primary" onclick="location.reload()">再読み込み</button>
+      </div>
+    `;
+  }
 }
