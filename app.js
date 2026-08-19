@@ -1,4 +1,4 @@
-const APP_VERSION = "0.2.55";
+const APP_VERSION = "0.2.56";
 
 /* v0.2.49: bottom navigation robust viewport fixing */
 (function installCPTmateBottomNavFix() {
@@ -2063,24 +2063,28 @@ function renderPracticeSelector(selectedChapter = null) {
       `).join("")}</div>
       <div class="selector-kicker" style="margin-top:16px;">選択中：第${chapter}章</div>
       <h3>どこから解きますか？</h3>
-      <p class="selector-note">章を通して解くほか、分類や問題番号を絞って確認できます。</p>
+      <p class="selector-note">章を通して解くほか、分類やランダム出題、問題番号を絞って確認できます。</p>
       <div class="practice-select-list">
-        <button class="practice-select-item primary-choice" onclick='startPracticeQueue(${JSON.stringify(chapterQuestions.map(q=>q.id))}, ${JSON.stringify(`第${chapter}章すべて`)})'><strong>第${chapter}章すべて</strong><span>${chapterQuestions.length}問</span></button>
+        <button class="practice-select-item primary-choice" onclick='startPracticeQueue(${JSON.stringify(chapterQuestions.map(q => q.id))}, ${JSON.stringify(`第${chapter}章すべて`)})'><strong>第${chapter}章すべて</strong><span>${chapterQuestions.length}問</span></button>
         ${majorButtons}
-      </div>
-    </section>
-
-
-    <section class="card">
-      <div class="selector-section-title">ランダム問題</div>
-      <p class="selector-note">通常問題は1問単位でランダム抽選します。ケーススタディはケース単位で選び、選択されたケースは連番のまま出題します。</p>
-      <div class="practice-select-list">
         <button class="practice-select-item" onclick="startRandomPractice(${chapter}, 10)"><strong>第${chapter}章からランダム10問</strong></button>
         <button class="practice-select-item" onclick="startRandomPractice(${chapter}, 20)"><strong>第${chapter}章からランダム20問</strong></button>
         <button class="practice-select-item" onclick="startRandomPractice(${chapter}, 30)"><strong>第${chapter}章からランダム30問</strong></button>
+        <button class="practice-select-item" onclick="startRandomPractice(${chapter}, 50)"><strong>第${chapter}章からランダム50問</strong></button>
+        <button class="practice-select-item" onclick="startRandomPractice(${chapter}, ${chapterQuestions.length})"><strong>第${chapter}章からランダムすべて</strong><span>${chapterQuestions.length}問</span></button>
+      </div>
+    </section>
+
+    <section class="card">
+      <div class="selector-section-title">全体からランダム</div>
+      <p class="selector-note">現在収録されている全章からランダムに出題します。ケーススタディはケース単位で選び、選択されたケースは連番のまま出題します。</p>
+      <div class="practice-select-list">
         <button class="practice-select-item" onclick="startRandomPractice('all', 10)"><strong>全体からランダム10問</strong></button>
         <button class="practice-select-item" onclick="startRandomPractice('all', 20)"><strong>全体からランダム20問</strong></button>
         <button class="practice-select-item" onclick="startRandomPractice('all', 30)"><strong>全体からランダム30問</strong></button>
+        <button class="practice-select-item" onclick="startRandomPractice('all', 50)"><strong>全体からランダム50問</strong></button>
+        <button class="practice-select-item" onclick="startRandomPractice('all', 100)"><strong>全体からランダム100問</strong></button>
+        <button class="practice-select-item" onclick="startRandomPractice('all', ALL_QUESTIONS.length)"><strong>全体からランダムすべて</strong><span>${ALL_QUESTIONS.length}問</span></button>
       </div>
     </section>
 
