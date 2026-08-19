@@ -1,4 +1,4 @@
-const APP_VERSION = "0.2.50";
+const APP_VERSION = "0.2.51";
 
 /* v0.2.49: bottom navigation robust viewport fixing */
 (function installCPTmateBottomNavFix() {
@@ -72,6 +72,28 @@ const APP_VERSION = "0.2.50";
     .question-nav-btn:disabled {
       opacity: 0.35;
       pointer-events: none;
+    }
+    .question-answer-status {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 26px;
+      padding: 3px 9px;
+      border-radius: 999px;
+      font-size: 11px;
+      font-weight: 900;
+      white-space: nowrap;
+      box-sizing: border-box;
+    }
+    .question-answer-status.unanswered {
+      color: #667085;
+      background: #f2f4f5;
+      border: 1px solid #dfe4e6;
+    }
+    .question-answer-status.answered {
+      color: #174f52;
+      background: #e7f3f2;
+      border: 1px solid rgba(23,79,82,.18);
     }
   `;
   document.head.appendChild(style);
@@ -2517,6 +2539,9 @@ function renderQuestion() {
   const sourceBadge = renderSourceBadge(q);
   const saved = practiceSessionAnswers[q.id];
   const bookmarked = !!state.bookmarks[q.id];
+  const answerStatus = saved
+    ? '<span class="question-answer-status answered">回答済み</span>'
+    : '<span class="question-answer-status unanswered">未解答</span>';
   const letters = ["A", "B", "C", "D"];
 
   let choices = q.choices.map((choice, i) => {
@@ -2561,10 +2586,6 @@ function renderQuestion() {
 
     <div class="post-answer-actions">
       <button class="secondary-btn full" onclick="retryQuestion()">もう一度この問題を解く</button>
-      <div class="question-nav-actions">
-        <button class="secondary-btn question-nav-btn" onclick="previousQuestion()" ${state.currentIndex <= 0 ? "disabled" : ""}>‹ 前の問題</button>
-        <button class="primary-btn question-nav-btn" onclick="nextQuestion()">次の問題 ›</button>
-      </div>
     </div>
   ` : "";
 
@@ -2588,11 +2609,18 @@ function renderQuestion() {
       </div>
       <div class="question-info-row">
         <div class="source-badge-wrap">${sourceBadge}</div>
-        <button class="bookmark" onclick="toggleBookmark('${q.id}')">${bookmarked ? "★" : "☆"}</button>
+        <div style="display:flex;align-items:center;gap:8px;">
+          ${answerStatus}
+          <button class="bookmark" onclick="toggleBookmark('${q.id}')">${bookmarked ? "★" : "☆"}</button>
+        </div>
       </div>
 
       ${questionFigure}
       <p class="question-text">${q.question}</p>
+      <div class="question-nav-actions" style="margin:0 0 12px;">
+        <button class="secondary-btn question-nav-btn" onclick="previousQuestion()" ${state.currentIndex <= 0 ? "disabled" : ""}>‹ 前の問題</button>
+        <button class="primary-btn question-nav-btn" onclick="nextQuestion()">次の問題 ›</button>
+      </div>
       <div>${choices}</div>
       ${result}
     </section>
