@@ -1,4 +1,4 @@
-const APP_VERSION = "0.2.58";
+const APP_VERSION = "0.2.59";
 
 /* v0.2.49: bottom navigation robust viewport fixing */
 (function installCPTmateBottomNavFix() {
@@ -12,6 +12,14 @@ const APP_VERSION = "0.2.58";
       nav = nav.parentElement;
     }
     if (!nav || nav === document.body) nav = buttons[0].parentElement;
+
+    // v0.2.59: 下帯の並びを「ホーム・復習・お気に入り・学習状況・設定」に統一。
+    // 見た目だけでなくDOM順も入れ替え、タップ順・読み上げ順も一致させる。
+    const navOrder = ["home", "review", "favorites", "stats", "settings"];
+    navOrder.forEach(key => {
+      const btn = buttons.find(item => item.dataset.nav === key);
+      if (btn) nav.appendChild(btn);
+    });
 
     nav.style.setProperty("position", "fixed", "important");
     nav.style.setProperty("left", "0", "important");
@@ -2800,7 +2808,7 @@ function renderPracticeComplete() {
 
   screenEl().innerHTML = `
     <div class="back-row">
-      <button class="back-btn" onclick="renderPracticeSelector()">‹</button>
+      <button class="back-btn" onclick="${practiceLabel.startsWith("復習・") ? "renderReview()" : "renderPracticeSelector()"}">‹</button>
       <h2>演習完了</h2>
     </div>
     <section class="card" style="text-align:center;padding:28px 20px;">
@@ -2811,7 +2819,7 @@ function renderPracticeComplete() {
       </div>
       <p style="color:var(--muted);line-height:1.7;margin:20px 0;">この演習はここで終了です。<br>同じ問題をもう一度解くこともできます。</p>
       <button class="primary-btn full" onclick="restartCurrentPractice()">もう一度この演習を解く</button>
-      <button class="secondary-btn full" onclick="renderPracticeSelector()">演習選択へ戻る</button>
+      <button class="secondary-btn full" onclick="${practiceLabel.startsWith("復習・") ? "renderReview()" : "renderPracticeSelector()"}">${practiceLabel.startsWith("復習・") ? "復習一覧へ戻る" : "演習選択へ戻る"}</button>
     </section>
   `;
 }
@@ -3006,11 +3014,11 @@ function renderReview() {
     <div class="back-row"><h2>復習</h2></div>
     <section class="card">
       <h3>間違えた問題</h3>
-      <p style="color:var(--muted);line-height:1.7;margin-top:0;">一度間違えた問題をもう一度解き直します。</p>
+      <p style="color:var(--muted);line-height:1.7;margin-top:0;">一度間違えた問題をもう一度解き直します。1問を開始すると、その下にある復習問題を順番に続けて解けます。</p>
       ${wrong.length ? wrong.map(q => `
         <div class="list-item">
           <div><strong>${q.category}</strong><br><small>${q.question}</small></div>
-          <button class="secondary-btn" onclick="startSpecific('${q.id}')">解く</button>
+          <button class="secondary-btn" onclick="startReview('${q.id}')">解く</button>
         </div>
       `).join("") : `<div class="empty">まだ間違えた問題はありません。<br>問題を解いてみましょう。</div>`}
     </section>
@@ -3034,6 +3042,17 @@ function renderFavorites() {
       `).join("") : `<div class="empty">お気に入りに登録した問題はありません。<br>問題画面の☆を押して登録できます。</div>`}
     </section>
   `;
+}
+
+function startReview(id) {
+  const wrong = ALL_QUESTIONS.filter(q => state.answers[q.id] && !state.answers[q.id].correct);
+  const index = wrong.findIndex(q => q.id === id);
+  if (index < 0) return;
+  startPracticeQueue(
+    wrong.map(q => q.id),
+    `復習・${wrong.length}問`,
+    index
+  );
 }
 
 function startSpecific(id) {
