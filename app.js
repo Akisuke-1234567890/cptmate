@@ -1,4 +1,4 @@
-const APP_VERSION = "0.2.89";
+const APP_VERSION = "0.2.90";
 
 /* v0.2.63: home logo placement + startup splash/crossfade */
 const CPTMATE_BRAND_LOGO = "assets/branding/cptmate-horizontal-logo.png";
@@ -4047,7 +4047,10 @@ function restorePracticeSession() {
   return true;
 }
 
-function hasActivePracticeSession() { return !!getSavedPracticeSession(); }
+function hasActivePracticeSession() {
+  const saved = getSavedPracticeSession();
+  return !!saved && saved.active !== false;
+}
 
 function pausePracticeSession() {
   if (!practiceQueue.length) return;
@@ -4076,6 +4079,8 @@ function discardPracticeSession() {
 }
 
 function confirmPracticeLeave(destination) {
+  // 「途中保存済み（paused）」は、再度ページを移動するたびに確認しない。
+  // 実際に演習画面を離れる直前の active セッションだけを対象にする。
   if (!hasActivePracticeSession() || state.lastViewed !== "practice") {
     destination();
     return;
@@ -4084,16 +4089,7 @@ function confirmPracticeLeave(destination) {
   const position = Math.min(state.currentIndex + 1, queue.length);
   const ok = confirm(`演習の途中です。\n\n${practiceLabel}\n現在 ${position} / ${queue.length} 問\n\n途中経過を保存して移動しますか？\n「キャンセル」で演習を続けられます。`);
   if (!ok) return;
-
   pausePracticeSession();
-
-  // v0.2.90: 演習から離脱した直後も lastViewed が "practice" のままだと、
-  // 遷移先が lastViewed を上書きしない画面（お気に入り・復習・設定など）で
-  // 次のページ移動時に同じ確認ダイアログが再表示される。
-  // 途中セッション自体は保存したまま、現在位置だけを「演習外」に移す。
-  state.lastViewed = "navigation";
-  saveState();
-
   destination();
 }
 
@@ -5576,7 +5572,7 @@ async function checkForAppUpdate() {
   if (status) status.textContent = "最新版を確認しています…";
 
   try {
-    // version.json は必ずキャッシュを回避して確認する。
+    // iPhone Safari / ホーム画面起動でも壊れにくいよう、相対URLだけを使用する。
     const checkUrl = `version.json?check=${Date.now()}`;
     const res = await fetch(checkUrl, {
       cache: "no-store",
@@ -5598,20 +5594,13 @@ async function checkForAppUpdate() {
       return;
     }
 
-    if (status) status.textContent = `v${latestVersion} のファイルを取得しています…`;
+    if (status) status.textContent = `v${latestVersion} のファイルを確認しています…`;
 
-    // app.js / style.css を現在ページの同一ディレクトリから取得する。
-    // URLコンストラクタに依存せず、iPhone Safari / ホーム画面起動でも
-    // 「The string did not match the expected pattern.」が出にくい実装にする。
-    const currentUrl = String(window.location.href || "");
-    const cleanUrl = currentUrl.split("#")[0].split("?")[0];
-    const slashIndex = cleanUrl.lastIndexOf("/");
-    const assetBase = slashIndex >= 0 ? cleanUrl.slice(0, slashIndex + 1) : cleanUrl + "/";
+    // URLコンストラクタ / Cache Storage / location.replace は使用しない。
+    // iOS Safariで「The string did not match the expected pattern.」が出る経路を避ける。
     const assetNames = ["app.js", "style.css"];
     for (const assetName of assetNames) {
-      const separator = assetBase.includes("?") ? "&" : "?";
-      const assetUrl = `${assetBase}${assetName}${separator}v=${encodeURIComponent(latestVersion)}&update=${Date.now()}`;
-
+      const assetUrl = `${assetName}?v=${encodeURIComponent(latestVersion)}&update=${Date.now()}`;
       const assetRes = await fetch(assetUrl, {
         cache: "no-store",
         headers: { "Cache-Control": "no-cache" }
@@ -5619,46 +5608,19 @@ async function checkForAppUpdate() {
       if (!assetRes.ok) throw new Error(`${assetName}: HTTP ${assetRes.status}`);
 
       const assetText = await assetRes.text();
-
-      // app.js は取得したファイルのAPP_VERSIONを確認してから反映する。
       if (assetName === "app.js") {
         const match = assetText.match(/const APP_VERSION\s*=\s*"([^"]+)"/);
         if (!match || compareVersions(match[1], latestVersion) !== 0) {
           throw new Error(`app.jsのバージョンが一致しません（取得: ${match?.[1] || "不明"} / 最新: ${latestVersion}）`);
-        }
-
-        // Cache Storage に残っている旧ファイルがある環境でも、
-        // 次回読み込み時に新しいURLを優先できるように保存する。
-        if ("caches" in window) {
-          try {
-            const cache = await caches.open("cptmate-assets-v1");
-            await cache.put(assetUrl, new Response(assetText, {
-              headers: { "Content-Type": "application/javascript; charset=utf-8" }
-            }));
-          } catch (cacheError) {
-            console.warn("CPTmate app.js cache save skipped:", cacheError);
-          }
-        }
-      } else if (assetName === "style.css" && "caches" in window) {
-        try {
-          const cache = await caches.open("cptmate-assets-v1");
-          await cache.put(assetUrl, new Response(assetText, {
-            headers: { "Content-Type": "text/css; charset=utf-8" }
-          }));
-        } catch (cacheError) {
-          console.warn("CPTmate style.css cache save skipped:", cacheError);
         }
       }
     }
 
     if (status) status.textContent = `v${latestVersion} を確認しました。再読み込みしています…`;
 
-    // ページ自体もキャッシュ回避用のクエリを付けて再読み込みする。
-    const reloadBase = String(window.location.href || "").split("#")[0].split("?")[0];
-    const reloadSeparator = reloadBase.includes("?") ? "&" : "?";
-    window.location.replace(
-      `${reloadBase}${reloadSeparator}update=${Date.now()}&v=${encodeURIComponent(latestVersion)}`
-    );
+    // 現在のページURLを加工せず、ブラウザ標準の再読み込みを使う。
+    // 実際のapp.js/index.htmlの更新はGitHub Pages側の公開ファイルを反映した後に行う。
+    window.location.reload();
   } catch (error) {
     console.error("CPTmate update check failed:", error);
     if (status) status.textContent = "更新確認に失敗しました。";
@@ -5728,12 +5690,16 @@ document.querySelectorAll(".nav-btn").forEach(btn => {
   btn.addEventListener("click", () => {
     const nav = btn.dataset.nav;
     const destination = () => {
-      if (nav === "home") { mergeHomeAndStatsNavigation(); renderHome(); }
-      if (nav === "favorites") renderFavorites();
-      if (nav === "practice") renderPracticeSelector();
-      if (nav === "review") renderReview();
-      if (nav === "stats") renderStats();
-      if (nav === "settings") renderSettings();
+      // ナビゲーション先へ移動した時点で lastViewed も更新する。
+      // これにより、途中保存後に別ページへ移動しても、次のページ遷移で
+      // 「演習の途中です。」が再表示されない。
+      if (nav === "home") { state.lastViewed = "home"; mergeHomeAndStatsNavigation(); renderHome(); }
+      if (nav === "favorites") { state.lastViewed = "favorites"; renderFavorites(); }
+      if (nav === "practice") { state.lastViewed = "practice-selector"; renderPracticeSelector(); }
+      if (nav === "review") { state.lastViewed = "review"; renderReview(); }
+      if (nav === "stats") { state.lastViewed = "stats"; renderStats(); }
+      if (nav === "settings") { state.lastViewed = "settings"; renderSettings(); }
+      saveState();
     };
     confirmPracticeLeave(destination);
   });
