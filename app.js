@@ -1,4 +1,4 @@
-const APP_VERSION = "0.2.91";
+const APP_VERSION = "0.2.92";
 
 /* v0.2.63: home logo placement + startup splash/crossfade */
 const CPTMATE_BRAND_LOGO = "assets/branding/cptmate-horizontal-logo.png";
@@ -5477,11 +5477,15 @@ function getFigureCatalog() {
     used[q.figureId] ??= [];
     used[q.figureId].push(q.id);
   });
-  return Object.entries(FIGURE_LIBRARY)
-    .filter(([id]) => used[id]?.length)
-    .map(([id, fig]) => ({
-      id, ...fig, ids: used[id]
-    }));
+
+  // 図・イラスト資料は「現在問題で使用されているか」ではなく、
+  // FIGURE_LIBRARY に登録されている図をすべて表示する。
+  // 問題追加前に図だけ先に登録した場合でも資料一覧から確認できるようにする。
+  return Object.entries(FIGURE_LIBRARY).map(([id, fig]) => ({
+    id,
+    ...fig,
+    ids: used[id] || []
+  }));
 }
 
 function renderFigureGallery() {
@@ -5494,7 +5498,7 @@ function renderFigureGallery() {
     </div>
     <section class="card figure-gallery-card">
       <p style="color:var(--muted);line-height:1.7;margin-top:0;">
-        CPTmateで現在使用している図を確認できます。図をタップすると全画面で確認できます。
+        CPTmateに登録されている図・イラスト資料を確認できます。図をタップすると全画面で確認できます。
       </p>
       <div class="figure-gallery-list">
         ${figures.map((fig, i) => {
@@ -5503,7 +5507,7 @@ function renderFigureGallery() {
             <button class="figure-gallery-item" type="button" onclick="openFigureModal('${fig.image}?v=${APP_VERSION}','${safeCaption}')">
               <div class="figure-gallery-thumb"><img src="${fig.image}?v=${APP_VERSION}" alt="${fig.caption}" loading="lazy"></div>
               <div class="figure-gallery-meta">
-                <strong>${fig.caption}</strong>
+                <strong>${fig.title}</strong>
                 <span>第${fig.chapter}章　使用問題 ${fig.ids.length}問</span>
               </div>
             </button>
