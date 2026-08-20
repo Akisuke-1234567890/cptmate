@@ -315,6 +315,48 @@ const CPTMATE_SPLASH_MARK = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAaQAA
       background: #e7f3f2;
       border: 1px solid rgba(23,79,82,.18);
     }
+    /* v0.2.89: question header layout
+       Chapter/category are stacked so long category names cannot collide
+       with the exercise progress counter. The counter stays on one line. */
+    .question-head {
+      display: grid !important;
+      grid-template-columns: minmax(0, 1fr) auto !important;
+      align-items: start !important;
+      column-gap: 12px !important;
+      width: 100% !important;
+      margin-bottom: 10px !important;
+      box-sizing: border-box !important;
+    }
+    .question-category {
+      min-width: 0 !important;
+      display: block !important;
+      color: var(--muted) !important;
+      line-height: 1.45 !important;
+    }
+    .question-chapter {
+      display: block !important;
+      font-size: 13px !important;
+      font-weight: 700 !important;
+      white-space: nowrap !important;
+      margin-bottom: 2px !important;
+    }
+    .question-category-name {
+      display: block !important;
+      font-size: 13px !important;
+      font-weight: 700 !important;
+      overflow-wrap: anywhere !important;
+      word-break: normal !important;
+    }
+    .question-progress {
+      display: block !important;
+      align-self: start !important;
+      color: var(--muted) !important;
+      font-size: 13px !important;
+      font-weight: 700 !important;
+      line-height: 1.45 !important;
+      white-space: nowrap !important;
+      text-align: right !important;
+    }
     .question-info-row {
       display: grid !important;
       grid-template-columns: minmax(0, 1fr) auto !important;
@@ -5259,8 +5301,11 @@ function renderQuestion() {
 
     <section class="card">
       <div class="question-head">
-        <span>第${q.chapter}章　${q.category}</span>
-        <span>この演習：${state.currentIndex + 1} / ${queue.length}</span>
+        <div class="question-category">
+          <span class="question-chapter">第${q.chapter}章</span>
+          <span class="question-category-name">${q.category}</span>
+        </div>
+        <span class="question-progress">この演習：${state.currentIndex + 1} / ${queue.length}</span>
       </div>
       <div class="question-info-row">
         <div class="source-badge-wrap">${sourceBadge}</div>
