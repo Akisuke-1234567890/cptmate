@@ -1,4 +1,4 @@
-const APP_VERSION = "0.2.102";
+const APP_VERSION = "0.2.101";
 
 /* v0.2.63: home logo placement + startup splash/crossfade */
 const CPTMATE_BRAND_LOGO = "assets/branding/cptmate-horizontal-logo.png";
@@ -1684,7 +1684,7 @@ const QUESTIONS = [
     "chapter": 2,
     "category": "血液・酸素運搬",
     "type": "standard",
-    "question": "健康な成人の血液100mLに含まれるヘモグロビン量はどれか。",
+    "question": "健康な成人の血液100mLに含まれるヘモグロビン量として、本章で示されている値はどれか。",
     "choices": [
       "約5g",
       "約10g",
@@ -1801,7 +1801,7 @@ const QUESTIONS = [
         "figureId": "fig-ch2-conduction",
     "image": "assets/figures/fig-ch2-conduction.png",
     "figureMode": "after",
-"question": "SA結節から始まるインパルスの伝導順序として、正しいものはどれか。",
+"question": "SA結節から始まるインパルスの伝導順序として、本章の説明に合うものはどれか。",
     "choices": [
       "AV結節→SA結節→心室→プルキンエ線維",
       "SA結節→AV結節→プルキンエ系→心室収縮",
@@ -1952,7 +1952,7 @@ const QUESTIONS = [
     "chapter": 2,
     "category": "心臓・循環",
     "type": "standard",
-    "question": "平均動脈圧（MAP）を求める場合、正しい式はどれか。",
+    "question": "平均動脈圧（MAP）を本章の式に従って求める場合、正しい式はどれか。",
     "choices": [
       "DBP＋0.333×(SBP−DBP)",
       "SBP＋0.333×(SBP−DBP)",
@@ -2003,7 +2003,7 @@ const QUESTIONS = [
     "chapter": 2,
     "category": "心臓・循環",
     "type": "standard",
-    "question": "フランク・スターリングの法則について、正しいものはどれか。",
+    "question": "フランク・スターリングの法則について、本章の説明として正しいものはどれか。",
     "choices": [
       "左心室が伸張されるほど収縮力が増大する",
       "心室への血液充満が増えるほど収縮力が必ず低下する",
@@ -2040,7 +2040,7 @@ const QUESTIONS = [
         "figureId": "fig-ch2-respiratory-structure",
     "image": "assets/figures/fig-ch2-respiratory-structure.png",
     "figureMode": "after",
-"question": "鼻腔の主な機能として正しいもの3つはどれか。",
+"question": "鼻腔の主な機能として本章で挙げられている3つはどれか。",
     "choices": [
       "加温・加湿・濾過",
       "冷却・乾燥・濾過",
@@ -2057,7 +2057,7 @@ const QUESTIONS = [
     "chapter": 2,
     "category": "呼吸・ガス交換",
     "type": "standard",
-    "question": "安静時の吸気について、正しいものはどれか。",
+    "question": "安静時の吸気について、本章の説明として正しいものはどれか。",
     "choices": [
       "横隔膜と外肋間筋を利用する能動的過程である",
       "筋収縮を必要としない完全な受動的過程である",
@@ -2074,7 +2074,7 @@ const QUESTIONS = [
     "chapter": 2,
     "category": "呼吸・ガス交換",
     "type": "standard",
-    "question": "安静時の呼気について、正しいものはどれか。",
+    "question": "安静時の呼気について、本章の説明として正しいものはどれか。",
     "choices": [
       "主に受動的反応である",
       "必ず腹筋の強い収縮を必要とする",
@@ -2154,7 +2154,7 @@ const QUESTIONS = [
         "figureId": "fig-ch2-alveolar-gas-exchange",
     "image": "assets/figures/fig-ch2-alveolar-gas-exchange.png",
     "figureMode": "after",
-"question": "安静時の肺胞気と静脈血のおおよその酸素分圧（PO₂）の組み合わせとして正しいものはどれか。",
+"question": "本章で示される安静時の肺胞気と静脈血のおおよその酸素分圧（PO₂）の組み合わせとして正しいものはどれか。",
     "choices": [
       "肺胞100mmHg・静脈血40mmHg",
       "肺胞40mmHg・静脈血100mmHg",
@@ -2205,7 +2205,7 @@ const QUESTIONS = [
     "chapter": 2,
     "category": "酸素摂取・運動適応",
     "type": "standard",
-    "question": "表2.1によると、運動強度が安静時→中強度→高強度と上がったとき、動静脈酸素較差はどう変化するか。",
+    "question": "運動強度が安静時→中強度→高強度と上がったとき、動静脈酸素較差はどう変化するか。",
     "choices": [
       "6→10→16 mL/血液100mL",
       "16→10→6 mL/血液100mL",
@@ -2213,7 +2213,7 @@ const QUESTIONS = [
       "4→6→10 mL/血液100mL"
     ],
     "answer": 0,
-    "explanation": "表2.1では、動脈血20mLに対して静脈還流が14、10、4mLとなり、取り込まれる酸素量は6、10、16mL/血液100mLへ増加する。",
+    "explanation": "運動強度が上がると、動脈血20mLに対する静脈血の酸素量が14、10、4mLと減少し、取り込まれる酸素量は6、10、16mL/血液100mLへ増加する。",
     "sourceType": "original",
     "sourceNote": "ユーザー提供の第2章PDFを基準にCPTmateオリジナル問題として作成"
   },
@@ -2222,7 +2222,7 @@ const QUESTIONS = [
     "chapter": 2,
     "category": "酸素摂取・運動適応",
     "type": "standard",
-    "question": "VO₂maxについて、誤っているものはどれか。",
+    "question": "VO₂maxについて、本章の説明として誤っているものはどれか。",
     "choices": [
       "身体に取り込まれ、輸送され、利用される酸素の最大量である",
       "最大心拍出量と最大動静脈酸素較差に関係する",
@@ -2239,7 +2239,7 @@ const QUESTIONS = [
     "chapter": 2,
     "category": "酸素摂取・運動適応",
     "type": "standard",
-    "question": "安静時VO₂は通常どの程度か。",
+    "question": "本章では、安静時VO₂を通常どの程度としているか。",
     "choices": [
       "約1.0mL/kg/分",
       "約3.5mL/kg/分",
@@ -2256,7 +2256,7 @@ const QUESTIONS = [
     "chapter": 2,
     "category": "酸素摂取・運動適応",
     "type": "standard",
-    "question": "有酸素性持久系トレーニングによるVO₂max向上に関連する適応はどれか。",
+    "question": "有酸素性持久系トレーニングによるVO₂max向上に関連する適応として、本章に示されているものはどれか。",
     "choices": [
       "最大1回拍出量の増加と毛細血管・ミトコンドリア密度の増加",
       "最大心拍数の大幅な増加だけ",
@@ -2273,7 +2273,7 @@ const QUESTIONS = [
     "chapter": 2,
     "category": "酸素摂取・運動適応",
     "type": "standard",
-    "question": "持久系トレーニングを行っても通常大きく変化しないものはどれか。",
+    "question": "通常、持久系トレーニングを行っても大きく変化せず、最大心拍出量の増加に対して本章で示されているのはどれか。",
     "choices": [
       "最大心拍数",
       "最大1回拍出量",
@@ -2347,7 +2347,7 @@ const QUESTIONS = [
     "chapter": 2,
     "category": "酸素摂取・運動適応",
     "type": "standard",
-    "question": "最大酸素摂取量（VO₂max）が高いことと関連するものはどれか。",
+    "question": "本章の例題と内容から判断して、最大酸素摂取量（VO₂max）が高いことと関連するものはどれか。",
     "choices": [
       "心血管疾患・疾病率・死亡率のリスク低下",
       "心血管疾患のリスク上昇",
@@ -2364,7 +2364,7 @@ const QUESTIONS = [
     "chapter": 2,
     "category": "血液・酸素運搬",
     "type": "standard",
-    "question": "血液100mLに溶解している酸素の量はどれか。",
+    "question": "血液100mLに溶解している酸素の量として、本章で示されている値はどれか。",
     "choices": [
       "約0.3mL",
       "約3mL",
@@ -2381,7 +2381,7 @@ const QUESTIONS = [
     "chapter": 2,
     "category": "血液・酸素運搬",
     "type": "standard",
-    "question": "1gのヘモグロビンが運ぶことのできる酸素量はどれか。",
+    "question": "1gのヘモグロビンが運ぶことのできる酸素量として、本章で示されている値はどれか。",
     "choices": [
       "約0.13mL",
       "約1.39mL",
@@ -2398,7 +2398,7 @@ const QUESTIONS = [
     "chapter": 2,
     "category": "血液・酸素運搬",
     "type": "standard",
-    "question": "健康な血液100mL当たり約15gのヘモグロビンがあるとき、血液の酸素運搬能力はおよそどれか。",
+    "question": "健康な血液100mL当たり約15gのヘモグロビンがあるとき、本章で示される血液の酸素運搬能力はおよそどれか。",
     "choices": [
       "約2.1mL/100mL",
       "約10.0mL/100mL",
@@ -2415,7 +2415,7 @@ const QUESTIONS = [
     "chapter": 2,
     "category": "血液・酸素運搬",
     "type": "standard",
-    "question": "健康な成人の平均的な血液量はおよそどれか。",
+    "question": "本章で示される、健康な成人の平均的な血液量はおよそどれか。",
     "choices": [
       "約1.0L",
       "約2.5L",
@@ -2449,7 +2449,7 @@ const QUESTIONS = [
     "chapter": 2,
     "category": "血液・酸素運搬",
     "type": "standard",
-    "question": "酸素分圧が約60mmHgに達したときのヘモグロビン酸素飽和度はおよそ何%か。",
+    "question": "本章では、酸素分圧が約60mmHgに達したときのヘモグロビン酸素飽和度をおよそ何%としているか。",
     "choices": [
       "約50%",
       "約70%",
@@ -2469,7 +2469,7 @@ const QUESTIONS = [
         "figureId": "fig-ch2-conduction",
     "image": "assets/figures/fig-ch2-conduction.png",
     "figureMode": "after",
-"question": "心臓の刺激伝導系で、SA結節から発生したインパルスが心室へ伝わるまでに生じる時間差の意義として、正しいものはどれか。",
+"question": "心臓の刺激伝導系で、SA結節から発生したインパルスが心室へ伝わるまでに生じる時間差の意義として、本章の説明に合うものはどれか。",
     "choices": [
       "心房の血液を心室へ送る時間を確保する",
       "肺でのガス交換を停止させる",
@@ -2486,7 +2486,7 @@ const QUESTIONS = [
     "chapter": 2,
     "category": "心臓・循環",
     "type": "standard",
-    "question": "安静時の静脈血の酸素飽和度はおよそ何%か。",
+    "question": "本章では、安静時の静脈血の酸素飽和度をおよそ何%としているか。",
     "choices": [
       "約20%",
       "約40%",
@@ -2506,7 +2506,7 @@ const QUESTIONS = [
         "figureId": "fig-ch2-heart-flow",
     "image": "assets/figures/fig-ch2-heart-flow.png",
     "figureMode": "after",
-"question": "肺循環と体循環について、正しいものはどれか。",
+"question": "肺循環と体循環について、本章の説明として正しいものはどれか。",
     "choices": [
       "肺循環と体循環は閉鎖循環系を構成する",
       "肺循環では血液は必ず大動脈を通る",
@@ -2523,7 +2523,7 @@ const QUESTIONS = [
     "chapter": 2,
     "category": "心臓・循環",
     "type": "standard",
-    "question": "動脈系の血圧について、正しい組み合わせはどれか。",
+    "question": "本章で示される動脈系の血圧について、正しい組み合わせはどれか。",
     "choices": [
       "大動脈約100mmHg、細動脈約60mmHg",
       "大動脈約60mmHg、細動脈約100mmHg",
@@ -2560,7 +2560,7 @@ const QUESTIONS = [
     "chapter": 2,
     "category": "心臓・循環",
     "type": "standard",
-    "question": "拡張期血圧（DBP）について、正しいものはどれか。",
+    "question": "拡張期血圧（DBP）について、本章の説明として正しいものはどれか。",
     "choices": [
       "心室収縮中に動脈壁へかかる最高圧である",
       "心室が力強く血液を送り出していない拡張期に動脈壁へかかる圧力である",
@@ -2594,7 +2594,7 @@ const QUESTIONS = [
     "chapter": 2,
     "category": "心臓・循環",
     "type": "standard",
-    "question": "平均動脈圧（MAP）について、誤っているものはどれか。",
+    "question": "平均動脈圧（MAP）について、本章の説明として誤っているものはどれか。",
     "choices": [
       "心周期を通しての平均血圧である",
       "収縮期血圧と拡張期血圧の単純な平均値として考えてはならない",
@@ -2611,7 +2611,7 @@ const QUESTIONS = [
     "chapter": 2,
     "category": "心臓・循環",
     "type": "standard",
-    "question": "運動中に活動している骨格筋の細動脈が拡張することに関係する局所的な物質はどれか。",
+    "question": "運動中に活動している骨格筋の細動脈が拡張することに関係する局所的な物質として、本章で挙げられているものはどれか。",
     "choices": [
       "一酸化窒素（NO）",
       "ヘモグロビン",
@@ -2631,7 +2631,7 @@ const QUESTIONS = [
         "figureId": "fig-ch2-blood-redistribution",
     "image": "assets/figures/fig-ch2-blood-redistribution.png",
     "figureMode": "after",
-"question": "運動中の血流再分配について、正しいものはどれか。",
+"question": "運動中の血流再分配について、本章の説明に合うものはどれか。",
     "choices": [
       "活動筋への血流が減り、非活動器官だけに血液が集まる",
       "非活動的な臓器への血流を供給する動脈が収縮し、活動筋への血流が増加する",
@@ -2651,7 +2651,7 @@ const QUESTIONS = [
         "figureId": "fig-ch2-respiratory-structure",
     "image": "assets/figures/fig-ch2-respiratory-structure.png",
     "figureMode": "after",
-"question": "気管から肺胞へ至るまでの気道の分岐は、およそ何回か。",
+"question": "気管から肺胞へ至るまでの気道の分岐について、本章で示されている回数はおよそ何回か。",
     "choices": [
       "約3回",
       "約10回",
@@ -2671,7 +2671,7 @@ const QUESTIONS = [
         "figureId": "fig-ch2-lung-volumes",
     "image": "assets/figures/fig-ch2-lung-volumes.png",
     "figureMode": "after",
-"question": "肺活量について、正しいものはどれか。",
+"question": "肺活量について、本章の説明として正しいものはどれか。",
     "choices": [
       "通常の呼気後に肺に残る空気量である",
       "最大努力で息を吸ってから吐いたときの空気量である",
@@ -2691,7 +2691,7 @@ const QUESTIONS = [
         "figureId": "fig-ch2-lung-volumes",
     "image": "assets/figures/fig-ch2-lung-volumes.png",
     "figureMode": "after",
-"question": "全肺気量（TLC）を構成する組み合わせとして正しいものはどれか。",
+"question": "全肺気量（TLC）を構成する組み合わせとして、本章の図2.9の説明に合うものはどれか。",
     "choices": [
       "肺活量＋残気量",
       "1回換気量＋心拍出量",
@@ -2711,7 +2711,7 @@ const QUESTIONS = [
         "figureId": "fig-ch2-alveolar-gas-exchange",
     "image": "assets/figures/fig-ch2-alveolar-gas-exchange.png",
     "figureMode": "after",
-"question": "肺胞と静脈血の酸素分圧の関係として正しいものはどれか。",
+"question": "本章の図2.11に示される肺胞と静脈血の酸素分圧の関係として正しいものはどれか。",
     "choices": [
       "肺胞約40mmHg、静脈血約100mmHg",
       "肺胞約100mmHg、静脈血約40mmHg",
@@ -2746,7 +2746,7 @@ const QUESTIONS = [
     "chapter": 2,
     "category": "血液・酸素運搬",
     "type": "standard",
-    "question": "血液100mLあたりの酸素量について、最も適切な組み合わせはどれか。",
+    "question": "血液100mLあたりの酸素量について、本章の説明に最も合う組み合わせはどれか。",
     "choices": [
       "ヘモグロビン結合：約20.8mL、溶解：約0.3mL",
       "ヘモグロビン結合：約0.3mL、溶解：約20.8mL",
@@ -2803,7 +2803,7 @@ const QUESTIONS = [
     "chapter": 2,
     "category": "血液・酸素運搬",
     "type": "standard",
-    "question": "健康な成人の平均血液量が約5.0Lで、体重の約7%に相当することから考えられる血液の役割はどれか。",
+    "question": "健康な成人の平均血液量が約5.0Lで、体重の約7%に相当すると本章にある。これは血液の役割についてどの説明につながるか。",
     "choices": [
       "血液は主に骨格筋の収縮を直接行う",
       "血液は酸素・栄養素の運搬と代謝副産物の除去に関与する",
@@ -2824,7 +2824,7 @@ const QUESTIONS = [
         "figureId": "fig-ch2-ecg",
     "image": "assets/figures/fig-ch2-ecg.png",
     "figureMode": "after",
-"question": "心電図でP波の後にQRS波が現れる。これらの組み合わせとして正しいものはどれか。",
+"question": "心電図でP波の後にQRS波が現れる。これらの組み合わせとして本章の説明に合うものはどれか。",
     "choices": [
       "P波＝心室脱分極、QRS波＝心房脱分極",
       "P波＝心房脱分極、QRS波＝心室脱分極",
@@ -2860,7 +2860,7 @@ const QUESTIONS = [
     "chapter": 2,
     "category": "心臓・循環",
     "type": "standard",
-    "question": "収縮期血圧120mmHg、拡張期血圧75mmHgの場合、平均動脈圧（MAP）に最も近い値はどれか。",
+    "question": "収縮期血圧120mmHg、拡張期血圧75mmHgの場合、本章の式を用いた平均動脈圧（MAP）に最も近い値はどれか。",
     "choices": [
       "75mmHg",
       "82mmHg",
@@ -2914,7 +2914,7 @@ const QUESTIONS = [
     "chapter": 2,
     "category": "呼吸・ガス交換",
     "type": "standard",
-    "question": "運動中に呼吸がより深くなり、吸気を強める必要が生じた。このとき安静時の吸気に加えて働く筋はどれか。",
+    "question": "運動中に呼吸がより深くなり、吸気を強める必要が生じた。このとき安静時の吸気に加えて働く筋として、本章に挙げられているものはどれか。",
     "choices": [
       "斜角筋・胸鎖乳突筋など",
       "上腕二頭筋だけ",
@@ -2932,7 +2932,7 @@ const QUESTIONS = [
     "chapter": 2,
     "category": "呼吸・ガス交換",
     "type": "standard",
-    "question": "運動中の呼気について、最も適切なのはどれか。",
+    "question": "運動中の呼気について、本章の説明として最も適切なのはどれか。",
     "choices": [
       "安静時と同様に完全に受動的である",
       "内肋間筋と腹筋が働いて空気の排出を助ける",
@@ -2995,7 +2995,7 @@ const QUESTIONS = [
         "figureId": "fig-ch2-lung-volumes",
     "image": "assets/figures/fig-ch2-lung-volumes.png",
     "figureMode": "after",
-"question": "肺活量（VC）と残気量（RV）の関係について、正しいものはどれか。",
+"question": "肺活量（VC）と残気量（RV）の関係について、本章の図2.9の説明に合うものはどれか。",
     "choices": [
       "TLC＝VC＋RV",
       "VC＝TLC＋RV",
@@ -3049,7 +3049,7 @@ const QUESTIONS = [
     "chapter": 2,
     "category": "酸素摂取・運動適応",
     "type": "standard",
-    "question": "VO₂maxをできるだけ正確に測定する方法はどれか。",
+    "question": "VO₂maxをできるだけ正確に測定する方法として、本章で示されているものはどれか。",
     "choices": [
       "安静時の血圧測定だけ",
       "トレッドミルなどを用いた漸増運動負荷試験と呼気ガス代謝測定",
@@ -3067,7 +3067,7 @@ const QUESTIONS = [
     "chapter": 2,
     "category": "酸素摂取・運動適応",
     "type": "standard",
-    "question": "有酸素性持久系トレーニング後の変化として、正しい組み合わせはどれか。",
+    "question": "有酸素性持久系トレーニング後の変化として、本章の説明に合う組み合わせはどれか。",
     "choices": [
       "最大心拍数は通常変化せず、最大1回拍出量が増加し、毛細血管とミトコンドリアの適応が生じる",
       "最大心拍数だけが大幅に増加し、毛細血管は減少する",
@@ -3085,7 +3085,7 @@ const QUESTIONS = [
     "chapter": 2,
     "category": "酸素摂取・運動適応",
     "type": "standard",
-    "question": "有酸素性能力が低い人と高い人を比較した場合、有酸素性運動プログラムによるVO₂maxの改善について、どの傾向がみられるか。",
+    "question": "有酸素性能力が低い人と高い人を比較した場合、有酸素性運動プログラムによるVO₂maxの改善について本章が示している傾向はどれか。",
     "choices": [
       "有酸素性能力が低い人のほうが大きな割合で向上することがよくある",
       "有酸素性能力が低い人は必ず向上しない",
@@ -3955,7 +3955,7 @@ const ADDITIONAL_QUESTIONS = [
     "chapter": 2,
     "category": "総合・心肺統合",
     "type": "standard",
-    "question": "VO2を高めるための心肺系の要素として、最も適切なのはどれか。",
+    "question": "VO2を高めるための心肺系の要素を、本章のフィックの式とVO2maxの説明に沿って考えた場合、最も適切なのはどれか。",
     "choices": [
       "心拍出量と動静脈酸素較差の両方が関係する",
       "心拍数だけが関係する",
