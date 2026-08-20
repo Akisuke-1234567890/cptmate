@@ -1,4 +1,4 @@
-const APP_VERSION = "0.2.92";
+const APP_VERSION = "0.2.91";
 
 /* v0.2.63: home logo placement + startup splash/crossfade */
 const CPTMATE_BRAND_LOGO = "assets/branding/cptmate-horizontal-logo.png";
@@ -132,71 +132,7 @@ const CPTMATE_SPLASH_MARK = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAaQAA
 
   const ensureSplash = () => {
     let splash = document.getElementById("cptmate-startup-splash");
-
-    // If index.html already supplied the splash, normalize/repair it instead
-    // of returning it untouched. This is important because the PWA entry page
-    // may be cached independently from app.js.
-    if (splash) {
-      splash.className = "cptmate-startup-splash";
-      splash.setAttribute("role", "status");
-      splash.setAttribute("aria-live", "polite");
-
-      let inner = splash.querySelector(".cptmate-startup-splash__inner");
-      if (!inner) {
-        inner = document.createElement("div");
-        inner.className = "cptmate-startup-splash__inner";
-        splash.replaceChildren(inner);
-      }
-
-      let logo = inner.querySelector(".cptmate-startup-splash__logo");
-      if (!logo) {
-        logo = document.createElement("img");
-        logo.className = "cptmate-startup-splash__logo";
-        logo.src = CPTMATE_SPLASH_MARK;
-        logo.alt = "CPTmate";
-        logo.decoding = "async";
-        inner.prepend(logo);
-      } else {
-        logo.className = "cptmate-startup-splash__logo";
-        if (!logo.getAttribute("src")) logo.src = CPTMATE_SPLASH_MARK;
-        logo.alt = "CPTmate";
-      }
-
-      let loader = inner.querySelector(".cptmate-startup-splash__loader");
-      if (!loader) {
-        loader = document.createElement("div");
-        loader.className = "cptmate-startup-splash__loader";
-        loader.setAttribute("aria-hidden", "true");
-        logo.insertAdjacentElement("afterend", loader);
-      } else {
-        loader.className = "cptmate-startup-splash__loader";
-        loader.setAttribute("aria-hidden", "true");
-      }
-
-      let message = inner.querySelector(".cptmate-startup-splash__message");
-      if (!message) {
-        message = document.createElement("p");
-        message.className = "cptmate-startup-splash__message";
-        message.textContent = "起動しています…";
-        loader.insertAdjacentElement("afterend", message);
-      } else {
-        message.className = "cptmate-startup-splash__message";
-        message.textContent = "起動しています…";
-      }
-
-      // Explicit inline animation fallback. This makes the loader robust
-      // against stale/partial first-paint CSS in a Home Screen Web App.
-      loader.style.width = "34px";
-      loader.style.height = "34px";
-      loader.style.borderRadius = "50%";
-      loader.style.border = "3px solid rgba(15,95,99,.14)";
-      loader.style.borderTopColor = "#0f5f63";
-      loader.style.animation = "cptmateSplashSpin .85s linear infinite";
-      loader.style.transformOrigin = "center center";
-
-      return splash;
-    }
-
+    if (splash) return splash;
     splash = document.createElement("div");
     splash.id = "cptmate-startup-splash";
     splash.className = "cptmate-startup-splash";
@@ -908,7 +844,7 @@ const QUESTIONS = [
     "chapter": 1,
     "category": "筋収縮・流れ",
     "type": "standard",
-    "figureId": "fig-ch1-filament-sliding",
+    "figureId": "fig-ch1-sarcomere",
     "image": "assets/figures/sarcomere_fig1_4.svg",
     "figureMode": "after",
     "question": "フィラメント滑走説について正しい説明はどれか。",
@@ -5529,7 +5465,6 @@ const FIGURE_LIBRARY = {
   "fig-ch1-sarcomere": { chapter: 1, title: "サルコメア・アクチン・ミオシン", image: "assets/figures/sarcomere_fig1_4.svg", caption: "図1.4に対応するCPTmate学習図。Z線・A帯・H帯・M線・I帯、アクチン・ミオシンの関係を確認する。" },
   "fig-ch1-contraction": { chapter: 1, title: "神経刺激から筋収縮まで", image: "assets/figures/contraction_fig1_5.svg", caption: "図1.5に対応するCPTmate学習図。神経筋接合部からCa²⁺放出、トロポニン・トロポミオシンを経て収縮へ至る流れ。" },
   "fig-ch1-neuron": { chapter: 1, title: "神経細胞の模式図", image: "assets/figures/neuron_fig1_6.svg", caption: "図1.6に対応するCPTmate学習図。樹状突起・細胞体・軸索・髄鞘・ランビエ絞輪・軸索終末の位置関係を確認する。" },
-  "fig-ch1-filament-sliding": { chapter: 1, title: "フィラメント滑走", image: "assets/figures/sarcomere_fig1_4.svg", caption: "図1.4のサルコメア構造を使って、フィラメントの重なりと各帯の関係を確認する。" },
   "fig-ch1-spindle-gto": { chapter: 1, title: "筋紡錘とゴルジ腱器官（GTO）", image: "assets/figures/spindle_gto_fig1_7.svg", caption: "図1.7に対応するCPTmate学習図。筋紡錘とGTOの構造・位置関係を確認する。" },
   "fig-ch1-long-bone": { chapter: 1, title: "長骨の構造と骨リモデリング", image: "assets/figures/long_bone_fig1_8.svg", caption: "図1.8に対応するCPTmate学習図。長骨の主要構造を確認する。" },
   "fig-ch1-skeleton": { chapter: 1, title: "軸性骨格と付属性骨格", image: "assets/figures/skeleton_fig1_9.svg", caption: "図1.9に対応するCPTmate学習図。成人男性骨格の前面・後面と軸性／付属性の位置関係を確認する。" }
