@@ -1,4 +1,4 @@
-const APP_VERSION = "0.2.86";
+const APP_VERSION = "0.2.87";
 
 /* v0.2.63: home logo placement + startup splash/crossfade */
 const CPTMATE_BRAND_LOGO = "assets/branding/cptmate-horizontal-logo.png";
@@ -969,7 +969,7 @@ const QUESTIONS = [
     "figureId": "fig-ch1-neuron",
     "image": "assets/figures/neuron_fig1_6.svg",
     "figureMode": "after",
-    "question": "他のニューロンからの信号を受け取る「アンテナ部分」に相当する構造はどれか。",
+    "question": "他のニューロンからの信号を主に受け取る構造はどれか。",
     "choices": [
       "樹状突起",
       "軸索",
@@ -977,7 +977,7 @@ const QUESTIONS = [
       "運動終板"
     ],
     "answer": 0,
-    "explanation": "樹状突起は他のニューロンからの信号を受け取る部分として説明されている。",
+    "explanation": "樹状突起は、他のニューロンからの興奮性・抑制性の信号を受け取る構造である。",
     "sourceType": "original"
   },
   {
@@ -988,7 +988,7 @@ const QUESTIONS = [
     "figureId": "fig-ch1-neuron",
     "image": "assets/figures/neuron_fig1_6.svg",
     "figureMode": "after",
-    "question": "細胞体から伸びる長い「ケーブル」に相当する構造はどれか。",
+    "question": "細胞体から伸び、活動電位を遠くの標的へ伝える構造はどれか。",
     "choices": [
       "樹状突起",
       "軸索",
@@ -996,7 +996,7 @@ const QUESTIONS = [
       "錘内線維"
     ],
     "answer": 1,
-    "explanation": "軸索は細胞体から伸びる長い構造で、脊髄から筋肉まで信号を伝える。",
+    "explanation": "軸索は細胞体から伸び、活動電位を遠くの標的へ伝える構造である。",
     "sourceType": "original"
   },
   {
@@ -1058,7 +1058,7 @@ const QUESTIONS = [
     "chapter": 1,
     "category": "神経系・サイズの原理",
     "type": "standard",
-    "question": "タイプII線維の運動単位について、教科書の説明に合うものはどれか。",
+    "question": "タイプII線維の運動単位について、最も適切な説明はどれか。",
     "choices": [
       "タイプI線維の運動単位よりサイズが小さく、閾値も低い",
       "タイプI線維の運動単位よりサイズが大きく、活性化するための閾値も高い",
@@ -1066,7 +1066,7 @@ const QUESTIONS = [
       "タイプII線維の運動単位は動員されない"
     ],
     "answer": 1,
-    "explanation": "教科書では、タイプII線維の運動単位はタイプI線維の運動単位よりサイズが大きく、活性化するための閾値も高いと説明されている。",
+    "explanation": "タイプII線維の運動単位は、タイプI線維の運動単位より一般にサイズが大きく、活性化するための閾値も高い。",
     "sourceType": "original"
   },
   {
@@ -1225,7 +1225,7 @@ const QUESTIONS = [
       "腱が神経信号を作り、骨が筋を収縮させる"
     ],
     "answer": 1,
-    "explanation": "章のまとめでは、神経系→神経筋接合部→筋系（サルコメア）→腱→骨格系という一本の流れとして整理されている。",
+    "explanation": "神経系からの信号が神経筋接合部を介して筋へ伝わり、筋が生み出した力が腱を通じて骨へ伝わることで、関節を中心とした運動が生じる。",
     "sourceType": "original"
   },
   {
@@ -1423,7 +1423,7 @@ const QUESTIONS = [
       "骨リモデリング"
     ],
     "answer": 0,
-    "explanation": "教科書では、神経系による筋力調節の1つ目の仕組みとして、活性化される運動単位の数を変える「運動単位の動員」が説明されている。",
+    "explanation": "運動単位の動員は、活動させる運動単位の数を増やすことで筋力を調節する仕組みである。",
     "sourceType": "original"
   },
   {
@@ -1497,15 +1497,15 @@ const QUESTIONS = [
     "chapter": 1,
     "category": "総合・応用",
     "type": "standard",
-    "question": "「神経系→神経筋接合部→筋系→腱→骨格系」という流れを理解することの意味として、章のまとめに最も合うものはどれか。",
+    "question": "クライアントの身体運動を、神経系から骨の運動まで一連の流れとして説明するとき、最も適切なのはどれか。",
     "choices": [
-      "各用語を独立して暗記するため",
-      "身体運動が生じる一連のストーリーとして理解するため",
-      "骨格筋を神経から切り離して考えるため",
-      "筋線維タイプを無視して考えるため"
+      "神経系→神経筋接合部→筋→腱→骨",
+      "神経系→骨→筋→腱→神経筋接合部",
+      "筋→神経筋接合部→神経系→骨→腱",
+      "腱→筋→神経系→神経筋接合部→骨"
     ],
-    "answer": 1,
-    "explanation": "章のまとめでは、この一連の流れを丸暗記ではなくストーリーとして説明できることが次章以降の理解を助けるとしている。",
+    "answer": 0,
+    "explanation": "神経系からの信号が神経筋接合部を介して筋へ伝わり、筋が発揮した力が腱を通じて骨へ伝達され、関節運動につながる。",
     "sourceType": "original"
   },
   {
@@ -3093,7 +3093,7 @@ const ADDITIONAL_QUESTIONS = [
       "弛緩"
     ],
     "answer": 2,
-    "explanation": "教材では、伸張性筋活動が最も大きな筋力を発揮できると整理されている。",
+    "explanation": "伸張性筋活動では、短縮性筋活動や等尺性筋活動より大きな筋力を発揮できる。",
     "sourceType": "review",
     "sourceLabel": "章末確認問題",
     "sourceNote": "第1章 第2部 確認問題3"
@@ -3183,7 +3183,7 @@ const ADDITIONAL_QUESTIONS = [
       "速度とは無関係に一定になる"
     ],
     "answer": 1,
-    "explanation": "模擬問題集で扱われている力―速度関係では、短縮性収縮では短縮速度が高いほど発揮できる筋力は低下する。",
+    "explanation": "短縮性筋活動では、短縮速度が高くなるほど発揮できる筋力は低下する。",
     "sourceType": "mock",
     "sourceLabel": "模擬問題（再構成）",
     "sourceNote": "NSCA-CPT模擬問題集 p.16 問15の論点を再構成"
@@ -3551,12 +3551,12 @@ const ADDITIONAL_QUESTIONS = [
   {
     "id": "ch1-q056",
     "chapter": 1,
-    "category": "図・長骨",
+    "category": "骨格系・長骨",
     "figureId": "fig-ch1-long-bone",
     "image": "assets/figures/long_bone_fig1_8.svg",
-    "figureMode": "question",
-  "type": "figure",
-    "question": "図に示された長骨の構造で、骨幹の内部にある空間はどれか。",
+    "figureMode": "after",
+    "type": "standard",
+    "question": "長骨の骨幹内部にある空間はどれか。",
     "choices": [
       "骨髄腔",
       "関節面",
@@ -3567,17 +3567,18 @@ const ADDITIONAL_QUESTIONS = [
     "explanation": "骨髄腔は長骨の骨幹内部にある空間で、骨髄を収めている。",
     "sourceType": "original",
     "sourceLabel": "CPTmateオリジナル",
-    "sourceNote": "第1・2章教材を基準に精査・再構成"
+    "sourceNote": "第1・2章教材を基準に精査・再構成",
+    "figureCaption": "長骨の主要構造"
   },
   {
     "id": "ch1-q057",
     "chapter": 1,
-    "category": "図・骨格",
+    "category": "骨格系・分類",
     "figureId": "fig-ch1-skeleton",
     "image": "assets/figures/skeleton_fig1_9.svg",
-    "figureMode": "question",
-  "type": "figure",
-    "question": "図に示された骨格のうち、頭蓋・脊柱・胸骨・肋骨などを含む区分はどれか。",
+    "figureMode": "after",
+    "type": "standard",
+    "question": "頭蓋・脊柱・胸骨・肋骨などを含む骨格の区分はどれか。",
     "choices": [
       "付属性骨格",
       "軸性骨格",
@@ -3588,17 +3589,18 @@ const ADDITIONAL_QUESTIONS = [
     "explanation": "頭蓋、脊柱、胸骨、肋骨などは軸性骨格に含まれる。",
     "sourceType": "original",
     "sourceLabel": "CPTmateオリジナル",
-    "sourceNote": "第1・2章教材を基準に精査・再構成"
+    "sourceNote": "第1・2章教材を基準に精査・再構成",
+    "figureCaption": "軸性骨格と付属性骨格"
   },
   {
     "id": "ch1-q058",
     "chapter": 1,
-    "category": "図・ニューロン",
+    "category": "神経系・ニューロン",
     "figureId": "fig-ch1-neuron",
-    "image": "assets/figures/neuron.svg",
-    "figureMode": "question",
-  "type": "figure",
-    "question": "図に示された神経細胞の構造のうち、細胞体から伸びて長距離にわたりインパルスを伝えるのはどれか。",
+    "image": "assets/figures/neuron_fig1_6.svg",
+    "figureMode": "after",
+    "type": "standard",
+    "question": "細胞体から伸び、活動電位を遠くの標的へ伝える構造はどれか。",
     "choices": [
       "樹状突起",
       "軸索",
@@ -3609,17 +3611,18 @@ const ADDITIONAL_QUESTIONS = [
     "explanation": "軸索は細胞体から伸びる長い突起で、活動電位を遠くの標的へ伝える。",
     "sourceType": "original",
     "sourceLabel": "CPTmateオリジナル",
-    "sourceNote": "第1・2章教材を基準に精査・再構成"
+    "sourceNote": "第1・2章教材を基準に精査・再構成",
+    "figureCaption": "神経細胞の模式図"
   },
   {
     "id": "ch1-q059",
     "chapter": 1,
-    "category": "図・筋紡錘とGTO",
+    "category": "神経系・感覚受容器",
     "figureId": "fig-ch1-spindle-gto",
     "image": "assets/figures/spindle_gto_fig1_7.svg",
-    "figureMode": "question",
-  "type": "figure",
-    "question": "図に示された筋紡錘とゴルジ腱器官（GTO）の位置関係として正しいものはどれか。",
+    "figureMode": "after",
+    "type": "standard",
+    "question": "筋紡錘とゴルジ腱器官（GTO）の位置関係として正しいものはどれか。",
     "choices": [
       "筋紡錘は筋内、GTOは筋と骨が付着する腱にある",
       "筋紡錘は骨の内部、GTOは神経細胞体にある",
@@ -3630,7 +3633,8 @@ const ADDITIONAL_QUESTIONS = [
     "explanation": "筋紡錘は骨格筋内にあり、GTOは筋と骨をつなぐ腱の部分にある。",
     "sourceType": "original",
     "sourceLabel": "CPTmateオリジナル",
-    "sourceNote": "第1・2章教材を基準に精査・再構成"
+    "sourceNote": "第1・2章教材を基準に精査・再構成",
+    "figureCaption": "筋紡錘とゴルジ腱器官（GTO）"
   },
   {
     "id": "ch2-review-001",
@@ -3888,7 +3892,7 @@ const ADDITIONAL_QUESTIONS = [
     "id": "ch2-case001-q01",
     "chapter": 2,
     "category": "ケーススタディ・運動時酸素供給",
-  "type": "case",
+    "type": "case",
     "question": "クライアントが高強度運動中に「筋へ酸素を届ける仕組み」を質問した。最も適切な説明はどれか。",
     "choices": [
       "肺胞で取り込んだ酸素を血液が運び、心拍出量によって活動筋へ届ける",
@@ -3906,7 +3910,7 @@ const ADDITIONAL_QUESTIONS = [
     "id": "ch2-case001-q02",
     "chapter": 2,
     "category": "ケーススタディ・運動時酸素供給",
-  "type": "case",
+    "type": "case",
     "question": "同じクライアントで運動強度が上がると動静脈酸素較差も増えた。この変化が意味するものはどれか。",
     "choices": [
       "血液から活動組織へ取り込まれる酸素量が増えている",
@@ -3924,7 +3928,7 @@ const ADDITIONAL_QUESTIONS = [
     "id": "ch2-case002-q01",
     "chapter": 2,
     "category": "ケーススタディ・循環",
-  "type": "case",
+    "type": "case",
     "question": "クライアントが運動中に活動筋への血流が増える理由を尋ねた。最も適切なのはどれか。",
     "choices": [
       "活動筋の局所的な血管拡張が起こり、非活動組織からの血流再分配も加わる",
@@ -3942,7 +3946,7 @@ const ADDITIONAL_QUESTIONS = [
     "id": "ch2-case002-q02",
     "chapter": 2,
     "category": "ケーススタディ・循環",
-  "type": "case",
+    "type": "case",
     "question": "同じ状況で静脈還流が増えて心室への充満が増えた。フランク・スターリングの法則から予想されるのはどれか。",
     "choices": [
       "収縮力と1回拍出量が増える方向",
