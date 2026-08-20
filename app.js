@@ -1,4 +1,4 @@
-const APP_VERSION = "0.2.87";
+const APP_VERSION = "0.2.88";
 
 /* v0.2.63: home logo placement + startup splash/crossfade */
 const CPTMATE_BRAND_LOGO = "assets/branding/cptmate-horizontal-logo.png";
@@ -969,7 +969,7 @@ const QUESTIONS = [
     "figureId": "fig-ch1-neuron",
     "image": "assets/figures/neuron_fig1_6.svg",
     "figureMode": "after",
-    "question": "他のニューロンからの信号を主に受け取る構造はどれか。",
+    "question": "他のニューロンからの信号を受け取る「アンテナ部分」に相当する構造はどれか。",
     "choices": [
       "樹状突起",
       "軸索",
@@ -977,7 +977,7 @@ const QUESTIONS = [
       "運動終板"
     ],
     "answer": 0,
-    "explanation": "樹状突起は、他のニューロンからの興奮性・抑制性の信号を受け取る構造である。",
+    "explanation": "樹状突起は他のニューロンからの信号を受け取る部分として説明されている。",
     "sourceType": "original"
   },
   {
@@ -988,7 +988,7 @@ const QUESTIONS = [
     "figureId": "fig-ch1-neuron",
     "image": "assets/figures/neuron_fig1_6.svg",
     "figureMode": "after",
-    "question": "細胞体から伸び、活動電位を遠くの標的へ伝える構造はどれか。",
+    "question": "細胞体から伸びる長い「ケーブル」に相当する構造はどれか。",
     "choices": [
       "樹状突起",
       "軸索",
@@ -996,7 +996,7 @@ const QUESTIONS = [
       "錘内線維"
     ],
     "answer": 1,
-    "explanation": "軸索は細胞体から伸び、活動電位を遠くの標的へ伝える構造である。",
+    "explanation": "軸索は細胞体から伸びる長い構造で、脊髄から筋肉まで信号を伝える。",
     "sourceType": "original"
   },
   {
@@ -1058,7 +1058,7 @@ const QUESTIONS = [
     "chapter": 1,
     "category": "神経系・サイズの原理",
     "type": "standard",
-    "question": "タイプII線維の運動単位について、最も適切な説明はどれか。",
+    "question": "タイプII線維の運動単位について、教科書の説明に合うものはどれか。",
     "choices": [
       "タイプI線維の運動単位よりサイズが小さく、閾値も低い",
       "タイプI線維の運動単位よりサイズが大きく、活性化するための閾値も高い",
@@ -1066,7 +1066,7 @@ const QUESTIONS = [
       "タイプII線維の運動単位は動員されない"
     ],
     "answer": 1,
-    "explanation": "タイプII線維の運動単位は、タイプI線維の運動単位より一般にサイズが大きく、活性化するための閾値も高い。",
+    "explanation": "教科書では、タイプII線維の運動単位はタイプI線維の運動単位よりサイズが大きく、活性化するための閾値も高いと説明されている。",
     "sourceType": "original"
   },
   {
@@ -1225,7 +1225,7 @@ const QUESTIONS = [
       "腱が神経信号を作り、骨が筋を収縮させる"
     ],
     "answer": 1,
-    "explanation": "神経系からの信号が神経筋接合部を介して筋へ伝わり、筋が生み出した力が腱を通じて骨へ伝わることで、関節を中心とした運動が生じる。",
+    "explanation": "章のまとめでは、神経系→神経筋接合部→筋系（サルコメア）→腱→骨格系という一本の流れとして整理されている。",
     "sourceType": "original"
   },
   {
@@ -1423,7 +1423,7 @@ const QUESTIONS = [
       "骨リモデリング"
     ],
     "answer": 0,
-    "explanation": "運動単位の動員は、活動させる運動単位の数を増やすことで筋力を調節する仕組みである。",
+    "explanation": "教科書では、神経系による筋力調節の1つ目の仕組みとして、活性化される運動単位の数を変える「運動単位の動員」が説明されている。",
     "sourceType": "original"
   },
   {
@@ -1497,15 +1497,15 @@ const QUESTIONS = [
     "chapter": 1,
     "category": "総合・応用",
     "type": "standard",
-    "question": "クライアントの身体運動を、神経系から骨の運動まで一連の流れとして説明するとき、最も適切なのはどれか。",
+    "question": "「神経系→神経筋接合部→筋系→腱→骨格系」という流れを理解することの意味として、章のまとめに最も合うものはどれか。",
     "choices": [
-      "神経系→神経筋接合部→筋→腱→骨",
-      "神経系→骨→筋→腱→神経筋接合部",
-      "筋→神経筋接合部→神経系→骨→腱",
-      "腱→筋→神経系→神経筋接合部→骨"
+      "各用語を独立して暗記するため",
+      "身体運動が生じる一連のストーリーとして理解するため",
+      "骨格筋を神経から切り離して考えるため",
+      "筋線維タイプを無視して考えるため"
     ],
-    "answer": 0,
-    "explanation": "神経系からの信号が神経筋接合部を介して筋へ伝わり、筋が発揮した力が腱を通じて骨へ伝達され、関節運動につながる。",
+    "answer": 1,
+    "explanation": "章のまとめでは、この一連の流れを丸暗記ではなくストーリーとして説明できることが次章以降の理解を助けるとしている。",
     "sourceType": "original"
   },
   {
@@ -3093,7 +3093,7 @@ const ADDITIONAL_QUESTIONS = [
       "弛緩"
     ],
     "answer": 2,
-    "explanation": "伸張性筋活動では、短縮性筋活動や等尺性筋活動より大きな筋力を発揮できる。",
+    "explanation": "教材では、伸張性筋活動が最も大きな筋力を発揮できると整理されている。",
     "sourceType": "review",
     "sourceLabel": "章末確認問題",
     "sourceNote": "第1章 第2部 確認問題3"
@@ -3183,7 +3183,7 @@ const ADDITIONAL_QUESTIONS = [
       "速度とは無関係に一定になる"
     ],
     "answer": 1,
-    "explanation": "短縮性筋活動では、短縮速度が高くなるほど発揮できる筋力は低下する。",
+    "explanation": "模擬問題集で扱われている力―速度関係では、短縮性収縮では短縮速度が高いほど発揮できる筋力は低下する。",
     "sourceType": "mock",
     "sourceLabel": "模擬問題（再構成）",
     "sourceNote": "NSCA-CPT模擬問題集 p.16 問15の論点を再構成"
@@ -3363,7 +3363,7 @@ const ADDITIONAL_QUESTIONS = [
       "GTO"
     ],
     "answer": 1,
-    "explanation": "ネプリンはアクチンフィラメントの長さを適切に保つ働きに関係するタンパク質である。",
+    "explanation": "教材では、ネプリンの働きによりアクチンフィラメントが適切な長さに保たれると説明されている。",
     "sourceType": "original",
     "sourceLabel": "CPTmateオリジナル",
     "sourceNote": "第1・2章教材を基準に精査・再構成"
@@ -3381,7 +3381,7 @@ const ADDITIONAL_QUESTIONS = [
       "コラーゲン"
     ],
     "answer": 0,
-    "explanation": "タイチンはミオシンフィラメントをサルコメア内の適切な位置に保つ働きに関係する。",
+    "explanation": "教材では、タイチンがミオシンフィラメントのアクチンに対する位置を保つ働きをすると説明されている。",
     "sourceType": "original",
     "sourceLabel": "CPTmateオリジナル",
     "sourceNote": "第1・2章教材を基準に精査・再構成"
@@ -3391,7 +3391,7 @@ const ADDITIONAL_QUESTIONS = [
     "chapter": 1,
     "category": "筋活動様式",
     "type": "standard",
-    "question": "新しいエクササイズを開始した24〜48時間後に生じる筋の疼痛や不快感の主な原因として、最も適切なのはどれか。",
+    "question": "新しいエクササイズを開始した24〜48時間後に生じる筋の疼痛や不快感について、教材の説明に最も合うものはどれか。",
     "choices": [
       "主に乳酸の蓄積が原因である",
       "結合組織と筋組織の損傷に伴う炎症反応が関係する",
@@ -3399,7 +3399,7 @@ const ADDITIONAL_QUESTIONS = [
       "骨芽細胞の活動低下が主因である"
     ],
     "answer": 1,
-    "explanation": "遅発性筋痛（DOMS）は、主に伸張性筋活動に伴う筋・結合組織の微小損傷と、それに伴う炎症反応が関係する。乳酸の蓄積が主因ではない。",
+    "explanation": "教材ではDOMSは乳酸の蓄積ではなく、結合組織と筋組織の損傷に伴う炎症反応が痛覚受容器を刺激することが原因と説明され、主に伸張性筋活動に伴う微小断裂が関係するとされている。",
     "sourceType": "original",
     "sourceLabel": "CPTmateオリジナル",
     "sourceNote": "第1・2章教材を基準に精査・再構成"
@@ -3417,7 +3417,7 @@ const ADDITIONAL_QUESTIONS = [
       "トロポニン"
     ],
     "answer": 0,
-    "explanation": "ミオグロビンは筋細胞内で酸素の運搬に関与し、ミトコンドリアへの酸素供給を支える。",
+    "explanation": "教材では、ミオグロビンは筋細胞膜からミトコンドリアへ酸素を運搬し、有酸素性能力を高めると説明されている。",
     "sourceType": "original",
     "sourceLabel": "CPTmateオリジナル",
     "sourceNote": "第1・2章教材を基準に精査・再構成"
@@ -3427,7 +3427,7 @@ const ADDITIONAL_QUESTIONS = [
     "chapter": 1,
     "category": "筋線維タイプ",
     "type": "standard",
-    "question": "野球またはソフトボールのように、瞬発的な力発揮を多く含む競技で貢献度が高い筋線維タイプはどれか。",
+    "question": "教材の表1.1に照らした場合、野球またはソフトボールで貢献度が高い筋線維タイプはどれか。",
     "choices": [
       "タイプⅠ",
       "タイプⅡ",
@@ -3435,7 +3435,7 @@ const ADDITIONAL_QUESTIONS = [
       "タイプⅠとⅡは常に同じ"
     ],
     "answer": 1,
-    "explanation": "野球・ソフトボールでは、瞬発的な力発揮を必要とする動作が多く、タイプⅡ線維の貢献度が高い。",
+    "explanation": "教材の表1.1では、野球またはソフトボールにおけるタイプⅡの貢献度が高いと示されている。",
     "sourceType": "original",
     "sourceLabel": "CPTmateオリジナル",
     "sourceNote": "第1・2章教材を基準に精査・再構成"
@@ -3453,7 +3453,7 @@ const ADDITIONAL_QUESTIONS = [
       "中枢神経系―骨格系"
     ],
     "answer": 0,
-    "explanation": "体性神経系は骨格筋の随意運動をつかさどり、自律神経系は心臓や血管などの不随意機能を調節する。",
+    "explanation": "教材では、体性神経系が骨格筋の活動をつかさどり、自律神経系が心臓や血管の平滑筋の収縮などの不随意機能を制御すると説明されている。",
     "sourceType": "original",
     "sourceLabel": "CPTmateオリジナル",
     "sourceNote": "第1・2章教材を基準に精査・再構成"
@@ -3463,7 +3463,7 @@ const ADDITIONAL_QUESTIONS = [
     "chapter": 1,
     "category": "神経系",
     "type": "standard",
-    "question": "運動時に交感神経活動が高まったときに起こる反応として、最も適切なのはどれか。",
+    "question": "運動時に交感神経が果たす役割として、教材の説明に合うものはどれか。",
     "choices": [
       "活動筋への血流を減らし消化を優先する",
       "心臓からの血流を増加させ、肺の換気を良くし、活動筋への血流再分配を支える",
@@ -3471,7 +3471,7 @@ const ADDITIONAL_QUESTIONS = [
       "筋紡錘の感度を必ずゼロにする"
     ],
     "answer": 1,
-    "explanation": "運動時の交感神経活動は、心機能を高め、活動筋への血流再分配を支え、発汗などの反応にも関与する。",
+    "explanation": "教材では交感神経が心臓からの血流を増加させ、肺の換気を良くし、活動している骨格筋への血流再分配や発汗を支えると説明されている。",
     "sourceType": "original",
     "sourceLabel": "CPTmateオリジナル",
     "sourceNote": "第1・2章教材を基準に精査・再構成"
@@ -3481,7 +3481,7 @@ const ADDITIONAL_QUESTIONS = [
     "chapter": 1,
     "category": "骨格系",
     "type": "standard",
-    "question": "骨格系の機能として最も適切な組み合わせはどれか。",
+    "question": "骨格系の機能として、教材で挙げられているものはどれか。",
     "choices": [
       "カルシウムやリンの貯蔵、血球形成、臓器や脊髄の保護",
       "AChの合成、筋収縮、体温調節のみ",
@@ -3489,7 +3489,7 @@ const ADDITIONAL_QUESTIONS = [
       "GTOの感度調節、肺胞換気、血圧測定"
     ],
     "answer": 0,
-    "explanation": "骨格系には、カルシウムやリンなどのミネラルの貯蔵、血球形成、臓器や脊髄の保護などの機能がある。",
+    "explanation": "教材では骨はミネラルの貯蔵場所、血球形成の場所、臓器や脊髄の保護などの機能を担うと説明されている。",
     "sourceType": "original",
     "sourceLabel": "CPTmateオリジナル",
     "sourceNote": "第1・2章教材を基準に精査・再構成"
@@ -3499,7 +3499,7 @@ const ADDITIONAL_QUESTIONS = [
     "chapter": 1,
     "category": "骨格系・リモデリング",
     "type": "standard",
-    "question": "皮質骨と海綿骨の特徴について、最も適切なものはどれか。",
+    "question": "皮質骨と海綿骨について、教材の説明に合うものはどれか。",
     "choices": [
       "皮質骨は主に長骨骨幹の表層をなし、海綿骨はより低密度である",
       "海綿骨は皮質骨より常に密度が高い",
@@ -3507,7 +3507,7 @@ const ADDITIONAL_QUESTIONS = [
       "両者は構造的な違いがない"
     ],
     "answer": 0,
-    "explanation": "皮質骨は硬く緻密で、長骨では主に骨幹の表層を形成する。海綿骨は皮質骨より低密度で、骨内部などにみられる。",
+    "explanation": "教材では皮質骨は硬く緻密で主に長骨骨幹の表層をなし、海綿骨は皮質骨より密度が低く長骨内部などを形成すると説明されている。",
     "sourceType": "original",
     "sourceLabel": "CPTmateオリジナル",
     "sourceNote": "第1・2章教材を基準に精査・再構成"
@@ -3517,7 +3517,7 @@ const ADDITIONAL_QUESTIONS = [
     "chapter": 1,
     "category": "骨格系・リモデリング",
     "type": "standard",
-    "question": "骨の健康を維持・改善する運動として、最も適切なのはどれか。",
+    "question": "骨粗鬆症に対する運動について、教材の説明に最も合うものはどれか。",
     "choices": [
       "荷重負荷運動やレジスタンストレーニングは骨の健康に有用である",
       "運動は骨密度に影響しない",
@@ -3525,7 +3525,7 @@ const ADDITIONAL_QUESTIONS = [
       "カルシウム摂取だけで運動の必要はない"
     ],
     "answer": 0,
-    "explanation": "荷重負荷運動やレジスタンストレーニングは、骨への機械的刺激を通じて骨の健康維持・改善に役立つ。",
+    "explanation": "教材ではウォーキングやランニングなどの荷重負荷運動、レジスタンストレーニングが骨密度の増加に効果的と説明されている。",
     "sourceType": "original",
     "sourceLabel": "CPTmateオリジナル",
     "sourceNote": "第1・2章教材を基準に精査・再構成"
@@ -3535,7 +3535,7 @@ const ADDITIONAL_QUESTIONS = [
     "chapter": 1,
     "category": "骨格系・腱靭帯",
     "type": "standard",
-    "question": "腱と靭帯の役割について正しいものはどれか。",
+    "question": "腱と靭帯の組成・役割について、教材の説明に合うものはどれか。",
     "choices": [
       "腱は筋と骨を結び、靭帯は骨と骨を結ぶ",
       "腱は骨と骨を結び、靭帯は筋と骨を結ぶ",
@@ -3543,7 +3543,7 @@ const ADDITIONAL_QUESTIONS = [
       "腱と靭帯はいずれも神経伝達を担う"
     ],
     "answer": 0,
-    "explanation": "腱は筋と骨を結び、靭帯は骨と骨を結ぶ。いずれも主にコラーゲンを含む結合組織である。",
+    "explanation": "教材では腱は筋と骨を結び、主にコラーゲンで構成される一方、靭帯は骨と骨を結び、コラーゲンに加えてエラスチンを含むと説明されている。",
     "sourceType": "original",
     "sourceLabel": "CPTmateオリジナル",
     "sourceNote": "第1・2章教材を基準に精査・再構成"
@@ -3551,12 +3551,9 @@ const ADDITIONAL_QUESTIONS = [
   {
     "id": "ch1-q056",
     "chapter": 1,
-    "category": "骨格系・長骨",
-    "figureId": "fig-ch1-long-bone",
-    "image": "assets/figures/long_bone_fig1_8.svg",
-    "figureMode": "after",
-    "type": "standard",
-    "question": "長骨の骨幹内部にある空間はどれか。",
+    "category": "図・長骨",
+  "type": "figure",
+    "question": "図1.8の長骨の構造で、骨幹の内部に示されている空間として最も適切なのはどれか。",
     "choices": [
       "骨髄腔",
       "関節面",
@@ -3564,21 +3561,17 @@ const ADDITIONAL_QUESTIONS = [
       "関節軟骨"
     ],
     "answer": 0,
-    "explanation": "骨髄腔は長骨の骨幹内部にある空間で、骨髄を収めている。",
+    "explanation": "図1.8では長骨の中央部である骨幹の内部に骨髄腔が示されている。",
     "sourceType": "original",
     "sourceLabel": "CPTmateオリジナル",
-    "sourceNote": "第1・2章教材を基準に精査・再構成",
-    "figureCaption": "長骨の主要構造"
+    "sourceNote": "第1・2章教材を基準に精査・再構成"
   },
   {
     "id": "ch1-q057",
     "chapter": 1,
-    "category": "骨格系・分類",
-    "figureId": "fig-ch1-skeleton",
-    "image": "assets/figures/skeleton_fig1_9.svg",
-    "figureMode": "after",
-    "type": "standard",
-    "question": "頭蓋・脊柱・胸骨・肋骨などを含む骨格の区分はどれか。",
+    "category": "図・骨格",
+  "type": "figure",
+    "question": "図1.9で、頭蓋・脊柱・胸骨・肋骨などを含む骨格の区分はどれか。",
     "choices": [
       "付属性骨格",
       "軸性骨格",
@@ -3586,21 +3579,17 @@ const ADDITIONAL_QUESTIONS = [
       "関節骨格"
     ],
     "answer": 1,
-    "explanation": "頭蓋、脊柱、胸骨、肋骨などは軸性骨格に含まれる。",
+    "explanation": "図1.9と本文では、頭蓋、脊柱、胸骨、肋骨などは軸性骨格に含まれると説明されている。",
     "sourceType": "original",
     "sourceLabel": "CPTmateオリジナル",
-    "sourceNote": "第1・2章教材を基準に精査・再構成",
-    "figureCaption": "軸性骨格と付属性骨格"
+    "sourceNote": "第1・2章教材を基準に精査・再構成"
   },
   {
     "id": "ch1-q058",
     "chapter": 1,
-    "category": "神経系・ニューロン",
-    "figureId": "fig-ch1-neuron",
-    "image": "assets/figures/neuron_fig1_6.svg",
-    "figureMode": "after",
-    "type": "standard",
-    "question": "細胞体から伸び、活動電位を遠くの標的へ伝える構造はどれか。",
+    "category": "図・ニューロン",
+  "type": "figure",
+    "question": "図1.6で、細胞体から伸びて長距離にわたりインパルスを伝える構造はどれか。",
     "choices": [
       "樹状突起",
       "軸索",
@@ -3608,21 +3597,17 @@ const ADDITIONAL_QUESTIONS = [
       "核小体"
     ],
     "answer": 1,
-    "explanation": "軸索は細胞体から伸びる長い突起で、活動電位を遠くの標的へ伝える。",
+    "explanation": "図1.6では軸索が細胞体から伸びる長い構造として示され、運動神経では筋へ活動電位を伝える経路となる。",
     "sourceType": "original",
     "sourceLabel": "CPTmateオリジナル",
-    "sourceNote": "第1・2章教材を基準に精査・再構成",
-    "figureCaption": "神経細胞の模式図"
+    "sourceNote": "第1・2章教材を基準に精査・再構成"
   },
   {
     "id": "ch1-q059",
     "chapter": 1,
-    "category": "神経系・感覚受容器",
-    "figureId": "fig-ch1-spindle-gto",
-    "image": "assets/figures/spindle_gto_fig1_7.svg",
-    "figureMode": "after",
-    "type": "standard",
-    "question": "筋紡錘とゴルジ腱器官（GTO）の位置関係として正しいものはどれか。",
+    "category": "図・筋紡錘とGTO",
+  "type": "figure",
+    "question": "図1.7に示される筋紡錘とゴルジ腱器官（GTO）の位置関係として正しいものはどれか。",
     "choices": [
       "筋紡錘は筋内、GTOは筋と骨が付着する腱にある",
       "筋紡錘は骨の内部、GTOは神経細胞体にある",
@@ -3630,11 +3615,10 @@ const ADDITIONAL_QUESTIONS = [
       "筋紡錘は腱にあり、GTOは筋腹にある"
     ],
     "answer": 0,
-    "explanation": "筋紡錘は骨格筋内にあり、GTOは筋と骨をつなぐ腱の部分にある。",
+    "explanation": "図1.7では筋紡錘が骨格筋内に、GTOが筋と骨が付着する腱の接合部に示されている。",
     "sourceType": "original",
     "sourceLabel": "CPTmateオリジナル",
-    "sourceNote": "第1・2章教材を基準に精査・再構成",
-    "figureCaption": "筋紡錘とゴルジ腱器官（GTO）"
+    "sourceNote": "第1・2章教材を基準に精査・再構成"
   },
   {
     "id": "ch2-review-001",
@@ -3892,7 +3876,7 @@ const ADDITIONAL_QUESTIONS = [
     "id": "ch2-case001-q01",
     "chapter": 2,
     "category": "ケーススタディ・運動時酸素供給",
-    "type": "case",
+  "type": "case",
     "question": "クライアントが高強度運動中に「筋へ酸素を届ける仕組み」を質問した。最も適切な説明はどれか。",
     "choices": [
       "肺胞で取り込んだ酸素を血液が運び、心拍出量によって活動筋へ届ける",
@@ -3910,7 +3894,7 @@ const ADDITIONAL_QUESTIONS = [
     "id": "ch2-case001-q02",
     "chapter": 2,
     "category": "ケーススタディ・運動時酸素供給",
-    "type": "case",
+  "type": "case",
     "question": "同じクライアントで運動強度が上がると動静脈酸素較差も増えた。この変化が意味するものはどれか。",
     "choices": [
       "血液から活動組織へ取り込まれる酸素量が増えている",
@@ -3928,7 +3912,7 @@ const ADDITIONAL_QUESTIONS = [
     "id": "ch2-case002-q01",
     "chapter": 2,
     "category": "ケーススタディ・循環",
-    "type": "case",
+  "type": "case",
     "question": "クライアントが運動中に活動筋への血流が増える理由を尋ねた。最も適切なのはどれか。",
     "choices": [
       "活動筋の局所的な血管拡張が起こり、非活動組織からの血流再分配も加わる",
@@ -3946,7 +3930,7 @@ const ADDITIONAL_QUESTIONS = [
     "id": "ch2-case002-q02",
     "chapter": 2,
     "category": "ケーススタディ・循環",
-    "type": "case",
+  "type": "case",
     "question": "同じ状況で静脈還流が増えて心室への充満が増えた。フランク・スターリングの法則から予想されるのはどれか。",
     "choices": [
       "収縮力と1回拍出量が増える方向",
@@ -5274,12 +5258,6 @@ function renderQuestion() {
     </div>
 
     <section class="card">
-      ${q.type === "case" ? `
-        <div class="case-badge">
-          ケーススタディ${q.caseTitle ? `　${q.caseTitle}` : ""}
-        </div>
-      ` : ""}
-
       <div class="question-head">
         <span>第${q.chapter}章　${q.category}</span>
         <span>この演習：${state.currentIndex + 1} / ${queue.length}</span>
