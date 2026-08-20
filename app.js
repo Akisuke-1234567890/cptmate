@@ -1,4 +1,4 @@
-const APP_VERSION = "0.2.94";
+const APP_VERSION = "0.2.95";
 
 /* v0.2.63: home logo placement + startup splash/crossfade */
 const CPTMATE_BRAND_LOGO = "assets/branding/cptmate-horizontal-logo.png";
@@ -769,7 +769,7 @@ const QUESTIONS = [
     "category": "筋収縮・流れ",
     "type": "standard",
     "figureId": "fig-ch1-contraction",
-    "image": "assets/figures/contraction_fig1_5_textbook.svg",
+    "image": "assets/figures/contraction_fig1_5.svg",
     "figureMode": "after",
     "question": "筋収縮の過程で最初に起こるものはどれか。",
     "choices": [
@@ -788,7 +788,7 @@ const QUESTIONS = [
     "category": "筋収縮・流れ",
     "type": "standard",
     "figureId": "fig-ch1-contraction",
-    "image": "assets/figures/contraction_fig1_5_textbook.svg",
+    "image": "assets/figures/contraction_fig1_5.svg",
     "figureMode": "after",
     "question": "AChが筋線維側で結合する場所はどれか。",
     "choices": [
@@ -807,7 +807,7 @@ const QUESTIONS = [
     "category": "筋収縮・流れ",
     "type": "standard",
     "figureId": "fig-ch1-contraction",
-    "image": "assets/figures/contraction_fig1_5_textbook.svg",
+    "image": "assets/figures/contraction_fig1_5.svg",
     "figureMode": "after",
     "question": "筋線維の活動電位を細胞内部へ伝える構造はどれか。",
     "choices": [
@@ -826,7 +826,7 @@ const QUESTIONS = [
     "category": "筋収縮・流れ",
     "type": "standard",
     "figureId": "fig-ch1-contraction",
-    "image": "assets/figures/contraction_fig1_5_textbook.svg",
+    "image": "assets/figures/contraction_fig1_5.svg",
     "figureMode": "after",
     "question": "活動電位を受けてカルシウムイオンを放出する構造はどれか。",
     "choices": [
@@ -1596,7 +1596,7 @@ const QUESTIONS = [
     "category": "図・筋収縮",
     "type": "figure",
     "figureId": "fig-ch1-contraction",
-    "image": "assets/figures/contraction_fig1_5_textbook.svg",
+    "image": "assets/figures/contraction_fig1_5.svg",
     "figureMode": "question",
     "question": "図(b)で、活動電位がT管を通じて筋線維内部に伝わった後に起こる現象はどれか。",
     "choices": [
@@ -5037,7 +5037,7 @@ function renderQuestionFigure(q, mode = "default") {
   ensureFigureStyles();
   const caption = q.figureCaption || ({
     "assets/figures/sarcomere_fig1_4.svg": "サルコメア・アクチン・ミオシンとフィラメント滑走の関係",
-    "assets/figures/contraction_fig1_5_textbook.svg": "神経から筋収縮までの流れ",
+    "assets/figures/contraction_fig1_5.svg": "神経から筋収縮までの流れ",
     "assets/figures/neuron.svg": "神経細胞の基本構造",
     "assets/figures/spindle_gto_fig1_7.svg": "筋紡錘とゴルジ腱器官の役割",
     "assets/figures/long_bone_fig1_8.svg": "長骨の主な構造",
@@ -5463,7 +5463,7 @@ function renderStats() {
 
 const FIGURE_LIBRARY = {
   "fig-ch1-sarcomere": { chapter: 1, title: "サルコメア・アクチン・ミオシン", image: "assets/figures/sarcomere_fig1_4.svg", caption: "図1.4に対応するCPTmate学習図。Z線・A帯・H帯・M線・I帯、アクチン・ミオシンの関係を確認する。" },
-  "fig-ch1-contraction": { chapter: 1, title: "神経刺激から筋収縮まで", image: "assets/figures/contraction_fig1_5_textbook.svg", caption: "教材の図1.5を基準とした図版。神経筋接合部、T管・筋小胞体、Ca²⁺、トロポニン・トロポミオシン、アクチン・ミオシンの関係を確認する。" },
+  "fig-ch1-contraction": { chapter: 1, title: "神経刺激から筋収縮まで", image: "assets/figures/contraction_fig1_5.svg", caption: "図1.5に対応するCPTmate学習図。神経筋接合部からCa²⁺放出、トロポニン・トロポミオシンを経て収縮へ至る流れ。" },
   "fig-ch1-neuron": { chapter: 1, title: "神経細胞の模式図", image: "assets/figures/neuron_fig1_6.svg", caption: "図1.6に対応するCPTmate学習図。樹状突起・細胞体・軸索・髄鞘・ランビエ絞輪・軸索終末の位置関係を確認する。" },
   "fig-ch1-spindle-gto": { chapter: 1, title: "筋紡錘とゴルジ腱器官（GTO）", image: "assets/figures/spindle_gto_fig1_7.svg", caption: "図1.7に対応するCPTmate学習図。筋紡錘とGTOの構造・位置関係を確認する。" },
   "fig-ch1-long-bone": { chapter: 1, title: "長骨の構造と骨リモデリング", image: "assets/figures/long_bone_fig1_8.svg", caption: "図1.8に対応するCPTmate学習図。長骨の主要構造を確認する。" },
@@ -5488,35 +5488,120 @@ function getFigureCatalog() {
   }));
 }
 
-function renderFigureGallery() {
+function getFigureUsageQuestions(figureId) {
+  return ALL_QUESTIONS
+    .map((q, index) => ({ q, index }))
+    .filter(({ q }) => q.figureId === figureId)
+    .map(({ q }) => {
+      const chapterQuestions = ALL_QUESTIONS.filter(x => x.chapter === q.chapter);
+      const chapterNo = chapterQuestions.findIndex(x => x.id === q.id) + 1;
+      const typeLabel = {
+        standard: "通常問題",
+        review: "章末確認問題",
+        mock: "模擬問題"
+      }[q.type] || q.type || "問題";
+      return {
+        id: q.id,
+        chapter: q.chapter,
+        chapterNo,
+        category: q.category || "分類なし",
+        typeLabel,
+        question: q.question || ""
+      };
+    });
+}
+
+function renderFigureGallery(filterText = "") {
   setActiveNav("settings");
   const figures = getFigureCatalog();
+  const query = String(filterText || "").trim().toLowerCase();
+
+  const filtered = figures.filter(fig => {
+    if (!query) return true;
+    const usage = getFigureUsageQuestions(fig.id);
+    const haystack = [
+      fig.id,
+      fig.title,
+      fig.caption,
+      `第${fig.chapter}章`,
+      ...usage.flatMap(u => [u.id, u.category, u.typeLabel, u.question])
+    ].join(" ").toLowerCase();
+    return haystack.includes(query);
+  });
+
   screenEl().innerHTML = `
     <div class="back-row">
       <button class="back-btn" onclick="renderSettings()">‹</button>
       <h2>図・イラスト一覧</h2>
     </div>
-    <section class="card figure-gallery-card">
+    <section class="card">
       <p style="color:var(--muted);line-height:1.7;margin-top:0;">
         CPTmateに登録されている図・イラスト資料を確認できます。図をタップすると全画面で確認できます。
       </p>
+      <input
+        id="figureSearchInput"
+        class="text-input"
+        type="search"
+        placeholder="図名・図番号・問題文・問題IDで検索"
+        value="${String(filterText).replace(/"/g, "&quot;")}"
+        oninput="renderFigureGallery(this.value)"
+      >
+      <div style="margin-top:8px;color:var(--muted);font-size:12px;">
+        ${filtered.length} / ${figures.length} 図
+      </div>
+    </section>
+    <section class="card">
       <div class="figure-gallery-list">
-        ${figures.map((fig, i) => {
+        ${filtered.length ? filtered.map((fig) => {
+          const usage = getFigureUsageQuestions(fig.id);
           const safeCaption = fig.caption.replace(/\\/g, "\\\\").replace(/'/g, "\\'").replace(/\n/g, " ");
+          const usageHtml = usage.length
+            ? usage.map(u => `
+                <div class="figure-usage-item">
+                  <div class="figure-usage-head">
+                    <strong>第${u.chapter}章・問題${u.chapterNo}</strong>
+                    <span>${u.id}</span>
+                  </div>
+                  <div class="figure-usage-meta">${u.typeLabel}　${u.category}</div>
+                  <div class="figure-usage-question">${u.question}</div>
+                </div>
+              `).join("")
+            : `<div class="figure-usage-empty">現在、問題からの参照はありません。</div>`;
+
           return `
-            <button class="figure-gallery-item" type="button" onclick="openFigureModal('${fig.image}?v=${APP_VERSION}','${safeCaption}')">
-              <div class="figure-gallery-thumb"><img src="${fig.image}?v=${APP_VERSION}" alt="${fig.caption}" loading="lazy"></div>
-              <div class="figure-gallery-meta">
-                <strong>${fig.title}</strong>
-                <span>第${fig.chapter}章　使用問題 ${fig.ids.length}問</span>
-              </div>
-            </button>
+            <div class="figure-gallery-item">
+              <button class="figure-gallery-main" type="button"
+                onclick="openFigureModal('${fig.image}?v=${APP_VERSION}','${safeCaption}')">
+                <div class="figure-gallery-thumb">
+                  <img src="${fig.image}?v=${APP_VERSION}" alt="${fig.title}" loading="lazy">
+                </div>
+                <div class="figure-gallery-meta">
+                  <strong>${fig.title}</strong>
+                  <span>第${fig.chapter}章　使用問題 ${usage.length}問</span>
+                </div>
+              </button>
+              <details class="figure-usage-details">
+                <summary>使用問題を表示</summary>
+                <div class="figure-usage-list">${usageHtml}</div>
+              </details>
+            </div>
           `;
-        }).join("")}
+        }).join("") : `
+          <div style="padding:20px;text-align:center;color:var(--muted);">
+            該当する図・問題がありません。
+          </div>
+        `}
       </div>
     </section>
   `;
   ensureFigureGalleryStyles();
+
+  // 検索欄を再描画しても入力位置が飛ばないようにカーソルを末尾へ。
+  const input = document.getElementById("figureSearchInput");
+  if (input) {
+    input.focus();
+    try { input.setSelectionRange(input.value.length, input.value.length); } catch (_) {}
+  }
 }
 
 function ensureFigureGalleryStyles() {
@@ -5525,12 +5610,24 @@ function ensureFigureGalleryStyles() {
   style.id = "cptmateFigureGalleryStyles";
   style.textContent = `
     .figure-gallery-list{display:grid;gap:12px}
-    .figure-gallery-item{display:flex;gap:14px;align-items:center;width:100%;padding:12px;border:1px solid var(--line);border-radius:16px;background:#fff;text-align:left;cursor:pointer}
+    .figure-gallery-item{display:block;width:100%;padding:12px;border:1px solid var(--line);border-radius:16px;background:#fff}
+    .figure-gallery-main{display:flex;gap:14px;align-items:center;width:100%;padding:0;border:0;background:transparent;text-align:left;cursor:pointer}
     .figure-gallery-thumb{width:112px;height:82px;flex:0 0 112px;border-radius:12px;background:#f7f9f9;display:flex;align-items:center;justify-content:center;overflow:hidden}
     .figure-gallery-thumb img{width:100%;height:100%;object-fit:contain}
     .figure-gallery-meta{min-width:0;display:flex;flex-direction:column;gap:5px}
     .figure-gallery-meta strong{font-size:14px;line-height:1.45}
     .figure-gallery-meta span{font-size:12px;color:var(--muted)}
+    .figure-usage-details{margin-top:10px;border-top:1px solid var(--line);padding-top:8px}
+    .figure-usage-details summary{cursor:pointer;color:var(--primary);font-weight:700;font-size:13px;padding:4px 0}
+    .figure-usage-list{display:grid;gap:8px;margin-top:8px}
+    .figure-usage-item{padding:10px 11px;border-radius:12px;background:var(--surface);border:1px solid var(--line)}
+    .figure-usage-head{display:flex;justify-content:space-between;gap:8px;align-items:baseline}
+    .figure-usage-head strong{font-size:13px}
+    .figure-usage-head span{font-size:11px;color:var(--muted)}
+    .figure-usage-meta{margin-top:3px;font-size:11px;color:var(--muted)}
+    .figure-usage-question{margin-top:6px;font-size:12px;line-height:1.55}
+    .figure-usage-empty{font-size:12px;color:var(--muted);padding:8px 0}
+    #figureSearchInput{width:100%;box-sizing:border-box;padding:12px 14px;border:1px solid var(--line);border-radius:12px;background:#fff;font-size:15px}
   `;
   document.head.appendChild(style);
 }
