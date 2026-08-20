@@ -1,4 +1,4 @@
-const APP_VERSION = "0.2.97";
+const APP_VERSION = "0.2.98";
 
 /* v0.2.63: home logo placement + startup splash/crossfade */
 const CPTMATE_BRAND_LOGO = "assets/branding/cptmate-horizontal-logo.png";
@@ -5314,8 +5314,42 @@ function renderSourceBadge(question) {
   return `<div class="source-badge-group"><span class="source-badge source-origin source-${type}">${label}</span></div>`;
 }
 
+function ensureChoiceFeedbackStyles() {
+  if (document.getElementById("cptmate-choice-feedback-styles")) return;
+  const style = document.createElement("style");
+  style.id = "cptmate-choice-feedback-styles";
+  style.textContent = `
+    .choice {
+      display: flex !important;
+      align-items: center !important;
+      gap: 12px !important;
+    }
+    .choice .choice-text {
+      flex: 1 1 auto !important;
+      min-width: 0 !important;
+    }
+    .choice-feedback-mark {
+      flex: 0 0 38px !important;
+      width: 38px !important;
+      margin-left: auto !important;
+      text-align: center !important;
+      font-size: 30px !important;
+      font-weight: 800 !important;
+      line-height: 1 !important;
+    }
+    .choice-feedback-mark.is-correct {
+      color: #16833d !important;
+    }
+    .choice-feedback-mark.is-wrong {
+      color: #d71920 !important;
+    }
+  `;
+  document.head.appendChild(style);
+}
+
 function renderQuestion() {
   ensureOptionReviewStyles();
+  ensureChoiceFeedbackStyles();
   setActiveNav("practice");
   const queue = getPracticeQuestions();
   if (!queue.length) { renderPracticeSelector(); return; }
@@ -5339,8 +5373,11 @@ function renderQuestion() {
       if (i === q.answer) cls = "correct";
       else if (i === saved.selected && !saved.correct) cls = "wrong";
     }
+    const feedbackMark = saved
+      ? `<span class="choice-feedback-mark ${i === q.answer ? "is-correct" : "is-wrong"}" aria-hidden="true">${i === q.answer ? "○" : "×"}</span>`
+      : "";
     return `<button class="choice ${cls}" ${saved ? "disabled" : ""} onclick="answerQuestion(${i})">
-      <span class="letter">${letters[i]}</span><span>${choice}</span>
+      <span class="letter">${letters[i]}</span><span class="choice-text">${choice}</span>${feedbackMark}
     </button>`;
   }).join("");
 
