@@ -4084,7 +4084,16 @@ function confirmPracticeLeave(destination) {
   const position = Math.min(state.currentIndex + 1, queue.length);
   const ok = confirm(`演習の途中です。\n\n${practiceLabel}\n現在 ${position} / ${queue.length} 問\n\n途中経過を保存して移動しますか？\n「キャンセル」で演習を続けられます。`);
   if (!ok) return;
+
   pausePracticeSession();
+
+  // v0.2.90: 演習から離脱した直後も lastViewed が "practice" のままだと、
+  // 遷移先が lastViewed を上書きしない画面（お気に入り・復習・設定など）で
+  // 次のページ移動時に同じ確認ダイアログが再表示される。
+  // 途中セッション自体は保存したまま、現在位置だけを「演習外」に移す。
+  state.lastViewed = "navigation";
+  saveState();
+
   destination();
 }
 
