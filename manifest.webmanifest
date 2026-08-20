@@ -1,0 +1,26 @@
+{
+  "name": "CPTmate",
+  "short_name": "CPTmate",
+  "id": "./",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#f7fbfb",
+  "theme_color": "#0f5f63",
+  "description": "CPTmate NSCA-CPT問題演習アプリ",
+  "icons": [
+    {
+      "src": "./assets/branding/cptmate-pwa-icon-192.png?v=0.2.90",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "./assets/branding/cptmate-pwa-icon-512.png?v=0.2.90",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ]
+}
