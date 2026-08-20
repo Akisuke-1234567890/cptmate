@@ -1,4 +1,4 @@
-const APP_VERSION = "0.2.98";
+const APP_VERSION = "0.2.99";
 
 /* v0.2.63: home logo placement + startup splash/crossfade */
 const CPTMATE_BRAND_LOGO = "assets/branding/cptmate-horizontal-logo.png";
@@ -5651,6 +5651,9 @@ function getFigureUsageQuestions(figureId) {
 
 function renderFigureGallery(filterText = "") {
   setActiveNav("settings");
+  const preserveSearchFocus =
+    document.activeElement &&
+    document.activeElement.id === "figureSearchInput";
   const figures = getFigureCatalog();
   const query = String(filterText || "").trim().toLowerCase();
 
@@ -5734,12 +5737,26 @@ function renderFigureGallery(filterText = "") {
   `;
   ensureFigureGalleryStyles();
 
-  // 検索欄を再描画しても入力位置が飛ばないようにカーソルを末尾へ。
-  const input = document.getElementById("figureSearchInput");
-  if (input) {
-    input.focus();
-    try { input.setSelectionRange(input.value.length, input.value.length); } catch (_) {}
+  // 初回表示では検索欄へフォーカスしない。
+  // すでに検索入力中だった場合だけ、再描画後にフォーカスを復元する。
+  if (preserveSearchFocus) {
+    const input = document.getElementById("figureSearchInput");
+    if (input) {
+      input.focus();
+      try { input.setSelectionRange(input.value.length, input.value.length); } catch (_) {}
+    }
   }
+}
+
+function ensureFigureSettingsStyles() {
+  if (document.getElementById("cptmateFigureSettingsStyles")) return;
+  const style = document.createElement("style");
+  style.id = "cptmateFigureSettingsStyles";
+  style.textContent = `
+    .figure-settings-card h3 { margin-top: 0; }
+    .figure-settings-card p { margin-bottom: 14px; }
+  `;
+  document.head.appendChild(style);
 }
 
 function ensureFigureGalleryStyles() {
@@ -5779,9 +5796,15 @@ function renderSettings() {
       <p style="color:var(--muted);line-height:1.7;">学習データはこのiPhoneのブラウザ内に保存されます。必要に応じてバックアップ・復元ができます。</p>
       <button class="secondary-btn full" onclick="exportBackup()">現在の学習データをバックアップ</button>
       <button class="secondary-btn full" onclick="importBackup()">バックアップから復元</button>
-      <button class="secondary-btn full" onclick="renderFigureGallery()">図・イラスト一覧</button>
       <input id="backupFileInput" type="file" accept="application/json,.json" style="display:none" onchange="importBackupFile(event)">
       <button class="secondary-btn full" onclick="resetProgress()">学習データをリセット</button>
+    </section>
+    <section class="card figure-settings-card">
+      <h3>資料</h3>
+      <p style="color:var(--muted);line-height:1.7;margin-top:0;">
+        CPTmateで使用している図・イラストを確認できます。
+      </p>
+      <button class="secondary-btn full" onclick="renderFigureGallery()">図・イラスト一覧</button>
     </section>
     <section class="card">
       <h3>アプリ情報</h3>
@@ -5790,6 +5813,7 @@ function renderSettings() {
       <p id="updateStatus" style="margin:10px 0 0;color:var(--muted);font-size:13px;text-align:center;">現在のバージョン：v${APP_VERSION}</p>
     </section>
   `;
+  ensureFigureSettingsStyles();
 }
 
 function compareVersions(a, b) {
