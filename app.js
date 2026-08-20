@@ -1,4 +1,4 @@
-const APP_VERSION = "0.2.99";
+const APP_VERSION = "0.2.100";
 
 /* v0.2.63: home logo placement + startup splash/crossfade */
 const CPTMATE_BRAND_LOGO = "assets/branding/cptmate-horizontal-logo.png";
@@ -1960,7 +1960,7 @@ const QUESTIONS = [
       "SBP×DBP"
     ],
     "answer": 0,
-    "explanation": "本章ではMAP＝拡張期血圧＋0.333×（収縮期血圧−拡張期血圧）としている。",
+    "explanation": "MAP（Mean Arterial Pressure：平均動脈圧）は、本章ではDBP（Diastolic Blood Pressure：拡張期血圧）＋0.333×（SBP（Systolic Blood Pressure：収縮期血圧）−DBP（Diastolic Blood Pressure：拡張期血圧））として求める。DBP＝拡張期血圧、SBP＝収縮期血圧と対応させて覚えておこう。",
     "sourceType": "original",
     "sourceNote": "ユーザー提供の第2章PDFを基準にCPTmateオリジナル問題として作成"
   },
