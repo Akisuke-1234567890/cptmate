@@ -1,4 +1,4 @@
-const APP_VERSION = "0.2.104";
+const APP_VERSION = "0.2.105";
 
 /* v0.2.63: home logo placement + startup splash/crossfade */
 const CPTMATE_BRAND_LOGO = "assets/branding/cptmate-horizontal-logo.png";
@@ -2201,30 +2201,51 @@ const QUESTIONS = [
     "sourceNote": "ユーザー提供の第2章PDFを基準にCPTmateオリジナル問題として作成"
   },
   {
-    "id": "ch02-q032",
-    "chapter": 2,
-    "category": "酸素摂取・運動適応",
-    "type": "standard",
-    "question": "表2.1では、運動強度が安静時→中強度→高強度と上がったとき、動静脈酸素較差はどう変化するか。",
-    "choices": [
-      "6→10→16 mL/血液100mL",
-      "16→10→6 mL/血液100mL",
-      "20→20→20 mL/血液100mL",
-      "4→6→10 mL/血液100mL"
+  "id": "ch02-q032",
+  "chapter": 2,
+  "category": "酸素摂取・運動適応",
+  "type": "standard",
+  "question": "運動強度が安静時→中強度→高強度と上がったとき、動静脈酸素較差はどう変化するか。",
+  "choices": [
+    "6→10→16 mL/血液100mL",
+    "16→10→6 mL/血液100mL",
+    "20→20→20 mL/血液100mL",
+    "4→6→10 mL/血液100mL"
+  ],
+  "answer": 0,
+  "explanation": "運動強度が上がると、動脈血の酸素量はほぼ一定のまま、筋でより多くの酸素が利用されるため、静脈側に残る酸素量が減少し、動静脈酸素較差は増加する。回答後に確認表で数値の変化を確認できる。",
+  "explanationTable": {
+    "title": "運動強度と動静脈酸素較差",
+    "headers": [
+      "運動強度",
+      "動脈血O₂",
+      "静脈血O₂",
+      "動静脈酸素較差"
     ],
-    "answer": 0,
-    "explanation": "運動強度が上がると、動脈血の酸素量はほぼ一定のまま、筋でより多くの酸素が利用されるため、静脈側に残る酸素量が減少し、動静脈酸素較差は増加する。",
-    "explanationTable": {
-      "title": "運動強度と取り込まれる酸素量",
-      "rows": [
-        ["安静時", "20mL/血液100mL", "14mL/血液100mL", "6mL/血液100mL"],
-        ["中強度", "20mL/血液100mL", "10mL/血液100mL", "10mL/血液100mL"],
-        ["高強度", "20mL/血液100mL", "4mL/血液100mL", "16mL/血液100mL"]
+    "rows": [
+      [
+        "安静時",
+        "20mL/血液100mL",
+        "14mL/血液100mL",
+        "6mL/血液100mL"
+      ],
+      [
+        "中強度",
+        "20mL/血液100mL",
+        "10mL/血液100mL",
+        "10mL/血液100mL"
+      ],
+      [
+        "高強度",
+        "20mL/血液100mL",
+        "4mL/血液100mL",
+        "16mL/血液100mL"
       ]
-    },
-    "sourceType": "original",
-    "sourceNote": "ユーザー提供の第2章PDFを基準にCPTmateオリジナル問題として作成"
+    ]
   },
+  "sourceType": "original",
+  "sourceNote": "ユーザー提供の第2章PDFを基準にCPTmateオリジナル問題として作成"
+},
   {
     "id": "ch02-q033",
     "chapter": 2,
@@ -2789,23 +2810,52 @@ const QUESTIONS = [
     "sourceNote": "第2章PDFの酸素‐ヘモグロビン解離曲線の記載を基準に新規作成"
   },
   {
-    "id": "ch02-q064",
-    "chapter": 2,
-    "category": "血液・酸素運搬",
-    "type": "standard",
-    "question": "動脈血の酸素含有量が20mL/血液100mL、静脈血が4mL/血液100mLだった。動静脈酸素較差はいくつか。",
-    "choices": [
-      "4mL/100mL",
-      "16mL/100mL",
-      "20mL/100mL",
-      "24mL/100mL"
+  "id": "ch02-q064",
+  "chapter": 2,
+  "category": "血液・酸素運搬",
+  "type": "standard",
+  "question": "動脈血の酸素含有量が20mL/血液100mL、静脈血が4mL/血液100mLだった。動静脈酸素較差はいくつか。",
+  "choices": [
+    "4mL/100mL",
+    "16mL/100mL",
+    "20mL/100mL",
+    "24mL/100mL"
+  ],
+  "answer": 1,
+  "explanation": "動静脈酸素較差は動脈血の酸素量から静脈血の酸素量を引いて求めるため、20−4＝16mL/血液100mLとなる。回答後に確認表で高強度運動時の値と対応関係を確認できる。",
+  "sourceType": "original",
+  "sourceLabel": "CPTmateオリジナル",
+  "sourceNote": "第2章PDFの表2.1を基準に新規作成",
+  "explanationTable": {
+    "title": "運動強度と動静脈酸素較差",
+    "headers": [
+      "運動強度",
+      "動脈血O₂",
+      "静脈血O₂",
+      "動静脈酸素較差"
     ],
-    "answer": 1,
-    "explanation": "動静脈酸素較差は動脈血の酸素量から静脈血の酸素量を引いて求めるため、20−4＝16mL/血液100mLとなる。本章の表2.1でも高強度運動時は16mL/100mLと示されている。",
-    "sourceType": "original",
-    "sourceLabel": "CPTmateオリジナル",
-    "sourceNote": "第2章PDFの表2.1を基準に新規作成"
-  },
+    "rows": [
+      [
+        "安静時",
+        "20mL/血液100mL",
+        "14mL/血液100mL",
+        "6mL/血液100mL"
+      ],
+      [
+        "中強度",
+        "20mL/血液100mL",
+        "10mL/血液100mL",
+        "10mL/血液100mL"
+      ],
+      [
+        "高強度",
+        "20mL/血液100mL",
+        "4mL/血液100mL",
+        "16mL/血液100mL"
+      ]
+    ]
+  }
+},
   {
     "id": "ch02-q065",
     "chapter": 2,
@@ -3563,23 +3613,108 @@ const ADDITIONAL_QUESTIONS = [
     "sourceNote": "第1・2章教材を基準に精査・再構成"
   },
   {
-    "id": "ch1-q049",
-    "chapter": 1,
-    "category": "筋線維タイプ",
-    "type": "standard",
-    "question": "教材の表1.1に照らした場合、野球またはソフトボールで貢献度が高い筋線維タイプはどれか。",
-    "choices": [
+  "id": "ch1-q049",
+  "chapter": 1,
+  "category": "筋線維タイプ",
+  "type": "standard",
+  "question": "野球またはソフトボールで、貢献度が高い筋線維タイプはどれか。",
+  "choices": [
+    "タイプⅠ",
+    "タイプⅡ",
+    "錘内線維",
+    "タイプⅠとⅡは常に同じ"
+  ],
+  "answer": 1,
+  "explanation": "野球またはソフトボールでは、タイプⅡ線維の貢献度が高い。回答後に確認表で各活動におけるタイプⅠ・タイプⅡの貢献度を確認できる。",
+  "sourceType": "original",
+  "sourceLabel": "CPTmateオリジナル",
+  "sourceNote": "第1・2章教材を基準に精査・再構成",
+  "explanationTable": {
+    "title": "身体活動中に用いられる筋線維タイプとその貢献度",
+    "headers": [
+      "活動",
       "タイプⅠ",
-      "タイプⅡ",
-      "錘内線維",
-      "タイプⅠとⅡは常に同じ"
+      "タイプⅡ"
     ],
-    "answer": 1,
-    "explanation": "教材の表1.1では、野球またはソフトボールにおけるタイプⅡの貢献度が高いと示されている。",
-    "sourceType": "original",
-    "sourceLabel": "CPTmateオリジナル",
-    "sourceNote": "第1・2章教材を基準に精査・再構成"
-  },
+    "rows": [
+      [
+        "ウォーキング",
+        "高",
+        "低"
+      ],
+      [
+        "ガーデニングまたは庭仕事",
+        "高",
+        "低"
+      ],
+      [
+        "大型家具の移動",
+        "低",
+        "高"
+      ],
+      [
+        "消火活動",
+        "高",
+        "高"
+      ],
+      [
+        "長距離のランニングまたはサイクリング",
+        "高",
+        "低"
+      ],
+      [
+        "スプリント",
+        "低",
+        "高"
+      ],
+      [
+        "オリンピックウエイトリフティング",
+        "低",
+        "高"
+      ],
+      [
+        "野球またはソフトボール",
+        "低",
+        "高"
+      ],
+      [
+        "フットボール",
+        "低",
+        "高"
+      ],
+      [
+        "テニス",
+        "高",
+        "高"
+      ],
+      [
+        "レスリング",
+        "高",
+        "高"
+      ],
+      [
+        "バレーボール",
+        "低",
+        "高"
+      ],
+      [
+        "投擲",
+        "低",
+        "高"
+      ],
+      [
+        "筋力向上のためのレジスタンストレーニング",
+        "低",
+        "高"
+      ],
+      [
+        "筋持久力向上のためのサーキット形式のウェイトトレーニングまたはレジスタンストレーニング",
+        "高",
+        "低"
+      ]
+    ]
+  }
+},
   {
     "id": "ch1-q050",
     "chapter": 1,
@@ -3689,77 +3824,89 @@ const ADDITIONAL_QUESTIONS = [
     "sourceNote": "第1・2章教材を基準に精査・再構成"
   },
   {
-    "id": "ch1-q056",
-    "chapter": 1,
-    "category": "図・長骨",
+  "id": "ch1-q056",
+  "chapter": 1,
+  "category": "図・長骨",
   "type": "figure",
-    "question": "図1.8の長骨の構造で、骨幹の内部に示されている空間として最も適切なのはどれか。",
-    "choices": [
-      "骨髄腔",
-      "関節面",
-      "骨端軟骨板",
-      "関節軟骨"
-    ],
-    "answer": 0,
-    "explanation": "図1.8では長骨の中央部である骨幹の内部に骨髄腔が示されている。",
-    "sourceType": "original",
-    "sourceLabel": "CPTmateオリジナル",
-    "sourceNote": "第1・2章教材を基準に精査・再構成"
-  },
+  "question": "長骨の骨幹の内部にある空間として最も適切なのはどれか。",
+  "choices": [
+    "骨髄腔",
+    "関節面",
+    "骨端軟骨板",
+    "関節軟骨"
+  ],
+  "answer": 0,
+  "explanation": "骨幹の内部には骨髄腔がある。回答後に長骨の構造図で位置関係を確認できる。",
+  "sourceType": "original",
+  "sourceLabel": "CPTmateオリジナル",
+  "sourceNote": "第1・2章教材を基準に精査・再構成",
+  "figureId": "fig-ch1-long-bone",
+  "image": "assets/figures/long_bone_fig1_8.svg",
+  "figureMode": "after"
+},
   {
-    "id": "ch1-q057",
-    "chapter": 1,
-    "category": "図・骨格",
+  "id": "ch1-q057",
+  "chapter": 1,
+  "category": "図・骨格",
   "type": "figure",
-    "question": "図1.9で、頭蓋・脊柱・胸骨・肋骨などを含む骨格の区分はどれか。",
-    "choices": [
-      "付属性骨格",
-      "軸性骨格",
-      "末梢骨格",
-      "関節骨格"
-    ],
-    "answer": 1,
-    "explanation": "図1.9と本文では、頭蓋、脊柱、胸骨、肋骨などは軸性骨格に含まれると説明されている。",
-    "sourceType": "original",
-    "sourceLabel": "CPTmateオリジナル",
-    "sourceNote": "第1・2章教材を基準に精査・再構成"
-  },
+  "question": "頭蓋・脊柱・胸骨・肋骨などを含む骨格の区分はどれか。",
+  "choices": [
+    "付属性骨格",
+    "軸性骨格",
+    "末梢骨格",
+    "関節骨格"
+  ],
+  "answer": 1,
+  "explanation": "頭蓋、脊柱、胸骨、肋骨などは軸性骨格に含まれる。回答後に骨格図で確認できる。",
+  "sourceType": "original",
+  "sourceLabel": "CPTmateオリジナル",
+  "sourceNote": "第1・2章教材を基準に精査・再構成",
+  "figureId": "fig-ch1-skeleton",
+  "image": "assets/figures/skeleton_fig1_9.svg",
+  "figureMode": "after"
+},
   {
-    "id": "ch1-q058",
-    "chapter": 1,
-    "category": "図・ニューロン",
+  "id": "ch1-q058",
+  "chapter": 1,
+  "category": "図・ニューロン",
   "type": "figure",
-    "question": "図1.6で、細胞体から伸びて長距離にわたりインパルスを伝える構造はどれか。",
-    "choices": [
-      "樹状突起",
-      "軸索",
-      "ニッスル体",
-      "核小体"
-    ],
-    "answer": 1,
-    "explanation": "図1.6では軸索が細胞体から伸びる長い構造として示され、運動神経では筋へ活動電位を伝える経路となる。",
-    "sourceType": "original",
-    "sourceLabel": "CPTmateオリジナル",
-    "sourceNote": "第1・2章教材を基準に精査・再構成"
-  },
+  "question": "細胞体から伸びて長距離にわたりインパルスを伝える構造はどれか。",
+  "choices": [
+    "樹状突起",
+    "軸索",
+    "ニッスル体",
+    "核小体"
+  ],
+  "answer": 1,
+  "explanation": "軸索は細胞体から伸びる長い構造で、活動電位を遠くの標的へ伝える。回答後に神経細胞の構造図で確認できる。",
+  "sourceType": "original",
+  "sourceLabel": "CPTmateオリジナル",
+  "sourceNote": "第1・2章教材を基準に精査・再構成",
+  "figureId": "fig-ch1-neuron",
+  "image": "assets/figures/neuron_fig1_6.svg",
+  "figureMode": "after"
+},
   {
-    "id": "ch1-q059",
-    "chapter": 1,
-    "category": "図・筋紡錘とGTO",
+  "id": "ch1-q059",
+  "chapter": 1,
+  "category": "図・筋紡錘とGTO",
   "type": "figure",
-    "question": "図1.7に示される筋紡錘とゴルジ腱器官（GTO）の位置関係として正しいものはどれか。",
-    "choices": [
-      "筋紡錘は筋内、GTOは筋と骨が付着する腱にある",
-      "筋紡錘は骨の内部、GTOは神経細胞体にある",
-      "両方とも筋線維内部だけにある",
-      "筋紡錘は腱にあり、GTOは筋腹にある"
-    ],
-    "answer": 0,
-    "explanation": "図1.7では筋紡錘が骨格筋内に、GTOが筋と骨が付着する腱の接合部に示されている。",
-    "sourceType": "original",
-    "sourceLabel": "CPTmateオリジナル",
-    "sourceNote": "第1・2章教材を基準に精査・再構成"
-  },
+  "question": "筋紡錘とゴルジ腱器官（GTO）の位置関係として正しいものはどれか。",
+  "choices": [
+    "筋紡錘は筋内、GTOは筋と骨が付着する腱にある",
+    "筋紡錘は骨の内部、GTOは神経細胞体にある",
+    "両方とも筋線維内部だけにある",
+    "筋紡錘は腱にあり、GTOは筋腹にある"
+  ],
+  "answer": 0,
+  "explanation": "筋紡錘は骨格筋内に、GTOは筋と骨が付着する腱の接合部にある。回答後に位置関係を図で確認できる。",
+  "sourceType": "original",
+  "sourceLabel": "CPTmateオリジナル",
+  "sourceNote": "第1・2章教材を基準に精査・再構成",
+  "figureId": "fig-ch1-spindle-gto",
+  "image": "assets/figures/spindle_gto_fig1_7.svg",
+  "figureMode": "after"
+},
   {
     "id": "ch2-review-001",
     "chapter": 2,
@@ -4031,23 +4178,52 @@ const ADDITIONAL_QUESTIONS = [
     "sourceNote": "第1・2章教材を基準に精査・再構成"
   },
   {
-    "id": "ch2-case001-q02",
-    "chapter": 2,
-    "category": "ケーススタディ・運動時酸素供給",
+  "id": "ch2-case001-q02",
+  "chapter": 2,
+  "category": "ケーススタディ・運動時酸素供給",
   "type": "case",
-    "question": "同じクライアントで運動強度が上がると動静脈酸素較差も増えた。この変化が意味するものはどれか。",
-    "choices": [
-      "血液から活動組織へ取り込まれる酸素量が増えている",
-      "血液が肺へ酸素を返している",
-      "心拍出量が必ず低下している",
-      "肺胞の酸素分圧が必ずゼロになる"
+  "question": "同じクライアントで運動強度が上がると動静脈酸素較差も増えた。この変化が意味するものはどれか。",
+  "choices": [
+    "血液から活動組織へ取り込まれる酸素量が増えている",
+    "血液が肺へ酸素を返している",
+    "心拍出量が必ず低下している",
+    "肺胞の酸素分圧が必ずゼロになる"
+  ],
+  "answer": 0,
+  "explanation": "運動強度が増すと、筋でより多くの酸素が利用されるため、血液から組織へ取り込まれる酸素量が増え、動静脈酸素較差も増加する。回答後に確認表で運動強度と数値の関係を確認できる。",
+  "sourceType": "original",
+  "sourceLabel": "CPTmateオリジナル",
+  "sourceNote": "第1・2章教材を基準に精査・再構成",
+  "explanationTable": {
+    "title": "運動強度と動静脈酸素較差",
+    "headers": [
+      "運動強度",
+      "動脈血O₂",
+      "静脈血O₂",
+      "動静脈酸素較差"
     ],
-    "answer": 0,
-    "explanation": "本章の表2.1では運動強度の増加に伴い動静脈酸素較差が増え、血液から組織へ取り込まれる酸素量が増えることが示されている。",
-    "sourceType": "original",
-    "sourceLabel": "CPTmateオリジナル",
-    "sourceNote": "第1・2章教材を基準に精査・再構成"
-  },
+    "rows": [
+      [
+        "安静時",
+        "20mL/血液100mL",
+        "14mL/血液100mL",
+        "6mL/血液100mL"
+      ],
+      [
+        "中強度",
+        "20mL/血液100mL",
+        "10mL/血液100mL",
+        "10mL/血液100mL"
+      ],
+      [
+        "高強度",
+        "20mL/血液100mL",
+        "4mL/血液100mL",
+        "16mL/血液100mL"
+      ]
+    ]
+  }
+},
   {
     "id": "ch2-case002-q01",
     "chapter": 2,
