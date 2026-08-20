@@ -1,4 +1,4 @@
-const APP_VERSION = "0.2.91";
+const APP_VERSION = "0.2.92";
 
 /* v0.2.63: home logo placement + startup splash/crossfade */
 const CPTMATE_BRAND_LOGO = "assets/branding/cptmate-horizontal-logo.png";
@@ -132,7 +132,71 @@ const CPTMATE_SPLASH_MARK = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAaQAA
 
   const ensureSplash = () => {
     let splash = document.getElementById("cptmate-startup-splash");
-    if (splash) return splash;
+
+    // If index.html already supplied the splash, normalize/repair it instead
+    // of returning it untouched. This is important because the PWA entry page
+    // may be cached independently from app.js.
+    if (splash) {
+      splash.className = "cptmate-startup-splash";
+      splash.setAttribute("role", "status");
+      splash.setAttribute("aria-live", "polite");
+
+      let inner = splash.querySelector(".cptmate-startup-splash__inner");
+      if (!inner) {
+        inner = document.createElement("div");
+        inner.className = "cptmate-startup-splash__inner";
+        splash.replaceChildren(inner);
+      }
+
+      let logo = inner.querySelector(".cptmate-startup-splash__logo");
+      if (!logo) {
+        logo = document.createElement("img");
+        logo.className = "cptmate-startup-splash__logo";
+        logo.src = CPTMATE_SPLASH_MARK;
+        logo.alt = "CPTmate";
+        logo.decoding = "async";
+        inner.prepend(logo);
+      } else {
+        logo.className = "cptmate-startup-splash__logo";
+        if (!logo.getAttribute("src")) logo.src = CPTMATE_SPLASH_MARK;
+        logo.alt = "CPTmate";
+      }
+
+      let loader = inner.querySelector(".cptmate-startup-splash__loader");
+      if (!loader) {
+        loader = document.createElement("div");
+        loader.className = "cptmate-startup-splash__loader";
+        loader.setAttribute("aria-hidden", "true");
+        logo.insertAdjacentElement("afterend", loader);
+      } else {
+        loader.className = "cptmate-startup-splash__loader";
+        loader.setAttribute("aria-hidden", "true");
+      }
+
+      let message = inner.querySelector(".cptmate-startup-splash__message");
+      if (!message) {
+        message = document.createElement("p");
+        message.className = "cptmate-startup-splash__message";
+        message.textContent = "起動しています…";
+        loader.insertAdjacentElement("afterend", message);
+      } else {
+        message.className = "cptmate-startup-splash__message";
+        message.textContent = "起動しています…";
+      }
+
+      // Explicit inline animation fallback. This makes the loader robust
+      // against stale/partial first-paint CSS in a Home Screen Web App.
+      loader.style.width = "34px";
+      loader.style.height = "34px";
+      loader.style.borderRadius = "50%";
+      loader.style.border = "3px solid rgba(15,95,99,.14)";
+      loader.style.borderTopColor = "#0f5f63";
+      loader.style.animation = "cptmateSplashSpin .85s linear infinite";
+      loader.style.transformOrigin = "center center";
+
+      return splash;
+    }
+
     splash = document.createElement("div");
     splash.id = "cptmate-startup-splash";
     splash.className = "cptmate-startup-splash";
