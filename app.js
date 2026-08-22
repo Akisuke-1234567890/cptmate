@@ -1,4 +1,4 @@
-const APP_VERSION = "0.2.109";
+const APP_VERSION = "0.2.110";
 
 /* v0.2.63: home logo placement + startup splash/crossfade */
 const CPTMATE_BRAND_LOGO = "assets/branding/cptmate-horizontal-logo.png";
@@ -7009,7 +7009,14 @@ function renderPracticeSelector(selectedChapter = null) {
     2: { "血液・酸素運搬": q => q.category === "血液・酸素運搬",
 "心臓・循環": q => q.category === "心臓・循環",
 "呼吸・ガス交換": q => q.category === "呼吸・ガス交換",
-"酸素摂取・運動適応": q => q.category === "酸素摂取・運動適応" }
+"酸素摂取・運動適応": q => q.category === "酸素摂取・運動適応" },
+    3: { "ATP・エネルギー供給機構": q => q.category === "ATP・エネルギー供給機構",
+"ホスファゲン機構": q => q.category === "ホスファゲン機構",
+"解糖・乳酸代謝": q => q.category === "解糖・乳酸代謝",
+"酸化機構": q => q.category === "酸化機構",
+"運動時間・強度とエネルギー機構": q => q.category === "運動時間・強度とエネルギー機構",
+"基質・グリコーゲン": q => q.category === "基質・グリコーゲン",
+"酸素借・トレーニングへの応用": q => q.category === "酸素借・トレーニングへの応用" }
   };
   const major = majorByChapter[chapter] || {};
 
@@ -8537,4 +8544,4 @@ try {
     `;
   }
 }
-/* v0.2.109: Chapter 3 broad exercise categories */
+/* v0.2.110: Chapter 3 categories wired into practice selector */
