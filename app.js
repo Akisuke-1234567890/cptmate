@@ -1,4 +1,4 @@
-const APP_VERSION = "0.2.107";
+const APP_VERSION = "0.2.108";
 
 /* v0.2.63: home logo placement + startup splash/crossfade */
 const CPTMATE_BRAND_LOGO = "assets/branding/cptmate-horizontal-logo.png";
@@ -4265,7 +4265,7 @@ const ADDITIONAL_QUESTIONS = [
 const CH3_QUESTIONS = [
   {
     "chapter": 3,
-    "category": "基礎用語・ATP",
+    "category": "代謝の基礎",
     "type": "standard",
     "question": "生体エネルギー機構におけるエネルギーの流れとして、最初に行われることはどれか。",
     "choices": [
@@ -4283,7 +4283,7 @@ const CH3_QUESTIONS = [
   },
   {
     "chapter": 3,
-    "category": "基礎用語・ATP",
+    "category": "代謝の基礎",
     "type": "standard",
     "question": "大きな分子から小さな分子へ分解し、エネルギーを放出する過程を何というか。",
     "choices": [
@@ -4301,7 +4301,7 @@ const CH3_QUESTIONS = [
   },
   {
     "chapter": 3,
-    "category": "基礎用語・ATP",
+    "category": "代謝の基礎",
     "type": "standard",
     "question": "小さな分子から大きな分子を合成する過程を何というか。",
     "choices": [
@@ -4319,7 +4319,7 @@ const CH3_QUESTIONS = [
   },
   {
     "chapter": 3,
-    "category": "基礎用語・ATP",
+    "category": "代謝の基礎",
     "type": "standard",
     "question": "アミノ酸からタンパク質を合成する過程はどちらに分類されるか。",
     "choices": [
@@ -4337,7 +4337,7 @@ const CH3_QUESTIONS = [
   },
   {
     "chapter": 3,
-    "category": "基礎用語・ATP",
+    "category": "代謝の基礎",
     "type": "standard",
     "question": "体内での同化作用と異化作用を含む概念を何というか。",
     "choices": [
@@ -4355,7 +4355,7 @@ const CH3_QUESTIONS = [
   },
   {
     "chapter": 3,
-    "category": "基礎用語・ATP",
+    "category": "ATPの基礎",
     "type": "standard",
     "question": "ATPの構成として正しいものはどれか。",
     "choices": [
@@ -4376,7 +4376,7 @@ const CH3_QUESTIONS = [
   },
   {
     "chapter": 3,
-    "category": "基礎用語・ATP",
+    "category": "ATPの基礎",
     "type": "standard",
     "question": "アデニンとリボースが結合したものは何と呼ばれるか。",
     "choices": [
@@ -4394,7 +4394,7 @@ const CH3_QUESTIONS = [
   },
   {
     "chapter": 3,
-    "category": "基礎用語・ATP",
+    "category": "ATPの基礎",
     "type": "standard",
     "question": "ATPから1つのリン酸基が除去されると何になるか。",
     "choices": [
@@ -4412,7 +4412,7 @@ const CH3_QUESTIONS = [
   },
   {
     "chapter": 3,
-    "category": "基礎用語・ATP",
+    "category": "ATPの基礎",
     "type": "standard",
     "question": "ATPから2つのリン酸基が除去された状態はどれか。",
     "choices": [
@@ -4430,7 +4430,7 @@ const CH3_QUESTIONS = [
   },
   {
     "chapter": 3,
-    "category": "基礎用語・ATP",
+    "category": "ATPの基礎",
     "type": "standard",
     "question": "ATPが高エネルギー分子と呼ばれる主な理由はどれか。",
     "choices": [
@@ -4451,7 +4451,7 @@ const CH3_QUESTIONS = [
   },
   {
     "chapter": 3,
-    "category": "基礎用語・ATP",
+    "category": "ATPの基礎",
     "type": "standard",
     "question": "筋細胞が長時間の筋活動を継続するために必要なことはどれか。",
     "choices": [
@@ -4469,7 +4469,7 @@ const CH3_QUESTIONS = [
   },
   {
     "chapter": 3,
-    "category": "エネルギー供給機構",
+    "category": "3つのエネルギー供給機構",
     "type": "standard",
     "question": "ATPを再合成する3つの基本的なエネルギー供給機構の組み合わせはどれか。",
     "choices": [
@@ -4487,7 +4487,7 @@ const CH3_QUESTIONS = [
   },
   {
     "chapter": 3,
-    "category": "エネルギー供給機構",
+    "category": "3つのエネルギー供給機構",
     "type": "standard",
     "question": "酸素を必要としない無酸素性機構はどれか。",
     "choices": [
@@ -4505,7 +4505,7 @@ const CH3_QUESTIONS = [
   },
   {
     "chapter": 3,
-    "category": "エネルギー供給機構",
+    "category": "3つのエネルギー供給機構",
     "type": "standard",
     "question": "本章の説明で酸素を必要とする有酸素性機構はどれか。",
     "choices": [
@@ -4523,7 +4523,7 @@ const CH3_QUESTIONS = [
   },
   {
     "chapter": 3,
-    "category": "エネルギー供給機構",
+    "category": "3つのエネルギー供給機構",
     "type": "standard",
     "question": "三大栄養素のうち、直接的に酸素なしでエネルギー産生のために代謝されるのはどれか。",
     "choices": [
@@ -4541,7 +4541,7 @@ const CH3_QUESTIONS = [
   },
   {
     "chapter": 3,
-    "category": "基礎用語・ATP",
+    "category": "ATPの基礎",
     "type": "standard",
     "question": "筋活動のために直接利用される化学エネルギーを担う中間分子はどれか。",
     "choices": [
@@ -4559,7 +4559,7 @@ const CH3_QUESTIONS = [
   },
   {
     "chapter": 3,
-    "category": "基礎用語・ATP",
+    "category": "ATPの基礎",
     "type": "standard",
     "question": "ATPを分解して筋活動のためのエネルギーを放出する酵素はどれか。",
     "choices": [
@@ -4577,7 +4577,7 @@ const CH3_QUESTIONS = [
   },
   {
     "chapter": 3,
-    "category": "基礎用語・ATP",
+    "category": "ATPの基礎",
     "type": "standard",
     "question": "ATPをADPと無機リン酸に分解する反応は、本章の分類では何作用か。",
     "choices": [
@@ -4883,7 +4883,7 @@ const CH3_QUESTIONS = [
   },
   {
     "chapter": 3,
-    "category": "解糖系・乳酸",
+    "category": "解糖系",
     "type": "standard",
     "question": "解糖系が主に分解してATPを産生する基質はどれか。",
     "choices": [
@@ -4901,7 +4901,7 @@ const CH3_QUESTIONS = [
   },
   {
     "chapter": 3,
-    "category": "解糖系・乳酸",
+    "category": "解糖系",
     "type": "standard",
     "question": "解糖系の酵素が存在する主な場所はどこか。",
     "choices": [
@@ -4919,7 +4919,7 @@ const CH3_QUESTIONS = [
   },
   {
     "chapter": 3,
-    "category": "解糖系・乳酸",
+    "category": "解糖系",
     "type": "standard",
     "question": "解糖系には何種類のタイプがあると説明されているか。",
     "choices": [
@@ -4940,7 +4940,7 @@ const CH3_QUESTIONS = [
   },
   {
     "chapter": 3,
-    "category": "解糖系・乳酸",
+    "category": "解糖系",
     "type": "standard",
     "question": "速い解糖の最終産生物質はどれか。",
     "choices": [
@@ -4958,7 +4958,7 @@ const CH3_QUESTIONS = [
   },
   {
     "chapter": 3,
-    "category": "解糖系・乳酸",
+    "category": "解糖系",
     "type": "standard",
     "question": "遅い解糖の最終産生物質はどれか。",
     "choices": [
@@ -4976,7 +4976,7 @@ const CH3_QUESTIONS = [
   },
   {
     "chapter": 3,
-    "category": "解糖系・乳酸",
+    "category": "解糖系",
     "type": "standard",
     "question": "速い解糖と遅い解糖を区別する決定的な要因として最も適切なのはどれか。",
     "choices": [
@@ -4994,7 +4994,7 @@ const CH3_QUESTIONS = [
   },
   {
     "chapter": 3,
-    "category": "解糖系・乳酸",
+    "category": "解糖系",
     "type": "standard",
     "question": "グルコース1分子から解糖系で直接産生されるATPは何分子か。",
     "choices": [
@@ -5012,7 +5012,7 @@ const CH3_QUESTIONS = [
   },
   {
     "chapter": 3,
-    "category": "解糖系・乳酸",
+    "category": "解糖系",
     "type": "standard",
     "question": "グリコーゲンが解糖系の基質として使われる場合、産生されるATPは何分子か。",
     "choices": [
@@ -5030,7 +5030,7 @@ const CH3_QUESTIONS = [
   },
   {
     "chapter": 3,
-    "category": "解糖系・乳酸",
+    "category": "解糖系",
     "type": "standard",
     "question": "解糖系の律速段階を制御する主要酵素はどれか。",
     "choices": [
@@ -5051,7 +5051,7 @@ const CH3_QUESTIONS = [
   },
   {
     "chapter": 3,
-    "category": "解糖系・乳酸",
+    "category": "解糖系",
     "type": "standard",
     "question": "PFK活性が直接制御する反応はどれか。",
     "choices": [
@@ -5069,7 +5069,7 @@ const CH3_QUESTIONS = [
   },
   {
     "chapter": 3,
-    "category": "解糖系・乳酸",
+    "category": "解糖系",
     "type": "standard",
     "question": "激しい筋活動中に解糖系をより強く刺激するものはどれか。",
     "choices": [
@@ -5087,7 +5087,7 @@ const CH3_QUESTIONS = [
   },
   {
     "chapter": 3,
-    "category": "解糖系・乳酸",
+    "category": "解糖系",
     "type": "standard",
     "question": "解糖系が著しく抑制される条件として本章に示されているのはどれか。",
     "choices": [
@@ -5105,7 +5105,7 @@ const CH3_QUESTIONS = [
   },
   {
     "chapter": 3,
-    "category": "解糖系・乳酸",
+    "category": "解糖系",
     "type": "standard",
     "question": "休息時に解糖系を抑制しやすい物質として正しいものはどれか。",
     "choices": [
@@ -5123,7 +5123,7 @@ const CH3_QUESTIONS = [
   },
   {
     "chapter": 3,
-    "category": "解糖系・乳酸",
+    "category": "解糖系",
     "type": "standard",
     "question": "グリコーゲンからグルコースへの分解速度を制御する酵素はどれか。",
     "choices": [
@@ -5141,7 +5141,7 @@ const CH3_QUESTIONS = [
   },
   {
     "chapter": 3,
-    "category": "解糖系・乳酸",
+    "category": "乳酸塩・乳酸代謝",
     "type": "standard",
     "question": "本章で説明される乳酸塩について正しいものはどれか。",
     "choices": [
@@ -5159,7 +5159,7 @@ const CH3_QUESTIONS = [
   },
   {
     "chapter": 3,
-    "category": "解糖系・乳酸",
+    "category": "乳酸塩・乳酸代謝",
     "type": "standard",
     "question": "本章の説明で筋疲労とより直接的に関連する代謝副産物として最も適切なのはどれか。",
     "choices": [
@@ -5177,7 +5177,7 @@ const CH3_QUESTIONS = [
   },
   {
     "chapter": 3,
-    "category": "解糖系・乳酸",
+    "category": "乳酸塩・乳酸代謝",
     "type": "standard",
     "question": "乳酸がエネルギー基質として利用される線維として正しいものはどれか。",
     "choices": [
@@ -5195,7 +5195,7 @@ const CH3_QUESTIONS = [
   },
   {
     "chapter": 3,
-    "category": "解糖系・乳酸",
+    "category": "乳酸塩・乳酸代謝",
     "type": "standard",
     "question": "乳酸が血液を介して肝臓へ運ばれ、糖新生によりグルコースへ変換される過程を何というか。",
     "choices": [
@@ -5216,7 +5216,7 @@ const CH3_QUESTIONS = [
   },
   {
     "chapter": 3,
-    "category": "解糖系・乳酸",
+    "category": "乳酸塩・乳酸代謝",
     "type": "standard",
     "question": "安静時の一般的な血中乳酸濃度として示されている範囲はどれか。",
     "choices": [
@@ -5234,7 +5234,7 @@ const CH3_QUESTIONS = [
   },
   {
     "chapter": 3,
-    "category": "解糖系・乳酸",
+    "category": "乳酸塩・乳酸代謝",
     "type": "standard",
     "question": "乳酸塩生成が高い傾向を示す筋線維はどれか。",
     "choices": [
@@ -5252,7 +5252,7 @@ const CH3_QUESTIONS = [
   },
   {
     "chapter": 3,
-    "category": "解糖系・乳酸",
+    "category": "乳酸性作業閾値（LT）・OBLA",
     "type": "standard",
     "question": "初期値を超えて血中乳酸濃度が急に増加し始める運動強度を何というか。",
     "choices": [
@@ -5273,7 +5273,7 @@ const CH3_QUESTIONS = [
   },
   {
     "chapter": 3,
-    "category": "解糖系・乳酸",
+    "category": "乳酸性作業閾値（LT）・OBLA",
     "type": "standard",
     "question": "LTが生じる最大酸素摂取量に対する割合として、本章の非トレーニング者の説明に最も近いものはどれか。",
     "choices": [
@@ -5291,7 +5291,7 @@ const CH3_QUESTIONS = [
   },
   {
     "chapter": 3,
-    "category": "解糖系・乳酸",
+    "category": "乳酸性作業閾値（LT）・OBLA",
     "type": "standard",
     "question": "血中乳酸蓄積が急増する2つ目の変曲点を何というか。",
     "choices": [
@@ -5309,7 +5309,7 @@ const CH3_QUESTIONS = [
   },
   {
     "chapter": 3,
-    "category": "解糖系・乳酸",
+    "category": "乳酸性作業閾値（LT）・OBLA",
     "type": "standard",
     "question": "OBLAは一般的に血中乳酸濃度がおよそ何mmol/L付近で起こるか。",
     "choices": [
@@ -5330,7 +5330,7 @@ const CH3_QUESTIONS = [
   },
   {
     "chapter": 3,
-    "category": "酸化機構",
+    "category": "酸化機構・基質利用",
     "type": "standard",
     "question": "安静時と有酸素性運動中の主要なATP供給源はどれか。",
     "choices": [
@@ -5348,7 +5348,7 @@ const CH3_QUESTIONS = [
   },
   {
     "chapter": 3,
-    "category": "酸化機構",
+    "category": "酸化機構・基質利用",
     "type": "standard",
     "question": "酸化機構が主に用いる基質はどれか。",
     "choices": [
@@ -5366,7 +5366,7 @@ const CH3_QUESTIONS = [
   },
   {
     "chapter": 3,
-    "category": "酸化機構",
+    "category": "酸化機構・基質利用",
     "type": "standard",
     "question": "安静時に産生されるATPのおおよその供給割合として正しいものはどれか。",
     "choices": [
@@ -5384,7 +5384,7 @@ const CH3_QUESTIONS = [
   },
   {
     "chapter": 3,
-    "category": "酸化機構",
+    "category": "酸化機構・基質利用",
     "type": "standard",
     "question": "運動強度が上がるにつれて、多く使われる基質はどのように移行するか。",
     "choices": [
@@ -5402,7 +5402,7 @@ const CH3_QUESTIONS = [
   },
   {
     "chapter": 3,
-    "category": "酸化機構",
+    "category": "酸化機構・基質利用",
     "type": "standard",
     "question": "高強度の有酸素性運動で十分な供給が追いつく場合、エネルギーはほとんど何から供給されるか。",
     "choices": [
@@ -5420,7 +5420,7 @@ const CH3_QUESTIONS = [
   },
   {
     "chapter": 3,
-    "category": "酸化機構",
+    "category": "酸化機構・基質利用",
     "type": "standard",
     "question": "長時間の最大下・定常状態の運動中、エネルギー基質は再びどちらへ移行すると説明されているか。",
     "choices": [
@@ -5438,7 +5438,7 @@ const CH3_QUESTIONS = [
   },
   {
     "chapter": 3,
-    "category": "酸化機構",
+    "category": "酸化機構・クレブス回路／ETC",
     "type": "standard",
     "question": "十分な酸素が存在する場合、解糖系の最終代謝産物であるピルビン酸はまずどこへ輸送されるか。",
     "choices": [
@@ -5456,7 +5456,7 @@ const CH3_QUESTIONS = [
   },
   {
     "chapter": 3,
-    "category": "酸化機構",
+    "category": "酸化機構・クレブス回路／ETC",
     "type": "standard",
     "question": "ピルビン酸がミトコンドリアに入った後、クレブス回路へ入る前に変換される物質はどれか。",
     "choices": [
@@ -5474,7 +5474,7 @@ const CH3_QUESTIONS = [
   },
   {
     "chapter": 3,
-    "category": "酸化機構",
+    "category": "酸化機構・クレブス回路／ETC",
     "type": "standard",
     "question": "グルコース1分子からクレブス回路内で産生されるNADHの数はどれか。",
     "choices": [
@@ -5492,7 +5492,7 @@ const CH3_QUESTIONS = [
   },
   {
     "chapter": 3,
-    "category": "酸化機構",
+    "category": "酸化機構・クレブス回路／ETC",
     "type": "standard",
     "question": "グルコース1分子からクレブス回路内で作られるFADH₂の数はどれか。",
     "choices": [
@@ -5510,7 +5510,7 @@ const CH3_QUESTIONS = [
   },
   {
     "chapter": 3,
-    "category": "酸化機構",
+    "category": "酸化機構・クレブス回路／ETC",
     "type": "standard",
     "question": "脂質やタンパク質がクレブス回路に入る前に共通して必要な変換はどれか。",
     "choices": [
@@ -5531,7 +5531,7 @@ const CH3_QUESTIONS = [
   },
   {
     "chapter": 3,
-    "category": "酸化機構",
+    "category": "酸化機構・クレブス回路／ETC",
     "type": "standard",
     "question": "NADHやFADH₂が水素原子を輸送してATP産生に関わる系はどれか。",
     "choices": [
@@ -5549,7 +5549,7 @@ const CH3_QUESTIONS = [
   },
   {
     "chapter": 3,
-    "category": "酸化機構",
+    "category": "酸化機構・クレブス回路／ETC",
     "type": "standard",
     "question": "ETCは何によって刺激されると説明されているか。",
     "choices": [
@@ -5567,7 +5567,7 @@ const CH3_QUESTIONS = [
   },
   {
     "chapter": 3,
-    "category": "酸化機構",
+    "category": "酸化機構・クレブス回路／ETC",
     "type": "standard",
     "question": "クレブス回路に十分なNADやFADがなく、水素を受け取れない場合に起こるのはどれか。",
     "choices": [
@@ -5585,7 +5585,7 @@ const CH3_QUESTIONS = [
   },
   {
     "chapter": 3,
-    "category": "エネルギー供給能力",
+    "category": "ATP産生速度・産生量",
     "type": "standard",
     "question": "ATPを最も速く産生する機構はどれか。",
     "choices": [
@@ -5638,7 +5638,7 @@ const CH3_QUESTIONS = [
   },
   {
     "chapter": 3,
-    "category": "エネルギー供給能力",
+    "category": "ATP産生速度・産生量",
     "type": "standard",
     "question": "ATP産生量が最も大きいのはどれか。",
     "choices": [
@@ -5691,7 +5691,7 @@ const CH3_QUESTIONS = [
   },
   {
     "chapter": 3,
-    "category": "エネルギー供給能力",
+    "category": "ATP産生速度・産生量",
     "type": "standard",
     "question": "ATP産生速度と産生量の関係として最も適切なのはどれか。",
     "choices": [
@@ -5744,7 +5744,7 @@ const CH3_QUESTIONS = [
   },
   {
     "chapter": 3,
-    "category": "エネルギー供給能力",
+    "category": "運動時間・強度とエネルギー機構",
     "type": "standard",
     "question": "0〜6秒の非常に激しい運動で主要なエネルギー機構はどれか。",
     "choices": [
@@ -5797,7 +5797,7 @@ const CH3_QUESTIONS = [
   },
   {
     "chapter": 3,
-    "category": "エネルギー供給能力",
+    "category": "運動時間・強度とエネルギー機構",
     "type": "standard",
     "question": "6〜30秒の非常に高い運動で主要となる組み合わせはどれか。",
     "choices": [
@@ -5850,7 +5850,7 @@ const CH3_QUESTIONS = [
   },
   {
     "chapter": 3,
-    "category": "エネルギー供給能力",
+    "category": "運動時間・強度とエネルギー機構",
     "type": "standard",
     "question": "30秒〜2分の高い強度の運動で主要なエネルギー機構はどれか。",
     "choices": [
@@ -5903,7 +5903,7 @@ const CH3_QUESTIONS = [
   },
   {
     "chapter": 3,
-    "category": "エネルギー供給能力",
+    "category": "運動時間・強度とエネルギー機構",
     "type": "standard",
     "question": "2〜3分の中程度の運動で主要となる組み合わせはどれか。",
     "choices": [
@@ -5956,7 +5956,7 @@ const CH3_QUESTIONS = [
   },
   {
     "chapter": 3,
-    "category": "エネルギー供給能力",
+    "category": "運動時間・強度とエネルギー機構",
     "type": "standard",
     "question": "3分以上の低強度運動で主要なエネルギー機構はどれか。",
     "choices": [
@@ -6009,7 +6009,7 @@ const CH3_QUESTIONS = [
   },
   {
     "chapter": 3,
-    "category": "エネルギー供給能力",
+    "category": "運動時間・強度とエネルギー機構",
     "type": "standard",
     "question": "高強度のレジスタンストレーニングやテニスのサーブで、急速なATP供給に最も適した機構はどれか。",
     "choices": [
@@ -6027,7 +6027,7 @@ const CH3_QUESTIONS = [
   },
   {
     "chapter": 3,
-    "category": "エネルギー供給能力",
+    "category": "運動時間・強度とエネルギー機構",
     "type": "standard",
     "question": "運動中の主要なエネルギー供給機構を決定する要因として、本章で第一に挙げられているものはどれか。",
     "choices": [
@@ -6045,7 +6045,7 @@ const CH3_QUESTIONS = [
   },
   {
     "chapter": 3,
-    "category": "エネルギー供給能力",
+    "category": "運動時間・強度とエネルギー機構",
     "type": "standard",
     "question": "運動時でも安静時でも、エネルギー供給について正しいものはどれか。",
     "choices": [
@@ -6063,7 +6063,7 @@ const CH3_QUESTIONS = [
   },
   {
     "chapter": 3,
-    "category": "エネルギー供給能力",
+    "category": "運動時間・強度とエネルギー機構",
     "type": "standard",
     "question": "高強度・短時間の運動ほど依存度が高くなる機構の特徴として正しいものはどれか。",
     "choices": [
@@ -6081,7 +6081,7 @@ const CH3_QUESTIONS = [
   },
   {
     "chapter": 3,
-    "category": "基質の消費・補給",
+    "category": "基質の消費",
     "type": "standard",
     "question": "運動中の疲労と関係しやすい基質の組み合わせはどれか。",
     "choices": [
@@ -6099,7 +6099,7 @@ const CH3_QUESTIONS = [
   },
   {
     "chapter": 3,
-    "category": "基質の消費・補給",
+    "category": "基質の消費",
     "type": "standard",
     "question": "筋中のホスファゲンはどちらの運動でより急速に消費されるか。",
     "choices": [
@@ -6117,7 +6117,7 @@ const CH3_QUESTIONS = [
   },
   {
     "chapter": 3,
-    "category": "グリコーゲン",
+    "category": "グリコーゲン・補給",
     "type": "standard",
     "question": "身体全体で筋に蓄えられているグリコーゲン量はおおよそどれか。",
     "choices": [
@@ -6135,7 +6135,7 @@ const CH3_QUESTIONS = [
   },
   {
     "chapter": 3,
-    "category": "グリコーゲン",
+    "category": "グリコーゲン・補給",
     "type": "standard",
     "question": "肝臓に蓄えられているグリコーゲン量はおおよそどれか。",
     "choices": [
@@ -6153,7 +6153,7 @@ const CH3_QUESTIONS = [
   },
   {
     "chapter": 3,
-    "category": "グリコーゲン",
+    "category": "グリコーゲン・補給",
     "type": "standard",
     "question": "中〜高強度運動で、肝グリコーゲンより重要になりやすいのはどれか。",
     "choices": [
@@ -6171,7 +6171,7 @@ const CH3_QUESTIONS = [
   },
   {
     "chapter": 3,
-    "category": "グリコーゲン",
+    "category": "グリコーゲン・補給",
     "type": "standard",
     "question": "低強度運動でより重要となり、運動時間が長くなるにつれて貢献度が増すと説明されているのはどれか。",
     "choices": [
@@ -6189,7 +6189,7 @@ const CH3_QUESTIONS = [
   },
   {
     "chapter": 3,
-    "category": "グリコーゲン",
+    "category": "グリコーゲン・補給",
     "type": "standard",
     "question": "最大酸素摂取量の約60〜75%以上の強度になると優先的なエネルギー源となるのはどれか。",
     "choices": [
@@ -6207,7 +6207,7 @@ const CH3_QUESTIONS = [
   },
   {
     "chapter": 3,
-    "category": "グリコーゲン",
+    "category": "グリコーゲン・補給",
     "type": "standard",
     "question": "筋グリコーゲン再合成が運動後最も急速に進む時間帯はどれか。",
     "choices": [
@@ -6225,7 +6225,7 @@ const CH3_QUESTIONS = [
   },
   {
     "chapter": 3,
-    "category": "グリコーゲン",
+    "category": "グリコーゲン・補給",
     "type": "standard",
     "question": "本章で、グリコーゲン補給を最適化する摂取例として示されているのはどれか。",
     "choices": [
@@ -6243,7 +6243,7 @@ const CH3_QUESTIONS = [
   },
   {
     "chapter": 3,
-    "category": "グリコーゲン",
+    "category": "グリコーゲン・補給",
     "type": "standard",
     "question": "十分な炭水化物が摂取された場合、筋グリコーゲンは通常いつまでに完全補充されると説明されているか。",
     "choices": [
@@ -8537,3 +8537,4 @@ try {
     `;
   }
 }
+/* v0.2.108: Chapter 3 category refinement */
