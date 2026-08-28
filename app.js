@@ -1,4 +1,4 @@
-const APP_VERSION = "0.2.119";
+const APP_VERSION = "0.2.120";
 
 /* v0.2.63: home logo placement + startup splash/crossfade */
 const CPTMATE_BRAND_LOGO = "assets/branding/cptmate-horizontal-logo.png";
@@ -4267,7 +4267,7 @@ const CH3_QUESTIONS = [
     "chapter": 3,
     "category": "ATP・エネルギー供給機構",
     "type": "standard",
-    "question": "生体エネルギー機構におけるエネルギーの流れとして、最初に行われることはどれか。",
+    "question": "生体エネルギー機構におけるエネルギー利用の最初の段階として、正しいものはどれか。",
     "choices": [
       "食物中の化学エネルギーを生体で使用可能なエネルギーに変換する",
       "酸素を直接ATPに変換する",
@@ -4275,7 +4275,7 @@ const CH3_QUESTIONS = [
       "ATPを食物として摂取する"
     ],
     "answer": 0,
-    "explanation": "本章では、食物中の炭水化物・タンパク質・脂質の化学結合に蓄えられたエネルギーを、生体で使用可能なエネルギーに変換することから始まる。",
+    "explanation": "生体エネルギー機構では、食物中の炭水化物・タンパク質・脂質の化学結合に蓄えられたエネルギーを、生体で使用可能なエネルギーへ変換することから始まる。",
     "sourceType": "original",
     "sourceLabel": "CPTmateオリジナル",
     "sourceNote": "ユーザー提供の第3章PDFを基準に作成",
@@ -4525,7 +4525,7 @@ const CH3_QUESTIONS = [
     "chapter": 3,
     "category": "ATP・エネルギー供給機構",
     "type": "standard",
-    "question": "三大栄養素のうち、直接的に酸素なしでエネルギー産生のために代謝されるのはどれか。",
+    "question": "三大栄養素のうち、酸素を直接必要とせずにエネルギー産生のために代謝できるのはどれか。",
     "choices": [
       "炭水化物",
       "脂質",
@@ -4533,7 +4533,7 @@ const CH3_QUESTIONS = [
       "ビタミン"
     ],
     "answer": 0,
-    "explanation": "本章では、三大栄養素のうち炭水化物だけが直接的に酸素なしでエネルギー産生のために代謝されるとしている。",
+    "explanation": "本章では、三大栄養素のうち炭水化物だけが、直接的に酸素を必要とせずにエネルギー産生のために代謝できるとしている。",
     "sourceType": "original",
     "sourceLabel": "CPTmateオリジナル",
     "sourceNote": "ユーザー提供の第3章PDFを基準に作成",
@@ -4785,7 +4785,7 @@ const CH3_QUESTIONS = [
       "90%以上必ず減少"
     ],
     "answer": 2,
-    "explanation": "本章では高強度運動の初期段階（5〜30秒）にクレアチンリン酸が50〜70%著しく減少するとしている。",
+    "explanation": "本章では、高強度運動の初期段階（5〜30秒）にクレアチンリン酸が著しく減少し、その減少量は約50〜70%とされている。",
     "sourceType": "original",
     "sourceLabel": "CPTmateオリジナル",
     "sourceNote": "ユーザー提供の第3章PDFを基準に作成",
@@ -4813,7 +4813,7 @@ const CH3_QUESTIONS = [
     "chapter": 3,
     "category": "ホスファゲン機構",
     "type": "standard",
-    "question": "激しい運動中の筋内ATP濃度は、開始前から通常どの程度を超えて減少することはないと説明されているか。",
+    "question": "激しい運動中でも、筋内ATP濃度は開始前の値から通常どの程度を超えて減少することはないと説明されているか。",
     "choices": [
       "20%",
       "40%",
@@ -4821,7 +4821,7 @@ const CH3_QUESTIONS = [
       "90%"
     ],
     "answer": 2,
-    "explanation": "本章では、激しい運動中でも筋内ATP濃度は開始前の60%を超えて減少することはないとしている。",
+    "explanation": "本章では、激しい運動中でも筋内ATP濃度が開始前の値から60%を超えて減少することはないとしている。",
     "sourceType": "original",
     "sourceLabel": "CPTmateオリジナル",
     "sourceNote": "ユーザー提供の第3章PDFを基準に作成",
@@ -4942,7 +4942,7 @@ const CH3_QUESTIONS = [
     "chapter": 3,
     "category": "解糖・乳酸代謝",
     "type": "standard",
-    "question": "速い解糖の最終産生物質はどれか。",
+    "question": "速い解糖の最終産物はどれか。",
     "choices": [
       "乳酸塩",
       "ピルビン酸のみ",
@@ -4950,7 +4950,7 @@ const CH3_QUESTIONS = [
       "アセチルCoA"
     ],
     "answer": 0,
-    "explanation": "速い解糖では高強度活動時などにピルビン酸が乳酸デヒドロゲナーゼの作用で乳酸塩に変換される。",
+    "explanation": "速い解糖では高強度活動時などに、ピルビン酸が乳酸デヒドロゲナーゼの作用によって乳酸塩に変換される。",
     "sourceType": "original",
     "sourceLabel": "CPTmateオリジナル",
     "sourceNote": "ユーザー提供の第3章PDFを基準に作成",
@@ -4960,7 +4960,7 @@ const CH3_QUESTIONS = [
     "chapter": 3,
     "category": "解糖・乳酸代謝",
     "type": "standard",
-    "question": "遅い解糖の最終産生物質はどれか。",
+    "question": "遅い解糖の最終産物はどれか。",
     "choices": [
       "ピルビン酸",
       "乳酸塩",
@@ -4968,7 +4968,7 @@ const CH3_QUESTIONS = [
       "クレアチン"
     ],
     "answer": 0,
-    "explanation": "遅い解糖の最終産生物質はピルビン酸であり、その後ミトコンドリアへ進む。",
+    "explanation": "遅い解糖の最終産物はピルビン酸であり、その後ミトコンドリアへ輸送される。",
     "sourceType": "original",
     "sourceLabel": "CPTmateオリジナル",
     "sourceNote": "ユーザー提供の第3章PDFを基準に作成",
@@ -4986,7 +4986,7 @@ const CH3_QUESTIONS = [
       "体温だけ"
     ],
     "answer": 0,
-    "explanation": "ピルビン酸が乳酸塩に変換されるか、ピルビン酸のままミトコンドリアに入るかが両者を区別する決定的な要因とされている。",
+    "explanation": "ピルビン酸が乳酸塩に変換されるか、そのままミトコンドリアへ輸送されるかが、速い解糖と遅い解糖を区別する要因である。",
     "sourceType": "original",
     "sourceLabel": "CPTmateオリジナル",
     "sourceNote": "ユーザー提供の第3章PDFを基準に作成",
@@ -5163,13 +5163,13 @@ const CH3_QUESTIONS = [
     "type": "standard",
     "question": "本章の説明で筋疲労とより直接的に関連する代謝副産物として最も適切なのはどれか。",
     "choices": [
-      "水素イオンなどによるpH低下",
-      "乳酸塩そのものだけ",
+      "水素イオンなどの代謝副産物によるpH低下",
+      "乳酸塩そのもの",
       "酸素だけ",
       "グリコーゲンだけ"
     ],
     "answer": 0,
-    "explanation": "筋疲労は乳酸塩よりも、水素イオンなどの代謝副産物による筋組織のpH低下と関連すると説明されている。",
+    "explanation": "筋疲労は乳酸塩そのものよりも、水素イオンなどの代謝副産物による筋組織のpH低下と関連すると説明されている。",
     "sourceType": "original",
     "sourceLabel": "CPTmateオリジナル",
     "sourceNote": "ユーザー提供の第3章PDFを基準に作成",
@@ -5244,7 +5244,7 @@ const CH3_QUESTIONS = [
       "平滑筋"
     ],
     "answer": 0,
-    "explanation": "タイプⅡ筋線維では解糖系酵素活性が高く、乳酸塩生成も高い傾向が示されている。",
+    "explanation": "タイプⅡ筋線維では解糖系酵素活性が高く、乳酸塩の生成量も多い傾向がある。",
     "sourceType": "original",
     "sourceLabel": "CPTmateオリジナル",
     "sourceNote": "ユーザー提供の第3章PDFを基準に作成",
@@ -5254,7 +5254,7 @@ const CH3_QUESTIONS = [
     "chapter": 3,
     "category": "解糖・乳酸代謝",
     "type": "standard",
-    "question": "初期値を超えて血中乳酸濃度が急に増加し始める運動強度を何というか。",
+    "question": "初期値を超えて血中乳酸濃度が急激に増加し始める運動強度を何というか。",
     "choices": [
       "乳酸性作業閾値（LT）",
       "OBLA",
@@ -5262,7 +5262,7 @@ const CH3_QUESTIONS = [
       "EPOC"
     ],
     "answer": 0,
-    "explanation": "乳酸濃度曲線で初期値を超えて急に増加し始める運動強度は乳酸性作業閾値（LT）と呼ばれる。",
+    "explanation": "血中乳酸濃度が初期値を超えて急激に増加し始める運動強度は、乳酸性作業閾値（LT）と呼ばれる。",
     "sourceType": "original",
     "sourceLabel": "CPTmateオリジナル",
     "sourceNote": "ユーザー提供の第3章PDFを基準に作成",
@@ -5275,7 +5275,7 @@ const CH3_QUESTIONS = [
     "chapter": 3,
     "category": "解糖・乳酸代謝",
     "type": "standard",
-    "question": "LTが生じる最大酸素摂取量に対する割合として、本章の非トレーニング者の説明に最も近いものはどれか。",
+    "question": "LTが現れる運動強度は、非トレーニング者ではVO₂maxの何%程度か。",
     "choices": [
       "50〜60%",
       "70〜80%",
@@ -5283,7 +5283,7 @@ const CH3_QUESTIONS = [
       "20〜30%"
     ],
     "answer": 0,
-    "explanation": "LTはトレーニングしていない人ではVO₂maxの50〜60%で生じると説明されている。",
+    "explanation": "LTは、トレーニングしていない人ではVO₂maxの50〜60%程度で生じると説明されている。",
     "sourceType": "original",
     "sourceLabel": "CPTmateオリジナル",
     "sourceNote": "ユーザー提供の第3章PDFを基準に作成",
@@ -5376,7 +5376,7 @@ const CH3_QUESTIONS = [
       "すべて炭水化物"
     ],
     "answer": 0,
-    "explanation": "安静時には産生ATPの約70%が脂質、約30%が炭水化物から供給されると説明されている。",
+    "explanation": "安静時には、産生されるATPの約70%が脂質から、約30%が炭水化物から供給されると説明されている。",
     "sourceType": "original",
     "sourceLabel": "CPTmateオリジナル",
     "sourceNote": "ユーザー提供の第3章PDFを基準に作成",
@@ -5404,7 +5404,7 @@ const CH3_QUESTIONS = [
     "chapter": 3,
     "category": "酸化機構",
     "type": "standard",
-    "question": "高強度の有酸素性運動で十分な供給が追いつく場合、エネルギーはほとんど何から供給されるか。",
+    "question": "高強度の有酸素性運動で十分な酸素供給がある場合、エネルギーはほとんど何から供給されるか。",
     "choices": [
       "炭水化物",
       "脂質",
@@ -5412,7 +5412,7 @@ const CH3_QUESTIONS = [
       "クレアチンのみ"
     ],
     "answer": 0,
-    "explanation": "高強度の有酸素性運動では、十分な供給が追いつくならほとんど100%のエネルギーが炭水化物から供給される。",
+    "explanation": "高強度の有酸素性運動では、十分な酸素供給がある場合、ほとんど100%のエネルギーが炭水化物から供給される。",
     "sourceType": "original",
     "sourceLabel": "CPTmateオリジナル",
     "sourceNote": "ユーザー提供の第3章PDFを基準に作成",
@@ -5430,7 +5430,7 @@ const CH3_QUESTIONS = [
       "クレアチンのみ"
     ],
     "answer": 0,
-    "explanation": "長時間の最大下・定常状態運動ではエネルギー基質は再び炭水化物から脂質とタンパク質へ移行する。",
+    "explanation": "長時間の最大下・定常状態の運動では、エネルギー基質は再び炭水化物から脂質とタンパク質へ移行する。",
     "sourceType": "original",
     "sourceLabel": "CPTmateオリジナル",
     "sourceNote": "ユーザー提供の第3章PDFを基準に作成",
@@ -5595,7 +5595,7 @@ const CH3_QUESTIONS = [
       "脂質・タンパク質の酸化"
     ],
     "answer": 0,
-    "explanation": "表3.3ではATP産生速度の順位でホスファゲン機構が1位、最も速いとされる。",
+    "explanation": "解説で確認できる表3.3では、ATP産生速度の順位でホスファゲン機構が1位、つまり最も速いとされる。",
     "sourceType": "original",
     "sourceLabel": "CPTmateオリジナル",
     "sourceNote": "ユーザー提供の第3章PDFを基準に作成",
@@ -5648,7 +5648,7 @@ const CH3_QUESTIONS = [
       "遅い解糖"
     ],
     "answer": 0,
-    "explanation": "表3.3では脂質・タンパク質の酸化がATP産生量最大とされる。",
+    "explanation": "解説で確認できる表3.3では、脂質・タンパク質の酸化がATP産生量で1位、つまり最大とされる。",
     "sourceType": "original",
     "sourceLabel": "CPTmateオリジナル",
     "sourceNote": "ユーザー提供の第3章PDFを基準に作成",
@@ -5701,7 +5701,7 @@ const CH3_QUESTIONS = [
       "酸化機構だけ例外である"
     ],
     "answer": 0,
-    "explanation": "一般に、ある供給機構が産生できるATP量とその産生速度には逆相関の関係がある。",
+    "explanation": "解説で確認できる表3.3からも、一般にATP産生速度が速い供給機構ほどATP産生量は少なく、両者には逆の関係がみられる。",
     "sourceType": "original",
     "sourceLabel": "CPTmateオリジナル",
     "sourceNote": "ユーザー提供の第3章PDFを基準に作成",
@@ -6029,7 +6029,7 @@ const CH3_QUESTIONS = [
     "chapter": 3,
     "category": "運動時間・強度とエネルギー機構",
     "type": "standard",
-    "question": "運動中の主要なエネルギー供給機構を決定する要因として、本章で第一に挙げられているものはどれか。",
+    "question": "運動中に各エネルギー供給機構が貢献する割合を決定する最も大きな要因はどれか。",
     "choices": [
       "運動強度",
       "年齢",
@@ -6037,7 +6037,7 @@ const CH3_QUESTIONS = [
       "身長"
     ],
     "answer": 0,
-    "explanation": "運動中に各機構が貢献する割合は第一に運動強度、次に運動時間によって決定される。",
+    "explanation": "運動中に各機構が貢献する割合は、第一に運動強度、次に運動時間によって決定される。",
     "sourceType": "original",
     "sourceLabel": "CPTmateオリジナル",
     "sourceNote": "ユーザー提供の第3章PDFを基準に作成",
@@ -6073,7 +6073,7 @@ const CH3_QUESTIONS = [
       "酸素を必ず必要とする"
     ],
     "answer": 0,
-    "explanation": "高強度・短時間運動では最も速くATPを産生できる機構への依存度が高いが、この機構は供給量が少ない。",
+    "explanation": "高強度・短時間の運動では最も速くATPを産生できる供給機構への依存度が高いが、そのような機構はATPを供給できる量が少ない。",
     "sourceType": "original",
     "sourceLabel": "CPTmateオリジナル",
     "sourceNote": "ユーザー提供の第3章PDFを基準に作成",
@@ -6083,7 +6083,7 @@ const CH3_QUESTIONS = [
     "chapter": 3,
     "category": "基質・グリコーゲン",
     "type": "standard",
-    "question": "運動中の疲労と関係しやすい基質の組み合わせはどれか。",
+    "question": "運動中の疲労と関連しやすいエネルギー基質の組み合わせはどれか。",
     "choices": [
       "ホスファゲンとグリコーゲン",
       "遊離脂肪酸とアミノ酸のみ",
@@ -6091,7 +6091,7 @@ const CH3_QUESTIONS = [
       "乳酸と酸素のみ"
     ],
     "answer": 0,
-    "explanation": "多くの運動中の疲労はホスファゲンとグリコーゲンの消費と関係している。",
+    "explanation": "多くの運動中の疲労は、ホスファゲンやグリコーゲンの消費・枯渇と関係している。",
     "sourceType": "original",
     "sourceLabel": "CPTmateオリジナル",
     "sourceNote": "ユーザー提供の第3章PDFを基準に作成",
@@ -6119,7 +6119,7 @@ const CH3_QUESTIONS = [
     "chapter": 3,
     "category": "基質・グリコーゲン",
     "type": "standard",
-    "question": "身体全体で筋に蓄えられているグリコーゲン量はおおよそどれか。",
+    "question": "全身の骨格筋に蓄えられているグリコーゲン量はおおよそどれか。",
     "choices": [
       "300〜400g",
       "10〜20g",
@@ -6127,7 +6127,7 @@ const CH3_QUESTIONS = [
       "1,000〜1,500g"
     ],
     "answer": 0,
-    "explanation": "本章では身体全体で約300〜400gが筋に蓄えられているとしている。",
+    "explanation": "本章では、全身の骨格筋に約300〜400gのグリコーゲンが蓄えられているとしている。",
     "sourceType": "original",
     "sourceLabel": "CPTmateオリジナル",
     "sourceNote": "ユーザー提供の第3章PDFを基準に作成",
@@ -6181,7 +6181,7 @@ const CH3_QUESTIONS = [
       "乳酸塩"
     ],
     "answer": 0,
-    "explanation": "低強度運動では肝グリコーゲンがより重要で、運動時間が長くなるにつれてその貢献度が増す。",
+    "explanation": "低強度の運動では肝グリコーゲンがより重要となり、運動時間が長くなるにつれてその貢献度が増すと説明されている。",
     "sourceType": "original",
     "sourceLabel": "CPTmateオリジナル",
     "sourceNote": "ユーザー提供の第3章PDFを基準に作成",
@@ -6191,7 +6191,7 @@ const CH3_QUESTIONS = [
     "chapter": 3,
     "category": "基質・グリコーゲン",
     "type": "standard",
-    "question": "最大酸素摂取量の約60〜75%以上の強度になると優先的なエネルギー源となるのはどれか。",
+    "question": "VO₂maxの約60〜75%以上の強度になると、優先的なエネルギー源となるのはどれか。",
     "choices": [
       "グリコーゲン",
       "脂肪酸のみ",
@@ -6199,7 +6199,7 @@ const CH3_QUESTIONS = [
       "ビタミン"
     ],
     "answer": 0,
-    "explanation": "VO₂maxの約60〜75%以上になるとグリコーゲンが優先的なエネルギー源となる。この現象はクロスオーバーコンセプトと呼ばれる。",
+    "explanation": "VO₂maxの約60〜75%以上の強度になるとグリコーゲンが優先的なエネルギー源となる。この現象はクロスオーバーコンセプトと呼ばれる。",
     "sourceType": "original",
     "sourceLabel": "CPTmateオリジナル",
     "sourceNote": "ユーザー提供の第3章PDFを基準に作成",
@@ -6209,7 +6209,7 @@ const CH3_QUESTIONS = [
     "chapter": 3,
     "category": "基質・グリコーゲン",
     "type": "standard",
-    "question": "筋グリコーゲン再合成が運動後最も急速に進む時間帯はどれか。",
+    "question": "筋グリコーゲンの再合成が、運動後に最も急速に進む時間帯はどれか。",
     "choices": [
       "最初の5〜6時間",
       "24〜30時間後",
@@ -6217,7 +6217,7 @@ const CH3_QUESTIONS = [
       "1週間後"
     ],
     "answer": 0,
-    "explanation": "筋グリコーゲンの再合成は運動直後から始まり、最初の5〜6時間の間が最も急速に進む。",
+    "explanation": "筋グリコーゲンの再合成は運動直後から始まり、最初の5〜6時間が最も急速に進む。",
     "sourceType": "original",
     "sourceLabel": "CPTmateオリジナル",
     "sourceNote": "ユーザー提供の第3章PDFを基準に作成",
@@ -6229,13 +6229,13 @@ const CH3_QUESTIONS = [
     "type": "standard",
     "question": "本章で、グリコーゲン補給を最適化する摂取例として示されているのはどれか。",
     "choices": [
-      "約2時間おきに体重1kgあたり1.2gの炭水化物",
+      "約2時間ごとに体重1kgあたり1.2gの炭水化物",
       "1日1回体重1kgあたり0.1g",
       "タンパク質だけを摂取",
       "水分だけを摂取"
     ],
     "answer": 0,
-    "explanation": "運動後約2時間おきに体重1kgあたり1.2gの炭水化物を摂取すると補充が最適化されるようである。",
+    "explanation": "運動後、約2時間ごとに体重1kgあたり1.2gの炭水化物を摂取すると、補充が最適化されるようである。",
     "sourceType": "original",
     "sourceLabel": "CPTmateオリジナル",
     "sourceNote": "ユーザー提供の第3章PDFを基準に作成",
@@ -6263,7 +6263,7 @@ const CH3_QUESTIONS = [
     "chapter": 3,
     "category": "酸素借・トレーニングへの応用",
     "type": "standard",
-    "question": "低強度の一定パワー運動で、酸素需要量と酸素摂取量が等しい状態を何というか。",
+    "question": "低強度で一定のパワーを発揮する運動で、酸素需要量と酸素摂取量が等しい状態を何というか。",
     "choices": [
       "定常状態",
       "酸素借",
@@ -6284,7 +6284,7 @@ const CH3_QUESTIONS = [
     "chapter": 3,
     "category": "酸素借・トレーニングへの応用",
     "type": "standard",
-    "question": "運動開始直後の無酸素性機構の貢献分を、本章では何と呼ぶか。",
+    "question": "運動開始直後に、全エネルギー需要量に対して無酸素性機構が担う貢献を、本章では何と呼ぶか。",
     "choices": [
       "酸素借",
       "EPOC",
@@ -6292,7 +6292,7 @@ const CH3_QUESTIONS = [
       "LT"
     ],
     "answer": 0,
-    "explanation": "運動開始時にはエネルギーの一部が無酸素性機構から供給され、その全エネルギー需要に対する貢献を酸素借と呼ぶ。",
+    "explanation": "運動開始時にはエネルギーの一部が無酸素性機構から供給される。この全エネルギー需要量に対する無酸素性機構の貢献を酸素借と呼ぶ。",
     "sourceType": "original",
     "sourceLabel": "CPTmateオリジナル",
     "sourceNote": "ユーザー提供の第3章PDFを基準に作成",
@@ -6305,7 +6305,7 @@ const CH3_QUESTIONS = [
     "chapter": 3,
     "category": "酸素借・トレーニングへの応用",
     "type": "standard",
-    "question": "運動後に安静時を超えてしばらく続く酸素摂取量を何というか。",
+    "question": "運動後、安静時レベルを超えてしばらく続く酸素摂取量を何というか。",
     "choices": [
       "EPOC（運動後過剰酸素消費）",
       "LT",
@@ -6313,7 +6313,7 @@ const CH3_QUESTIONS = [
       "酸素借"
     ],
     "answer": 0,
-    "explanation": "運動後の安静時レベルを超える酸素摂取量は運動後過剰酸素消費（EPOC）と呼ばれる。",
+    "explanation": "運動後に安静時レベルを超えてしばらく続く酸素摂取量は、運動後過剰酸素消費（EPOC）と呼ばれる。",
     "sourceType": "original",
     "sourceLabel": "CPTmateオリジナル",
     "sourceNote": "ユーザー提供の第3章PDFを基準に作成",
@@ -6326,7 +6326,7 @@ const CH3_QUESTIONS = [
     "chapter": 3,
     "category": "酸素借・トレーニングへの応用",
     "type": "standard",
-    "question": "運動強度が高く運動時間が短いほど、トレーニング設計で重視される傾向があるのはどれか。",
+    "question": "運動強度が高く、運動時間が短いほど、トレーニング設計で重視される傾向があるのはどれか。",
     "choices": [
       "最も速くATPを産生できる供給機構",
       "最も産生速度が遅い供給機構だけ",
@@ -6334,7 +6334,7 @@ const CH3_QUESTIONS = [
       "休息を全く取らないこと"
     ],
     "answer": 0,
-    "explanation": "高強度・短時間の活動ほど、最も速くATPを産生できる供給機構への依存度が大きくなる。",
+    "explanation": "高強度・短時間の活動ほど、最も速くATPを産生できる供給機構への依存度が高くなる。",
     "sourceType": "original",
     "sourceLabel": "CPTmateオリジナル",
     "sourceNote": "ユーザー提供の第3章PDFを基準に作成",
