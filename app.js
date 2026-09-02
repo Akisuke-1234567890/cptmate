@@ -1,4 +1,4 @@
-const APP_VERSION = "0.2.124";
+const APP_VERSION = "0.2.126";
 
 /* v0.2.63: home logo placement + startup splash/crossfade */
 const CPTMATE_BRAND_LOGO = "assets/branding/cptmate-horizontal-logo.png";
@@ -1617,7 +1617,7 @@ function ensureFigureStyles() {
     .question-figure img {
       display: block;
       width: 100%;
-      max-height: 680px;
+      max-height: min(58vh, 520px);
       object-fit: contain;
       border-radius: 12px;
       background: #fff;
@@ -1994,7 +1994,8 @@ function ensureChoiceFeedbackStyles() {
     }
     .explanation-table {
       width: 100%;
-      min-width: 520px;
+      min-width: 0;
+      table-layout: fixed;
       border-collapse: collapse;
       font-size: 14px;
       line-height: 1.45;
@@ -2006,6 +2007,8 @@ function ensureChoiceFeedbackStyles() {
       padding: 9px 8px;
       text-align: center;
       vertical-align: middle;
+      overflow-wrap: anywhere;
+      word-break: break-word;
     }
     .explanation-table thead th {
       background: #eef6f6;
@@ -2673,10 +2676,10 @@ function ensureFigureGalleryStyles() {
     .figure-usage-empty{font-size:12px;color:var(--muted);padding:8px 0}
     .gallery-table-wrap{margin-top:10px;border:1px solid var(--line);border-radius:12px;background:#fff;overflow:hidden}
     .gallery-table-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch}
-    .gallery-table{width:100%;min-width:520px;border-collapse:collapse;font-size:12px;line-height:1.4;color:#294b4e}
-    .gallery-table th,.gallery-table td{border:1px solid #d8e2e3;padding:7px 7px;text-align:center;vertical-align:middle}
-    .gallery-table thead th{background:#eef6f6;font-weight:800;white-space:nowrap}
-    .gallery-table tbody th{background:#f7faf9;font-weight:700;white-space:nowrap}
+    .gallery-table{width:100%;min-width:0;table-layout:fixed;border-collapse:collapse;font-size:12px;line-height:1.4;color:#294b4e}
+    .gallery-table th,.gallery-table td{border:1px solid #d8e2e3;padding:7px 5px;text-align:center;vertical-align:middle;overflow-wrap:anywhere;word-break:break-word}
+    .gallery-table thead th{background:#eef6f6;font-weight:800;white-space:normal}
+    .gallery-table tbody th{background:#f7faf9;font-weight:700;white-space:normal}
     #figureSearchInput{width:100%;box-sizing:border-box;padding:12px 14px;border:1px solid var(--line);border-radius:12px;background:#fff;font-size:15px}
   `;
   document.head.appendChild(style);
