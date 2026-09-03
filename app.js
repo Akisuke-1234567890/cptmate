@@ -1,4 +1,4 @@
-const APP_VERSION = "0.2.131";
+const APP_VERSION = "0.2.132";
 
 /* v0.2.63: home logo placement + startup splash/crossfade */
 const CPTMATE_BRAND_LOGO = "assets/branding/cptmate-horizontal-logo.png";
@@ -1106,7 +1106,18 @@ function getChapterMajorProgress(chapter = 1) {
 "総合・ケーススタディ": q => q.category.startsWith("総合") || q.category.startsWith("ケーススタディ") },
     3: { "基礎・ATP・ホスファゲン": q => /^(基礎用語・ATP|エネルギー供給機構|ホスファゲン機構)$/.test(q.category),
 "解糖系・乳酸・酸化": q => /^(解糖系・乳酸|酸化機構)$/.test(q.category),
-"エネルギー供給・基質・応用": q => /^(エネルギー供給能力|基質の消費・補給|グリコーゲン|酸素借・EPOC|トレーニングへの応用)$/.test(q.category) }
+"エネルギー供給・基質・応用": q => /^(エネルギー供給能力|基質の消費・補給|グリコーゲン|酸素借・EPOC|トレーニングへの応用)$/.test(q.category) },
+    4: {
+      "力学の基礎": q => /^(基礎・運動の分類|運動学・運動力学|ニュートンの法則|運動量・力積・トルク)$/.test(q.category) || q.category === "基礎・章末確認",
+      "てこ": q => q.category === "てこの原理" || q.category === "てこ・章末確認",
+      "仕事・パワー・エネルギー": q => /^(仕事・パワー|エネルギー・効率)$/.test(q.category) || q.category === "仕事・章末確認",
+      "筋形状・長さ-張力": q => /^(筋形状|長さ-張力関係)$/.test(q.category) || q.category === "長さ-張力・章末確認",
+      "力-速度関係・SSC": q => q.category === "力-速度関係・SSC" || q.category === "力-速度関係・章末確認",
+      "筋力・神経適応": q => q.category === "筋力・神経適応" || q.category === "筋力・神経適応・章末確認",
+      "キネマティックチェーン": q => q.category === "キネマティックチェーン",
+      "筋による動作制御": q => q.category === "筋による動作制御" || q.category === "筋による動作制御・章末確認",
+      "抵抗タイプ": q => q.category === "抵抗タイプ" || q.category === "抵抗タイプ・章末確認" || q.category === "模擬問題・筋活動"
+    }
   };
   const major = majorByChapter[chapter] || {};
   return Object.entries(major).map(([name, fn]) => {
@@ -1368,14 +1379,22 @@ async function renderPracticeSelector(selectedChapter = null) {
     2: { "血液・酸素運搬": q => q.category === "血液・酸素運搬",
 "心臓・循環": q => q.category === "心臓・循環",
 "呼吸・ガス交換": q => q.category === "呼吸・ガス交換",
-"酸素摂取・運動適応": q => q.category === "酸素摂取・運動適応" },
-    3: { "ATP・エネルギー供給機構": q => q.category === "ATP・エネルギー供給機構",
-"ホスファゲン機構": q => q.category === "ホスファゲン機構",
-"解糖・乳酸代謝": q => q.category === "解糖・乳酸代謝",
-"酸化機構": q => q.category === "酸化機構",
-"運動時間・強度とエネルギー機構": q => q.category === "運動時間・強度とエネルギー機構",
-"基質・グリコーゲン": q => q.category === "基質・グリコーゲン",
-"酸素借・トレーニングへの応用": q => q.category === "酸素借・トレーニングへの応用" }
+"酸素摂取・運動適応": q => q.category === "酸素摂取・運動適応",
+"総合・ケーススタディ": q => q.category.startsWith("総合") || q.category.startsWith("ケーススタディ") },
+    3: { "基礎・ATP・ホスファゲン": q => /^(基礎用語・ATP|エネルギー供給機構|ホスファゲン機構)$/.test(q.category),
+"解糖系・乳酸・酸化": q => /^(解糖系・乳酸|酸化機構)$/.test(q.category),
+"エネルギー供給・基質・応用": q => /^(エネルギー供給能力|基質の消費・補給|グリコーゲン|酸素借・EPOC|トレーニングへの応用)$/.test(q.category) },
+    4: {
+      "力学の基礎": q => /^(基礎・運動の分類|運動学・運動力学|ニュートンの法則|運動量・力積・トルク)$/.test(q.category) || q.category === "基礎・章末確認",
+      "てこ": q => q.category === "てこの原理" || q.category === "てこ・章末確認",
+      "仕事・パワー・エネルギー": q => /^(仕事・パワー|エネルギー・効率)$/.test(q.category) || q.category === "仕事・章末確認",
+      "筋形状・長さ-張力": q => /^(筋形状|長さ-張力関係)$/.test(q.category) || q.category === "長さ-張力・章末確認",
+      "力-速度関係・SSC": q => q.category === "力-速度関係・SSC" || q.category === "力-速度関係・章末確認",
+      "筋力・神経適応": q => q.category === "筋力・神経適応" || q.category === "筋力・神経適応・章末確認",
+      "キネマティックチェーン": q => q.category === "キネマティックチェーン",
+      "筋による動作制御": q => q.category === "筋による動作制御" || q.category === "筋による動作制御・章末確認",
+      "抵抗タイプ": q => q.category === "抵抗タイプ" || q.category === "抵抗タイプ・章末確認" || q.category === "模擬問題・筋活動"
+    }
   };
   const major = majorByChapter[chapter] || {};
 
