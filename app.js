@@ -1,4 +1,4 @@
-const APP_VERSION = "0.2.127";
+const APP_VERSION = "0.2.128";
 
 /* v0.2.63: home logo placement + startup splash/crossfade */
 const CPTMATE_BRAND_LOGO = "assets/branding/cptmate-horizontal-logo.png";
@@ -2445,44 +2445,108 @@ function renderGalleryTableMarkup(table) {
 
 async function renderFigureGallery(filterText = "") {
   setActiveNav("settings");
-  await ensureAllQuestionsLoaded();
-  await ensureAllFiguresLoaded();
 
-  const figures = getFigureCatalog();
-  const tables = getTableCatalog();
-  const query = String(filterText || "").trim().toLowerCase();
-  const allItems = [...figures, ...tables];
+  // v0.2.128: ギャラリーを開く際の遅延・例外で「ボタンが押せない」ように
+  // 見える問題を防ぐ。まず即座に読み込み画面を表示し、その後データを
+  // 章ごとに順番に読み込む。失敗した場合は画面上に原因を表示する。
+  screenEl().innerHTML = `
+    <div class="back-row">
+      <button class="back-btn" type="button" onclick="renderSettings()">‹</button>
+      <h2>図・イラスト・表一覧</h2>
+    </div>
+    <section class="card">
+      <div style="padding:24px 8px;text-align:center;color:var(--muted);line-height:1.8;">
+        <div style="font-size:28px;margin-bottom:8px;">⏳</div>
+        <strong style="color:var(--text);">資料を読み込んでいます…</strong><br>
+        <span>図・イラスト・表を準備しています。</span>
+      </div>
+    </section>
+  `;
 
-  const matchesItem = (item) => {
-    const usage = item.kind === "figure"
-      ? getFigureUsageQuestions(item.id)
-      : getTableUsageQuestions(item);
+  try {
+    // iPhone / WKWebViewで6ファイル同時importが不安定になる可能性を避ける。
+    const chapters = [...new Set(QUESTION_INDEX.map(q => q.chapter))].sort((a, b) => a - b);
 
-    const haystack = [
-      item.id,
-      item.title,
-      item.caption,
-      `第${item.chapter}章`,
-      item.kind === "table" ? "表 確認表" : "図 イラスト",
-      ...(item.kind === "table" ? item.headers : []),
-      ...(item.kind === "table" ? item.rows.flat() : []),
-      ...usage.flatMap(u => [u.id, u.category, u.typeLabel, u.question])
-    ].join(" ").toLowerCase();
+    for (const chapter of chapters) {
+      await loadChapterData(chapter);
+    }
 
-    return !query || haystack.includes(query);
-  };
+    for (const chapter of chapters) {
+      await loadChapterFigures(chapter);
+    }
 
-  const filteredItems = allItems.filter(matchesItem);
-  const chapterNumbers = [...new Set(filteredItems.map(item => item.chapter))].sort((a,b) => a-b);
+    const figures = getFigureCatalog();
+    const tables = getTableCatalog();
+    const query = String(filterText || "").trim().toLowerCase();
+    const allItems = [...figures, ...tables];
 
-  const chapterHtml = chapterNumbers.map(chapter => {
-    const items = filteredItems.filter(item => item.chapter === chapter);
-    const figuresInChapter = items.filter(item => item.kind === "figure");
-    const tablesInChapter = items.filter(item => item.kind === "table");
+    const matchesItem = (item) => {
+      const usage = item.kind === "figure"
+        ? getFigureUsageQuestions(item.id)
+        : getTableUsageQuestions(item);
 
-    const itemsHtml = items.map(item => {
-      if (item.kind === "table") {
-        const usage = getTableUsageQuestions(item);
+      const haystack = [
+        item.id,
+        item.title,
+        item.caption,
+        `第${item.chapter}章`,
+        item.kind === "table" ? "表 確認表" : "図 イラスト",
+        ...(item.kind === "table" ? item.headers : []),
+        ...(item.kind === "table" ? item.rows.flat() : []),
+        ...usage.flatMap(u => [u.id, u.category, u.typeLabel, u.question])
+      ].join(" ").toLowerCase();
+
+      return !query || haystack.includes(query);
+    };
+
+    const filteredItems = allItems.filter(matchesItem);
+    const chapterNumbers = [...new Set(filteredItems.map(item => item.chapter))].sort((a,b) => a-b);
+
+    const chapterHtml = chapterNumbers.map(chapter => {
+      const items = filteredItems.filter(item => item.chapter === chapter);
+      const figuresInChapter = items.filter(item => item.kind === "figure");
+      const tablesInChapter = items.filter(item => item.kind === "table");
+
+      const itemsHtml = items.map(item => {
+        if (item.kind === "table") {
+          const usage = getTableUsageQuestions(item);
+          const usageHtml = usage.length
+            ? usage.map(u => `
+                <div class="figure-usage-item">
+                  <div class="figure-usage-head">
+                    <strong>第${u.chapter}章・問題${u.chapterNo}</strong>
+                    <span>${escapeGalleryText(u.id)}</span>
+                  </div>
+                  <div class="figure-usage-meta">${escapeGalleryText(u.typeLabel)}　${escapeGalleryText(u.category)}</div>
+                  <div class="figure-usage-question">${escapeGalleryText(u.question)}</div>
+                </div>
+              `).join("")
+            : `<div class="figure-usage-empty">現在、問題からの参照はありません。</div>`;
+
+          return `
+            <div class="figure-gallery-item gallery-table-item">
+              <div class="gallery-item-header">
+                <div class="gallery-item-type table-type">表</div>
+                <div class="figure-gallery-meta">
+                  <strong>${escapeGalleryText(item.title)}</strong>
+                  <span>第${item.chapter}章　使用問題 ${usage.length}問</span>
+                </div>
+              </div>
+              ${renderGalleryTableMarkup(item)}
+              <details class="figure-usage-details">
+                <summary>使用問題を表示</summary>
+                <div class="figure-usage-list">${usageHtml}</div>
+              </details>
+            </div>
+          `;
+        }
+
+        const usage = getFigureUsageQuestions(item.id);
+        const safeCaption = String(item.caption || "")
+          .replace(/\\/g, "\\\\")
+          .replace(/'/g, "\\'")
+          .replace(/\n/g, " ");
+
         const usageHtml = usage.length
           ? usage.map(u => `
               <div class="figure-usage-item">
@@ -2497,129 +2561,108 @@ async function renderFigureGallery(filterText = "") {
           : `<div class="figure-usage-empty">現在、問題からの参照はありません。</div>`;
 
         return `
-          <div class="figure-gallery-item gallery-table-item">
-            <div class="gallery-item-header">
-              <div class="gallery-item-type table-type">表</div>
+          <div class="figure-gallery-item">
+            <button class="figure-gallery-main" type="button"
+              onclick="openFigureModal('${versionedImageSrc(item.image)}','${safeCaption}')">
+              <div class="figure-gallery-thumb">
+                <img src="${versionedImageSrc(item.image)}" alt="${escapeGalleryText(item.title)}" loading="lazy">
+              </div>
               <div class="figure-gallery-meta">
-                <strong>${escapeGalleryText(item.title)}</strong>
+                <div class="gallery-item-header">
+                  <div class="gallery-item-type figure-type">図</div>
+                  <strong>${escapeGalleryText(item.title)}</strong>
+                </div>
                 <span>第${item.chapter}章　使用問題 ${usage.length}問</span>
               </div>
-            </div>
-            ${renderGalleryTableMarkup(item)}
+            </button>
             <details class="figure-usage-details">
               <summary>使用問題を表示</summary>
               <div class="figure-usage-list">${usageHtml}</div>
             </details>
           </div>
         `;
-      }
-
-      const usage = getFigureUsageQuestions(item.id);
-      const safeCaption = String(item.caption || "")
-        .replace(/\\/g, "\\\\")
-        .replace(/'/g, "\\'")
-        .replace(/\n/g, " ");
-
-      const usageHtml = usage.length
-        ? usage.map(u => `
-            <div class="figure-usage-item">
-              <div class="figure-usage-head">
-                <strong>第${u.chapter}章・問題${u.chapterNo}</strong>
-                <span>${escapeGalleryText(u.id)}</span>
-              </div>
-              <div class="figure-usage-meta">${escapeGalleryText(u.typeLabel)}　${escapeGalleryText(u.category)}</div>
-              <div class="figure-usage-question">${escapeGalleryText(u.question)}</div>
-            </div>
-          `).join("")
-        : `<div class="figure-usage-empty">現在、問題からの参照はありません。</div>`;
+      }).join("");
 
       return `
-        <div class="figure-gallery-item">
-          <button class="figure-gallery-main" type="button"
-            onclick="openFigureModal('${versionedImageSrc(item.image)}','${safeCaption}')">
-            <div class="figure-gallery-thumb">
-              <img src="${versionedImageSrc(item.image)}" alt="${escapeGalleryText(item.title)}" loading="lazy">
-            </div>
-            <div class="figure-gallery-meta">
-              <div class="gallery-item-header">
-                <div class="gallery-item-type figure-type">図</div>
-                <strong>${escapeGalleryText(item.title)}</strong>
-              </div>
-              <span>第${item.chapter}章　使用問題 ${usage.length}問</span>
-            </div>
-          </button>
-          <details class="figure-usage-details">
-            <summary>使用問題を表示</summary>
-            <div class="figure-usage-list">${usageHtml}</div>
-          </details>
-        </div>
+        <details class="gallery-chapter" ${query ? "open" : ""}>
+          <summary>
+            <span class="gallery-chapter-title">第${chapter}章</span>
+            <span class="gallery-chapter-count">
+              ${figuresInChapter.length ? `図 ${figuresInChapter.length}` : ""}
+              ${figuresInChapter.length && tablesInChapter.length ? "　" : ""}
+              ${tablesInChapter.length ? `表 ${tablesInChapter.length}` : ""}
+            </span>
+          </summary>
+          <div class="gallery-chapter-body">${itemsHtml}</div>
+        </details>
       `;
     }).join("");
 
-    return `
-      <details class="gallery-chapter" ${query ? "open" : ""}>
-        <summary>
-          <span class="gallery-chapter-title">第${chapter}章</span>
-          <span class="gallery-chapter-count">
-            ${figuresInChapter.length ? `図 ${figuresInChapter.length}` : ""}
-            ${figuresInChapter.length && tablesInChapter.length ? "　" : ""}
-            ${tablesInChapter.length ? `表 ${tablesInChapter.length}` : ""}
-          </span>
-        </summary>
-        <div class="gallery-chapter-body">${itemsHtml}</div>
-      </details>
+    screenEl().innerHTML = `
+      <div class="back-row">
+        <button class="back-btn" type="button" onclick="renderSettings()">‹</button>
+        <h2>図・イラスト・表一覧</h2>
+      </div>
+      <section class="card">
+        <p style="color:var(--muted);line-height:1.7;margin-top:0;">
+          CPTmateに登録されている図・イラスト・表資料を章ごとに確認できます。図はタップすると全画面で確認できます。
+        </p>
+        <input
+          id="figureSearchInput"
+          class="text-input"
+          type="search"
+          placeholder="図名・表名・問題文・問題IDで検索"
+          value="${escapeGalleryText(filterText)}"
+          oninput="renderFigureGallery(this.value)"
+        >
+        <div style="margin-top:8px;color:var(--muted);font-size:12px;">
+          ${filteredItems.length} / ${allItems.length} 資料
+        </div>
+      </section>
+      <section class="card">
+        <div class="gallery-chapter-list">
+          ${chapterHtml || `
+            <div style="padding:20px;text-align:center;color:var(--muted);">
+              該当する図・表・問題がありません。
+            </div>
+          `}
+        </div>
+      </section>
     `;
-  }).join("");
 
-  screenEl().innerHTML = `
-    <div class="back-row">
-      <button class="back-btn" onclick="renderSettings()">‹</button>
-      <h2>図・イラスト・表一覧</h2>
-    </div>
-    <section class="card">
-      <p style="color:var(--muted);line-height:1.7;margin-top:0;">
-        CPTmateに登録されている図・イラスト・表資料を章ごとに確認できます。図はタップすると全画面で確認できます。
-      </p>
-      <input
-        id="figureSearchInput"
-        class="text-input"
-        type="search"
-        placeholder="図名・表名・問題文・問題IDで検索"
-        value="${escapeGalleryText(filterText)}"
-        oninput="renderFigureGallery(this.value)"
-      >
-      <div style="margin-top:8px;color:var(--muted);font-size:12px;">
-        ${filteredItems.length} / ${allItems.length} 資料
-      </div>
-    </section>
-    <section class="card">
-      <div class="gallery-chapter-list">
-        ${chapterHtml || `
-          <div style="padding:20px;text-align:center;color:var(--muted);">
-            該当する図・表・問題がありません。
-          </div>
-        `}
-      </div>
-    </section>
-  `;
+    ensureFigureGalleryStyles();
 
-  ensureFigureGalleryStyles();
-
-  // 初回表示では検索欄へフォーカスしない。
-  // 検索入力中の再描画時だけフォーカスを復元する。
-  if (window.__cptmateFigureSearchActive) {
-    const input = document.getElementById("figureSearchInput");
-    if (input) {
-      input.focus();
-      try { input.setSelectionRange(input.value.length, input.value.length); } catch (_) {}
+    if (window.__cptmateFigureSearchActive) {
+      const input = document.getElementById("figureSearchInput");
+      if (input) {
+        input.focus();
+        try { input.setSelectionRange(input.value.length, input.value.length); } catch (_) {}
+      }
     }
-  }
 
-  const input = document.getElementById("figureSearchInput");
-  if (input && !input.dataset.galleryFocusHooked) {
-    input.dataset.galleryFocusHooked = "1";
-    input.addEventListener("focus", () => { window.__cptmateFigureSearchActive = true; });
-    input.addEventListener("blur", () => { window.__cptmateFigureSearchActive = false; });
+    const input = document.getElementById("figureSearchInput");
+    if (input && !input.dataset.galleryFocusHooked) {
+      input.dataset.galleryFocusHooked = "1";
+      input.addEventListener("focus", () => { window.__cptmateFigureSearchActive = true; });
+      input.addEventListener("blur", () => { window.__cptmateFigureSearchActive = false; });
+    }
+  } catch (error) {
+    screenEl().innerHTML = `
+      <div class="back-row">
+        <button class="back-btn" type="button" onclick="renderSettings()">‹</button>
+        <h2>図・イラスト・表一覧</h2>
+      </div>
+      <section class="card">
+        <h3>資料の読み込みに失敗しました</h3>
+        <p style="color:var(--muted);line-height:1.7;">
+          ボタン自体は正常に反応していますが、資料データの読み込み中にエラーが発生しました。
+        </p>
+        <div style="padding:12px;border-radius:12px;background:#fff3f3;color:#8b2d2d;white-space:pre-wrap;word-break:break-word;font-size:12px;">
+          ${escapeGalleryText(error?.message || String(error))}
+        </div>
+        <button class="secondary-btn full" type="button" onclick="renderFigureGallery()">もう一度読み込む</button>
+      </section>
+    `;
   }
 }
 
