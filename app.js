@@ -1,4 +1,4 @@
-const APP_VERSION = "0.2.132";
+const APP_VERSION = "0.2.133";
 
 /* v0.2.63: home logo placement + startup splash/crossfade */
 const CPTMATE_BRAND_LOGO = "assets/branding/cptmate-horizontal-logo.png";
@@ -2792,17 +2792,25 @@ async function checkForAppUpdate() {
   if (status) status.textContent = "最新版を確認しています…";
 
   try {
-    // iPhone Safari / ホーム画面起動でも壊れにくいよう、相対URLだけを使用する。
-    const checkUrl = `version.json?check=${Date.now()}`;
-    const res = await fetch(checkUrl, {
+    // version.jsonではなく、公開中のapp.js自身から最新版を判定する。
+    // version.jsonの更新漏れがあっても、アプリ本体のバージョンを正しく検出できる。
+    const checkStamp = Date.now();
+    const latestAppUrl = `app.js?check=${checkStamp}`;
+    const latestAppRes = await fetch(latestAppUrl, {
       cache: "no-store",
       headers: { "Cache-Control": "no-cache" }
     });
-    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    if (!latestAppRes.ok) {
+      throw new Error(`app.js: HTTP ${latestAppRes.status}`);
+    }
 
-    const latest = await res.json();
-    const latestVersion = String(latest.version || "").trim();
-    if (!latestVersion) throw new Error("version.jsonのバージョン情報がありません。");
+    const latestAppText = await latestAppRes.text();
+    const latestMatch = latestAppText.match(/const APP_VERSION\s*=\s*"([^"]+)"/);
+    if (!latestMatch || !latestMatch[1]) {
+      throw new Error("公開中のapp.jsからバージョンを取得できません。");
+    }
+
+    const latestVersion = String(latestMatch[1]).trim();
 
     if (compareVersions(latestVersion, currentVersion) <= 0) {
       if (status) status.textContent = `最新版です（v${currentVersion}）`;
@@ -2816,8 +2824,9 @@ async function checkForAppUpdate() {
 
     if (status) status.textContent = `v${latestVersion} のファイルを確認しています…`;
 
-    // URLコンストラクタ / Cache Storage / location.replace は使用しない。
-    // iOS Safariで「The string did not match the expected pattern.」が出る経路を避ける。
+    // 更新対象を再取得して、公開中のapp.jsが本当に最新版であることを確認する。
+    // URLに時刻を付けることで、iPhone Safari / ホーム画面PWAの
+    // 古い静的ファイルを再利用しにくくする。
     const assetNames = ["app.js", "style.css"];
     for (const assetName of assetNames) {
       const assetUrl = `${assetName}?v=${encodeURIComponent(latestVersion)}&update=${Date.now()}`;
@@ -2838,8 +2847,8 @@ async function checkForAppUpdate() {
 
     if (status) status.textContent = `v${latestVersion} を確認しました。再読み込みしています…`;
 
-    // 現在のページURLを加工せず、ブラウザ標準の再読み込みを使う。
-    // 実際のapp.js/index.htmlの更新はGitHub Pages側の公開ファイルを反映した後に行う。
+    // index.html側も app.js?v=...&t=時刻 で読み込む構造なので、
+    // ここではブラウザ標準の再読み込みを行えば最新版app.jsが実行される。
     window.location.reload();
   } catch (error) {
     console.error("CPTmate update check failed:", error);
