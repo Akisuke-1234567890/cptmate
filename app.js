@@ -1,4 +1,4 @@
-const APP_VERSION = "0.2.133";
+const APP_VERSION = "0.2.134";
 
 /* v0.2.63: home logo placement + startup splash/crossfade */
 const CPTMATE_BRAND_LOGO = "assets/branding/cptmate-horizontal-logo.png";
@@ -605,7 +605,8 @@ const CHAPTER_DATA_FILES = {
 const CHAPTER_FIGURE_FILES = {
   1: "./data/chapter1-figures.js",
   2: "./data/chapter2-figures.js",
-  3: "./data/chapter3-figures.js"
+  3: "./data/chapter3-figures.js",
+  4: "./data/chapter4-figures.js"
 };
 
 const chapterDataCache = new Map();

@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="620" viewBox="0 0 1000 620">
+<rect width="1000" height="620" fill="#fff"/>
+<text x="50" y="58" font-family="Arial, 'Noto Sans JP', sans-serif" font-size="30" font-weight="700" fill="#173f42">力学的エネルギーの分類</text>
+<g font-family="Arial, 'Noto Sans JP', sans-serif" fill="#222">
+<text x="500" y="115" text-anchor="middle" font-size="24" font-weight="700">力学的エネルギー</text>
+<rect x="80" y="170" width="250" height="180" rx="18" fill="#f7f9f9" stroke="#9aa"/><rect x="375" y="170" width="250" height="180" rx="18" fill="#f7f9f9" stroke="#9aa"/><rect x="670" y="170" width="250" height="180" rx="18" fill="#f7f9f9" stroke="#9aa"/>
+<text x="205" y="215" text-anchor="middle" font-size="22" font-weight="700">線運動エネルギー</text><text x="205" y="265" text-anchor="middle" font-size="26">½mv²</text><text x="205" y="310" text-anchor="middle" font-size="17">速度の二乗に依存</text>
+<text x="500" y="215" text-anchor="middle" font-size="22" font-weight="700">角運動エネルギー</text><text x="500" y="265" text-anchor="middle" font-size="26">½Iω²</text><text x="500" y="310" text-anchor="middle" font-size="17">角速度の二乗に依存</text>
+<text x="795" y="215" text-anchor="middle" font-size="22" font-weight="700">位置エネルギー</text><text x="795" y="265" text-anchor="middle" font-size="26">mgh</text><text x="795" y="310" text-anchor="middle" font-size="17">高さに依存</text>
+<text x="500" y="430" text-anchor="middle" font-size="22" font-weight="700">変形（ひずみ）エネルギー</text><path d="M300 500 C380 440 430 560 500 500 S620 440 700 500" fill="none" stroke="#174f52" stroke-width="9"/><text x="500" y="555" text-anchor="middle" font-size="18">伸張・圧縮・弯曲などで内部に蓄えられる</text></g>
+</svg>

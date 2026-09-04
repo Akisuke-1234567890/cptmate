@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="620" viewBox="0 0 1000 620">
+<rect width="1000" height="620" fill="#fff"/>
+<text x="50" y="58" font-family="Arial, 'Noto Sans JP', sans-serif" font-size="30" font-weight="700" fill="#173f42">伸張-短縮サイクル（SSC）</text>
+<g font-family="Arial, 'Noto Sans JP', sans-serif" fill="#222">
+<rect x="80" y="160" width="250" height="250" rx="20" fill="#f7f9f9" stroke="#9aa"/><rect x="375" y="160" width="250" height="250" rx="20" fill="#f7f9f9" stroke="#9aa"/><rect x="670" y="160" width="250" height="250" rx="20" fill="#f7f9f9" stroke="#9aa"/>
+<text x="205" y="210" text-anchor="middle" font-size="24" font-weight="700">① 伸張性</text><text x="205" y="265" text-anchor="middle" font-size="20">筋を伸ばしながら</text><text x="205" y="300" text-anchor="middle" font-size="20">力を発揮</text><path d="M140 350 Q205 300 270 350" fill="none" stroke="#174f52" stroke-width="8"/>
+<text x="500" y="210" text-anchor="middle" font-size="24" font-weight="700">② 切り返し</text><text x="500" y="270" text-anchor="middle" font-size="20">短い切り替え時間</text><path d="M440 340 L560 340" stroke="#c55" stroke-width="8"/><path d="M560 340 l-24 -14 v28 z" fill="#c55"/>
+<text x="795" y="210" text-anchor="middle" font-size="24" font-weight="700">③ 短縮性</text><text x="795" y="265" text-anchor="middle" font-size="20">筋を縮めながら</text><text x="795" y="300" text-anchor="middle" font-size="20">力を発揮</text><path d="M730 350 Q795 400 860 350" fill="none" stroke="#174f52" stroke-width="8"/>
+<path d="M330 285 H370" stroke="#174f52" stroke-width="6"/><path d="M370 285 l-18 -11 v22 z" fill="#174f52"/><path d="M625 285 H665" stroke="#174f52" stroke-width="6"/><path d="M665 285 l-18 -11 v22 z" fill="#174f52"/>
+<text x="500" y="480" text-anchor="middle" font-size="22" font-weight="700">SSC：弾性エネルギーの貯蔵 ＋ 運動単位の動員増加</text></g>
+</svg>

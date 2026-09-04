@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="620" viewBox="0 0 1000 620">
+<rect width="1000" height="620" fill="#fff"/>
+<text x="50" y="58" font-family="Arial, 'Noto Sans JP', sans-serif" font-size="30" font-weight="700" fill="#173f42">筋による動作制御の6段階</text>
+<g font-family="Arial, 'Noto Sans JP', sans-serif" fill="#222">
+<text x="500" y="105" text-anchor="middle" font-size="23" font-weight="700">筋による動作制御：6段階の思考順序</text>
+<g fill="#f7f9f9" stroke="#9aa" stroke-width="2">
+<rect x="90" y="150" width="250" height="80" rx="14"/><rect x="375" y="150" width="250" height="80" rx="14"/><rect x="660" y="150" width="250" height="80" rx="14"/>
+<rect x="90" y="310" width="250" height="80" rx="14"/><rect x="375" y="310" width="250" height="80" rx="14"/><rect x="660" y="310" width="250" height="80" rx="14"/>
+</g>
+<g font-size="19" font-weight="700" text-anchor="middle"><text x="215" y="182">1. 関節の動作・位置</text><text x="215" y="208" font-size="16" font-weight="400">屈曲・外転など</text><text x="500" y="182">2. 外力の影響</text><text x="500" y="208" font-size="16" font-weight="400">重力など</text><text x="785" y="182">3. 筋活動の種類</text><text x="785" y="208" font-size="16" font-weight="400">短縮・伸張・等尺</text><text x="215" y="342">4. 運動面・回転軸</text><text x="215" y="368" font-size="16" font-weight="400">矢状・前額・水平</text><text x="500" y="342">5. 筋の伸張・短縮側</text><text x="500" y="368" font-size="16" font-weight="400">関節軸との位置関係</text><text x="785" y="342">6. 筋を決定</text><text x="785" y="368" font-size="16" font-weight="400">1〜5を統合</text></g>
+<path d="M340 190 H370 M625 190 H655 M785 230 V300 M660 350 H630 M375 350 H350" stroke="#174f52" stroke-width="6"/><path d="M370 190 l-15 -9 v18 z M655 190 l-15 -9 v18 z M785 300 l-9 -15 h18 z M630 350 l15 -9 v18 z M350 350 l15 -9 v18 z" fill="#174f52"/>
+<text x="500" y="470" text-anchor="middle" font-size="20" font-weight="700">「動作 → 外力 → 筋活動 → 面/軸 → 筋の位置 → 筋を特定」</text></g>
+</svg>

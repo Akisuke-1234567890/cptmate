@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="620" viewBox="0 0 1000 620">
+<rect width="1000" height="620" fill="#fff"/>
+<text x="50" y="58" font-family="Arial, 'Noto Sans JP', sans-serif" font-size="30" font-weight="700" fill="#173f42">長さ-張力関係</text>
+<g font-family="Arial, 'Noto Sans JP', sans-serif" fill="#222">
+<line x1="120" y1="500" x2="900" y2="500" stroke="#444" stroke-width="3"/><line x1="120" y1="500" x2="120" y2="130" stroke="#444" stroke-width="3"/><text x="500" y="555" text-anchor="middle" font-size="22">筋長</text><text x="55" y="320" transform="rotate(-90 55 320)" font-size="22">張力</text>
+<path d="M150 470 C250 455 310 260 500 245 C690 260 750 455 890 470" fill="none" stroke="#174f52" stroke-width="8"/>
+<path d="M150 470 C500 470 610 455 890 180" fill="none" stroke="#c55" stroke-width="7"/>
+<line x1="500" y1="245" x2="500" y2="500" stroke="#999" stroke-dasharray="8 8"/>
+<text x="500" y="205" text-anchor="middle" font-size="20" font-weight="700">能動的要素：至適長で最大</text><text x="700" y="205" font-size="20" fill="#b44">受動的要素</text><text x="500" y="530" text-anchor="middle" font-size="17">短すぎる ← 至適範囲 → 伸びすぎ</text></g>
+</svg>

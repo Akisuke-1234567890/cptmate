@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="620" viewBox="0 0 1000 620">
+<rect width="1000" height="620" fill="#fff"/>
+<text x="50" y="58" font-family="Arial, 'Noto Sans JP', sans-serif" font-size="30" font-weight="700" fill="#173f42">仕事とパワーの違い</text>
+<g font-family="Arial, 'Noto Sans JP', sans-serif" fill="#222">
+<rect x="80" y="130" width="350" height="350" rx="20" fill="#f7f9f9" stroke="#9aa"/>
+<rect x="570" y="130" width="350" height="350" rx="20" fill="#f7f9f9" stroke="#9aa"/>
+<text x="255" y="175" text-anchor="middle" font-size="25" font-weight="700">仕事：どれだけ行ったか</text>
+<line x1="140" y1="390" x2="370" y2="390" stroke="#555" stroke-width="4"/><rect x="235" y="300" width="70" height="70" rx="8" fill="#174f52"/><path d="M270 290 V210" stroke="#c55" stroke-width="7"/><path d="M270 210 l-14 22 h28 z" fill="#c55"/>
+<text x="255" y="445" text-anchor="middle" font-size="27" font-weight="700">W = F × d</text>
+<text x="745" y="175" text-anchor="middle" font-size="25" font-weight="700">パワー：どれだけ速く行ったか</text>
+<rect x="650" y="300" width="70" height="70" rx="8" fill="#174f52"/><path d="M720 335 H850" stroke="#c55" stroke-width="7"/><path d="M850 335 l-24 -14 v28 z" fill="#c55"/>
+<text x="745" y="425" text-anchor="middle" font-size="27" font-weight="700">P = W / t = F × v</text>
+<text x="745" y="465" text-anchor="middle" font-size="18">同じ仕事でも時間が短いほどパワーは大きい</text></g>
+</svg>
