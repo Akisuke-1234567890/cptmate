@@ -1,12 +1,5 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="620" viewBox="0 0 1000 620">
-<rect width="1000" height="620" fill="#fff"/>
-<text x="50" y="58" font-family="Arial, 'Noto Sans JP', sans-serif" font-size="30" font-weight="700" fill="#173f42">トルクとモーメントアーム</text>
-<g font-family="Arial, 'Noto Sans JP', sans-serif" fill="#222">
-<line x1="180" y1="320" x2="790" y2="320" stroke="#555" stroke-width="18" stroke-linecap="round"/><circle cx="180" cy="320" r="22" fill="#174f52"/>
-<line x1="500" y1="320" x2="500" y2="135" stroke="#c55" stroke-width="7"/><path d="M500 135 l-16 28 h32 z" fill="#c55"/>
-<line x1="180" y1="380" x2="500" y2="380" stroke="#174f52" stroke-width="4"/><path d="M180 380 l18 -9 v18 z M500 380 l-18 -9 v18 z" fill="#174f52"/>
-<text x="340" y="410" text-anchor="middle" font-size="24" font-weight="700">モーメントアーム d</text>
-<text x="515" y="120" font-size="22" fill="#b44">力 F</text><text x="150" y="365" font-size="21">回転軸</text>
-<text x="500" y="485" text-anchor="middle" font-size="30" font-weight="700" fill="#173f42">T = F × d</text>
-<text x="500" y="530" text-anchor="middle" font-size="19">力が軸から遠いほど、同じ力でもトルクは大きい</text></g>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 720">
+<rect width="1200" height="720" rx="36" fill="#f7fbfb"/>
+<text x="60" y="58" font-family="'Noto Sans JP','Hiragino Sans','Yu Gothic',Arial,sans-serif" font-size="34" font-weight="700" fill="#173f52">トルクとモーメントアーム</text>
+<text x="60" y="92" font-family="'Noto Sans JP','Hiragino Sans','Yu Gothic',Arial,sans-serif" font-size="20" fill="#5f747a">力の作用線と回転軸の距離が、回転させる効果を決める</text>
+<rect x="70" y="130" width="1060" height="360" rx="20" fill="#ffffff" stroke="#7d9aa0" stroke-width="2"/><line x1="170" y1="330" x2="1030" y2="330" stroke="#173f52" stroke-width="14"/><circle cx="170" cy="330" r="24" fill="#2c7a7b"/><text x="170" y="385" text-anchor="middle" font-family="'Noto Sans JP','Hiragino Sans','Yu Gothic',Arial,sans-serif" font-size="21" font-weight="700" fill="#173f52">回転軸</text><line x1="650" y1="170" x2="650" y2="470" stroke="#7d9aa0" stroke-width="3" stroke-dasharray="10 10"/><line x1="820" y1="170" x2="820" y2="300" stroke="#2c7a7b" stroke-width="9"/><polygon points="820,300 802,290 802,310" fill="#2c7a7b"/><text x="835" y="210" text-anchor="start" font-family="'Noto Sans JP','Hiragino Sans','Yu Gothic',Arial,sans-serif" font-size="28" font-weight="700" fill="#2c7a7b">F</text><text x="650" y="515" text-anchor="middle" font-family="'Noto Sans JP','Hiragino Sans','Yu Gothic',Arial,sans-serif" font-size="20" font-weight="700" fill="#5f747a">力の作用線</text><line x1="170" y1="575" x2="650" y2="575" stroke="#173f52" stroke-width="5"/><polygon points="650,575 632,565 632,585" fill="#173f52"/><text x="410" y="620" text-anchor="middle" font-family="'Noto Sans JP','Hiragino Sans','Yu Gothic',Arial,sans-serif" font-size="20" font-weight="700" fill="#173f52">モーメントアーム d（軸から作用線までの垂直距離）</text><rect x="300" y="145" width="600" height="90" rx="16" fill="#eaf2f3" stroke="#7d9aa0" stroke-width="2"/><text x="600" y="205" text-anchor="middle" font-family="'Noto Sans JP','Hiragino Sans','Yu Gothic',Arial,sans-serif" font-size="34" font-weight="700" fill="#173f52">T = F × d</text><text x="600" y="670" text-anchor="middle" font-family="'Noto Sans JP','Hiragino Sans','Yu Gothic',Arial,sans-serif" font-size="21" font-weight="700" fill="#5f747a">同じ力Fでも、dが大きいほどトルクTは大きくなる</text></svg>
