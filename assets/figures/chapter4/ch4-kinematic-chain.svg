@@ -1,5 +1,49 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 720">
-<rect width="1200" height="720" rx="36" fill="#f7fbfb"/>
-<text x="60" y="58" font-family="'Noto Sans JP','Hiragino Sans','Yu Gothic',Arial,sans-serif" font-size="34" font-weight="700" fill="#173f52">オープンチェーンとクローズドチェーン</text>
-<text x="60" y="92" font-family="'Noto Sans JP','Hiragino Sans','Yu Gothic',Arial,sans-serif" font-size="20" fill="#5f747a">末端条件と関節間の連動性で区別する</text>
-<rect x="70" y="135" width="490" height="440" rx="20" fill="#ffffff" stroke="#7d9aa0" stroke-width="2"/><text x="315" y="180" text-anchor="middle" font-family="'Noto Sans JP','Hiragino Sans','Yu Gothic',Arial,sans-serif" font-size="27" font-weight="700" fill="#2c7a7b">オープンチェーン</text><text x="315" y="220" text-anchor="middle" font-family="'Noto Sans JP','Hiragino Sans','Yu Gothic',Arial,sans-serif" font-size="20" font-weight="500" fill="#5f747a">末端が自由に動く</text><circle cx="190" cy="340" r="20" fill="#173f52"/><line x1="210" y1="340" x2="355" y2="300" stroke="#173f52" stroke-width="14"/><circle cx="375" cy="300" r="20" fill="#173f52"/><text x="315" y="525" text-anchor="middle" font-family="'Noto Sans JP','Hiragino Sans','Yu Gothic',Arial,sans-serif" font-size="17" font-weight="500" fill="#5f747a">関節の動きは単関節／多関節とは別の分類</text><rect x="640" y="135" width="490" height="440" rx="20" fill="#ffffff" stroke="#7d9aa0" stroke-width="2"/><text x="885" y="180" text-anchor="middle" font-family="'Noto Sans JP','Hiragino Sans','Yu Gothic',Arial,sans-serif" font-size="27" font-weight="700" fill="#8a5a2b">クローズドチェーン</text><text x="885" y="220" text-anchor="middle" font-family="'Noto Sans JP','Hiragino Sans','Yu Gothic',Arial,sans-serif" font-size="20" font-weight="500" fill="#5f747a">末端が固定・接地して動く</text><circle cx="760" cy="340" r="20" fill="#173f52"/><line x1="780" y1="340" x2="925" y2="300" stroke="#173f52" stroke-width="14"/><circle cx="945" cy="300" r="20" fill="#173f52"/><text x="885" y="525" text-anchor="middle" font-family="'Noto Sans JP','Hiragino Sans','Yu Gothic',Arial,sans-serif" font-size="17" font-weight="500" fill="#5f747a">関節の動きは単関節／多関節とは別の分類</text><text x="600" y="665" text-anchor="middle" font-family="'Noto Sans JP','Hiragino Sans','Yu Gothic',Arial,sans-serif" font-size="21" font-weight="700" fill="#5f747a">「末端が自由か、固定・接地しているか」を最初に確認する</text></svg>
+<rect width="1200" height="720" rx="32" fill="#fff"/>
+<text x="60" y="62" font-family="Noto Sans JP,Hiragino Sans,Yu Gothic,Arial,sans-serif" font-size="34" font-weight="700" fill="#173f52">図4.12 キネマティックチェーン</text>
+<text x="60" y="98" font-family="Noto Sans JP,Hiragino Sans,Yu Gothic,Arial,sans-serif" font-size="20" fill="#5f747a">連鎖の末端条件と、関節間の連動性による区別</text>
+
+<!-- Open -->
+<rect x="55" y="135" width="520" height="510" rx="24" fill="#f7fbfb" stroke="#7d9aa0" stroke-width="2"/>
+<text x="315" y="185" text-anchor="middle" font-family="Noto Sans JP,Hiragino Sans,Yu Gothic,Arial,sans-serif" font-size="30" font-weight="700" fill="#246f73">オープンチェーン</text>
+<text x="315" y="220" text-anchor="middle" font-family="Noto Sans JP,Hiragino Sans,Yu Gothic,Arial,sans-serif" font-size="20" fill="#526b70">片端が固定されず、末端が自由</text>
+<!-- chain -->
+<circle cx="155" cy="355" r="30" fill="#173f52"/>
+<line x1="185" y1="355" x2="305" y2="305" stroke="#173f52" stroke-width="24" stroke-linecap="round"/>
+<circle cx="330" cy="295" r="27" fill="#173f52"/>
+<line x1="352" y1="280" x2="440" y2="225" stroke="#173f52" stroke-width="20" stroke-linecap="round"/>
+<circle cx="465" cy="210" r="24" fill="#173f52"/>
+<path d="M465 180 C525 175 535 230 495 260" fill="none" stroke="#b56b3b" stroke-width="6"/>
+<polygon points="492,252 506,252 497,268" fill="#b56b3b"/>
+<text x="465" y="305" text-anchor="middle" font-family="Noto Sans JP,Hiragino Sans,Yu Gothic,Arial,sans-serif" font-size="18" font-weight="700" fill="#8a5a2b">自由端</text>
+<text x="315" y="420" text-anchor="middle" font-family="Noto Sans JP,Hiragino Sans,Yu Gothic,Arial,sans-serif" font-size="20" font-weight="700" fill="#173f52">末端が自由に動ける</text>
+<text x="315" y="460" text-anchor="middle" font-family="Noto Sans JP,Hiragino Sans,Yu Gothic,Arial,sans-serif" font-size="17" fill="#5f747a">例：アームカール、レッグカール</text>
+<text x="315" y="535" text-anchor="middle" font-family="Noto Sans JP,Hiragino Sans,Yu Gothic,Arial,sans-serif" font-size="17" fill="#5f747a">関節の動きは他の関節から比較的独立</text>
+
+<!-- Closed -->
+<rect x="625" y="135" width="520" height="510" rx="24" fill="#fffaf5" stroke="#a98b70" stroke-width="2"/>
+<text x="885" y="185" text-anchor="middle" font-family="Noto Sans JP,Hiragino Sans,Yu Gothic,Arial,sans-serif" font-size="30" font-weight="700" fill="#8a5a2b">クローズドチェーン</text>
+<text x="885" y="220" text-anchor="middle" font-family="Noto Sans JP,Hiragino Sans,Yu Gothic,Arial,sans-serif" font-size="20" fill="#6d5a4c">両端が固定された連鎖</text>
+<!-- fixed surface -->
+<line x1="1060" y1="245" x2="1060" y2="475" stroke="#6c7478" stroke-width="16"/>
+<line x1="1060" y1="255" x2="1100" y2="215" stroke="#9aa1a4" stroke-width="5"/>
+<line x1="1060" y1="295" x2="1100" y2="255" stroke="#9aa1a4" stroke-width="5"/>
+<line x1="1060" y1="335" x2="1100" y2="295" stroke="#9aa1a4" stroke-width="5"/>
+<line x1="1060" y1="375" x2="1100" y2="335" stroke="#9aa1a4" stroke-width="5"/>
+<line x1="1060" y1="415" x2="1100" y2="375" stroke="#9aa1a4" stroke-width="5"/>
+<!-- chain anchored -->
+<circle cx="765" cy="355" r="30" fill="#173f52"/>
+<line x1="795" y1="355" x2="875" y2="305" stroke="#173f52" stroke-width="24" stroke-linecap="round"/>
+<circle cx="900" cy="295" r="27" fill="#173f52"/>
+<line x1="922" y1="310" x2="1018" y2="365" stroke="#173f52" stroke-width="20" stroke-linecap="round"/>
+<circle cx="1038" cy="377" r="22" fill="#173f52"/>
+<line x1="1038" y1="399" x2="1038" y2="445" stroke="#173f52" stroke-width="14"/>
+<rect x="1018" y="445" width="40" height="18" rx="6" fill="#8a5a2b"/>
+<text x="1038" y="500" text-anchor="middle" font-family="Noto Sans JP,Hiragino Sans,Yu Gothic,Arial,sans-serif" font-size="18" font-weight="700" fill="#8a5a2b">固定端</text>
+<path d="M735 410 C810 450 930 470 1010 455" fill="none" stroke="#b56b3b" stroke-width="6" stroke-dasharray="10 8"/>
+<polygon points="1004,447 1018,456 1002,463" fill="#b56b3b"/>
+<text x="885" y="535" text-anchor="middle" font-family="Noto Sans JP,Hiragino Sans,Yu Gothic,Arial,sans-serif" font-size="20" font-weight="700" fill="#173f52">末端条件によって関節間の動きが連動</text>
+<text x="885" y="575" text-anchor="middle" font-family="Noto Sans JP,Hiragino Sans,Yu Gothic,Arial,sans-serif" font-size="17" fill="#6d5a4c">例：スクワット、ベンチプレス</text>
+
+<text x="600" y="690" text-anchor="middle" font-family="Noto Sans JP,Hiragino Sans,Yu Gothic,Arial,sans-serif" font-size="18" font-weight="700" fill="#173f52">ポイント：オープン／クローズドは「単関節／多関節」とは別の分類</text>
+</svg>
