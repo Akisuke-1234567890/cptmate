@@ -1,4 +1,4 @@
-const APP_VERSION = "0.2.139";
+const APP_VERSION = "0.2.141";
 
 /* v0.2.63: home logo placement + startup splash/crossfade */
 const CPTMATE_BRAND_LOGO = "assets/branding/cptmate-horizontal-logo.png";
@@ -1776,25 +1776,8 @@ function ensureFigureStyles() {
 
 
 function renderQuestionFigure(q, mode = "default") {
-  if (!q.image) return "";
-  ensureFigureStyles();
-  const caption = q.figureCaption || ({
-    "assets/figures/sarcomere_fig1_4.svg": "サルコメア・アクチン・ミオシンとフィラメント滑走の関係",
-    "assets/figures/contraction_fig1_5.svg": "神経から筋収縮までの流れ",
-    "assets/figures/neuron.svg": "神経細胞の基本構造",
-    "assets/figures/spindle_gto_fig1_7.svg": "筋紡錘とゴルジ腱器官の役割",
-    "assets/figures/long_bone_fig1_8.svg": "長骨の主な構造",
-    "assets/figures/skeleton_fig1_9.svg": "軸性骨格と付属性骨格"
-  })[q.image] || "図を確認しながら考えてみましょう。";
-  const safeCaption = caption.replace(/\\/g, "\\\\").replace(/'/g, "\\'").replace(/\n/g, " ");
-  return `
-    <figure class="question-figure ${mode === "explanation" ? "figure-in-explanation" : "figure-in-question"}">
-      <button class="figure-zoom-trigger" type="button" onclick="openFigureModal('${versionedImageSrc(q.image)}','${safeCaption}')" aria-label="図を拡大">
-        <img src="${versionedImageSrc(q.image)}" alt="${caption}" loading="lazy">
-      </button>
-      <figcaption class="question-figure-caption">${caption}</figcaption>
-    </figure>
-  `;
+  // v0.2.141: 第1〜4章の現行図版は原資料照合・再作図が完了するまで表示しない。
+  return "";
 }
 
 function openFigureModal(src, caption) {
@@ -2043,32 +2026,8 @@ function ensureChoiceFeedbackStyles() {
 
 
 function renderExplanationTable(q) {
-  if (!q || !q.explanationTable) return "";
-  const table = q.explanationTable;
-  const headers = Array.isArray(table.headers) ? table.headers : [];
-  const rows = Array.isArray(table.rows) ? table.rows : [];
-
-  const headerHtml = headers.map(header => `<th>${escapeGalleryText(header)}</th>`).join("");
-  const rowsHtml = rows.map(row => `
-    <tr>
-      ${row.map((cell, index) => index === 0
-        ? `<th scope="row">${escapeGalleryText(cell)}</th>`
-        : `<td>${escapeGalleryText(cell)}</td>`
-      ).join("")}
-    </tr>
-  `).join("");
-
-  return `
-    <div class="explanation-table-wrap">
-      <div class="explanation-table-title">${escapeGalleryText(table.title || "確認表")}</div>
-      <div class="explanation-table-scroll">
-        <table class="explanation-table">
-          <thead><tr>${headerHtml}</tr></thead>
-          <tbody>${rowsHtml}</tbody>
-        </table>
-      </div>
-    </div>
-  `;
+  // v0.2.141: 現行の解説用表は一旦すべて非表示。原資料確認後に再導入する。
+  return "";
 }
 
 function renderQuestion() {
@@ -2757,13 +2716,6 @@ function renderSettings() {
       <button class="secondary-btn full" onclick="importBackup()">バックアップから復元</button>
       <input id="backupFileInput" type="file" accept="application/json,.json" style="display:none" onchange="importBackupFile(event)">
       <button class="secondary-btn full" onclick="resetProgress()">学習データをリセット</button>
-    </section>
-    <section class="card figure-settings-card">
-      <h3>資料</h3>
-      <p style="color:var(--muted);line-height:1.7;margin-top:0;">
-        CPTmateで使用している図・イラストを確認できます。
-      </p>
-      <button class="secondary-btn full" onclick="renderFigureGallery()">図・イラスト・表一覧</button>
     </section>
     <section class="card">
       <h3>アプリ情報</h3>
