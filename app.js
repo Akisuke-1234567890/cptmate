@@ -1,4 +1,4 @@
-const APP_VERSION = "0.2.141";
+const APP_VERSION = "0.2.142";
 
 /* v0.2.63: home logo placement + startup splash/crossfade */
 const CPTMATE_BRAND_LOGO = "assets/branding/cptmate-horizontal-logo.png";
@@ -1105,9 +1105,13 @@ function getChapterMajorProgress(chapter = 1) {
 "呼吸・ガス交換": q => q.category === "呼吸・ガス交換",
 "酸素摂取・運動適応": q => q.category === "酸素摂取・運動適応",
 "総合・ケーススタディ": q => q.category.startsWith("総合") || q.category.startsWith("ケーススタディ") },
-    3: { "基礎・ATP・ホスファゲン": q => /^(基礎用語・ATP|エネルギー供給機構|ホスファゲン機構)$/.test(q.category),
-"解糖系・乳酸・酸化": q => /^(解糖系・乳酸|酸化機構)$/.test(q.category),
-"エネルギー供給・基質・応用": q => /^(エネルギー供給能力|基質の消費・補給|グリコーゲン|酸素借・EPOC|トレーニングへの応用)$/.test(q.category) },
+    3: {
+      // 第3章の現行データカテゴリに合わせた分類。旧カテゴリ名だけを参照していたため、
+      // 以前は「基礎・ATP・ホスファゲン」以外の問題が分類から外れていた。
+      "基礎・ATP・ホスファゲン": q => /^(ATP・エネルギー供給機構|ホスファゲン機構|基礎・ATP・ホスファゲン)$/.test(q.category),
+      "解糖系・乳酸・酸化": q => /^(解糖・乳酸代謝|酸化機構)$/.test(q.category),
+      "エネルギー供給・基質・応用": q => /^(運動時間・強度とエネルギー機構|基質・グリコーゲン|酸素借・トレーニングへの応用)$/.test(q.category)
+    },
     4: {
       "力学の基礎": q => /^(基礎・運動の分類|運動学・運動力学|ニュートンの法則|運動量・力積・トルク)$/.test(q.category) || q.category === "基礎・章末確認",
       "てこ": q => q.category === "てこの原理" || q.category === "てこ・章末確認",
@@ -1382,9 +1386,13 @@ async function renderPracticeSelector(selectedChapter = null) {
 "呼吸・ガス交換": q => q.category === "呼吸・ガス交換",
 "酸素摂取・運動適応": q => q.category === "酸素摂取・運動適応",
 "総合・ケーススタディ": q => q.category.startsWith("総合") || q.category.startsWith("ケーススタディ") },
-    3: { "基礎・ATP・ホスファゲン": q => /^(基礎用語・ATP|エネルギー供給機構|ホスファゲン機構)$/.test(q.category),
-"解糖系・乳酸・酸化": q => /^(解糖系・乳酸|酸化機構)$/.test(q.category),
-"エネルギー供給・基質・応用": q => /^(エネルギー供給能力|基質の消費・補給|グリコーゲン|酸素借・EPOC|トレーニングへの応用)$/.test(q.category) },
+    3: {
+      // 第3章の現行データカテゴリに合わせた分類。旧カテゴリ名だけを参照していたため、
+      // 以前は「基礎・ATP・ホスファゲン」以外の問題が分類から外れていた。
+      "基礎・ATP・ホスファゲン": q => /^(ATP・エネルギー供給機構|ホスファゲン機構|基礎・ATP・ホスファゲン)$/.test(q.category),
+      "解糖系・乳酸・酸化": q => /^(解糖・乳酸代謝|酸化機構)$/.test(q.category),
+      "エネルギー供給・基質・応用": q => /^(運動時間・強度とエネルギー機構|基質・グリコーゲン|酸素借・トレーニングへの応用)$/.test(q.category)
+    },
     4: {
       "力学の基礎": q => /^(基礎・運動の分類|運動学・運動力学|ニュートンの法則|運動量・力積・トルク)$/.test(q.category) || q.category === "基礎・章末確認",
       "てこ": q => q.category === "てこの原理" || q.category === "てこ・章末確認",
@@ -1398,6 +1406,22 @@ async function renderPracticeSelector(selectedChapter = null) {
     }
   };
   const major = majorByChapter[chapter] || {};
+
+  // 出題元は内容分類とは別軸で選べるようにする。
+  // original = CPTmateオリジナル、review = 章末確認問題、mock = 模擬問題。
+  const sourceByChapter = {
+    original: { label: "CPTmateオリジナル", test: q => q.sourceType === "original" },
+    review: { label: "章末確認問題", test: q => q.sourceType === "review" },
+    mock: { label: "模擬問題", test: q => q.sourceType === "mock" }
+  };
+
+  const sourceButtons = Object.entries(sourceByChapter).map(([sourceType, meta]) => {
+    const sourceQuestions = chapterQuestions.filter(meta.test);
+    if (!sourceQuestions.length) return "";
+    const ids = sourceQuestions.map(q => q.id);
+    const sourceCorrect = sourceQuestions.filter(q => state.answers[q.id]?.correct).length;
+    return `<button class="practice-select-item" onclick='startPracticeQueue(${JSON.stringify(ids)}, ${JSON.stringify(`第${chapter}章・${meta.label}`)})'><strong>${meta.label}</strong><span>正解 ${sourceCorrect} / ${ids.length}</span></button>`;
+  }).join("");
 
   const majorButtons = Object.entries(major).map(([name, fn]) => {
     const categoryQuestions = chapterQuestions.filter(fn);
@@ -1433,6 +1457,20 @@ async function renderPracticeSelector(selectedChapter = null) {
       <div class="practice-select-list">
         <button class="practice-select-item primary-choice" onclick='startPracticeQueue(${JSON.stringify(chapterQuestions.map(q => q.id))}, ${JSON.stringify(`第${chapter}章すべて`)})'><strong>第${chapter}章すべて</strong><span>${chapterQuestions.length}問</span></button>
         ${majorButtons}
+      </div>
+    </section>
+
+    <section class="card">
+      <div class="selector-section-title">出題元で選ぶ</div>
+      <p class="selector-note">内容の分類とは別に、オリジナル問題・章末確認問題・模擬問題を分けて解けます。</p>
+      <div class="practice-select-list">
+        ${sourceButtons}
+      </div>
+    </section>
+
+    <section class="card">
+      <div class="selector-section-title">章からランダム</div>
+      <div class="practice-select-list">
         <button class="practice-select-item" onclick="startRandomPractice(${chapter}, 10)"><strong>第${chapter}章からランダム10問</strong></button>
         <button class="practice-select-item" onclick="startRandomPractice(${chapter}, 20)"><strong>第${chapter}章からランダム20問</strong></button>
         <button class="practice-select-item" onclick="startRandomPractice(${chapter}, 30)"><strong>第${chapter}章からランダム30問</strong></button>
