@@ -1095,33 +1095,48 @@ function setActiveNav(name) {
 
 function getChapterMajorProgress(chapter = 1) {
   const chapterQuestions = ALL_QUESTIONS.filter(q => q.chapter === chapter);
+  const isSupplement = q => q.sourceType === "review" || q.sourceType === "mock";
+  const isCase = q => q.type === "case" || q.category.startsWith("ケーススタディ");
   const majorByChapter = {
-    1: { "筋系・筋収縮": q => { if (/^(総合|ケーススタディ)/.test(q.category)) return false; return /^(筋系|筋収縮|筋活動様式|筋線維タイプ)/.test(q.category) || /^(図・筋収縮|図・サルコメア)/.test(q.category) || /^(章末確認・筋系|章末確認・筋収縮|章末確認・筋活動様式)/.test(q.category) || /^(模擬問題・筋収縮|模擬問題・筋活動様式|模擬問題・エネルギー|模擬問題・加齢と筋|模擬問題・筋活動)/.test(q.category); },
-"神経・感覚": q => { if (/^(総合|ケーススタディ)/.test(q.category)) return false; return /^(神経|神経筋接合部)/.test(q.category) || q.category.includes("筋紡錘") || q.category.includes("GTO") || /^(章末確認・神経)/.test(q.category) || /^(模擬問題・運動単位|模擬問題・神経適応|模擬問題・発火頻度|模擬問題・反射)/.test(q.category); },
-"骨格・結合組織": q => { if (/^(総合|ケーススタディ)/.test(q.category)) return false; return q.category.startsWith("骨格系") || /^(章末確認・骨格|章末確認・腱)/.test(q.category); },
-"総合・ケーススタディ": q => q.category.startsWith("総合") || q.category.startsWith("ケーススタディ") },
-    2: { "血液・酸素運搬": q => q.category === "血液・酸素運搬",
-"心臓・循環": q => q.category === "心臓・循環",
-"呼吸・ガス交換": q => q.category === "呼吸・ガス交換",
-"酸素摂取・運動適応": q => q.category === "酸素摂取・運動適応",
-"総合・ケーススタディ": q => q.category.startsWith("総合") || q.category.startsWith("ケーススタディ") },
+    // 分類のルール:
+    // 1) review/mock は「章末確認・模擬問題」にまとめ、内容分類から外す。
+    // 2) case は「総合・ケーススタディ」にまとめる（実在する章のみ表示）。
+    // 3) それ以外の original 問題だけを内容分類へ入れる。
+    // これにより、1問が複数の大分類に重複しない。
+    1: {
+      "筋系・筋収縮": q => !isSupplement(q) && !isCase(q) && (/^(筋系|筋収縮|筋活動様式|筋線維タイプ)/.test(q.category) || /^(図・筋収縮|図・サルコメア)/.test(q.category)),
+      "神経・感覚": q => !isSupplement(q) && !isCase(q) && (/^(神経|神経筋接合部)/.test(q.category) || q.category.includes("筋紡錘") || q.category.includes("GTO") || q.category === "図・ニューロン"),
+      "骨格・結合組織": q => !isSupplement(q) && !isCase(q) && (q.category.startsWith("骨格系") || q.category === "図・長骨" || q.category === "図・骨格"),
+      "総合・ケーススタディ": q => !isSupplement(q) && (q.category.startsWith("総合") || q.category.startsWith("ケーススタディ")),
+      "章末確認・模擬問題": q => isSupplement(q)
+    },
+    2: {
+      "血液・酸素運搬": q => !isSupplement(q) && !isCase(q) && q.category === "血液・酸素運搬",
+      "心臓・循環": q => !isSupplement(q) && !isCase(q) && q.category === "心臓・循環",
+      "呼吸・ガス交換": q => !isSupplement(q) && !isCase(q) && q.category === "呼吸・ガス交換",
+      "酸素摂取・運動適応": q => !isSupplement(q) && !isCase(q) && q.category === "酸素摂取・運動適応",
+      "総合・ケーススタディ": q => !isSupplement(q) && (q.category.startsWith("総合") || q.category.startsWith("ケーススタディ")),
+      "章末確認・模擬問題": q => isSupplement(q)
+    },
     3: {
-      // 第3章の現行データカテゴリに合わせた分類。旧カテゴリ名だけを参照していたため、
-      // 以前は「基礎・ATP・ホスファゲン」以外の問題が分類から外れていた。
-      "基礎・ATP・ホスファゲン": q => /^(ATP・エネルギー供給機構|ホスファゲン機構|基礎・ATP・ホスファゲン)$/.test(q.category),
-      "解糖系・乳酸・酸化": q => /^(解糖・乳酸代謝|酸化機構)$/.test(q.category),
-      "エネルギー供給・基質・応用": q => /^(運動時間・強度とエネルギー機構|基質・グリコーゲン|酸素借・トレーニングへの応用)$/.test(q.category)
+      "基礎・ATP・ホスファゲン": q => !isSupplement(q) && !isCase(q) && /^(ATP・エネルギー供給機構|ホスファゲン機構)$/.test(q.category),
+      "解糖系・乳酸・酸化": q => !isSupplement(q) && !isCase(q) && /^(解糖・乳酸代謝|酸化機構)$/.test(q.category),
+      "エネルギー供給・基質・応用": q => !isSupplement(q) && !isCase(q) && /^(運動時間・強度とエネルギー機構|基質・グリコーゲン|酸素借・トレーニングへの応用)$/.test(q.category),
+      "総合・ケーススタディ": q => !isSupplement(q) && (q.category.startsWith("総合") || q.category.startsWith("ケーススタディ")),
+      "章末確認・模擬問題": q => isSupplement(q)
     },
     4: {
-      "力学の基礎": q => /^(基礎・運動の分類|運動学・運動力学|ニュートンの法則|運動量・力積・トルク)$/.test(q.category) || q.category === "基礎・章末確認",
-      "てこ": q => q.category === "てこの原理" || q.category === "てこ・章末確認",
-      "仕事・パワー・エネルギー": q => /^(仕事・パワー|エネルギー・効率)$/.test(q.category) || q.category === "仕事・章末確認",
-      "筋形状・長さ-張力": q => /^(筋形状|長さ-張力関係)$/.test(q.category) || q.category === "長さ-張力・章末確認",
-      "力-速度関係・SSC": q => q.category === "力-速度関係・SSC" || q.category === "力-速度関係・章末確認",
-      "筋力・神経適応": q => q.category === "筋力・神経適応" || q.category === "筋力・神経適応・章末確認",
-      "キネマティックチェーン": q => q.category === "キネマティックチェーン",
-      "筋による動作制御": q => q.category === "筋による動作制御" || q.category === "筋による動作制御・章末確認",
-      "抵抗タイプ": q => q.category === "抵抗タイプ" || q.category === "抵抗タイプ・章末確認" || q.category === "模擬問題・筋活動"
+      "力学の基礎": q => !isSupplement(q) && !isCase(q) && /^(基礎・運動の分類|運動学・運動力学|ニュートンの法則|運動量・力積・トルク)$/.test(q.category),
+      "てこ": q => !isSupplement(q) && !isCase(q) && q.category === "てこの原理",
+      "仕事・パワー・エネルギー": q => !isSupplement(q) && !isCase(q) && /^(仕事・パワー|エネルギー・効率)$/.test(q.category),
+      "筋形状・長さ-張力": q => !isSupplement(q) && !isCase(q) && /^(筋形状|長さ-張力関係)$/.test(q.category),
+      "力-速度関係・SSC": q => !isSupplement(q) && !isCase(q) && q.category === "力-速度関係・SSC",
+      "筋力・神経適応": q => !isSupplement(q) && !isCase(q) && q.category === "筋力・神経適応",
+      "キネマティックチェーン": q => !isSupplement(q) && !isCase(q) && q.category === "キネマティックチェーン",
+      "筋による動作制御": q => !isSupplement(q) && !isCase(q) && q.category === "筋による動作制御",
+      "抵抗タイプ": q => !isSupplement(q) && !isCase(q) && q.category === "抵抗タイプ",
+      "総合・ケーススタディ": q => !isSupplement(q) && (q.category.startsWith("総合") || q.category.startsWith("ケーススタディ")),
+      "章末確認・模擬問題": q => isSupplement(q)
     }
   };
   const major = majorByChapter[chapter] || {};
@@ -1376,33 +1391,48 @@ async function renderPracticeSelector(selectedChapter = null) {
   // 今後の章追加・問題精査で問題数が変わっても、UIと学習状況が自動追従する。
 
   // 大分類は章ごとに定義し、1問が必ず1分類にだけ入るようにする。
+  const isSupplement = q => q.sourceType === "review" || q.sourceType === "mock";
+  const isCase = q => q.type === "case" || q.category.startsWith("ケーススタディ");
   const majorByChapter = {
-    1: { "筋系・筋収縮": q => { if (/^(総合|ケーススタディ)/.test(q.category)) return false; return /^(筋系|筋収縮|筋活動様式|筋線維タイプ)/.test(q.category) || /^(図・筋収縮|図・サルコメア)/.test(q.category) || /^(章末確認・筋系|章末確認・筋収縮|章末確認・筋活動様式)/.test(q.category) || /^(模擬問題・筋収縮|模擬問題・筋活動様式|模擬問題・エネルギー|模擬問題・加齢と筋|模擬問題・筋活動)/.test(q.category); },
-"神経・感覚": q => { if (/^(総合|ケーススタディ)/.test(q.category)) return false; return /^(神経|神経筋接合部)/.test(q.category) || q.category.includes("筋紡錘") || q.category.includes("GTO") || /^(章末確認・神経)/.test(q.category) || /^(模擬問題・運動単位|模擬問題・神経適応|模擬問題・発火頻度|模擬問題・反射)/.test(q.category); },
-"骨格・結合組織": q => { if (/^(総合|ケーススタディ)/.test(q.category)) return false; return q.category.startsWith("骨格系") || /^(章末確認・骨格|章末確認・腱)/.test(q.category); },
-"総合・ケーススタディ": q => q.category.startsWith("総合") || q.category.startsWith("ケーススタディ") },
-    2: { "血液・酸素運搬": q => q.category === "血液・酸素運搬",
-"心臓・循環": q => q.category === "心臓・循環",
-"呼吸・ガス交換": q => q.category === "呼吸・ガス交換",
-"酸素摂取・運動適応": q => q.category === "酸素摂取・運動適応",
-"総合・ケーススタディ": q => q.category.startsWith("総合") || q.category.startsWith("ケーススタディ") },
+    // 分類のルール:
+    // 1) review/mock は「章末確認・模擬問題」にまとめ、内容分類から外す。
+    // 2) case は「総合・ケーススタディ」にまとめる（実在する章のみ表示）。
+    // 3) それ以外の original 問題だけを内容分類へ入れる。
+    // これにより、1問が複数の大分類に重複しない。
+    1: {
+      "筋系・筋収縮": q => !isSupplement(q) && !isCase(q) && (/^(筋系|筋収縮|筋活動様式|筋線維タイプ)/.test(q.category) || /^(図・筋収縮|図・サルコメア)/.test(q.category)),
+      "神経・感覚": q => !isSupplement(q) && !isCase(q) && (/^(神経|神経筋接合部)/.test(q.category) || q.category.includes("筋紡錘") || q.category.includes("GTO") || q.category === "図・ニューロン"),
+      "骨格・結合組織": q => !isSupplement(q) && !isCase(q) && (q.category.startsWith("骨格系") || q.category === "図・長骨" || q.category === "図・骨格"),
+      "総合・ケーススタディ": q => !isSupplement(q) && (q.category.startsWith("総合") || q.category.startsWith("ケーススタディ")),
+      "章末確認・模擬問題": q => isSupplement(q)
+    },
+    2: {
+      "血液・酸素運搬": q => !isSupplement(q) && !isCase(q) && q.category === "血液・酸素運搬",
+      "心臓・循環": q => !isSupplement(q) && !isCase(q) && q.category === "心臓・循環",
+      "呼吸・ガス交換": q => !isSupplement(q) && !isCase(q) && q.category === "呼吸・ガス交換",
+      "酸素摂取・運動適応": q => !isSupplement(q) && !isCase(q) && q.category === "酸素摂取・運動適応",
+      "総合・ケーススタディ": q => !isSupplement(q) && (q.category.startsWith("総合") || q.category.startsWith("ケーススタディ")),
+      "章末確認・模擬問題": q => isSupplement(q)
+    },
     3: {
-      // 第3章の現行データカテゴリに合わせた分類。旧カテゴリ名だけを参照していたため、
-      // 以前は「基礎・ATP・ホスファゲン」以外の問題が分類から外れていた。
-      "基礎・ATP・ホスファゲン": q => /^(ATP・エネルギー供給機構|ホスファゲン機構|基礎・ATP・ホスファゲン)$/.test(q.category),
-      "解糖系・乳酸・酸化": q => /^(解糖・乳酸代謝|酸化機構)$/.test(q.category),
-      "エネルギー供給・基質・応用": q => /^(運動時間・強度とエネルギー機構|基質・グリコーゲン|酸素借・トレーニングへの応用)$/.test(q.category)
+      "基礎・ATP・ホスファゲン": q => !isSupplement(q) && !isCase(q) && /^(ATP・エネルギー供給機構|ホスファゲン機構)$/.test(q.category),
+      "解糖系・乳酸・酸化": q => !isSupplement(q) && !isCase(q) && /^(解糖・乳酸代謝|酸化機構)$/.test(q.category),
+      "エネルギー供給・基質・応用": q => !isSupplement(q) && !isCase(q) && /^(運動時間・強度とエネルギー機構|基質・グリコーゲン|酸素借・トレーニングへの応用)$/.test(q.category),
+      "総合・ケーススタディ": q => !isSupplement(q) && (q.category.startsWith("総合") || q.category.startsWith("ケーススタディ")),
+      "章末確認・模擬問題": q => isSupplement(q)
     },
     4: {
-      "力学の基礎": q => /^(基礎・運動の分類|運動学・運動力学|ニュートンの法則|運動量・力積・トルク)$/.test(q.category) || q.category === "基礎・章末確認",
-      "てこ": q => q.category === "てこの原理" || q.category === "てこ・章末確認",
-      "仕事・パワー・エネルギー": q => /^(仕事・パワー|エネルギー・効率)$/.test(q.category) || q.category === "仕事・章末確認",
-      "筋形状・長さ-張力": q => /^(筋形状|長さ-張力関係)$/.test(q.category) || q.category === "長さ-張力・章末確認",
-      "力-速度関係・SSC": q => q.category === "力-速度関係・SSC" || q.category === "力-速度関係・章末確認",
-      "筋力・神経適応": q => q.category === "筋力・神経適応" || q.category === "筋力・神経適応・章末確認",
-      "キネマティックチェーン": q => q.category === "キネマティックチェーン",
-      "筋による動作制御": q => q.category === "筋による動作制御" || q.category === "筋による動作制御・章末確認",
-      "抵抗タイプ": q => q.category === "抵抗タイプ" || q.category === "抵抗タイプ・章末確認" || q.category === "模擬問題・筋活動"
+      "力学の基礎": q => !isSupplement(q) && !isCase(q) && /^(基礎・運動の分類|運動学・運動力学|ニュートンの法則|運動量・力積・トルク)$/.test(q.category),
+      "てこ": q => !isSupplement(q) && !isCase(q) && q.category === "てこの原理",
+      "仕事・パワー・エネルギー": q => !isSupplement(q) && !isCase(q) && /^(仕事・パワー|エネルギー・効率)$/.test(q.category),
+      "筋形状・長さ-張力": q => !isSupplement(q) && !isCase(q) && /^(筋形状|長さ-張力関係)$/.test(q.category),
+      "力-速度関係・SSC": q => !isSupplement(q) && !isCase(q) && q.category === "力-速度関係・SSC",
+      "筋力・神経適応": q => !isSupplement(q) && !isCase(q) && q.category === "筋力・神経適応",
+      "キネマティックチェーン": q => !isSupplement(q) && !isCase(q) && q.category === "キネマティックチェーン",
+      "筋による動作制御": q => !isSupplement(q) && !isCase(q) && q.category === "筋による動作制御",
+      "抵抗タイプ": q => !isSupplement(q) && !isCase(q) && q.category === "抵抗タイプ",
+      "総合・ケーススタディ": q => !isSupplement(q) && (q.category.startsWith("総合") || q.category.startsWith("ケーススタディ")),
+      "章末確認・模擬問題": q => isSupplement(q)
     }
   };
   const major = majorByChapter[chapter] || {};
