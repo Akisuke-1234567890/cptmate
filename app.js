@@ -1,4 +1,4 @@
-const APP_VERSION = "0.2.143";
+const APP_VERSION = "0.2.144";
 
 /* v0.2.63: home logo placement + startup splash/crossfade */
 const CPTMATE_BRAND_LOGO = "assets/branding/cptmate-horizontal-logo.png";
@@ -1437,6 +1437,22 @@ async function renderPracticeSelector(selectedChapter = null) {
   };
   const major = majorByChapter[chapter] || {};
 
+  // 出題元は内容分類とは別軸で選べるようにする。
+  // original = CPTmateオリジナル、review = 章末確認問題、mock = 模擬問題。
+  const sourceByChapter = {
+    original: { label: "CPTmateオリジナル", test: q => q.sourceType === "original" },
+    review: { label: "章末確認問題", test: q => q.sourceType === "review" },
+    mock: { label: "模擬問題", test: q => q.sourceType === "mock" }
+  };
+
+  const sourceButtons = Object.entries(sourceByChapter).map(([sourceType, meta]) => {
+    const sourceQuestions = chapterQuestions.filter(meta.test);
+    if (!sourceQuestions.length) return "";
+    const ids = sourceQuestions.map(q => q.id);
+    const sourceCorrect = sourceQuestions.filter(q => state.answers[q.id]?.correct).length;
+    return `<button class="practice-select-item" onclick='startPracticeQueue(${JSON.stringify(ids)}, ${JSON.stringify(`第${chapter}章・${meta.label}`)})'><strong>${meta.label}</strong><span>正解 ${sourceCorrect} / ${ids.length}</span></button>`;
+  }).join("");
+
   const majorButtons = Object.entries(major).map(([name, fn]) => {
     const categoryQuestions = chapterQuestions.filter(fn);
     const ids = categoryQuestions.map(q => q.id);
@@ -1471,6 +1487,14 @@ async function renderPracticeSelector(selectedChapter = null) {
       <div class="practice-select-list">
         <button class="practice-select-item primary-choice" onclick='startPracticeQueue(${JSON.stringify(chapterQuestions.map(q => q.id))}, ${JSON.stringify(`第${chapter}章すべて`)})'><strong>第${chapter}章すべて</strong><span>${chapterQuestions.length}問</span></button>
         ${majorButtons}
+      </div>
+    </section>
+
+    <section class="card">
+      <div class="selector-section-title">出題元で選ぶ</div>
+      <p class="selector-note">内容の分類とは別に、オリジナル問題・章末確認問題・模擬問題を分けて解けます。</p>
+      <div class="practice-select-list">
+        ${sourceButtons}
       </div>
     </section>
 
