@@ -1,4 +1,4 @@
-const APP_VERSION = "0.2.144";
+const APP_VERSION = "0.2.145";
 
 /* v0.2.63: home logo placement + startup splash/crossfade */
 const CPTMATE_BRAND_LOGO = "assets/branding/cptmate-horizontal-logo.png";
@@ -2201,10 +2201,60 @@ function renderQuestion() {
 
       ${questionFigure}
       <p class="question-text">${q.question}</p>
+      <div class="question-report-row" style="display:flex;justify-content:flex-end;margin-top:12px;">
+        <button class="secondary-btn" type="button" onclick="reportCurrentQuestion('${q.id}')">この問題を報告</button>
+      </div>
       <div>${choices}</div>
       ${result}
     </section>
   `;
+}
+
+
+const CPTMATE_REPORT_API_URL = "https://script.google.com/macros/s/AKfycbxHQ6jAOFNx0FBKRcjJcFdfBTKmfOJjzBVvH9BbtjtbFQtt31UOdGRFdWohAUTgr209zA/exec";
+
+async function reportCurrentQuestion(questionId) {
+  const q = ALL_QUESTIONS.find(item => item.id === questionId);
+  if (!q) {
+    alert("問題情報を取得できませんでした。");
+    return;
+  }
+
+  const reportType = prompt(
+    "報告の種類を入力してください。\n例：正解が違う／問題文の誤り／解説の誤り／表示の不具合",
+    "問題内容の誤り"
+  );
+  if (reportType === null) return;
+  if (!reportType.trim()) {
+    alert("報告の種類を入力してください。");
+    return;
+  }
+
+  const comment = prompt("補足があれば入力してください（任意）。", "");
+  if (comment === null) return;
+
+  const payload = {
+    questionId: q.id,
+    chapter: String(q.chapter),
+    questionText: String(q.question || ""),
+    reportType: reportType.trim(),
+    comment: comment.trim(),
+    appVersion: APP_VERSION
+  };
+
+  try {
+    // GASへのクロスオリジン送信。no-corsでは応答本文を読めないため、受付成功とは断定しない。
+    await fetch(CPTMATE_REPORT_API_URL, {
+      method: "POST",
+      mode: "no-cors",
+      headers: { "Content-Type": "text/plain;charset=UTF-8" },
+      body: JSON.stringify(payload)
+    });
+    alert("報告の送信処理を行いました。\n受付結果はこの画面では確認できません。シートへの記録と通知メールをご確認ください。");
+  } catch (error) {
+    console.error("CPTmate report submission failed:", error);
+    alert("報告を送信できませんでした。通信状態を確認して、もう一度お試しください。");
+  }
 }
 
 function retryQuestion() {
