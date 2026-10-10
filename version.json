@@ -1,5 +1,5 @@
 {
-  "version": "0.2.145",
+  "version": "0.2.146",
   "title": "CPTmate",
-  "message": "問題演習画面に問題報告機能を追加。GAS問題報告APIへ送信。"
+  "message": "問題報告後の案内文を改善。"
 }

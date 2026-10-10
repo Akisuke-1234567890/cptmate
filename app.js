@@ -1,4 +1,4 @@
-const APP_VERSION = "0.2.145";
+const APP_VERSION = "0.2.146";
 
 /* v0.2.63: home logo placement + startup splash/crossfade */
 const CPTMATE_BRAND_LOGO = "assets/branding/cptmate-horizontal-logo.png";
@@ -2250,7 +2250,7 @@ async function reportCurrentQuestion(questionId) {
       headers: { "Content-Type": "text/plain;charset=UTF-8" },
       body: JSON.stringify(payload)
     });
-    alert("報告の送信処理を行いました。\n受付結果はこの画面では確認できません。シートへの記録と通知メールをご確認ください。");
+    alert("報告を送信しました。\n\nご報告ありがとうございます。\n内容を確認し、必要に応じて順次修正・反映していきますので、しばらくお待ちください。");
   } catch (error) {
     console.error("CPTmate report submission failed:", error);
     alert("報告を送信できませんでした。通信状態を確認して、もう一度お試しください。");
