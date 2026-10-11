@@ -1,5 +1,5 @@
 {
-  "version": "0.2.147",
+  "version": "0.2.148",
   "title": "CPTmate",
-  "message": "第1・2章のCPTmateオリジナル問題に、sourceTypeに基づく出典ラベルを補完。問題内容・正解・解説・sourceNoteは変更しない。"
+  "message": "第1章の既存監査記録に基づき、照合済み60問のsourceNoteを補完。問題文・選択肢・正解・解説は変更しない。"
 }
