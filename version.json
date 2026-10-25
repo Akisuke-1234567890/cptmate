@@ -1,1 +1,5 @@
-{"version":"0.2.172","title":"CPTmate","message":"第5章の問題を追加"}
+{
+  "version": "0.2.174",
+  "title": "CPTmate",
+  "message": "第5章の問題一覧を50問に修正。既存データと第1〜4章を維持。"
+}
